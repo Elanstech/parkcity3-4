@@ -1,10 +1,10 @@
 /**
  * PARK CITY 3&4 APARTMENTS
- * Ultra-Luxury Residential Website
- * ES6 Class-Based Architecture
+ * Ultra-Luxury Residential Website - Enhanced Edition
+ * ES6 Class-Based Architecture with Advanced Animations
  */
 
-// ==================== HERO SLIDESHOW CLASS ====================
+// ==================== ENHANCED HERO SLIDESHOW CLASS ====================
 class HeroSlideshow {
     constructor(container, options = {}) {
         this.container = container;
@@ -14,7 +14,7 @@ class HeroSlideshow {
         this.nextBtn = document.getElementById('nextSlide');
         
         this.currentIndex = 0;
-        this.autoplayInterval = options.autoplayInterval || 6000;
+        this.autoplayInterval = options.autoplayInterval || 7000;
         this.autoplayTimer = null;
         
         this.init();
@@ -24,6 +24,7 @@ class HeroSlideshow {
         this.createDots();
         this.bindEvents();
         this.startAutoplay();
+        this.initKenBurnsEffect();
     }
     
     createDots() {
@@ -55,6 +56,22 @@ class HeroSlideshow {
         this.slides[this.currentIndex].classList.add('active');
         this.dots[this.currentIndex].classList.add('active');
         
+        // Ken Burns zoom effect with GSAP
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo(this.slides[this.currentIndex], 
+                {
+                    scale: 1.15,
+                    rotation: 0
+                },
+                {
+                    scale: 1,
+                    rotation: 0.5,
+                    duration: 15,
+                    ease: 'power1.inOut'
+                }
+            );
+        }
+        
         this.resetAutoplay();
     }
     
@@ -83,10 +100,19 @@ class HeroSlideshow {
         this.stopAutoplay();
         this.startAutoplay();
     }
+    
+    initKenBurnsEffect() {
+        // Initial Ken Burns effect on first slide
+        if (typeof gsap !== 'undefined' && this.slides[0]) {
+            gsap.fromTo(this.slides[0], 
+                { scale: 1.15 },
+                { scale: 1, duration: 15, ease: 'power1.inOut' }
+            );
+        }
+    }
 }
 
 // ==================== MODERN NAVIGATION CLASS ====================
-
 class HeaderNavigation {
     constructor() {
         this.nav = document.getElementById('mainNav');
@@ -438,12 +464,18 @@ class ContactForm {
 class ParallaxEffects {
     constructor() {
         this.elements = Array.from(document.querySelectorAll('.amenities-parallax'));
+        this.parallaxLayers = document.querySelectorAll('.parallax-layer');
         this.init();
     }
     
     init() {
         if (this.elements.length > 0) {
             window.addEventListener('scroll', () => this.handleScroll());
+        }
+        
+        if (this.parallaxLayers.length > 0) {
+            this.initMouseParallax();
+            this.initScrollParallax();
         }
     }
     
@@ -457,6 +489,48 @@ class ParallaxEffects {
             if (isVisible) {
                 const offset = (scrollY - el.offsetTop) * 0.3;
                 el.style.transform = `translateY(${offset}px)`;
+            }
+        });
+    }
+    
+    initMouseParallax() {
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            this.parallaxLayers.forEach((layer) => {
+                const speed = parseFloat(layer.dataset.speed) || 0.5;
+                const x = (mouseX - 0.5) * 100 * speed;
+                const y = (mouseY - 0.5) * 100 * speed;
+                
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(layer, {
+                        x: x,
+                        y: y,
+                        duration: 1,
+                        ease: 'power2.out'
+                    });
+                } else {
+                    layer.style.transform = `translate(${x}px, ${y}px)`;
+                }
+            });
+        });
+    }
+    
+    initScrollParallax() {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+            
+            const heroHeight = hero.offsetHeight;
+            
+            if (scrolled < heroHeight) {
+                this.parallaxLayers.forEach((layer) => {
+                    const speed = parseFloat(layer.dataset.speed) || 0.5;
+                    const yPos = -(scrolled * speed);
+                    layer.style.transform = `translateY(${yPos}px)`;
+                });
             }
         });
     }
@@ -564,6 +638,301 @@ class Utilities {
     }
 }
 
+// ==================== ENHANCED HERO ANIMATIONS ====================
+
+// PARTICLES.JS CONFIGURATION
+function initParticles() {
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#d4a574', '#a67c52', '#c8996b']
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.5,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#d4a574',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 0.5
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    }
+}
+
+// SPLIT TEXT ANIMATION WITH GSAP
+function initSplitTextAnimation() {
+    const heroTitle = document.getElementById('heroTitle');
+    if (!heroTitle || typeof SplitType === 'undefined' || typeof gsap === 'undefined') return;
+    
+    // Split text into characters
+    const titleLines = heroTitle.querySelectorAll('.title-line');
+    
+    titleLines.forEach((line, lineIndex) => {
+        const split = new SplitType(line, { types: 'chars' });
+        const chars = split.chars;
+        
+        // Animate each character
+        gsap.fromTo(chars,
+            {
+                opacity: 0,
+                y: 100,
+                rotationX: -90,
+                scale: 0.8
+            },
+            {
+                opacity: 1,
+                y: 0,
+                rotationX: 0,
+                scale: 1,
+                duration: 1,
+                stagger: 0.03,
+                delay: 0.5 + (lineIndex * 0.3),
+                ease: 'back.out(1.7)'
+            }
+        );
+    });
+}
+
+// TYPED.JS FOR SUBTITLE
+function initTypedText() {
+    const typedElement = document.getElementById('typedText');
+    if (!typedElement || typeof Typed === 'undefined') return;
+    
+    new Typed('#typedText', {
+        strings: [
+            'Experience luxury living where security, comfort, and convenience unite',
+            'Your perfect home awaits in our premium community',
+            '24/7 security with world-class amenities at your doorstep'
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        startDelay: 1500,
+        loop: true,
+        showCursor: false
+    });
+}
+
+// ANIMATED STATS COUNTER
+function initStatsCounter() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (statNumbers.length === 0) return;
+    
+    const animateCounter = (element) => {
+        const target = parseInt(element.dataset.target);
+        
+        if (typeof gsap !== 'undefined') {
+            gsap.from(element, {
+                textContent: 0,
+                duration: 2,
+                delay: 2,
+                ease: 'power1.out',
+                snap: { textContent: 1 },
+                onUpdate: function() {
+                    element.textContent = Math.ceil(element.textContent);
+                }
+            });
+        } else {
+            // Fallback without GSAP
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.ceil(current);
+                }
+            }, 33);
+        }
+    };
+    
+    // Trigger animation after delay
+    setTimeout(() => {
+        statNumbers.forEach(animateCounter);
+    }, 2000);
+}
+
+// MAGNETIC BUTTON EFFECT
+function initMagneticButtons() {
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            if (typeof gsap !== 'undefined') {
+                gsap.to(btn, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                });
+            } else {
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            }
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            if (typeof gsap !== 'undefined') {
+                gsap.to(btn, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.6,
+                    ease: 'elastic.out(1, 0.5)'
+                });
+            } else {
+                btn.style.transform = 'translate(0, 0)';
+            }
+        });
+    });
+}
+
+// SCROLL REVEAL ANIMATIONS
+function initScrollReveal() {
+    if (typeof ScrollReveal === 'undefined') return;
+    
+    const sr = ScrollReveal({
+        origin: 'bottom',
+        distance: '60px',
+        duration: 1000,
+        delay: 200,
+        easing: 'cubic-bezier(0.5, 0, 0, 1)',
+        reset: false
+    });
+    
+    // Animate hero elements in sequence
+    sr.reveal('.hero-label', { delay: 200, origin: 'top', distance: '30px' });
+    sr.reveal('.hero-cta', { delay: 1800, origin: 'bottom', distance: '40px' });
+    sr.reveal('.hero-stats', { delay: 2000, origin: 'bottom', distance: '50px' });
+    sr.reveal('.hero-controls', { delay: 2200, origin: 'bottom', distance: '30px' });
+    sr.reveal('.scroll-indicator', { delay: 2400, origin: 'bottom', distance: '20px' });
+}
+
+// FLOATING SHAPES ANIMATION
+function initFloatingShapes() {
+    const shapes = document.querySelectorAll('.floating-shape');
+    
+    if (shapes.length === 0 || typeof gsap === 'undefined') return;
+    
+    shapes.forEach((shape, index) => {
+        const duration = 15 + (index * 3);
+        const delay = index * 2;
+        
+        gsap.to(shape, {
+            x: 'random(-100, 100)',
+            y: 'random(-80, 80)',
+            rotation: 'random(-15, 15)',
+            scale: 'random(0.9, 1.1)',
+            duration: duration,
+            delay: delay,
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true
+        });
+        
+        // Animate inner shape separately for depth
+        const shapeInner = shape.querySelector('.shape-inner');
+        if (shapeInner) {
+            gsap.to(shapeInner, {
+                rotation: 360,
+                duration: 20 + (index * 5),
+                ease: 'none',
+                repeat: -1
+            });
+        }
+    });
+}
+
+// GRADIENT MESH ANIMATION
+function initGradientMesh() {
+    if (typeof gsap !== 'undefined') {
+        const gradientMesh = document.querySelector('.hero-gradient-mesh');
+        if (gradientMesh) {
+            gsap.to(gradientMesh, {
+                opacity: 0.3,
+                duration: 3,
+                yoyo: true,
+                repeat: -1,
+                ease: 'sine.inOut'
+            });
+        }
+    }
+}
+
 // ==================== APP INITIALIZATION CLASS ====================
 class ParkCityApp {
     constructor() {
@@ -582,11 +951,14 @@ class ParkCityApp {
     
     initializeComponents() {
         try {
+            // Initialize Enhanced Hero Animations First
+            this.initHeroEnhancements();
+            
             // Initialize Hero Slideshow
             const heroSlideshow = document.getElementById('heroSlideshow');
             if (heroSlideshow) {
                 this.components.heroSlideshow = new HeroSlideshow(heroSlideshow, {
-                    autoplayInterval: 6000
+                    autoplayInterval: 7000
                 });
             }
             
@@ -622,13 +994,32 @@ class ParkCityApp {
             // Initialize Page Loader
             this.components.pageLoader = new PageLoader();
             
-            console.log('🏙️ Park City 3&4 Apartments - All systems initialized');
+            console.log('🏙️ Park City 3&4 Apartments - All systems initialized with enhanced animations!');
             
         } catch (error) {
             console.error('Error initializing components:', error);
         }
     }
+    
+    initHeroEnhancements() {
+        // Initialize all enhanced hero features
+        initParticles();
+        initSplitTextAnimation();
+        initTypedText();
+        initStatsCounter();
+        initMagneticButtons();
+        initScrollReveal();
+        initFloatingShapes();
+        initGradientMesh();
+        
+        console.log('✨ Enhanced hero animations loaded!');
+    }
 }
 
 // ==================== INITIALIZE APPLICATION ====================
 const app = new ParkCityApp();
+
+// Scroll to top on load
+window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+});
