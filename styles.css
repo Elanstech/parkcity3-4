@@ -883,7 +883,167 @@ button {
     font-weight: 500;
 }
 
-/* Responsive Styles */
+/* Responsive Mobile Menu Styles */
+@media (max-width: 768px) {
+    .menu-container {
+        padding: 60px 32px 40px;
+    }
+    
+    .menu-close {
+        top: 24px;
+        right: 24px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .close-line {
+        width: 20px;
+    }
+    
+    .menu-header {
+        margin-bottom: 40px;
+    }
+    
+    .menu-logo-img {
+        height: 40px;
+    }
+    
+    .menu-tagline {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+    
+    .menu-items {
+        gap: 10px;
+    }
+    
+    .link-wrapper {
+        padding: 20px 24px;
+        gap: 20px;
+    }
+    
+    .link-number {
+        font-size: 1rem;
+        min-width: 40px;
+    }
+    
+    .link-text {
+        font-size: 1.5rem;
+    }
+    
+    .link-subtitle {
+        font-size: 0.75rem;
+    }
+    
+    .link-arrow svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .menu-cta-wrapper {
+        margin: 32px 0;
+    }
+    
+    .menu-cta-btn {
+        padding: 24px 32px;
+    }
+    
+    .cta-text {
+        font-size: 1.25rem;
+    }
+    
+    .cta-subtext {
+        font-size: 0.75rem;
+    }
+    
+    .cta-icon {
+        font-size: 1.75rem;
+    }
+    
+    .menu-footer {
+        margin-top: 32px;
+        padding-top: 24px;
+    }
+    
+    .footer-contact {
+        gap: 12px;
+    }
+    
+    .contact-item {
+        font-size: 0.875rem;
+        gap: 10px;
+    }
+    
+    .contact-item svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-container {
+        padding: 50px 24px 32px;
+    }
+    
+    .menu-close {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .link-wrapper {
+        padding: 18px 20px;
+        gap: 16px;
+    }
+    
+    .link-number {
+        font-size: 0.875rem;
+        min-width: 36px;
+    }
+    
+    .link-text {
+        font-size: 1.25rem;
+    }
+    
+    .link-subtitle {
+        font-size: 0.688rem;
+    }
+    
+    .link-arrow svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .menu-cta-btn {
+        padding: 20px 28px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cta-icon {
+        align-self: flex-end;
+    }
+}
+
+/* Scrollbar Styling for Menu */
+.menu-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.menu-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.menu-container::-webkit-scrollbar-thumb {
+    background: rgba(212, 165, 116, 0.4);
+    border-radius: 10px;
+}
+
+.menu-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 165, 116, 0.6);
+}
+
+/* Desktop Navigation Responsive */
 @media (max-width: 1200px) {
     .nav-links {
         gap: 4px;
@@ -920,27 +1080,6 @@ button {
     
     .menu-toggle {
         display: flex;
-    }
-}
-
-@media (max-width: 640px) {
-    .menu-container {
-        padding: 24px;
-    }
-    
-    .menu-link {
-        padding: 20px 24px;
-        font-size: 1.5rem;
-        gap: 16px;
-    }
-    
-    .link-number {
-        font-size: 0.875rem;
-        min-width: 32px;
-    }
-    
-    .link-arrow {
-        font-size: 1.5rem;
     }
 }
 
