@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Park City 3&4 Apartments - A perfect community to call home. Luxury living with 24/7 security, premium amenities, and modern convenience.">
+    <title>Park City 3&4 Apartments | Luxury Living Redefined</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="park-city-logo.png" alt="Park City 3&4 Apartments" class="logo-img">
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#amenities" class="nav-link">Amenities</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+                <li><a href="#security" class="nav-link">Security</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#apply" class="nav-link nav-cta">Apply Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slideshow" id="heroSlideshow">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920&q=80')">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=80')">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80')">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80')">
+                <div class="hero-overlay"></div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-label">Welcome to Park City</div>
+                <h1 class="hero-title">
+                    <span class="title-line">A Perfect Community</span>
+                    <span class="title-line">to Call Home</span>
+                </h1>
+                <p class="hero-subtitle">Experience luxury living where security, comfort, and convenience unite in perfect harmony</p>
+                <div class="hero-cta">
+                    <a href="#amenities" class="btn btn-primary">
+                        <span>View Amenities</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Schedule Tour</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-controls">
+            <button class="hero-control prev" id="prevSlide" aria-label="Previous slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <div class="hero-dots" id="heroDots"></div>
+            <button class="hero-control next" id="nextSlide" aria-label="Next slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-text">Scroll to explore</div>
+            <div class="scroll-line"></div>
+        </div>
+
+        <div class="hero-decoration">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Property Highlights -->
+    <section class="highlights" id="highlights">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-label">Premium Features</span>
+                <h2 class="section-title">Designed for Modern Living</h2>
+                <p class="section-subtitle">Every detail thoughtfully crafted for your ultimate comfort</p>
+            </div>
+            <div class="highlights-grid">
+                <div class="highlight-card" data-animate data-delay="100">
+                    <div class="highlight-icon-wrapper">
+                        <div class="highlight-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 12h4l3 9 4-18 3 9h4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="highlight-title">Swimming Pool</h3>
+                    <p class="highlight-desc">Resort-style pool with luxury lounge area</p>
+                </div>
+                <div class="highlight-card" data-animate data-delay="200">
+                    <div class="highlight-icon-wrapper">
+                        <div class="highlight-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="highlight-title">24/7 Security</h3>
+                    <p class="highlight-desc">Round-the-clock professional security team</p>
+                </div>
+                <div class="highlight-card" data-animate data-delay="300">
+                    <div class="highlight-icon-wrapper">
+                        <div class="highlight-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                <polyline points="7 3 7 8 15 8"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="highlight-title">Indoor Parking</h3>
+                    <p class="highlight-desc">Secure covered parking with easy access</p>
+                </div>
+                <div class="highlight-card" data-animate data-delay="400">
+                    <div class="highlight-icon-wrapper">
+                        <div class="highlight-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v6l4 2"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="highlight-title">New Laundry Facilities</h3>
+                    <p class="highlight-desc">Brand new state-of-the-art laundry room</p>
+                </div>
+                <div class="highlight-card" data-animate data-delay="500">
+                    <div class="highlight-icon-wrapper">
+                        <div class="highlight-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="highlight-title">Camera Surveillance</h3>
+                    <p class="highlight-desc">Advanced ECAM monitoring system</p>
+                </div>
+                <div class="highlight-card" data-animate data-delay="600">
+                    <div class="highlight-icon-wrapper">
+                        <div class="highlight-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="highlight-title">On-Site Team</h3>
+                    <p class="highlight-desc">Dedicated superintendent & management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities" id="amenities">
+        <div class="amenities-parallax">
+            <div class="container">
+                <div class="section-header centered" data-animate>
+                    <span class="section-label">Lifestyle</span>
+                    <h2 class="section-title">Designed for Comfort,<br>Built for Peace of Mind</h2>
+                    <p class="section-subtitle">Every amenity crafted to enhance your daily living experience</p>
+                </div>
+                <div class="amenities-showcase">
+                    <div class="amenity-feature" data-animate>
+                        <div class="amenity-image" style="background-image: url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=80')">
+                            <div class="amenity-overlay"></div>
+                            <div class="amenity-badge">Premium</div>
+                        </div>
+                        <div class="amenity-content">
+                            <div class="amenity-number">01</div>
+                            <h3 class="amenity-title">Resort-Style Pool & Lounge</h3>
+                            <p class="amenity-desc">Unwind in our pristine swimming pool surrounded by comfortable lounge seating and tropical landscaping. The perfect escape without leaving home.</p>
+                            <div class="amenity-features">
+                                <span>Heated Pool</span>
+                                <span>Lounge Seating</span>
+                                <span>Cabanas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="amenity-feature reverse" data-animate>
+                        <div class="amenity-image" style="background-image: url('https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=1200&q=80')">
+                            <div class="amenity-overlay"></div>
+                            <div class="amenity-badge">Premium</div>
+                        </div>
+                        <div class="amenity-content">
+                            <div class="amenity-number">02</div>
+                            <h3 class="amenity-title">State-of-the-Art Fitness Center</h3>
+                            <p class="amenity-desc">Maintain your wellness routine in our fully-equipped fitness center featuring premium equipment, modern amenities, and motivating atmosphere.</p>
+                            <div class="amenity-features">
+                                <span>Premium Equipment</span>
+                                <span>24/7 Access</span>
+                                <span>Modern Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="amenity-feature" data-animate>
+                        <div class="amenity-image" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80')">
+                            <div class="amenity-overlay"></div>
+                            <div class="amenity-badge">Premium</div>
+                        </div>
+                        <div class="amenity-content">
+                            <div class="amenity-number">03</div>
+                            <h3 class="amenity-title">Secure Indoor Parking</h3>
+                            <p class="amenity-desc">Protected covered parking with controlled access ensures your vehicle's safety and your complete peace of mind every single day.</p>
+                            <div class="amenity-features">
+                                <span>Covered Spaces</span>
+                                <span>Controlled Access</span>
+                                <span>Well-Lit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Events -->
+    <section class="community" id="community">
+        <div class="container">
+            <div class="section-header centered" data-animate>
+                <span class="section-label">Community</span>
+                <h2 class="section-title">More Than Just a Place to Live</h2>
+                <p class="section-subtitle">Join a vibrant community with regular social events and gatherings</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card" data-animate data-delay="100">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80')">
+                        <div class="event-overlay"></div>
+                        <div class="event-date">
+                            <span class="date-month">Mar</span>
+                            <span class="date-day">15</span>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Spring Garden Party</h3>
+                        <p class="event-desc">Join us for an afternoon of community connection with refreshments, live music, and good company.</p>
+                        <div class="event-meta">
+                            <span class="event-time">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                2:00 PM - 5:00 PM
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-card" data-animate data-delay="200">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80')">
+                        <div class="event-overlay"></div>
+                        <div class="event-date">
+                            <span class="date-month">Apr</span>
+                            <span class="date-day">22</span>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Poolside BBQ Social</h3>
+                        <p class="event-desc">Summer kickoff celebration with grilled favorites and family-friendly activities by the pool.</p>
+                        <div class="event-meta">
+                            <span class="event-time">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                12:00 PM - 4:00 PM
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-card" data-animate data-delay="300">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80')">
+                        <div class="event-overlay"></div>
+                        <div class="event-date">
+                            <span class="date-month">May</span>
+                            <span class="date-day">10</span>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Movie Night Under Stars</h3>
+                        <p class="event-desc">Outdoor cinema experience with popcorn and refreshments for the entire community to enjoy.</p>
+                        <div class="event-meta">
+                            <span class="event-time">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                7:30 PM - 10:00 PM
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="security" id="security">
+        <div class="security-bg"></div>
+        <div class="container">
+            <div class="section-header centered" data-animate>
+                <span class="section-label">Security & Technology</span>
+                <h2 class="section-title">Your Safety is Our Priority</h2>
+                <p class="section-subtitle">Advanced security infrastructure for complete peace of mind</p>
+            </div>
+            <div class="security-grid">
+                <div class="security-feature" data-animate data-delay="100">
+                    <div class="security-icon-wrapper">
+                        <div class="security-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>24/7 Security Personnel</h3>
+                    <p>Professional security team on-site around the clock for your protection</p>
+                </div>
+                <div class="security-feature" data-animate data-delay="200">
+                    <div class="security-icon-wrapper">
+                        <div class="security-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>ECAM Surveillance</h3>
+                    <p>State-of-the-art camera monitoring throughout the entire property</p>
+                </div>
+                <div class="security-feature" data-animate data-delay="300">
+                    <div class="security-icon-wrapper">
+                        <div class="security-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Secure Entry System</h3>
+                    <p>Controlled access with key fob and intercom technology</p>
+                </div>
+                <div class="security-feature" data-animate data-delay="400">
+                    <div class="security-icon-wrapper">
+                        <div class="security-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>ClickPay Portal</h3>
+                    <p>Secure online payment system for hassle-free transactions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resident Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header centered" data-animate>
+                <span class="section-label">Resident Services</span>
+                <h2 class="section-title">Everything You Need,<br>All in One Place</h2>
+                <p class="section-subtitle">Convenient services designed for seamless living</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate data-delay="100">
+                    <div class="service-icon-wrapper">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="service-title">ClickPay</h3>
+                    <p class="service-desc">Pay rent online securely and conveniently with our trusted portal</p>
+                    <a href="#" class="service-link">
+                        <span>Access Portal</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card" data-animate data-delay="200">
+                    <div class="service-icon-wrapper">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="service-title">Forms & Documents</h3>
+                    <p class="service-desc">Access lease documents and request forms anytime, anywhere</p>
+                    <a href="#" class="service-link">
+                        <span>View Forms</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card" data-animate data-delay="300">
+                    <div class="service-icon-wrapper">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="service-title">FAQs</h3>
+                    <p class="service-desc">Find quick answers to your most common questions</p>
+                    <a href="#faqs" class="service-link">
+                        <span>Browse FAQs</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card" data-animate data-delay="400">
+                    <div class="service-icon-wrapper">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="service-title">Maintenance</h3>
+                    <p class="service-desc">Submit and track maintenance requests with ease</p>
+                    <a href="#contact" class="service-link">
+                        <span>Submit Request</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="faqs" id="faqs">
+        <div class="container">
+            <div class="section-header centered" data-animate>
+                <span class="section-label">FAQs</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about living at Park City</p>
+            </div>
+            <div class="faqs-container">
+                <div class="faq-category" data-animate>
+                    <h3 class="faq-category-title">Living Here</h3>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What is included in my rent?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Your rent includes water, trash collection, access to all amenities (pool, fitness center, parking), 24/7 security, and on-site management services. All utilities are included to make your living experience seamless.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Are pets allowed?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, we are a pet-friendly community! We welcome cats and dogs with a maximum weight limit of 50 lbs. A pet deposit and monthly pet rent apply. Please contact our office for specific pet policy details.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What are the pool hours?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The pool is open daily from 8:00 AM to 10:00 PM during summer months (May-September) and 9:00 AM to 8:00 PM during winter months (October-April).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-category" data-animate data-delay="100">
+                    <h3 class="faq-category-title">Payments</h3>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How do I pay rent online?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>You can pay rent through our secure ClickPay portal. Simply log in with your resident credentials and follow the payment instructions. ACH transfers are free, while credit/debit cards incur a small convenience fee.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>When is rent due?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Rent is due on the 1st of each month. A grace period extends to the 5th of the month. Late fees apply after the grace period ends.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-category" data-animate data-delay="200">
+                    <h3 class="faq-category-title">Policies</h3>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What is your guest policy?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Guests are always welcome! Short-term visitors don't require notification. For guests staying longer than 7 consecutive days, please notify the management office.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How do I submit a maintenance request?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Maintenance requests can be submitted online through your resident portal, by calling the office, or by contacting the on-site superintendent. Emergency maintenance is available 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Apply Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info" data-animate>
+                    <span class="section-label">Get in Touch</span>
+                    <h2 class="section-title">Ready to Call<br>Park City Home?</h2>
+                    <p class="contact-desc">Our leasing team is here to answer your questions and schedule a personal tour of our community.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@parkcity34.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>123 Park City Boulevard<br>Suite 3&4</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Office Hours</h4>
+                                <p>Mon-Fri: 9AM - 6PM<br>Sat: 10AM - 4PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form" data-animate data-delay="200" id="apply">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">I'm Interested In</label>
+                            <select id="interest" name="interest" required>
+                                <option value="">Select an option</option>
+                                <option value="tour">Schedule a Tour</option>
+                                <option value="apply">Apply Now</option>
+                                <option value="info">Request Information</option>
+                                <option value="maintenance">Maintenance Request</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Submit Request</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="park-city-logo.png" alt="Park City 3&4 Apartments" class="footer-logo">
+                    <p class="footer-tagline">A perfect community to call home</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#amenities">Amenities</a></li>
+                            <li><a href="#community">Community</a></li>
+                            <li><a href="#services">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Residents</h4>
+                        <ul>
+                            <li><a href="#">ClickPay Portal</a></li>
+                            <li><a href="#">Forms & Documents</a></li>
+                            <li><a href="#faqs">FAQs</a></li>
+                            <li><a href="#contact">Maintenance</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="tel:5551234567">(555) 123-4567</a></li>
+                            <li><a href="mailto:info@parkcity34.com">info@parkcity34.com</a></li>
+                            <li>123 Park City Boulevard</li>
+                            <li>Mon-Fri: 9AM - 6PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Park City 3&4 Apartments, Inc. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
