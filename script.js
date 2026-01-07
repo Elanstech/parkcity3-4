@@ -17,6 +17,16 @@ class HeroSlideshow {
         this.autoplayInterval = options.autoplayInterval || 7000;
         this.autoplayTimer = null;
         
+        // Check if required elements exist
+        if (!this.dotsContainer) {
+            console.error('❌ heroDots container not found');
+            return;
+        }
+        if (!this.prevBtn || !this.nextBtn) {
+            console.error('❌ Slideshow navigation buttons not found');
+            return;
+        }
+        
         this.init();
     }
     
@@ -28,6 +38,8 @@ class HeroSlideshow {
     }
     
     createDots() {
+        if (!this.dotsContainer) return;
+        
         this.slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('hero-dot');
@@ -39,6 +51,8 @@ class HeroSlideshow {
     }
     
     bindEvents() {
+        if (!this.prevBtn || !this.nextBtn) return;
+        
         this.prevBtn.addEventListener('click', () => this.previousSlide());
         this.nextBtn.addEventListener('click', () => this.nextSlide());
         
@@ -48,6 +62,8 @@ class HeroSlideshow {
     }
     
     goToSlide(index) {
+        if (!this.slides || !this.dots) return;
+        
         this.slides[this.currentIndex].classList.remove('active');
         this.dots[this.currentIndex].classList.remove('active');
         
@@ -1076,6 +1092,9 @@ class ParkCityApp {
                 this.components.heroSlideshow = new HeroSlideshow(heroSlideshow, {
                     autoplayInterval: 7000
                 });
+                console.log('✅ Hero slideshow initialized');
+            } else {
+                console.warn('⚠️ Hero slideshow container not found');
             }
             
             // Initialize Navigation
