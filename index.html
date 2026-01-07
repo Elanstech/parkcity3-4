@@ -8,29 +8,115 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav" id="mainNav">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="logo.png" alt="Park City 3&4 Apartments" class="logo-img">
-            </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#amenities" class="nav-link">Amenities</a></li>
-                <li><a href="#community" class="nav-link">Community</a></li>
-                <li><a href="#security" class="nav-link">Security</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="#apply" class="nav-link nav-cta">Apply Now</a></li>
-            </ul>
-        </div>
-    </nav>
 
+<!-- Modern Navigation -->
+<nav class="modern-nav" id="mainNav">
+    <div class="nav-wrapper">
+        <div class="nav-content">
+            <!-- Logo -->
+            <div class="nav-brand">
+                <img src="logo.png" alt="Park City 3&4 Apartments" class="brand-logo">
+                <div class="brand-glow"></div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-item active" data-text="Home">Home</a></li>
+                <li><a href="#amenities" class="nav-item" data-text="Amenities">Amenities</a></li>
+                <li><a href="#community" class="nav-item" data-text="Community">Community</a></li>
+                <li><a href="#security" class="nav-item" data-text="Security">Security</a></li>
+                <li><a href="#services" class="nav-item" data-text="Services">Services</a></li>
+                <li><a href="#contact" class="nav-item" data-text="Contact">Contact</a></li>
+            </ul>
+            
+            <!-- CTA Button -->
+            <div class="nav-actions">
+                <a href="#apply" class="nav-cta">
+                    <span class="cta-text">Apply Now</span>
+                    <span class="cta-icon">→</span>
+                    <div class="cta-bg"></div>
+                </a>
+            </div>
+            
+            <!-- Mobile Toggle -->
+            <button class="menu-toggle" id="navToggle" aria-label="Toggle Menu">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <div class="toggle-bg"></div>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-bg">
+            <div class="menu-shape shape-1"></div>
+            <div class="menu-shape shape-2"></div>
+            <div class="menu-shape shape-3"></div>
+        </div>
+        <div class="menu-container">
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <a href="#home" class="menu-link">
+                        <span class="link-number">01</span>
+                        <span class="link-text">Home</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#amenities" class="menu-link">
+                        <span class="link-number">02</span>
+                        <span class="link-text">Amenities</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#community" class="menu-link">
+                        <span class="link-number">03</span>
+                        <span class="link-text">Community</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#security" class="menu-link">
+                        <span class="link-number">04</span>
+                        <span class="link-text">Security</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#services" class="menu-link">
+                        <span class="link-number">05</span>
+                        <span class="link-text">Services</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#contact" class="menu-link">
+                        <span class="link-number">06</span>
+                        <span class="link-text">Contact</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+                <li class="menu-item menu-cta">
+                    <a href="#apply" class="menu-link">
+                        <span class="link-number">07</span>
+                        <span class="link-text">Apply Now</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="menu-footer">
+                <div class="menu-info">
+                    <p>Park City 3&4 Apartments</p>
+                    <p>(555) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-slideshow" id="heroSlideshow">
