@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Park City 3&4 Apartments - A perfect community to call home. Luxury living with 24/7 security, premium amenities, and modern convenience.">
     <title>Park City 3&4 Apartments | Luxury Living Redefined</title>
+        
+    <!-- External Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -223,78 +232,148 @@
 </nav>
     
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-slideshow" id="heroSlideshow">
-            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920&q=80')">
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=80')">
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80')">
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80')">
-                <div class="hero-overlay"></div>
-            </div>
+<section class="hero" id="home">
+    <!-- Particles Background -->
+    <div id="particles-js" class="particles-container"></div>
+    
+    <!-- Parallax Layers -->
+    <div class="hero-parallax-wrapper">
+        <div class="parallax-layer layer-1" data-speed="0.2"></div>
+        <div class="parallax-layer layer-2" data-speed="0.4"></div>
+        <div class="parallax-layer layer-3" data-speed="0.6"></div>
+    </div>
+
+    <!-- Slideshow with Ken Burns Effect -->
+    <div class="hero-slideshow" id="heroSlideshow">
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920&q=80')">
+            <div class="hero-overlay"></div>
         </div>
-        
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="hero-label">Welcome to Park City</div>
-                <h1 class="hero-title">
-                    <span class="title-line">A Perfect Community</span>
-                    <span class="title-line">to Call Home</span>
-                </h1>
-                <p class="hero-subtitle">Experience luxury living where security, comfort, and convenience unite in perfect harmony</p>
-                <div class="hero-cta">
-                    <a href="#amenities" class="btn btn-primary">
-                        <span>View Amenities</span>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=80')">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80')">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80')">
+            <div class="hero-overlay"></div>
+        </div>
+    </div>
+    
+    <!-- Animated Gradient Mesh -->
+    <div class="hero-gradient-mesh"></div>
+
+    <!-- Main Content -->
+    <div class="hero-content">
+        <div class="hero-text">
+            <!-- Animated Label with Shine -->
+            <div class="hero-label shine-effect">
+                <span class="label-icon">✦</span>
+                <span class="label-text">Welcome to Park City</span>
+                <span class="label-icon">✦</span>
+            </div>
+            
+            <!-- Split Text Title with GSAP Animation -->
+            <h1 class="hero-title" id="heroTitle">
+                <div class="title-line">A Perfect Community</div>
+                <div class="title-line accent-line">to Call Home</div>
+            </h1>
+
+            <!-- Typed.js Subtitle -->
+            <div class="hero-subtitle-wrapper">
+                <p class="hero-subtitle">
+                    <span id="typedText"></span>
+                </p>
+            </div>
+
+            <!-- CTA Buttons with Magnetic Effect -->
+            <div class="hero-cta">
+                <a href="#amenities" class="btn btn-primary magnetic-btn">
+                    <span class="btn-content">
+                        <span class="btn-text">View Amenities</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>Schedule Tour</span>
+                    </span>
+                    <span class="btn-shine"></span>
+                </a>
+                <a href="#contact" class="btn btn-secondary magnetic-btn">
+                    <span class="btn-content">
+                        <span class="btn-text">Schedule Tour</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                             <line x1="16" y1="2" x2="16" y2="6"></line>
                             <line x1="8" y1="2" x2="8" y2="6"></line>
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
-                    </a>
+                    </span>
+                    <span class="btn-shine"></span>
+                </a>
+            </div>
+
+            <!-- Animated Stats Counter -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="24">0</div>
+                    <div class="stat-label">Hour Security</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Premium Units</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Amenities</div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="hero-controls">
-            <button class="hero-control prev" id="prevSlide" aria-label="Previous slide">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            <div class="hero-dots" id="heroDots"></div>
-            <button class="hero-control next" id="nextSlide" aria-label="Next slide">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
+    <!-- Enhanced Controls -->
+    <div class="hero-controls">
+        <button class="hero-control prev" id="prevSlide" aria-label="Previous slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span class="control-ripple"></span>
+        </button>
+        <div class="hero-dots" id="heroDots"></div>
+        <button class="hero-control next" id="nextSlide" aria-label="Next slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span class="control-ripple"></span>
+        </button>
+    </div>
+
+    <!-- Enhanced Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-text">Scroll to explore</div>
+        <div class="scroll-line">
+            <div class="scroll-dot"></div>
         </div>
+    </div>
 
-        <div class="scroll-indicator">
-            <div class="scroll-text">Scroll to explore</div>
-            <div class="scroll-line"></div>
+    <!-- Floating Shapes -->
+    <div class="hero-decoration">
+        <div class="floating-shape shape-1">
+            <div class="shape-inner"></div>
         </div>
-
-        <div class="hero-decoration">
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-2">
+            <div class="shape-inner"></div>
         </div>
-    </section>
+        <div class="floating-shape shape-3">
+            <div class="shape-inner"></div>
+        </div>
+        <div class="floating-shape shape-4">
+            <div class="shape-inner"></div>
+        </div>
+    </div>
+</section>
 
-    <!-- Property Highlights -->
+ <!-- Property Highlights -->
     <section class="highlights" id="highlights">
         <div class="container">
             <div class="section-header" data-animate>
