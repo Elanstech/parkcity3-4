@@ -588,7 +588,7 @@ class ParkCityApp {
             // Initialize Navigation
             const nav = document.getElementById('mainNav');
             if (nav) {
-                this.components.navigation = new Navigation(nav);
+                this.components.navigation = new ModernNavigation(nav);
             }
             
             // Initialize Scroll Animations
