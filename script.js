@@ -416,9 +416,9 @@ class ContactForm {
             fontSize: '0.938rem',
             fontWeight: '500',
             textAlign: 'center',
-            backgroundColor: type === 'success' ? 'rgba(92, 141, 90, 0.2)' : 'rgba(220, 38, 38, 0.2)',
-            border: type === 'success' ? '1px solid rgba(92, 141, 90, 0.4)' : '1px solid rgba(220, 38, 38, 0.4)',
-            color: type === 'success' ? '#5c8d5a' : '#ef4444'
+            backgroundColor: type === 'success' ? 'rgba(92, 141, 90, 0.15)' : 'rgba(220, 38, 38, 0.15)',
+            border: type === 'success' ? '1px solid rgba(92, 141, 90, 0.3)' : '1px solid rgba(220, 38, 38, 0.3)',
+            color: type === 'success' ? '#5c8d5a' : '#dc2626'
         });
         
         // Append message
