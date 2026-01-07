@@ -92,6 +92,7 @@ class HeaderNavigation {
         this.nav = document.getElementById('mainNav');
         this.navToggle = document.getElementById('navToggle');
         this.mobileMenu = document.getElementById('mobileMenu');
+        this.menuClose = document.getElementById('menuClose');
         this.navItems = document.querySelectorAll('.nav-item');
         this.menuLinks = document.querySelectorAll('.menu-link');
         this.isMenuOpen = false;
@@ -103,6 +104,7 @@ class HeaderNavigation {
         this.bindEvents();
         this.handleScroll();
         this.setActiveLink();
+        this.initMagneticEffects();
     }
     
     bindEvents() {
@@ -111,10 +113,15 @@ class HeaderNavigation {
             this.navToggle.addEventListener('click', () => this.toggleMobileMenu());
         }
         
+        // Close button
+        if (this.menuClose) {
+            this.menuClose.addEventListener('click', () => this.closeMobileMenu());
+        }
+        
         // Mobile menu links - close menu when clicked
         this.menuLinks.forEach(link => {
             link.addEventListener('click', () => {
-                this.closeMobileMenu();
+                setTimeout(() => this.closeMobileMenu(), 300);
             });
         });
         
@@ -124,6 +131,13 @@ class HeaderNavigation {
         // Close menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isMenuOpen) {
+                this.closeMobileMenu();
+            }
+        });
+        
+        // Close menu on background click
+        this.mobileMenu.addEventListener('click', (e) => {
+            if (e.target === this.mobileMenu) {
                 this.closeMobileMenu();
             }
         });
@@ -142,13 +156,18 @@ class HeaderNavigation {
         this.mobileMenu.classList.add('active');
         this.navToggle.classList.add('active');
         document.body.classList.add('menu-open');
+        document.body.style.overflow = 'hidden';
     }
     
     closeMobileMenu() {
         this.isMenuOpen = false;
         this.mobileMenu.classList.remove('active');
         this.navToggle.classList.remove('active');
-        document.body.classList.remove('menu-open');
+        
+        setTimeout(() => {
+            document.body.classList.remove('menu-open');
+            document.body.style.overflow = '';
+        }, 400);
     }
     
     handleScroll() {
@@ -177,16 +196,77 @@ class HeaderNavigation {
             }
         });
         
-        // Set active state on mobile menu
+        // Highlight active page in mobile menu
         this.menuLinks.forEach(link => {
             const href = link.getAttribute('href');
             if (href === currentPage || 
                 (currentPage === '' && href === 'index.html') ||
                 (currentPage === '/' && href === 'index.html')) {
-                link.style.background = 'linear-gradient(135deg, #d4a574 0%, #e8c9a0 100%)';
-                link.style.color = 'white';
+                const wrapper = link.querySelector('.link-wrapper');
+                if (wrapper) {
+                    wrapper.style.background = 'rgba(212, 165, 116, 0.15)';
+                    wrapper.style.borderColor = 'rgba(212, 165, 116, 0.4)';
+                }
+                const linkText = link.querySelector('.link-text');
+                if (linkText) {
+                    linkText.style.color = '#d4a574';
+                }
             }
         });
+    }
+    
+    initMagneticEffects() {
+        // Add magnetic effect to menu links
+        this.menuLinks.forEach(link => {
+            link.addEventListener('mousemove', (e) => {
+                const rect = link.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const linkWrapper = link.querySelector('.link-wrapper');
+                if (linkWrapper) {
+                    linkWrapper.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px)`;
+                }
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                const linkWrapper = link.querySelector('.link-wrapper');
+                if (linkWrapper) {
+                    linkWrapper.style.transform = '';
+                }
+            });
+        });
+        
+        // Magnetic effect for close button
+        if (this.menuClose) {
+            this.menuClose.addEventListener('mousemove', (e) => {
+                const rect = this.menuClose.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.menuClose.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.1)`;
+            });
+            
+            this.menuClose.addEventListener('mouseleave', () => {
+                this.menuClose.style.transform = '';
+            });
+        }
+        
+        // Magnetic CTA button
+        const ctaBtn = document.querySelector('.menu-cta-btn');
+        if (ctaBtn) {
+            ctaBtn.addEventListener('mousemove', (e) => {
+                const rect = ctaBtn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                ctaBtn.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px) translateY(-4px) scale(1.02)`;
+            });
+            
+            ctaBtn.addEventListener('mouseleave', () => {
+                ctaBtn.style.transform = '';
+            });
+        }
     }
 }
 
