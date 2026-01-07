@@ -85,14 +85,15 @@ class HeroSlideshow {
     }
 }
 
-// ==================== NAVIGATION CLASS ====================
-class Navigation {
-    constructor(nav) {
-        this.nav = nav;
+// ==================== MODERN NAVIGATION CLASS ====================
+class ModernNavigation {
+    constructor() {
+        this.nav = document.getElementById('mainNav');
         this.navToggle = document.getElementById('navToggle');
-        this.navMenu = document.getElementById('navMenu');
-        this.navLinks = Array.from(this.navMenu.querySelectorAll('.nav-link'));
-        this.scrollThreshold = 100;
+        this.mobileMenu = document.getElementById('mobileMenu');
+        this.navItems = document.querySelectorAll('.nav-item');
+        this.menuLinks = document.querySelectorAll('.menu-link');
+        this.isMenuOpen = false;
         
         this.init();
     }
@@ -100,51 +101,106 @@ class Navigation {
     init() {
         this.bindEvents();
         this.handleScroll();
+        this.initMagneticEffect();
     }
     
     bindEvents() {
-        // Toggle mobile menu
-        this.navToggle.addEventListener('click', () => this.toggleMenu());
+        // Mobile menu toggle
+        if (this.navToggle) {
+            this.navToggle.addEventListener('click', () => this.toggleMobileMenu());
+        }
         
-        // Close menu when clicking link
-        this.navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (link.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    this.closeMenu();
-                    this.scrollToSection(link.getAttribute('href'));
-                }
+        // Desktop nav items
+        this.navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.handleNavClick(item);
             });
         });
         
-        // Handle scroll
+        // Mobile menu links
+        this.menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                this.closeMobileMenu();
+                setTimeout(() => {
+                    this.scrollToSection(href);
+                }, 600);
+            });
+        });
+        
+        // Scroll handler
         window.addEventListener('scroll', () => this.handleScroll());
         
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!this.nav.contains(e.target) && this.navMenu.classList.contains('active')) {
-                this.closeMenu();
+        // Close menu on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isMenuOpen) {
+                this.closeMobileMenu();
+            }
+        });
+        
+        // Prevent scroll when menu is open
+        this.mobileMenu.addEventListener('transitionend', (e) => {
+            if (e.propertyName === 'opacity') {
+                if (!this.isMenuOpen) {
+                    document.body.style.overflow = '';
+                }
             }
         });
     }
     
-    toggleMenu() {
-        this.navMenu.classList.toggle('active');
-        this.navToggle.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
+    toggleMobileMenu() {
+        if (this.isMenuOpen) {
+            this.closeMobileMenu();
+        } else {
+            this.openMobileMenu();
+        }
     }
     
-    closeMenu() {
-        this.navMenu.classList.remove('active');
+    openMobileMenu() {
+        this.isMenuOpen = true;
+        this.mobileMenu.classList.add('active');
+        this.navToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    closeMobileMenu() {
+        this.isMenuOpen = false;
+        this.mobileMenu.classList.remove('active');
         this.navToggle.classList.remove('active');
-        document.body.classList.remove('no-scroll');
+        
+        setTimeout(() => {
+            document.body.style.overflow = '';
+        }, 600);
+    }
+    
+    handleNavClick(item) {
+        const href = item.getAttribute('href');
+        
+        // Update active state
+        this.navItems.forEach(navItem => navItem.classList.remove('active'));
+        item.classList.add('active');
+        
+        // Scroll to section
+        this.scrollToSection(href);
+    }
+    
+    scrollToSection(target) {
+        const element = document.querySelector(target);
+        if (element) {
+            const offsetTop = element.offsetTop - 120;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
     }
     
     handleScroll() {
         const scrollY = window.scrollY;
         
-        // Add scrolled class to nav
-        if (scrollY > this.scrollThreshold) {
+        if (scrollY > 50) {
             this.nav.classList.add('scrolled');
         } else {
             this.nav.classList.remove('scrolled');
@@ -156,7 +212,7 @@ class Navigation {
     
     updateActiveLink() {
         const sections = document.querySelectorAll('section[id]');
-        const scrollY = window.scrollY + 100;
+        const scrollY = window.scrollY + 200;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -164,26 +220,58 @@ class Navigation {
             const sectionId = section.getAttribute('id');
             
             if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                this.navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
+                this.navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${sectionId}`) {
+                        item.classList.add('active');
                     }
                 });
             }
         });
     }
     
-    scrollToSection(target) {
-        const element = document.querySelector(target);
-        if (element) {
-            const offsetTop = element.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
+    initMagneticEffect() {
+        // Add magnetic hover effect to nav items
+        this.navItems.forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                item.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) translateY(-2px)`;
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = '';
+            });
+        });
+        
+        // Add magnetic effect to CTA button
+        const ctaBtn = document.querySelector('.nav-cta');
+        if (ctaBtn) {
+            ctaBtn.addEventListener('mousemove', (e) => {
+                const rect = ctaBtn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                ctaBtn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) translateY(-3px) scale(1.05)`;
+            });
+            
+            ctaBtn.addEventListener('mouseleave', () => {
+                ctaBtn.style.transform = '';
             });
         }
     }
+}
+
+// Initialize Navigation
+document.addEventListener('DOMContentLoaded', () => {
+    const modernNav = new ModernNavigation();
+});
+
+// Also initialize if DOM is already loaded
+if (document.readyState !== 'loading') {
+    const modernNav = new ModernNavigation();
 }
 
 // ==================== SCROLL ANIMATIONS CLASS ====================
