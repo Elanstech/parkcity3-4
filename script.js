@@ -1,6 +1,6 @@
 /**
  * PARK CITY 3&4 APARTMENTS
- * Ultra-Luxury Residential Website - Enhanced Edition
+ * Ultra-Luxury Residential Website - FIXED Enhanced Edition
  * ES6 Class-Based Architecture with Advanced Animations
  */
 
@@ -638,11 +638,35 @@ class Utilities {
     }
 }
 
-// ==================== ENHANCED HERO ANIMATIONS ====================
+// ==================== FIXED ENHANCED HERO ANIMATIONS ====================
+
+// CHECK LIBRARIES
+function checkLibraries() {
+    const libraries = {
+        'GSAP': typeof gsap !== 'undefined',
+        'SplitType': typeof SplitType !== 'undefined',
+        'Typed': typeof Typed !== 'undefined',
+        'ScrollReveal': typeof ScrollReveal !== 'undefined',
+        'ParticlesJS': typeof particlesJS !== 'undefined'
+    };
+    
+    console.log('📚 Library Status:', libraries);
+    
+    Object.entries(libraries).forEach(([name, loaded]) => {
+        if (!loaded) {
+            console.warn(`⚠️ ${name} not loaded`);
+        }
+    });
+}
 
 // PARTICLES.JS CONFIGURATION
 function initParticles() {
-    if (typeof particlesJS !== 'undefined') {
+    if (typeof particlesJS === 'undefined') {
+        console.warn('⚠️ ParticlesJS not loaded, skipping particles');
+        return;
+    }
+    
+    try {
         particlesJS('particles-js', {
             particles: {
                 number: {
@@ -656,11 +680,7 @@ function initParticles() {
                     value: ['#d4a574', '#a67c52', '#c8996b']
                 },
                 shape: {
-                    type: 'circle',
-                    stroke: {
-                        width: 0,
-                        color: '#000000'
-                    }
+                    type: 'circle'
                 },
                 opacity: {
                     value: 0.3,
@@ -726,200 +746,287 @@ function initParticles() {
             },
             retina_detect: true
         });
+        
+        console.log('✅ Particles initialized');
+    } catch (error) {
+        console.error('❌ Particles error:', error);
     }
 }
 
 // SPLIT TEXT ANIMATION WITH GSAP
 function initSplitTextAnimation() {
     const heroTitle = document.getElementById('heroTitle');
-    if (!heroTitle || typeof SplitType === 'undefined' || typeof gsap === 'undefined') return;
+    if (!heroTitle) {
+        console.warn('⚠️ Hero title not found');
+        return;
+    }
     
-    // Split text into characters
-    const titleLines = heroTitle.querySelectorAll('.title-line');
+    if (typeof SplitType === 'undefined' || typeof gsap === 'undefined') {
+        console.warn('⚠️ SplitType or GSAP not loaded, skipping text split');
+        return;
+    }
     
-    titleLines.forEach((line, lineIndex) => {
-        const split = new SplitType(line, { types: 'chars' });
-        const chars = split.chars;
+    try {
+        const titleLines = heroTitle.querySelectorAll('.title-line');
         
-        // Animate each character
-        gsap.fromTo(chars,
-            {
-                opacity: 0,
-                y: 100,
-                rotationX: -90,
-                scale: 0.8
-            },
-            {
-                opacity: 1,
-                y: 0,
-                rotationX: 0,
-                scale: 1,
-                duration: 1,
-                stagger: 0.03,
-                delay: 0.5 + (lineIndex * 0.3),
-                ease: 'back.out(1.7)'
+        titleLines.forEach((line, lineIndex) => {
+            const split = new SplitType(line, { types: 'chars' });
+            const chars = split.chars;
+            
+            if (chars && chars.length > 0) {
+                gsap.fromTo(chars,
+                    {
+                        opacity: 0,
+                        y: 100,
+                        rotationX: -90,
+                        scale: 0.8
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        rotationX: 0,
+                        scale: 1,
+                        duration: 1,
+                        stagger: 0.03,
+                        delay: 0.5 + (lineIndex * 0.3),
+                        ease: 'back.out(1.7)'
+                    }
+                );
             }
-        );
-    });
+        });
+        
+        console.log('✅ Split text animation initialized');
+    } catch (error) {
+        console.error('❌ Split text error:', error);
+    }
 }
 
-// TYPED.JS FOR SUBTITLE
+// FIXED TYPED.JS FOR SUBTITLE
 function initTypedText() {
     const typedElement = document.getElementById('typedText');
-    if (!typedElement || typeof Typed === 'undefined') return;
+    if (!typedElement) {
+        console.warn('⚠️ Typed element not found');
+        return;
+    }
     
-    new Typed('#typedText', {
-        strings: [
-            'Experience luxury living where security, comfort, and convenience unite',
-            'Your perfect home awaits in our premium community',
-            '24/7 security with world-class amenities at your doorstep'
-        ],
-        typeSpeed: 50,
-        backSpeed: 30,
-        backDelay: 2000,
-        startDelay: 1500,
-        loop: true,
-        showCursor: false
-    });
+    if (typeof Typed === 'undefined') {
+        console.warn('⚠️ Typed.js not loaded, using fallback text');
+        typedElement.textContent = 'Experience luxury living where security, comfort, and convenience unite';
+        return;
+    }
+    
+    try {
+        new Typed('#typedText', {
+            strings: [
+                'Experience luxury living where security, comfort, and convenience unite',
+                'Your perfect home awaits in our premium community',
+                '24/7 security with world-class amenities at your doorstep'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            startDelay: 1500,
+            loop: true,
+            showCursor: false
+        });
+        
+        console.log('✅ Typed.js initialized');
+    } catch (error) {
+        console.error('❌ Typed.js error:', error);
+        typedElement.textContent = 'Experience luxury living where security, comfort, and convenience unite';
+    }
 }
 
-// ANIMATED STATS COUNTER
+// FIXED ANIMATED STATS COUNTER
 function initStatsCounter() {
     const statNumbers = document.querySelectorAll('.stat-number');
-    if (statNumbers.length === 0) return;
+    if (statNumbers.length === 0) {
+        console.warn('⚠️ No stat numbers found');
+        return;
+    }
     
-    const animateCounter = (element) => {
-        const target = parseInt(element.dataset.target);
+    try {
+        const animateCounter = (element) => {
+            const target = parseInt(element.dataset.target);
+            if (isNaN(target)) {
+                console.warn('⚠️ Invalid target for stat:', element);
+                return;
+            }
+            
+            // Reset to 0 first
+            element.textContent = '0';
+            
+            if (typeof gsap !== 'undefined') {
+                gsap.to(element, {
+                    textContent: target,
+                    duration: 2.5,
+                    delay: 2,
+                    ease: 'power2.out',
+                    snap: { textContent: 1 },
+                    onUpdate: function() {
+                        element.textContent = Math.ceil(parseFloat(element.textContent));
+                    }
+                });
+            } else {
+                // Fallback without GSAP
+                let current = 0;
+                const increment = target / 75;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.ceil(current);
+                    }
+                }, 33);
+            }
+        };
         
-        if (typeof gsap !== 'undefined') {
-            gsap.from(element, {
-                textContent: 0,
-                duration: 2,
-                delay: 2,
-                ease: 'power1.out',
-                snap: { textContent: 1 },
-                onUpdate: function() {
-                    element.textContent = Math.ceil(element.textContent);
-                }
-            });
-        } else {
-            // Fallback without GSAP
-            let current = 0;
-            const increment = target / 60;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.ceil(current);
-                }
-            }, 33);
-        }
-    };
-    
-    // Trigger animation after delay
-    setTimeout(() => {
-        statNumbers.forEach(animateCounter);
-    }, 2000);
+        // Trigger animation after delay
+        setTimeout(() => {
+            statNumbers.forEach(animateCounter);
+            console.log('✅ Stats counter animation started');
+        }, 2000);
+        
+    } catch (error) {
+        console.error('❌ Stats counter error:', error);
+    }
 }
 
 // MAGNETIC BUTTON EFFECT
 function initMagneticButtons() {
     const magneticBtns = document.querySelectorAll('.magnetic-btn');
     
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+    if (magneticBtns.length === 0) {
+        console.warn('⚠️ No magnetic buttons found');
+        return;
+    }
+    
+    try {
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(btn, {
+                        x: x * 0.3,
+                        y: y * 0.3,
+                        duration: 0.4,
+                        ease: 'power2.out'
+                    });
+                } else {
+                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                }
+            });
             
-            if (typeof gsap !== 'undefined') {
-                gsap.to(btn, {
-                    x: x * 0.3,
-                    y: y * 0.3,
-                    duration: 0.4,
-                    ease: 'power2.out'
-                });
-            } else {
-                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            }
+            btn.addEventListener('mouseleave', () => {
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(btn, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.6,
+                        ease: 'elastic.out(1, 0.5)'
+                    });
+                } else {
+                    btn.style.transform = 'translate(0, 0)';
+                }
+            });
         });
         
-        btn.addEventListener('mouseleave', () => {
-            if (typeof gsap !== 'undefined') {
-                gsap.to(btn, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.6,
-                    ease: 'elastic.out(1, 0.5)'
-                });
-            } else {
-                btn.style.transform = 'translate(0, 0)';
-            }
-        });
-    });
+        console.log('✅ Magnetic buttons initialized:', magneticBtns.length);
+    } catch (error) {
+        console.error('❌ Magnetic buttons error:', error);
+    }
 }
 
 // SCROLL REVEAL ANIMATIONS
 function initScrollReveal() {
-    if (typeof ScrollReveal === 'undefined') return;
+    if (typeof ScrollReveal === 'undefined') {
+        console.warn('⚠️ ScrollReveal not loaded, skipping scroll animations');
+        return;
+    }
     
-    const sr = ScrollReveal({
-        origin: 'bottom',
-        distance: '60px',
-        duration: 1000,
-        delay: 200,
-        easing: 'cubic-bezier(0.5, 0, 0, 1)',
-        reset: false
-    });
-    
-    // Animate hero elements in sequence
-    sr.reveal('.hero-label', { delay: 200, origin: 'top', distance: '30px' });
-    sr.reveal('.hero-cta', { delay: 1800, origin: 'bottom', distance: '40px' });
-    sr.reveal('.hero-stats', { delay: 2000, origin: 'bottom', distance: '50px' });
-    sr.reveal('.hero-controls', { delay: 2200, origin: 'bottom', distance: '30px' });
-    sr.reveal('.scroll-indicator', { delay: 2400, origin: 'bottom', distance: '20px' });
+    try {
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '60px',
+            duration: 1000,
+            delay: 200,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            reset: false
+        });
+        
+        sr.reveal('.hero-label', { delay: 200, origin: 'top', distance: '30px' });
+        sr.reveal('.hero-cta', { delay: 1800, origin: 'bottom', distance: '40px' });
+        sr.reveal('.hero-stats', { delay: 2000, origin: 'bottom', distance: '50px' });
+        sr.reveal('.hero-controls', { delay: 2200, origin: 'bottom', distance: '30px' });
+        sr.reveal('.scroll-indicator', { delay: 2400, origin: 'bottom', distance: '20px' });
+        
+        console.log('✅ ScrollReveal initialized');
+    } catch (error) {
+        console.error('❌ ScrollReveal error:', error);
+    }
 }
 
 // FLOATING SHAPES ANIMATION
 function initFloatingShapes() {
     const shapes = document.querySelectorAll('.floating-shape');
     
-    if (shapes.length === 0 || typeof gsap === 'undefined') return;
+    if (shapes.length === 0) {
+        console.warn('⚠️ No floating shapes found');
+        return;
+    }
     
-    shapes.forEach((shape, index) => {
-        const duration = 15 + (index * 3);
-        const delay = index * 2;
-        
-        gsap.to(shape, {
-            x: 'random(-100, 100)',
-            y: 'random(-80, 80)',
-            rotation: 'random(-15, 15)',
-            scale: 'random(0.9, 1.1)',
-            duration: duration,
-            delay: delay,
-            ease: 'sine.inOut',
-            repeat: -1,
-            yoyo: true
+    if (typeof gsap === 'undefined') {
+        console.warn('⚠️ GSAP not loaded, skipping floating shapes');
+        return;
+    }
+    
+    try {
+        shapes.forEach((shape, index) => {
+            const duration = 15 + (index * 3);
+            const delay = index * 2;
+            
+            gsap.to(shape, {
+                x: 'random(-100, 100)',
+                y: 'random(-80, 80)',
+                rotation: 'random(-15, 15)',
+                scale: 'random(0.9, 1.1)',
+                duration: duration,
+                delay: delay,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true
+            });
+            
+            const shapeInner = shape.querySelector('.shape-inner');
+            if (shapeInner) {
+                gsap.to(shapeInner, {
+                    rotation: 360,
+                    duration: 20 + (index * 5),
+                    ease: 'none',
+                    repeat: -1
+                });
+            }
         });
         
-        // Animate inner shape separately for depth
-        const shapeInner = shape.querySelector('.shape-inner');
-        if (shapeInner) {
-            gsap.to(shapeInner, {
-                rotation: 360,
-                duration: 20 + (index * 5),
-                ease: 'none',
-                repeat: -1
-            });
-        }
-    });
+        console.log('✅ Floating shapes initialized:', shapes.length);
+    } catch (error) {
+        console.error('❌ Floating shapes error:', error);
+    }
 }
 
 // GRADIENT MESH ANIMATION
 function initGradientMesh() {
-    if (typeof gsap !== 'undefined') {
+    if (typeof gsap === 'undefined') {
+        console.warn('⚠️ GSAP not loaded, skipping gradient mesh');
+        return;
+    }
+    
+    try {
         const gradientMesh = document.querySelector('.hero-gradient-mesh');
         if (gradientMesh) {
             gsap.to(gradientMesh, {
@@ -929,7 +1036,11 @@ function initGradientMesh() {
                 repeat: -1,
                 ease: 'sine.inOut'
             });
+            
+            console.log('✅ Gradient mesh initialized');
         }
+    } catch (error) {
+        console.error('❌ Gradient mesh error:', error);
     }
 }
 
@@ -951,6 +1062,11 @@ class ParkCityApp {
     
     initializeComponents() {
         try {
+            console.log('🏙️ DOM Loaded - Initializing hero animations...');
+            
+            // Check libraries first
+            checkLibraries();
+            
             // Initialize Enhanced Hero Animations First
             this.initHeroEnhancements();
             
@@ -994,6 +1110,7 @@ class ParkCityApp {
             // Initialize Page Loader
             this.components.pageLoader = new PageLoader();
             
+            console.log('✨ All hero animations initialized!');
             console.log('🏙️ Park City 3&4 Apartments - All systems initialized with enhanced animations!');
             
         } catch (error) {
@@ -1011,8 +1128,6 @@ class ParkCityApp {
         initScrollReveal();
         initFloatingShapes();
         initGradientMesh();
-        
-        console.log('✨ Enhanced hero animations loaded!');
     }
 }
 
@@ -1022,4 +1137,5 @@ const app = new ParkCityApp();
 // Scroll to top on load
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
+    console.log('🎬 Page loaded and scrolled to top');
 });
