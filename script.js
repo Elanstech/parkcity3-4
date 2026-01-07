@@ -86,7 +86,8 @@ class HeroSlideshow {
 }
 
 // ==================== MODERN NAVIGATION CLASS ====================
-class ModernNavigation {
+
+class HeaderNavigation {
     constructor() {
         this.nav = document.getElementById('mainNav');
         this.navToggle = document.getElementById('navToggle');
@@ -101,7 +102,7 @@ class ModernNavigation {
     init() {
         this.bindEvents();
         this.handleScroll();
-        this.initMagneticEffect();
+        this.setActiveLink();
     }
     
     bindEvents() {
@@ -110,42 +111,20 @@ class ModernNavigation {
             this.navToggle.addEventListener('click', () => this.toggleMobileMenu());
         }
         
-        // Desktop nav items
-        this.navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.handleNavClick(item);
-            });
-        });
-        
-        // Mobile menu links
+        // Mobile menu links - close menu when clicked
         this.menuLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const href = link.getAttribute('href');
+            link.addEventListener('click', () => {
                 this.closeMobileMenu();
-                setTimeout(() => {
-                    this.scrollToSection(href);
-                }, 600);
             });
         });
         
         // Scroll handler
         window.addEventListener('scroll', () => this.handleScroll());
         
-        // Close menu on escape
+        // Close menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isMenuOpen) {
                 this.closeMobileMenu();
-            }
-        });
-        
-        // Prevent scroll when menu is open
-        this.mobileMenu.addEventListener('transitionend', (e) => {
-            if (e.propertyName === 'opacity') {
-                if (!this.isMenuOpen) {
-                    document.body.style.overflow = '';
-                }
             }
         });
     }
@@ -162,39 +141,14 @@ class ModernNavigation {
         this.isMenuOpen = true;
         this.mobileMenu.classList.add('active');
         this.navToggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
     }
     
     closeMobileMenu() {
         this.isMenuOpen = false;
         this.mobileMenu.classList.remove('active');
         this.navToggle.classList.remove('active');
-        
-        setTimeout(() => {
-            document.body.style.overflow = '';
-        }, 600);
-    }
-    
-    handleNavClick(item) {
-        const href = item.getAttribute('href');
-        
-        // Update active state
-        this.navItems.forEach(navItem => navItem.classList.remove('active'));
-        item.classList.add('active');
-        
-        // Scroll to section
-        this.scrollToSection(href);
-    }
-    
-    scrollToSection(target) {
-        const element = document.querySelector(target);
-        if (element) {
-            const offsetTop = element.offsetTop - 120;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+        document.body.classList.remove('menu-open');
     }
     
     handleScroll() {
@@ -205,73 +159,44 @@ class ModernNavigation {
         } else {
             this.nav.classList.remove('scrolled');
         }
-        
-        // Update active link based on scroll position
-        this.updateActiveLink();
     }
     
-    updateActiveLink() {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollY = window.scrollY + 200;
+    setActiveLink() {
+        // Get current page filename
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                this.navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === `#${sectionId}`) {
-                        item.classList.add('active');
-                    }
-                });
+        // Set active class on desktop nav
+        this.navItems.forEach(item => {
+            const href = item.getAttribute('href');
+            if (href === currentPage || 
+                (currentPage === '' && href === 'index.html') ||
+                (currentPage === '/' && href === 'index.html')) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+        
+        // Set active state on mobile menu
+        this.menuLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage || 
+                (currentPage === '' && href === 'index.html') ||
+                (currentPage === '/' && href === 'index.html')) {
+                link.style.background = 'linear-gradient(135deg, #d4a574 0%, #e8c9a0 100%)';
+                link.style.color = 'white';
             }
         });
     }
-    
-    initMagneticEffect() {
-        // Add magnetic hover effect to nav items
-        this.navItems.forEach(item => {
-            item.addEventListener('mousemove', (e) => {
-                const rect = item.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                item.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) translateY(-2px)`;
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = '';
-            });
-        });
-        
-        // Add magnetic effect to CTA button
-        const ctaBtn = document.querySelector('.nav-cta');
-        if (ctaBtn) {
-            ctaBtn.addEventListener('mousemove', (e) => {
-                const rect = ctaBtn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                ctaBtn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) translateY(-3px) scale(1.05)`;
-            });
-            
-            ctaBtn.addEventListener('mouseleave', () => {
-                ctaBtn.style.transform = '';
-            });
-        }
-    }
 }
 
-// Initialize Navigation
-document.addEventListener('DOMContentLoaded', () => {
-    const modernNav = new ModernNavigation();
-});
-
-// Also initialize if DOM is already loaded
-if (document.readyState !== 'loading') {
-    const modernNav = new ModernNavigation();
+// Initialize Navigation when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new HeaderNavigation();
+    });
+} else {
+    new HeaderNavigation();
 }
 
 // ==================== SCROLL ANIMATIONS CLASS ====================
@@ -588,7 +513,7 @@ class ParkCityApp {
             // Initialize Navigation
             const nav = document.getElementById('mainNav');
             if (nav) {
-                this.components.navigation = new ModernNavigation(nav);
+                this.components.navigation = new HeaderNavigation(nav);
             }
             
             // Initialize Scroll Animations
