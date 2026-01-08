@@ -943,7 +943,7 @@ body.menu-open {
     position: relative;
     width: 100%;
     height: 120vh;
-    min-height: 850px; /* INCREASED for desktop */
+    min-height: 700px; /* INCREASED for desktop */
     overflow: hidden;
     background: #000;
 }
