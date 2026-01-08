@@ -943,7 +943,7 @@ body.menu-open {
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 700px;
+    min-height: 800px; /* INCREASED from 700px to 800px */
     overflow: hidden;
     background: #000;
 }
@@ -1024,21 +1024,21 @@ body.menu-open {
     align-items: center;
     justify-content: center;
     z-index: 5;
-    padding: 0 40px;
+    padding: 120px 40px 0; /* INCREASED top padding from 0 to 120px */
 }
 
 .luxury-content-wrapper {
     max-width: 1100px;
     text-align: center;
-    /* REMOVED: transform transitions that move with cursor */
 }
 
-/* ==================== NYC ICONS ==================== */
+/* ==================== NYC ICONS - LOWERED ==================== */
 .nyc-icons-row {
     display: flex;
     justify-content: center;
     gap: 40px;
     margin-bottom: 40px;
+    margin-top: 20px; /* ADDED margin-top to push icons down more */
     opacity: 0;
     animation: fadeInUp 1s ease forwards 0.3s;
 }
@@ -1136,7 +1136,7 @@ body.menu-open {
     animation-delay: 0.8s;
 }
 
-/* FIXED: Main Title - Park City - Now Clearly Visible */
+/* Main Title - Park City */
 .title-main {
     font-family: var(--font-display);
     font-size: clamp(4rem, 10vw, 8rem);
@@ -1148,7 +1148,6 @@ body.menu-open {
     background-clip: text;
     filter: drop-shadow(0 4px 20px rgba(212, 165, 116, 0.3));
     animation-delay: 1s;
-    /* FIXED: No letter spacing issues */
 }
 
 /* Subtitle */
@@ -1345,10 +1344,10 @@ body.menu-open {
     background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 }
 
-/* ==================== SCROLL INDICATOR ==================== */
+/* ==================== MOUSE SCROLL INDICATOR ==================== */
 .luxury-scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1361,24 +1360,63 @@ body.menu-open {
     animation: fadeIn 1s ease forwards 2s;
 }
 
+.luxury-scroll-indicator:hover .scroll-mouse {
+    border-color: rgba(212, 165, 116, 0.8);
+}
+
+/* Mouse Shape */
+.scroll-mouse {
+    width: 28px;
+    height: 42px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Mouse Wheel */
+.scroll-wheel {
+    width: 3px;
+    height: 8px;
+    background: rgba(212, 165, 116, 0.8);
+    border-radius: 2px;
+    animation: mouseScroll 2s ease-in-out infinite;
+}
+
+.scroll-text {
+    font-family: var(--font-text);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 8px;
+}
+
+/* Old scroll elements - keep for backwards compatibility */
 .scroll-dot {
     width: 6px;
     height: 6px;
     background: rgba(212, 165, 116, 0.8);
     border-radius: 50%;
     animation: scrollBounce 2s ease-in-out infinite;
+    display: none; /* Hide old indicator */
 }
 
 .scroll-line {
     width: 1px;
     height: 60px;
     background: linear-gradient(180deg, rgba(212, 165, 116, 0.6), transparent);
+    display: none; /* Hide old indicator */
 }
 
 /* ==================== IMAGE PROGRESS ==================== */
 .hero-image-progress {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     right: 60px;
     display: flex;
     gap: 12px;
@@ -1448,6 +1486,17 @@ body.menu-open {
     50% { transform: translateY(10px); }
 }
 
+@keyframes mouseScroll {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
 @keyframes progressFill {
     from { width: 0%; }
     to { width: 100%; }
@@ -1461,16 +1510,17 @@ body.menu-open {
 /* ==================== MOBILE RESPONSIVE ==================== */
 @media (max-width: 968px) {
     .luxury-hero {
-        min-height: 650px;
+        min-height: 700px; /* Smaller on mobile */
     }
     
     .hero-luxury-content {
-        padding: 0 24px;
+        padding: 100px 24px 0; /* Adjusted for mobile */
     }
     
     .nyc-icons-row {
         gap: 24px;
         margin-bottom: 32px;
+        margin-top: 10px;
     }
     
     .nyc-icon {
@@ -1513,9 +1563,18 @@ body.menu-open {
         height: 1px;
     }
     
+    .luxury-scroll-indicator {
+        bottom: 30px;
+    }
+    
+    .scroll-mouse {
+        width: 24px;
+        height: 36px;
+    }
+    
     .hero-image-progress {
         right: 24px;
-        bottom: 100px;
+        bottom: 30px;
     }
     
     .progress-item {
@@ -1525,7 +1584,11 @@ body.menu-open {
 
 @media (max-width: 480px) {
     .luxury-hero {
-        min-height: 600px;
+        min-height: 650px;
+    }
+    
+    .hero-luxury-content {
+        padding: 80px 20px 0;
     }
     
     .nyc-icons-row {
