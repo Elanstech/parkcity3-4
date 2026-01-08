@@ -231,131 +231,113 @@
     </div>
 </nav>
     
-<!-- FIXED ENHANCED HERO SECTION -->
-<section class="hero" id="home">
-    <!-- Particles Background -->
-    <div id="particles-js" class="particles-container"></div>
-    
-    <!-- Parallax Layers -->
-    <div class="hero-parallax-wrapper">
-        <div class="parallax-layer layer-1" data-speed="0.2"></div>
-        <div class="parallax-layer layer-2" data-speed="0.4"></div>
-        <div class="parallax-layer layer-3" data-speed="0.6"></div>
-    </div>
-
-    <!-- Slideshow with Ken Burns Effect -->
-    <div class="hero-slideshow" id="heroSlideshow">
-        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920&q=80')">
-            <div class="hero-overlay"></div>
+<!-- LUXURY HERO SECTION - Replace your existing hero section with this -->
+<section class="luxury-hero" id="home">
+    <!-- Parallax Image Layers -->
+    <div class="hero-parallax-container">
+        <!-- Layer 1 - Far Background -->
+        <div class="parallax-image-layer layer-far" data-speed="0.3">
+            <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Park City Building Exterior">
         </div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=80')">
-            <div class="hero-overlay"></div>
+        
+        <!-- Layer 2 - Mid Background -->
+        <div class="parallax-image-layer layer-mid" data-speed="0.5">
+            <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Park City Building View">
         </div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80')">
-            <div class="hero-overlay"></div>
+        
+        <!-- Layer 3 - Close Background -->
+        <div class="parallax-image-layer layer-close" data-speed="0.7">
+            <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Park City Building Details">
         </div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80')">
-            <div class="hero-overlay"></div>
-        </div>
+        
+        <!-- Elegant Overlay -->
+        <div class="hero-elegant-overlay"></div>
     </div>
     
-    <!-- Animated Gradient Mesh -->
-    <div class="hero-gradient-mesh"></div>
-
-    <!-- Main Content -->
-    <div class="hero-content">
-        <div class="hero-text">
-            <!-- FIXED: More visible label -->
-            <div class="hero-label shine-effect">
-                <span class="label-icon">✦</span>
-                <span class="label-text">Welcome to Park City</span>
-                <span class="label-icon">✦</span>
+    <!-- Sophisticated Content -->
+    <div class="hero-luxury-content">
+        <div class="luxury-content-wrapper">
+            <!-- Premium Badge -->
+            <div class="premium-badge" data-aos="fade-down">
+                <span class="badge-line"></span>
+                <span class="badge-text">Luxury Living</span>
+                <span class="badge-line"></span>
             </div>
             
-            <!-- FIXED: Better text layout -->
-            <h1 class="hero-title" id="heroTitle">
-                <div class="title-line">A Perfect Community</div>
-                <div class="title-line accent-line">to Call Home</div>
+            <!-- Main Headline -->
+            <h1 class="hero-luxury-title" data-aos="fade-up" data-aos-delay="200">
+                <span class="title-main">Welcome to</span>
+                <span class="title-featured">Park City 3&4</span>
+                <span class="title-sub">Apartments</span>
             </h1>
-
-            <!-- Typed.js Subtitle -->
-            <div class="hero-subtitle-wrapper">
-                <p class="hero-subtitle">
-                    <span id="typedText"></span>
-                </p>
-            </div>
-
-            <!-- CTA Buttons -->
-            <div class="hero-cta">
-                <a href="#amenities" class="btn btn-primary magnetic-btn">
-                    <span class="btn-content">
-                        <span class="btn-text">View Amenities</span>
+            
+            <!-- Elegant Description -->
+            <p class="hero-luxury-description" data-aos="fade-up" data-aos-delay="400">
+                A perfect community to call home. Experience refined living with 24/7 security, 
+                premium amenities, and unparalleled service.
+            </p>
+            
+            <!-- Premium Actions -->
+            <div class="hero-luxury-actions" data-aos="fade-up" data-aos-delay="600">
+                <a href="#contact" class="luxury-btn luxury-btn-primary">
+                    <span class="btn-luxury-text">Schedule Your Tour</span>
+                    <span class="btn-luxury-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </span>
-                    <span class="btn-shine"></span>
                 </a>
-                <a href="#contact" class="btn btn-secondary magnetic-btn">
-                    <span class="btn-content">
-                        <span class="btn-text">Schedule Tour</span>
+                <a href="#amenities" class="luxury-btn luxury-btn-secondary">
+                    <span class="btn-luxury-text">Explore Amenities</span>
+                    <span class="btn-luxury-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                            <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </span>
-                    <span class="btn-shine"></span>
                 </a>
             </div>
-
-            <!-- FIXED: Stats Counter with proper data attributes -->
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number" data-target="24">24</div>
-                    <div class="stat-label">Hour Security</div>
+            
+            <!-- Refined Stats -->
+            <div class="hero-luxury-stats" data-aos="fade-up" data-aos-delay="800">
+                <div class="luxury-stat-item">
+                    <div class="stat-luxury-number">24/7</div>
+                    <div class="stat-luxury-label">Security</div>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="100">100</div>
-                    <div class="stat-label">Premium Units</div>
+                <div class="luxury-stat-divider"></div>
+                <div class="luxury-stat-item">
+                    <div class="stat-luxury-number">100+</div>
+                    <div class="stat-luxury-label">Premium Units</div>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="15">15</div>
-                    <div class="stat-label">Amenities</div>
+                <div class="luxury-stat-divider"></div>
+                <div class="luxury-stat-item">
+                    <div class="stat-luxury-number">15+</div>
+                    <div class="stat-luxury-label">Amenities</div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Enhanced Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-text">Scroll to explore</div>
-        <div class="scroll-line">
-            <div class="scroll-dot"></div>
-        </div>
+    
+    <!-- Elegant Scroll Indicator -->
+    <div class="luxury-scroll-indicator" data-aos="fade-up" data-aos-delay="1000">
+        <span class="scroll-luxury-text">Discover More</span>
+        <div class="scroll-luxury-line"></div>
     </div>
-
-    <!-- Floating Shapes -->
-    <div class="hero-decoration">
-        <div class="floating-shape shape-1">
-            <div class="shape-inner"></div>
-        </div>
-        <div class="floating-shape shape-2">
-            <div class="shape-inner"></div>
-        </div>
-        <div class="floating-shape shape-3">
-            <div class="shape-inner"></div>
-        </div>
-        <div class="floating-shape shape-4">
-            <div class="shape-inner"></div>
-        </div>
+    
+    <!-- Image Navigation -->
+    <div class="hero-image-navigation">
+        <button class="image-nav-btn" data-layer="0">
+            <span class="nav-btn-number">01</span>
+        </button>
+        <button class="image-nav-btn active" data-layer="1">
+            <span class="nav-btn-number">02</span>
+        </button>
+        <button class="image-nav-btn" data-layer="2">
+            <span class="nav-btn-number">03</span>
+        </button>
     </div>
 </section>
-
+    
  <!-- Property Highlights -->
     <section class="highlights" id="highlights">
         <div class="container">
