@@ -1,40 +1,143 @@
 /**
  * PARK CITY 3&4 APARTMENTS
- * Complete JavaScript with Luxury Hero Section
+ * Complete JavaScript with Enhanced Luxury Hero
  * ES6 Class-Based Architecture
  */
 
-// ==================== LUXURY HERO SECTION CONTROLLER ====================
-class LuxuryHeroController {
+// ==================== ENHANCED LUXURY HERO CONTROLLER ====================
+class EnhancedLuxuryHero {
     constructor() {
         this.hero = document.querySelector('.luxury-hero');
         this.parallaxLayers = document.querySelectorAll('.parallax-image-layer');
-        this.navButtons = document.querySelectorAll('.image-nav-btn');
+        this.progressItems = document.querySelectorAll('.progress-item');
         this.scrollIndicator = document.querySelector('.luxury-scroll-indicator');
         
-        this.currentLayer = 1; // Start with middle layer
+        this.currentIndex = 0;
+        this.totalImages = this.parallaxLayers.length;
+        this.autoSwitchInterval = 5000; // 5 seconds
+        this.autoSwitchTimer = null;
         this.isTransitioning = false;
         
-        if (this.hero) {
+        if (this.hero && this.parallaxLayers.length > 0) {
             this.init();
         }
     }
     
     init() {
+        console.log('✨ Enhanced Luxury Hero initialized with auto-switch');
+        
         // Set initial active layer
-        this.setActiveLayer(this.currentLayer);
+        this.setActiveLayer(0);
         
         // Bind events
         this.bindParallaxScroll();
-        this.bindImageNavigation();
+        this.bindProgressClicks();
         this.bindScrollIndicator();
-        this.initAOSAnimations();
+        this.initNYCIconAnimations();
         
-        // Optional: Auto-cycle through images
-        // Uncomment the line below to enable auto-cycling every 5 seconds
-        // this.startAutoCycle(5000);
+        // Start auto-switching
+        this.startAutoSwitch();
         
-        console.log('✨ Luxury Hero initialized');
+        // Pause auto-switch on hover
+        this.bindHoverPause();
+    }
+    
+    // Auto-switch images every 5 seconds
+    startAutoSwitch() {
+        this.autoSwitchTimer = setInterval(() => {
+            if (!this.isTransitioning) {
+                const nextIndex = (this.currentIndex + 1) % this.totalImages;
+                this.switchToImage(nextIndex);
+            }
+        }, this.autoSwitchInterval);
+    }
+    
+    stopAutoSwitch() {
+        if (this.autoSwitchTimer) {
+            clearInterval(this.autoSwitchTimer);
+            this.autoSwitchTimer = null;
+        }
+    }
+    
+    resetAutoSwitch() {
+        this.stopAutoSwitch();
+        this.startAutoSwitch();
+    }
+    
+    // Pause auto-switch when hovering over hero
+    bindHoverPause() {
+        this.hero.addEventListener('mouseenter', () => {
+            this.stopAutoSwitch();
+        });
+        
+        this.hero.addEventListener('mouseleave', () => {
+            this.startAutoSwitch();
+        });
+    }
+    
+    // Switch to specific image with animation
+    switchToImage(index) {
+        if (this.isTransitioning || index === this.currentIndex) return;
+        
+        this.isTransitioning = true;
+        
+        // Update layers
+        this.setActiveLayer(index);
+        
+        // Update progress indicators
+        this.updateProgress(index);
+        
+        // Update current index
+        this.currentIndex = index;
+        
+        // Allow next transition after animation
+        setTimeout(() => {
+            this.isTransitioning = false;
+        }, 2000);
+    }
+    
+    setActiveLayer(index) {
+        this.parallaxLayers.forEach((layer, i) => {
+            if (i === index) {
+                layer.classList.add('active');
+            } else {
+                layer.classList.remove('active');
+            }
+        });
+    }
+    
+    updateProgress(index) {
+        this.progressItems.forEach((item, i) => {
+            if (i === index) {
+                item.classList.add('active');
+                // Restart progress fill animation
+                const fill = item.querySelector('.progress-fill');
+                if (fill) {
+                    fill.style.animation = 'none';
+                    setTimeout(() => {
+                        fill.style.animation = 'progressFill 5s linear forwards';
+                    }, 10);
+                }
+            } else {
+                item.classList.remove('active');
+                const fill = item.querySelector('.progress-fill');
+                if (fill) {
+                    fill.style.animation = 'none';
+                }
+            }
+        });
+    }
+    
+    // Manual click on progress indicators
+    bindProgressClicks() {
+        this.progressItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                if (!this.isTransitioning && index !== this.currentIndex) {
+                    this.switchToImage(index);
+                    this.resetAutoSwitch(); // Reset timer when manually clicked
+                }
+            });
+        });
     }
     
     // Parallax scroll effect
@@ -56,7 +159,6 @@ class LuxuryHeroController {
         const scrolled = window.pageYOffset;
         const heroHeight = this.hero.offsetHeight;
         
-        // Only apply parallax within hero section
         if (scrolled < heroHeight) {
             this.parallaxLayers.forEach((layer) => {
                 const speed = parseFloat(layer.dataset.speed) || 0.5;
@@ -64,51 +166,6 @@ class LuxuryHeroController {
                 layer.style.transform = `translateY(${yPos}px)`;
             });
         }
-    }
-    
-    // Image navigation
-    bindImageNavigation() {
-        this.navButtons.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                if (!this.isTransitioning && this.currentLayer !== index) {
-                    this.switchLayer(index);
-                }
-            });
-        });
-    }
-    
-    switchLayer(layerIndex) {
-        if (this.isTransitioning) return;
-        
-        this.isTransitioning = true;
-        this.currentLayer = layerIndex;
-        
-        // Update active layer
-        this.setActiveLayer(layerIndex);
-        
-        // Update navigation buttons
-        this.navButtons.forEach((btn, index) => {
-            if (index === layerIndex) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-        
-        // Allow next transition after animation completes
-        setTimeout(() => {
-            this.isTransitioning = false;
-        }, 1500);
-    }
-    
-    setActiveLayer(layerIndex) {
-        this.parallaxLayers.forEach((layer, index) => {
-            if (index === layerIndex) {
-                layer.classList.add('active');
-            } else {
-                layer.classList.remove('active');
-            }
-        });
     }
     
     // Scroll indicator
@@ -128,44 +185,40 @@ class LuxuryHeroController {
         }
     }
     
-    // Auto-cycle through images (optional feature)
-    startAutoCycle(interval = 5000) {
-        setInterval(() => {
-            if (!this.isTransitioning) {
-                const nextLayer = (this.currentLayer + 1) % this.parallaxLayers.length;
-                this.switchLayer(nextLayer);
-            }
-        }, interval);
-    }
-    
-    // Simple AOS-style animations
-    initAOSAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+    // NYC Icon interactions
+    initNYCIconAnimations() {
+        const nycIcons = document.querySelectorAll('.nyc-icon');
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('aos-animate');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all elements with data-aos
-        document.querySelectorAll('[data-aos]').forEach(el => {
-            observer.observe(el);
+        nycIcons.forEach((icon, index) => {
+            // Random floating animation
+            const duration = 3 + (index * 0.5);
+            const delay = index * 0.2;
+            
+            icon.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
         });
     }
 }
+
+// Add floating animation for NYC icons
+const floatStyle = document.createElement('style');
+floatStyle.textContent = `
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+`;
+document.head.appendChild(floatStyle);
 
 // ==================== MOUSE PARALLAX EFFECT ====================
 class MouseParallaxEffect {
     constructor() {
         this.hero = document.querySelector('.luxury-hero');
         this.content = document.querySelector('.luxury-content-wrapper');
+        this.nycIcons = document.querySelectorAll('.nyc-icon');
         
         if (this.hero && window.innerWidth > 968) {
             this.init();
@@ -176,23 +229,177 @@ class MouseParallaxEffect {
         this.hero.addEventListener('mousemove', (e) => {
             this.handleMouseMove(e);
         });
+        
+        this.hero.addEventListener('mouseleave', () => {
+            this.resetPosition();
+        });
     }
     
     handleMouseMove(e) {
         const rect = this.hero.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
         
-        // Subtle movement for content
-        const moveX = (x - 0.5) * 20;
-        const moveY = (y - 0.5) * 20;
-        
+        // Subtle content movement
         if (this.content) {
+            const moveX = x * 15;
+            const moveY = y * 15;
             this.content.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            this.content.style.transition = 'transform 0.3s ease-out';
         }
+        
+        // NYC icons parallax
+        this.nycIcons.forEach((icon, index) => {
+            const speed = 1 + (index * 0.3);
+            const moveX = x * speed * 10;
+            const moveY = y * speed * 10;
+            icon.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    }
+    
+    resetPosition() {
+        if (this.content) {
+            this.content.style.transform = 'translate(0, 0)';
+        }
+        
+        this.nycIcons.forEach(icon => {
+            icon.style.transform = 'translate(0, 0)';
+        });
     }
 }
+
+// ==================== TEXT ANIMATION CONTROLLER ====================
+class TextAnimationController {
+    constructor() {
+        this.initTextAnimations();
+    }
+    
+    initTextAnimations() {
+        // Add subtle text hover effects
+        const words = document.querySelectorAll('.word, .letter');
+        
+        words.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.transform = 'scale(1.05) translateY(-2px)';
+                element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+    }
+}
+
+// ==================== STATS COUNTER ANIMATION ====================
+class StatsCounter {
+    constructor() {
+        this.statNumbers = document.querySelectorAll('.stat-number');
+        this.hasAnimated = false;
+        
+        if (this.statNumbers.length > 0) {
+            this.init();
+        }
+    }
+    
+    init() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.hasAnimated) {
+                    this.animateStats();
+                    this.hasAnimated = true;
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsContainer = document.querySelector('.hero-luxury-stats');
+        if (statsContainer) {
+            observer.observe(statsContainer);
+        }
+    }
+    
+    animateStats() {
+        this.statNumbers.forEach((stat, index) => {
+            setTimeout(() => {
+                // Add subtle scale animation
+                stat.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    stat.style.transform = 'scale(1)';
+                }, 300);
+            }, index * 100);
+        });
+    }
+}
+
+// ==================== BUTTON INTERACTIONS ====================
+class ButtonInteractions {
+    constructor() {
+        this.buttons = document.querySelectorAll('.luxury-btn');
+        this.init();
+    }
+    
+    init() {
+        this.buttons.forEach(button => {
+            // Magnetic effect
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                button.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) translateY(-3px)`;
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translate(0, 0)';
+            });
+            
+            // Click ripple effect
+            button.addEventListener('click', (e) => {
+                this.createRipple(e, button);
+            });
+        });
+    }
+    
+    createRipple(event, button) {
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            top: ${y}px;
+            left: ${x}px;
+            pointer-events: none;
+            animation: rippleEffect 0.6s ease-out;
+            z-index: 0;
+        `;
+        
+        button.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    }
+}
+
+// Add ripple animation
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    @keyframes rippleEffect {
+        0% {
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(rippleStyle);
 
 // ==================== MODERN NAVIGATION CLASS ====================
 class HeaderNavigation {
@@ -661,9 +868,12 @@ class ParkCityApp {
         try {
             console.log('🏙️ Initializing Park City 3&4 Apartments...');
             
-            // Initialize Luxury Hero Section
-            this.components.luxuryHero = new LuxuryHeroController();
+            // Initialize Enhanced Luxury Hero Components
+            this.components.enhancedHero = new EnhancedLuxuryHero();
             this.components.mouseParallax = new MouseParallaxEffect();
+            this.components.textAnimation = new TextAnimationController();
+            this.components.statsCounter = new StatsCounter();
+            this.components.buttonInteractions = new ButtonInteractions();
             
             // Initialize Navigation
             this.components.navigation = new HeaderNavigation();
@@ -695,6 +905,8 @@ class ParkCityApp {
             this.components.pageLoader = new PageLoader();
             
             console.log('✅ All components initialized successfully!');
+            console.log('🎨 Auto-switch enabled: Images change every 5 seconds');
+            console.log('🗽 NYC-themed icons added with smooth animations');
             console.log('🏙️ Park City 3&4 Apartments - Ready!');
             
         } catch (error) {
