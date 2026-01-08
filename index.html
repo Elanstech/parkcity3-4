@@ -231,87 +231,98 @@
     </div>
 </nav>
 
-<!-- ADJUSTED LUXURY HERO SECTION - Replace your existing hero section -->
+<!-- HERO SECTION -->
 <section class="luxury-hero" id="home">
-    <!-- Parallax Image Layers with Auto-Switch -->
-    <div class="hero-parallax-container">
+    <div class="hero-parallax-wrapper">
         <!-- Layer 1 -->
-        <div class="parallax-image-layer active" data-index="0" data-speed="0.3">
-            <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Park City Building Exterior">
-            <div class="image-vignette"></div>
+        <div class="parallax-layer active" data-index="0" data-speed="0.3">
+            <div class="layer-image-container">
+                <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Park City Building Exterior">
+            </div>
+            <div class="layer-gradient-overlay"></div>
+            <div class="layer-vignette"></div>
         </div>
         
         <!-- Layer 2 -->
-        <div class="parallax-image-layer" data-index="1" data-speed="0.5">
-            <img src="arial.jpg" alt="Park City Building View">
-            <div class="image-vignette"></div>
+        <div class="parallax-layer" data-index="1" data-speed="0.5">
+            <div class="layer-image-container">
+                <img src="arial.jpg" alt="Park City Building View">
+            </div>
+            <div class="layer-gradient-overlay"></div>
+            <div class="layer-vignette"></div>
         </div>
         
         <!-- Layer 3 -->
-        <div class="parallax-image-layer" data-index="2" data-speed="0.7">
-            <img src="down.jpg" alt="Park City Building Details">
-            <div class="image-vignette"></div>
+        <div class="parallax-layer" data-index="2" data-speed="0.7">
+            <div class="layer-image-container">
+                <img src="down.jpg" alt="Park City Building Details">
+            </div>
+            <div class="layer-gradient-overlay"></div>
+            <div class="layer-vignette"></div>
         </div>
         
-        <!-- Crisp Overlay -->
-        <div class="hero-crisp-overlay"></div>
+        <!-- Premium Master Overlay -->
+        <div class="hero-master-overlay"></div>
     </div>
     
-    <!-- Main Content with Fixed Text -->
-    <div class="hero-luxury-content">
-        <div class="luxury-content-wrapper">
-            <!-- NYC Inspired Icons -->
+    <!-- Content Container with Perfect Centering -->
+    <div class="hero-content-container">
+        <div class="hero-content-inner">
+            
+            <!-- NYC Icons Row -->
             <div class="nyc-icons-row">
                 <div class="nyc-icon" data-icon="1">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <!-- Empire State Building -->
                         <path d="M8 22V6L12 2L16 6V22M6 22H18M10 10H14M10 14H14M10 18H14"/>
                     </svg>
+                    <div class="icon-glow"></div>
                 </div>
                 <div class="nyc-icon" data-icon="2">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <!-- Skyline -->
                         <path d="M3 22V12H5V22M7 22V8H9V22M11 22V14H13V22M15 22V10H17V22M19 22V6H21V22M2 22H22"/>
                     </svg>
+                    <div class="icon-glow"></div>
                 </div>
                 <div class="nyc-icon" data-icon="3">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <!-- Bridge -->
                         <path d="M2 12L4 8L6 12L8 8L10 12L12 8L14 12L16 8L18 12L20 8L22 12M2 12V20M22 12V20M2 20H22"/>
                     </svg>
+                    <div class="icon-glow"></div>
                 </div>
                 <div class="nyc-icon" data-icon="4">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <!-- Crown (Statue of Liberty) -->
                         <path d="M12 2L13 6L17 4L15 8L19 9L16 12H8L5 9L9 8L7 4L11 6L12 2ZM8 12V22M16 12V22M6 22H18"/>
                     </svg>
+                    <div class="icon-glow"></div>
                 </div>
             </div>
             
-            <!-- Animated Badge -->
+            <!-- Premium Badge with Shimmer -->
             <div class="premium-badge">
+                <div class="badge-shimmer"></div>
                 <span class="badge-icon">✦</span>
                 <span class="badge-text">Luxury Living in the City</span>
                 <span class="badge-icon">✦</span>
             </div>
             
-            <!-- FIXED: Simplified Title Structure -->
-            <h1 class="hero-luxury-title">
+            <!-- Title with Perfect Typography -->
+            <h1 class="hero-title">
                 <span class="title-line title-welcome">Welcome to</span>
                 <span class="title-line title-main">Park City</span>
                 <span class="title-line title-sub">3&4 Apartments</span>
             </h1>
             
             <!-- Description -->
-            <div class="hero-luxury-description">
+            <div class="hero-description">
                 <p>A perfect community to call home. Experience refined living with 24/7 security,</p>
                 <p>premium amenities, and unparalleled service in the heart of the city.</p>
             </div>
             
-            <!-- CTAs -->
-            <div class="hero-luxury-actions">
-                <a href="#contact" class="luxury-btn luxury-btn-primary">
-                    <span class="btn-bg"></span>
+            <!-- CTA Buttons with Magnetic Effect -->
+            <div class="hero-actions">
+                <a href="#contact" class="hero-btn hero-btn-primary">
+                    <span class="btn-bg-layer"></span>
+                    <span class="btn-shine"></span>
                     <span class="btn-content">
                         <span class="btn-text">Schedule Tour</span>
                         <span class="btn-icon">
@@ -322,8 +333,9 @@
                         </span>
                     </span>
                 </a>
-                <a href="#amenities" class="luxury-btn luxury-btn-secondary">
-                    <span class="btn-bg"></span>
+                <a href="#amenities" class="hero-btn hero-btn-secondary">
+                    <span class="btn-bg-layer"></span>
+                    <span class="btn-shine"></span>
                     <span class="btn-content">
                         <span class="btn-text">View Amenities</span>
                         <span class="btn-icon">
@@ -335,10 +347,11 @@
                 </a>
             </div>
             
-            <!-- Stats -->
-            <div class="hero-luxury-stats">
-                <div class="luxury-stat-item">
-                    <div class="stat-icon">
+            <!-- Enhanced Stats Cards -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-glow-bg"></div>
+                    <div class="stat-icon-wrapper">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
@@ -347,10 +360,16 @@
                         <div class="stat-number">24/7</div>
                         <div class="stat-label">Security</div>
                     </div>
+                    <div class="stat-accent-line"></div>
                 </div>
-                <div class="luxury-stat-divider"></div>
-                <div class="luxury-stat-item">
-                    <div class="stat-icon">
+                
+                <div class="stat-divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-glow-bg"></div>
+                    <div class="stat-icon-wrapper">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -360,10 +379,16 @@
                         <div class="stat-number">100+</div>
                         <div class="stat-label">Premium Units</div>
                     </div>
+                    <div class="stat-accent-line"></div>
                 </div>
-                <div class="luxury-stat-divider"></div>
-                <div class="luxury-stat-item">
-                    <div class="stat-icon">
+                
+                <div class="stat-divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-glow-bg"></div>
+                    <div class="stat-icon-wrapper">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="3" width="7" height="7"></rect>
                             <rect x="14" y="3" width="7" height="7"></rect>
@@ -375,35 +400,42 @@
                         <div class="stat-number">15+</div>
                         <div class="stat-label">Amenities</div>
                     </div>
+                    <div class="stat-accent-line"></div>
                 </div>
             </div>
+            
         </div>
     </div>
     
-    <!-- Mouse Scroll Indicator -->
-    <div class="luxury-scroll-indicator">
+    <!-- Elegant Scroll Indicator -->
+    <div class="scroll-indicator">
         <div class="scroll-mouse">
-            <div class="scroll-wheel"></div>
+            <div class="mouse-wheel"></div>
         </div>
-        <span class="scroll-text">Scroll</span>
+        <span class="scroll-text">Discover More</span>
+        <div class="scroll-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="7 13 12 18 17 13"></polyline>
+                <polyline points="7 6 12 11 17 6"></polyline>
+            </svg>
+        </div>
     </div>
     
-    <!-- Image Progress Indicators -->
-    <div class="hero-image-progress">
-        <div class="progress-item active" data-index="0">
-            <div class="progress-fill"></div>
+    <!-- Sleek Progress Indicators -->
+    <div class="hero-progress-indicators">
+        <div class="progress-indicator active" data-slide="0">
+            <div class="indicator-fill"></div>
         </div>
-        <div class="progress-item" data-index="1">
-            <div class="progress-fill"></div>
+        <div class="progress-indicator" data-slide="1">
+            <div class="indicator-fill"></div>
         </div>
-        <div class="progress-item" data-index="2">
-            <div class="progress-fill"></div>
+        <div class="progress-indicator" data-slide="2">
+            <div class="indicator-fill"></div>
         </div>
     </div>
 </section>
     
 <!-- Premium Amenities Section -->
-<!-- ==================== ULTRA-PREMIUM ABOUT SECTION ==================== -->
 <section class="about-premium-section" id="amenities">
     <div class="about-grid-container">
         
