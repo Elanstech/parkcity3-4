@@ -1820,162 +1820,220 @@ body.menu-open {
     }
 }
 
-/* ==================== AMENITIES SECTION ==================== */
-.amenities {
+/* ==================== LIFESTYLE SECTION ==================== */
+.lifestyle {
     position: relative;
     background: var(--cream);
-    /* Canvas texture */
+    /* Elegant texture pattern */
     background-image: 
         repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(166, 124, 82, 0.015) 3px, rgba(166, 124, 82, 0.015) 6px),
         repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(166, 124, 82, 0.015) 3px, rgba(166, 124, 82, 0.015) 6px);
 }
 
-.amenities-parallax {
+.lifestyle-container {
     padding: var(--section-padding) 0;
-}
-
-.amenities-showcase {
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-    margin-top: 80px;
-}
-
-.amenity-feature {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.amenity-feature.reverse {
-    direction: rtl;
-}
-
-.amenity-feature.reverse > * {
-    direction: ltr;
-}
-
-.amenity-image {
     position: relative;
-    height: 500px;
-    border-radius: 24px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
 }
 
-.amenity-overlay {
+.lifestyle-container::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(166, 124, 82, 0.15) 0%, rgba(245, 241, 234, 0.6) 100%);
+    height: 100px;
+    background: linear-gradient(180deg, var(--cream-light) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.lifestyle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 40px;
+    margin-top: 80px;
+}
+
+.lifestyle-feature {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(166, 124, 82, 0.15);
+    border-radius: 24px;
+    padding: 48px 40px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.lifestyle-feature::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-bronze);
+    transform: scaleX(0);
+    transform-origin: left;
     transition: var(--transition-smooth);
 }
 
-.amenity-feature:hover .amenity-overlay {
-    background: linear-gradient(135deg, rgba(166, 124, 82, 0.25) 0%, rgba(245, 241, 234, 0.4) 100%);
+.lifestyle-feature:hover {
+    transform: translateY(-12px);
+    border-color: var(--bronze);
+    box-shadow: 0 20px 60px rgba(166, 124, 82, 0.25);
 }
 
-.amenity-badge {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    padding: 8px 20px;
+.lifestyle-feature:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 32px;
     background: var(--gradient-bronze);
-    border-radius: 100px;
-    font-size: 0.813rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.feature-icon-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    border: 2px solid var(--bronze-light);
+    border-radius: 20px;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.lifestyle-feature:hover .feature-icon-wrapper {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+.lifestyle-feature:hover .feature-icon-wrapper::after {
+    opacity: 0.3;
+    width: 140%;
+    height: 140%;
+}
+
+.feature-icon {
     color: var(--warm-white);
-    z-index: 1;
 }
 
-.amenity-content {
-    padding: 20px;
-}
-
-.amenity-number {
-    font-size: 4rem;
-    font-weight: 800;
-    color: var(--bronze);
-    opacity: 0.2;
-    line-height: 1;
-    margin-bottom: 16px;
-}
-
-.amenity-title {
-    font-size: 2.25rem;
+.feature-content h3 {
+    font-size: 1.875rem;
     font-weight: 700;
-    margin-bottom: 20px;
     color: var(--text-primary);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
 }
 
-.amenity-desc {
-    font-size: 1.125rem;
+.feature-description {
+    font-size: 1.063rem;
     color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: 28px;
 }
 
-.amenity-features {
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-direction: column;
+    gap: 14px;
 }
 
-.amenity-features span {
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(166, 124, 82, 0.2);
-    border-radius: 100px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-primary);
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(250, 248, 245, 0.8);
+    border-radius: 12px;
+    border: 1px solid rgba(166, 124, 82, 0.1);
     transition: var(--transition-smooth);
 }
 
-.amenity-features span:hover {
-    background: var(--bronze);
-    border-color: var(--bronze);
-    color: var(--warm-white);
+.feature-list li:hover {
+    background: rgba(212, 165, 116, 0.08);
+    border-color: rgba(212, 165, 116, 0.3);
+    transform: translateX(8px);
 }
 
-/* Amenities Mobile Styles */
+.feature-list li svg {
+    flex-shrink: 0;
+    color: var(--bronze);
+    stroke-width: 2.5;
+}
+
+.feature-list li span {
+    font-size: 0.938rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Lifestyle Mobile Styles */
+@media (max-width: 1200px) {
+    .lifestyle-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+    }
+}
+
 @media (max-width: 968px) {
-    .amenities-parallax {
+    .lifestyle-container {
         padding: 80px 0;
     }
     
-    .amenities-showcase {
-        gap: 60px;
+    .lifestyle-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
         margin-top: 60px;
     }
     
-    .amenity-feature,
-    .amenity-feature.reverse {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        direction: ltr;
+    .lifestyle-feature {
+        padding: 40px 32px;
     }
     
-    .amenity-image {
-        height: 400px;
+    .feature-icon-wrapper {
+        width: 80px;
+        height: 80px;
     }
     
-    .amenity-content {
-        padding: 0;
+    .feature-icon svg {
+        width: 48px;
+        height: 48px;
     }
     
-    .amenity-title {
-        font-size: 1.75rem;
+    .feature-content h3 {
+        font-size: 1.5rem;
     }
     
-    .amenity-desc {
+    .feature-description {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .lifestyle-feature {
+        padding: 32px 24px;
+    }
+    
+    .feature-list li {
+        padding: 10px 12px;
+    }
+    
+    .feature-list li span {
+        font-size: 0.875rem;
     }
 }
 
