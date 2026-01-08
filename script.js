@@ -1,129 +1,195 @@
 /**
  * PARK CITY 3&4 APARTMENTS
- * Ultra-Luxury Residential Website - FIXED Enhanced Edition
- * ES6 Class-Based Architecture with Advanced Animations
+ * Complete JavaScript with Luxury Hero Section
+ * ES6 Class-Based Architecture
  */
 
-// ==================== ENHANCED HERO SLIDESHOW CLASS ====================
-class HeroSlideshow {
-    constructor(container, options = {}) {
-        this.container = container;
-        this.slides = Array.from(container.querySelectorAll('.hero-slide'));
-        this.dotsContainer = document.getElementById('heroDots');
-        this.prevBtn = document.getElementById('prevSlide');
-        this.nextBtn = document.getElementById('nextSlide');
+// ==================== LUXURY HERO SECTION CONTROLLER ====================
+class LuxuryHeroController {
+    constructor() {
+        this.hero = document.querySelector('.luxury-hero');
+        this.parallaxLayers = document.querySelectorAll('.parallax-image-layer');
+        this.navButtons = document.querySelectorAll('.image-nav-btn');
+        this.scrollIndicator = document.querySelector('.luxury-scroll-indicator');
         
-        this.currentIndex = 0;
-        this.autoplayInterval = options.autoplayInterval || 7000;
-        this.autoplayTimer = null;
+        this.currentLayer = 1; // Start with middle layer
+        this.isTransitioning = false;
         
-        // Check if required elements exist
-        if (!this.dotsContainer) {
-            console.error('❌ heroDots container not found');
-            return;
+        if (this.hero) {
+            this.init();
         }
-        if (!this.prevBtn || !this.nextBtn) {
-            console.error('❌ Slideshow navigation buttons not found');
-            return;
-        }
-        
-        this.init();
     }
     
     init() {
-        this.createDots();
-        this.bindEvents();
-        this.startAutoplay();
-        this.initKenBurnsEffect();
+        // Set initial active layer
+        this.setActiveLayer(this.currentLayer);
+        
+        // Bind events
+        this.bindParallaxScroll();
+        this.bindImageNavigation();
+        this.bindScrollIndicator();
+        this.initAOSAnimations();
+        
+        // Optional: Auto-cycle through images
+        // Uncomment the line below to enable auto-cycling every 5 seconds
+        // this.startAutoCycle(5000);
+        
+        console.log('✨ Luxury Hero initialized');
     }
     
-    createDots() {
-        if (!this.dotsContainer) return;
+    // Parallax scroll effect
+    bindParallaxScroll() {
+        let ticking = false;
         
-        this.slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('hero-dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => this.goToSlide(index));
-            this.dotsContainer.appendChild(dot);
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleParallaxScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
-        this.dots = Array.from(this.dotsContainer.querySelectorAll('.hero-dot'));
     }
     
-    bindEvents() {
-        if (!this.prevBtn || !this.nextBtn) return;
+    handleParallaxScroll() {
+        const scrolled = window.pageYOffset;
+        const heroHeight = this.hero.offsetHeight;
         
-        this.prevBtn.addEventListener('click', () => this.previousSlide());
-        this.nextBtn.addEventListener('click', () => this.nextSlide());
-        
-        // Pause autoplay on hover
-        this.container.addEventListener('mouseenter', () => this.stopAutoplay());
-        this.container.addEventListener('mouseleave', () => this.startAutoplay());
+        // Only apply parallax within hero section
+        if (scrolled < heroHeight) {
+            this.parallaxLayers.forEach((layer) => {
+                const speed = parseFloat(layer.dataset.speed) || 0.5;
+                const yPos = -(scrolled * speed);
+                layer.style.transform = `translateY(${yPos}px)`;
+            });
+        }
     }
     
-    goToSlide(index) {
-        if (!this.slides || !this.dots) return;
-        
-        this.slides[this.currentIndex].classList.remove('active');
-        this.dots[this.currentIndex].classList.remove('active');
-        
-        this.currentIndex = index;
-        
-        this.slides[this.currentIndex].classList.add('active');
-        this.dots[this.currentIndex].classList.add('active');
-        
-        // Ken Burns zoom effect with GSAP
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(this.slides[this.currentIndex], 
-                {
-                    scale: 1.15,
-                    rotation: 0
-                },
-                {
-                    scale: 1,
-                    rotation: 0.5,
-                    duration: 15,
-                    ease: 'power1.inOut'
+    // Image navigation
+    bindImageNavigation() {
+        this.navButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                if (!this.isTransitioning && this.currentLayer !== index) {
+                    this.switchLayer(index);
                 }
-            );
-        }
+            });
+        });
+    }
+    
+    switchLayer(layerIndex) {
+        if (this.isTransitioning) return;
         
-        this.resetAutoplay();
+        this.isTransitioning = true;
+        this.currentLayer = layerIndex;
+        
+        // Update active layer
+        this.setActiveLayer(layerIndex);
+        
+        // Update navigation buttons
+        this.navButtons.forEach((btn, index) => {
+            if (index === layerIndex) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        // Allow next transition after animation completes
+        setTimeout(() => {
+            this.isTransitioning = false;
+        }, 1500);
     }
     
-    nextSlide() {
-        const nextIndex = (this.currentIndex + 1) % this.slides.length;
-        this.goToSlide(nextIndex);
+    setActiveLayer(layerIndex) {
+        this.parallaxLayers.forEach((layer, index) => {
+            if (index === layerIndex) {
+                layer.classList.add('active');
+            } else {
+                layer.classList.remove('active');
+            }
+        });
     }
     
-    previousSlide() {
-        const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-        this.goToSlide(prevIndex);
-    }
-    
-    startAutoplay() {
-        this.autoplayTimer = setInterval(() => this.nextSlide(), this.autoplayInterval);
-    }
-    
-    stopAutoplay() {
-        if (this.autoplayTimer) {
-            clearInterval(this.autoplayTimer);
-            this.autoplayTimer = null;
+    // Scroll indicator
+    bindScrollIndicator() {
+        if (this.scrollIndicator) {
+            this.scrollIndicator.addEventListener('click', () => {
+                const nextSection = document.querySelector('.highlights') || 
+                                  document.querySelector('#amenities');
+                if (nextSection) {
+                    const offsetTop = nextSection.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         }
     }
     
-    resetAutoplay() {
-        this.stopAutoplay();
-        this.startAutoplay();
+    // Auto-cycle through images (optional feature)
+    startAutoCycle(interval = 5000) {
+        setInterval(() => {
+            if (!this.isTransitioning) {
+                const nextLayer = (this.currentLayer + 1) % this.parallaxLayers.length;
+                this.switchLayer(nextLayer);
+            }
+        }, interval);
     }
     
-    initKenBurnsEffect() {
-        // Initial Ken Burns effect on first slide
-        if (typeof gsap !== 'undefined' && this.slides[0]) {
-            gsap.fromTo(this.slides[0], 
-                { scale: 1.15 },
-                { scale: 1, duration: 15, ease: 'power1.inOut' }
-            );
+    // Simple AOS-style animations
+    initAOSAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with data-aos
+        document.querySelectorAll('[data-aos]').forEach(el => {
+            observer.observe(el);
+        });
+    }
+}
+
+// ==================== MOUSE PARALLAX EFFECT ====================
+class MouseParallaxEffect {
+    constructor() {
+        this.hero = document.querySelector('.luxury-hero');
+        this.content = document.querySelector('.luxury-content-wrapper');
+        
+        if (this.hero && window.innerWidth > 968) {
+            this.init();
+        }
+    }
+    
+    init() {
+        this.hero.addEventListener('mousemove', (e) => {
+            this.handleMouseMove(e);
+        });
+    }
+    
+    handleMouseMove(e) {
+        const rect = this.hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        
+        // Subtle movement for content
+        const moveX = (x - 0.5) * 20;
+        const moveY = (y - 0.5) * 20;
+        
+        if (this.content) {
+            this.content.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            this.content.style.transition = 'transform 0.3s ease-out';
         }
     }
 }
@@ -178,11 +244,13 @@ class HeaderNavigation {
         });
         
         // Close menu on background click
-        this.mobileMenu.addEventListener('click', (e) => {
-            if (e.target === this.mobileMenu) {
-                this.closeMobileMenu();
-            }
-        });
+        if (this.mobileMenu) {
+            this.mobileMenu.addEventListener('click', (e) => {
+                if (e.target === this.mobileMenu) {
+                    this.closeMobileMenu();
+                }
+            });
+        }
     }
     
     toggleMobileMenu() {
@@ -310,15 +378,6 @@ class HeaderNavigation {
             });
         }
     }
-}
-
-// Initialize Navigation when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        new HeaderNavigation();
-    });
-} else {
-    new HeaderNavigation();
 }
 
 // ==================== SCROLL ANIMATIONS CLASS ====================
@@ -480,18 +539,12 @@ class ContactForm {
 class ParallaxEffects {
     constructor() {
         this.elements = Array.from(document.querySelectorAll('.amenities-parallax'));
-        this.parallaxLayers = document.querySelectorAll('.parallax-layer');
         this.init();
     }
     
     init() {
         if (this.elements.length > 0) {
             window.addEventListener('scroll', () => this.handleScroll());
-        }
-        
-        if (this.parallaxLayers.length > 0) {
-            this.initMouseParallax();
-            this.initScrollParallax();
         }
     }
     
@@ -505,48 +558,6 @@ class ParallaxEffects {
             if (isVisible) {
                 const offset = (scrollY - el.offsetTop) * 0.3;
                 el.style.transform = `translateY(${offset}px)`;
-            }
-        });
-    }
-    
-    initMouseParallax() {
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            this.parallaxLayers.forEach((layer) => {
-                const speed = parseFloat(layer.dataset.speed) || 0.5;
-                const x = (mouseX - 0.5) * 100 * speed;
-                const y = (mouseY - 0.5) * 100 * speed;
-                
-                if (typeof gsap !== 'undefined') {
-                    gsap.to(layer, {
-                        x: x,
-                        y: y,
-                        duration: 1,
-                        ease: 'power2.out'
-                    });
-                } else {
-                    layer.style.transform = `translate(${x}px, ${y}px)`;
-                }
-            });
-        });
-    }
-    
-    initScrollParallax() {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (!hero) return;
-            
-            const heroHeight = hero.offsetHeight;
-            
-            if (scrolled < heroHeight) {
-                this.parallaxLayers.forEach((layer) => {
-                    const speed = parseFloat(layer.dataset.speed) || 0.5;
-                    const yPos = -(scrolled * speed);
-                    layer.style.transform = `translateY(${yPos}px)`;
-                });
             }
         });
     }
@@ -588,30 +599,6 @@ class PageLoader {
     init() {
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
-            this.animateCounters();
-        });
-    }
-    
-    animateCounters() {
-        // Animate any counter elements if they exist
-        const counters = document.querySelectorAll('[data-counter]');
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-counter'));
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-            
-            const updateCounter = () => {
-                current += step;
-                if (current < target) {
-                    counter.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    counter.textContent = target;
-                }
-            };
-            
-            updateCounter();
         });
     }
 }
@@ -654,412 +641,6 @@ class Utilities {
     }
 }
 
-// ==================== FIXED ENHANCED HERO ANIMATIONS ====================
-
-// CHECK LIBRARIES
-function checkLibraries() {
-    const libraries = {
-        'GSAP': typeof gsap !== 'undefined',
-        'SplitType': typeof SplitType !== 'undefined',
-        'Typed': typeof Typed !== 'undefined',
-        'ScrollReveal': typeof ScrollReveal !== 'undefined',
-        'ParticlesJS': typeof particlesJS !== 'undefined'
-    };
-    
-    console.log('📚 Library Status:', libraries);
-    
-    Object.entries(libraries).forEach(([name, loaded]) => {
-        if (!loaded) {
-            console.warn(`⚠️ ${name} not loaded`);
-        }
-    });
-}
-
-// PARTICLES.JS CONFIGURATION
-function initParticles() {
-    if (typeof particlesJS === 'undefined') {
-        console.warn('⚠️ ParticlesJS not loaded, skipping particles');
-        return;
-    }
-    
-    try {
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ['#d4a574', '#a67c52', '#c8996b']
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.3,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.5,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#d4a574',
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 1,
-                    direction: 'none',
-                    random: true,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 140,
-                        line_linked: {
-                            opacity: 0.5
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
-        });
-        
-        console.log('✅ Particles initialized');
-    } catch (error) {
-        console.error('❌ Particles error:', error);
-    }
-}
-
-// SPLIT TEXT ANIMATION WITH GSAP
-function initSplitTextAnimation() {
-    const heroTitle = document.getElementById('heroTitle');
-    if (!heroTitle) {
-        console.warn('⚠️ Hero title not found');
-        return;
-    }
-    
-    if (typeof SplitType === 'undefined' || typeof gsap === 'undefined') {
-        console.warn('⚠️ SplitType or GSAP not loaded, skipping text split');
-        return;
-    }
-    
-    try {
-        const titleLines = heroTitle.querySelectorAll('.title-line');
-        
-        titleLines.forEach((line, lineIndex) => {
-            const split = new SplitType(line, { types: 'chars' });
-            const chars = split.chars;
-            
-            if (chars && chars.length > 0) {
-                gsap.fromTo(chars,
-                    {
-                        opacity: 0,
-                        y: 100,
-                        rotationX: -90,
-                        scale: 0.8
-                    },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        rotationX: 0,
-                        scale: 1,
-                        duration: 1,
-                        stagger: 0.03,
-                        delay: 0.5 + (lineIndex * 0.3),
-                        ease: 'back.out(1.7)'
-                    }
-                );
-            }
-        });
-        
-        console.log('✅ Split text animation initialized');
-    } catch (error) {
-        console.error('❌ Split text error:', error);
-    }
-}
-
-// FIXED TYPED.JS FOR SUBTITLE
-function initTypedText() {
-    const typedElement = document.getElementById('typedText');
-    if (!typedElement) {
-        console.warn('⚠️ Typed element not found');
-        return;
-    }
-    
-    if (typeof Typed === 'undefined') {
-        console.warn('⚠️ Typed.js not loaded, using fallback text');
-        typedElement.textContent = 'Experience luxury living where security, comfort, and convenience unite';
-        return;
-    }
-    
-    try {
-        new Typed('#typedText', {
-            strings: [
-                'Experience luxury living where security, comfort, and convenience unite',
-                'Your perfect home awaits in our premium community',
-                '24/7 security with world-class amenities at your doorstep'
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            startDelay: 1500,
-            loop: true,
-            showCursor: false
-        });
-        
-        console.log('✅ Typed.js initialized');
-    } catch (error) {
-        console.error('❌ Typed.js error:', error);
-        typedElement.textContent = 'Experience luxury living where security, comfort, and convenience unite';
-    }
-}
-
-// FIXED ANIMATED STATS COUNTER
-function initStatsCounter() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    if (statNumbers.length === 0) {
-        console.warn('⚠️ No stat numbers found');
-        return;
-    }
-    
-    try {
-        const animateCounter = (element) => {
-            const target = parseInt(element.dataset.target);
-            if (isNaN(target)) {
-                console.warn('⚠️ Invalid target for stat:', element);
-                return;
-            }
-            
-            // Reset to 0 first
-            element.textContent = '0';
-            
-            if (typeof gsap !== 'undefined') {
-                gsap.to(element, {
-                    textContent: target,
-                    duration: 2.5,
-                    delay: 2,
-                    ease: 'power2.out',
-                    snap: { textContent: 1 },
-                    onUpdate: function() {
-                        element.textContent = Math.ceil(parseFloat(element.textContent));
-                    }
-                });
-            } else {
-                // Fallback without GSAP
-                let current = 0;
-                const increment = target / 75;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        element.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        element.textContent = Math.ceil(current);
-                    }
-                }, 33);
-            }
-        };
-        
-        // Trigger animation after delay
-        setTimeout(() => {
-            statNumbers.forEach(animateCounter);
-            console.log('✅ Stats counter animation started');
-        }, 2000);
-        
-    } catch (error) {
-        console.error('❌ Stats counter error:', error);
-    }
-}
-
-// MAGNETIC BUTTON EFFECT
-function initMagneticButtons() {
-    const magneticBtns = document.querySelectorAll('.magnetic-btn');
-    
-    if (magneticBtns.length === 0) {
-        console.warn('⚠️ No magnetic buttons found');
-        return;
-    }
-    
-    try {
-        magneticBtns.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                if (typeof gsap !== 'undefined') {
-                    gsap.to(btn, {
-                        x: x * 0.3,
-                        y: y * 0.3,
-                        duration: 0.4,
-                        ease: 'power2.out'
-                    });
-                } else {
-                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-                }
-            });
-            
-            btn.addEventListener('mouseleave', () => {
-                if (typeof gsap !== 'undefined') {
-                    gsap.to(btn, {
-                        x: 0,
-                        y: 0,
-                        duration: 0.6,
-                        ease: 'elastic.out(1, 0.5)'
-                    });
-                } else {
-                    btn.style.transform = 'translate(0, 0)';
-                }
-            });
-        });
-        
-        console.log('✅ Magnetic buttons initialized:', magneticBtns.length);
-    } catch (error) {
-        console.error('❌ Magnetic buttons error:', error);
-    }
-}
-
-// SCROLL REVEAL ANIMATIONS
-function initScrollReveal() {
-    if (typeof ScrollReveal === 'undefined') {
-        console.warn('⚠️ ScrollReveal not loaded, skipping scroll animations');
-        return;
-    }
-    
-    try {
-        const sr = ScrollReveal({
-            origin: 'bottom',
-            distance: '60px',
-            duration: 1000,
-            delay: 200,
-            easing: 'cubic-bezier(0.5, 0, 0, 1)',
-            reset: false
-        });
-        
-        sr.reveal('.hero-label', { delay: 200, origin: 'top', distance: '30px' });
-        sr.reveal('.hero-cta', { delay: 1800, origin: 'bottom', distance: '40px' });
-        sr.reveal('.hero-stats', { delay: 2000, origin: 'bottom', distance: '50px' });
-        sr.reveal('.hero-controls', { delay: 2200, origin: 'bottom', distance: '30px' });
-        sr.reveal('.scroll-indicator', { delay: 2400, origin: 'bottom', distance: '20px' });
-        
-        console.log('✅ ScrollReveal initialized');
-    } catch (error) {
-        console.error('❌ ScrollReveal error:', error);
-    }
-}
-
-// FLOATING SHAPES ANIMATION
-function initFloatingShapes() {
-    const shapes = document.querySelectorAll('.floating-shape');
-    
-    if (shapes.length === 0) {
-        console.warn('⚠️ No floating shapes found');
-        return;
-    }
-    
-    if (typeof gsap === 'undefined') {
-        console.warn('⚠️ GSAP not loaded, skipping floating shapes');
-        return;
-    }
-    
-    try {
-        shapes.forEach((shape, index) => {
-            const duration = 15 + (index * 3);
-            const delay = index * 2;
-            
-            gsap.to(shape, {
-                x: 'random(-100, 100)',
-                y: 'random(-80, 80)',
-                rotation: 'random(-15, 15)',
-                scale: 'random(0.9, 1.1)',
-                duration: duration,
-                delay: delay,
-                ease: 'sine.inOut',
-                repeat: -1,
-                yoyo: true
-            });
-            
-            const shapeInner = shape.querySelector('.shape-inner');
-            if (shapeInner) {
-                gsap.to(shapeInner, {
-                    rotation: 360,
-                    duration: 20 + (index * 5),
-                    ease: 'none',
-                    repeat: -1
-                });
-            }
-        });
-        
-        console.log('✅ Floating shapes initialized:', shapes.length);
-    } catch (error) {
-        console.error('❌ Floating shapes error:', error);
-    }
-}
-
-// GRADIENT MESH ANIMATION
-function initGradientMesh() {
-    if (typeof gsap === 'undefined') {
-        console.warn('⚠️ GSAP not loaded, skipping gradient mesh');
-        return;
-    }
-    
-    try {
-        const gradientMesh = document.querySelector('.hero-gradient-mesh');
-        if (gradientMesh) {
-            gsap.to(gradientMesh, {
-                opacity: 0.3,
-                duration: 3,
-                yoyo: true,
-                repeat: -1,
-                ease: 'sine.inOut'
-            });
-            
-            console.log('✅ Gradient mesh initialized');
-        }
-    } catch (error) {
-        console.error('❌ Gradient mesh error:', error);
-    }
-}
-
 // ==================== APP INITIALIZATION CLASS ====================
 class ParkCityApp {
     constructor() {
@@ -1078,30 +659,14 @@ class ParkCityApp {
     
     initializeComponents() {
         try {
-            console.log('🏙️ DOM Loaded - Initializing hero animations...');
+            console.log('🏙️ Initializing Park City 3&4 Apartments...');
             
-            // Check libraries first
-            checkLibraries();
-            
-            // Initialize Enhanced Hero Animations First
-            this.initHeroEnhancements();
-            
-            // Initialize Hero Slideshow
-            const heroSlideshow = document.getElementById('heroSlideshow');
-            if (heroSlideshow) {
-                this.components.heroSlideshow = new HeroSlideshow(heroSlideshow, {
-                    autoplayInterval: 7000
-                });
-                console.log('✅ Hero slideshow initialized');
-            } else {
-                console.warn('⚠️ Hero slideshow container not found');
-            }
+            // Initialize Luxury Hero Section
+            this.components.luxuryHero = new LuxuryHeroController();
+            this.components.mouseParallax = new MouseParallaxEffect();
             
             // Initialize Navigation
-            const nav = document.getElementById('mainNav');
-            if (nav) {
-                this.components.navigation = new HeaderNavigation(nav);
-            }
+            this.components.navigation = new HeaderNavigation();
             
             // Initialize Scroll Animations
             this.components.scrollAnimations = new ScrollAnimations({
@@ -1129,24 +694,12 @@ class ParkCityApp {
             // Initialize Page Loader
             this.components.pageLoader = new PageLoader();
             
-            console.log('✨ All hero animations initialized!');
-            console.log('🏙️ Park City 3&4 Apartments - All systems initialized with enhanced animations!');
+            console.log('✅ All components initialized successfully!');
+            console.log('🏙️ Park City 3&4 Apartments - Ready!');
             
         } catch (error) {
-            console.error('Error initializing components:', error);
+            console.error('❌ Error initializing components:', error);
         }
-    }
-    
-    initHeroEnhancements() {
-        // Initialize all enhanced hero features
-        initParticles();
-        initSplitTextAnimation();
-        initTypedText();
-        initStatsCounter();
-        initMagneticButtons();
-        initScrollReveal();
-        initFloatingShapes();
-        initGradientMesh();
     }
 }
 
