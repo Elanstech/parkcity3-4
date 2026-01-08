@@ -1,10 +1,13 @@
 /**
+ * ============================================
  * PARK CITY 3&4 APARTMENTS
- * Complete Final JavaScript - All Components Integrated
- * ES6 Class-Based Architecture
+ * Complete JavaScript - ES6 Class Architecture
+ * ============================================
  */
 
-// ==================== FIXED LUXURY HERO CONTROLLER ====================
+// ============================================
+// FIXED LUXURY HERO CONTROLLER
+// ============================================
 class FixedLuxuryHero {
     constructor() {
         this.hero = document.querySelector('.luxury-hero');
@@ -14,7 +17,7 @@ class FixedLuxuryHero {
         
         this.currentIndex = 0;
         this.totalImages = this.parallaxLayers.length;
-        this.autoSwitchInterval = 5000; // 5 seconds
+        this.autoSwitchInterval = 5000;
         this.autoSwitchTimer = null;
         this.isTransitioning = false;
         
@@ -27,26 +30,20 @@ class FixedLuxuryHero {
         console.log('✨ Fixed Luxury Hero initialized');
         console.log(`📸 Found ${this.totalImages} images`);
         
-        // Set initial active layer
         this.setActiveLayer(0);
         this.updateProgress(0);
-        
-        // Bind events
         this.bindParallaxScroll();
         this.bindProgressClicks();
         this.bindScrollIndicator();
         
-        // Start auto-switching after a short delay
         setTimeout(() => {
             console.log('🔄 Starting auto-switch...');
             this.startAutoSwitch();
         }, 1000);
         
-        // Pause auto-switch on hover
         this.bindHoverPause();
     }
     
-    // Auto-switch images every 5 seconds
     startAutoSwitch() {
         this.autoSwitchTimer = setInterval(() => {
             if (!this.isTransitioning) {
@@ -73,7 +70,6 @@ class FixedLuxuryHero {
         console.log('🔄 Auto-switch reset');
     }
     
-    // Pause auto-switch when hovering over hero
     bindHoverPause() {
         this.hero.addEventListener('mouseenter', () => {
             this.stopAutoSwitch();
@@ -84,23 +80,16 @@ class FixedLuxuryHero {
         });
     }
     
-    // Switch to specific image with animation
     switchToImage(index) {
         if (this.isTransitioning || index === this.currentIndex) return;
         
         console.log(`🎬 Switching to image ${index}`);
         this.isTransitioning = true;
         
-        // Update layers
         this.setActiveLayer(index);
-        
-        // Update progress indicators
         this.updateProgress(index);
-        
-        // Update current index
         this.currentIndex = index;
         
-        // Allow next transition after animation
         setTimeout(() => {
             this.isTransitioning = false;
             console.log('✅ Transition complete');
@@ -122,7 +111,6 @@ class FixedLuxuryHero {
         this.progressItems.forEach((item, i) => {
             if (i === index) {
                 item.classList.add('active');
-                // Restart progress fill animation
                 const fill = item.querySelector('.progress-fill');
                 if (fill) {
                     fill.style.animation = 'none';
@@ -140,7 +128,6 @@ class FixedLuxuryHero {
         });
     }
     
-    // Manual click on progress indicators
     bindProgressClicks() {
         this.progressItems.forEach((item, index) => {
             item.addEventListener('click', () => {
@@ -153,7 +140,6 @@ class FixedLuxuryHero {
         });
     }
     
-    // Parallax scroll effect
     bindParallaxScroll() {
         let ticking = false;
         
@@ -181,7 +167,6 @@ class FixedLuxuryHero {
         }
     }
     
-    // Scroll indicator
     bindScrollIndicator() {
         if (this.scrollIndicator) {
             this.scrollIndicator.addEventListener('click', () => {
@@ -199,7 +184,9 @@ class FixedLuxuryHero {
     }
 }
 
-// ==================== BUTTON INTERACTIONS ====================
+// ============================================
+// BUTTON INTERACTIONS
+// ============================================
 class ButtonInteractions {
     constructor() {
         this.buttons = document.querySelectorAll('.luxury-btn');
@@ -207,8 +194,9 @@ class ButtonInteractions {
     }
     
     init() {
+        console.log('🎨 Button interactions initialized');
+        
         this.buttons.forEach(button => {
-            // Simple hover effect (no magnetic pull that moves text)
             button.addEventListener('mouseenter', () => {
                 button.style.transform = 'translateY(-3px) scale(1.02)';
             });
@@ -217,7 +205,6 @@ class ButtonInteractions {
                 button.style.transform = 'translateY(0) scale(1)';
             });
             
-            // Click ripple effect
             button.addEventListener('click', (e) => {
                 this.createRipple(e, button);
             });
@@ -249,23 +236,9 @@ class ButtonInteractions {
     }
 }
 
-// Add ripple animation
-const rippleStyle = document.createElement('style');
-rippleStyle.textContent = `
-    @keyframes rippleEffect {
-        0% {
-            transform: scale(0);
-            opacity: 1;
-        }
-        100% {
-            transform: scale(2);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(rippleStyle);
-
-// ==================== MODERN NAVIGATION CLASS ====================
+// ============================================
+// MODERN NAVIGATION
+// ============================================
 class HeaderNavigation {
     constructor() {
         this.nav = document.getElementById('mainNav');
@@ -276,10 +249,13 @@ class HeaderNavigation {
         this.menuLinks = document.querySelectorAll('.menu-link');
         this.isMenuOpen = false;
         
+        if (!this.nav) return;
         this.init();
     }
     
     init() {
+        console.log('🧭 Navigation initialized');
+        
         this.bindEvents();
         this.handleScroll();
         this.setActiveLink();
@@ -287,34 +263,26 @@ class HeaderNavigation {
     }
     
     bindEvents() {
-        // Mobile menu toggle
         if (this.navToggle) {
             this.navToggle.addEventListener('click', () => this.toggleMobileMenu());
         }
         
-        // Close button
         if (this.menuClose) {
             this.menuClose.addEventListener('click', () => this.closeMobileMenu());
         }
         
-        // Mobile menu links - close menu when clicked
         this.menuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 setTimeout(() => this.closeMobileMenu(), 300);
             });
         });
         
-        // Scroll handler
-        window.addEventListener('scroll', () => this.handleScroll());
-        
-        // Close menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isMenuOpen) {
                 this.closeMobileMenu();
             }
         });
         
-        // Close menu on background click
         if (this.mobileMenu) {
             this.mobileMenu.addEventListener('click', (e) => {
                 if (e.target === this.mobileMenu) {
@@ -322,6 +290,8 @@ class HeaderNavigation {
                 }
             });
         }
+        
+        window.addEventListener('scroll', () => this.handleScroll());
     }
     
     toggleMobileMenu() {
@@ -338,6 +308,7 @@ class HeaderNavigation {
         this.navToggle.classList.add('active');
         document.body.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
+        console.log('📱 Mobile menu opened');
     }
     
     closeMobileMenu() {
@@ -349,6 +320,8 @@ class HeaderNavigation {
             document.body.classList.remove('menu-open');
             document.body.style.overflow = '';
         }, 400);
+        
+        console.log('📱 Mobile menu closed');
     }
     
     handleScroll() {
@@ -362,10 +335,8 @@ class HeaderNavigation {
     }
     
     setActiveLink() {
-        // Get current page filename
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         
-        // Set active class on desktop nav
         this.navItems.forEach(item => {
             const href = item.getAttribute('href');
             if (href === currentPage || 
@@ -377,7 +348,6 @@ class HeaderNavigation {
             }
         });
         
-        // Highlight active page in mobile menu
         this.menuLinks.forEach(link => {
             const href = link.getAttribute('href');
             if (href === currentPage || 
@@ -397,7 +367,6 @@ class HeaderNavigation {
     }
     
     initMagneticEffects() {
-        // Add magnetic effect to menu links
         this.menuLinks.forEach(link => {
             link.addEventListener('mousemove', (e) => {
                 const rect = link.getBoundingClientRect();
@@ -418,7 +387,6 @@ class HeaderNavigation {
             });
         });
         
-        // Magnetic effect for close button
         if (this.menuClose) {
             this.menuClose.addEventListener('mousemove', (e) => {
                 const rect = this.menuClose.getBoundingClientRect();
@@ -433,7 +401,6 @@ class HeaderNavigation {
             });
         }
         
-        // Magnetic CTA button
         const ctaBtn = document.querySelector('.menu-cta-btn');
         if (ctaBtn) {
             ctaBtn.addEventListener('mousemove', (e) => {
@@ -451,14 +418,498 @@ class HeaderNavigation {
     }
 }
 
-// ==================== PREMIUM AMENITIES CONTROLLER ====================
+// ============================================
+// LUXURY SLIDESHOW
+// ============================================
+class LuxurySlideshow {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.thumbnails = document.querySelectorAll('.thumbnail');
+        this.prevBtn = document.querySelector('.slide-prev');
+        this.nextBtn = document.querySelector('.slide-next');
+        this.progressBar = document.querySelector('.progress-bar');
+        
+        this.currentIndex = 0;
+        this.totalSlides = this.slides.length;
+        this.autoPlayInterval = 5000;
+        this.autoPlayTimer = null;
+        this.isTransitioning = false;
+        
+        if (this.slides.length > 0) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('✨ Luxury Slideshow initialized');
+        console.log(`📸 ${this.totalSlides} slides loaded`);
+        
+        this.showSlide(0);
+        this.bindNavigation();
+        this.bindThumbnails();
+        this.bindKeyboard();
+        this.bindHoverPause();
+        this.bindSwipeGestures();
+        this.startAutoPlay();
+        
+        console.log('▶️ Auto-play started');
+    }
+    
+    showSlide(index) {
+        if (this.isTransitioning) return;
+        
+        this.isTransitioning = true;
+        
+        this.slides.forEach(slide => slide.classList.remove('active'));
+        this.thumbnails.forEach(thumb => thumb.classList.remove('active'));
+        
+        this.slides[index].classList.add('active');
+        this.thumbnails[index].classList.add('active');
+        
+        this.currentIndex = index;
+        this.resetProgressBar();
+        
+        setTimeout(() => {
+            this.isTransitioning = false;
+        }, 800);
+        
+        console.log(`📍 Showing slide ${index + 1}/${this.totalSlides}`);
+    }
+    
+    nextSlide() {
+        const nextIndex = (this.currentIndex + 1) % this.totalSlides;
+        this.showSlide(nextIndex);
+        this.resetAutoPlay();
+    }
+    
+    prevSlide() {
+        const prevIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+        this.showSlide(prevIndex);
+        this.resetAutoPlay();
+    }
+    
+    startAutoPlay() {
+        this.autoPlayTimer = setInterval(() => {
+            if (!this.isTransitioning) {
+                this.nextSlide();
+            }
+        }, this.autoPlayInterval);
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayTimer) {
+            clearInterval(this.autoPlayTimer);
+            this.autoPlayTimer = null;
+        }
+    }
+    
+    resetAutoPlay() {
+        this.stopAutoPlay();
+        this.startAutoPlay();
+    }
+    
+    resetProgressBar() {
+        if (this.progressBar) {
+            this.progressBar.style.animation = 'none';
+            setTimeout(() => {
+                this.progressBar.style.animation = 'slideProgressAnim 5s linear forwards';
+            }, 10);
+        }
+    }
+    
+    bindNavigation() {
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.prevSlide());
+        }
+        
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+    }
+    
+    bindThumbnails() {
+        this.thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                if (index !== this.currentIndex && !this.isTransitioning) {
+                    this.showSlide(index);
+                    this.resetAutoPlay();
+                }
+            });
+        });
+    }
+    
+    bindKeyboard() {
+        document.addEventListener('keydown', (e) => {
+            const slideshowMain = document.querySelector('.slideshow-main');
+            if (!slideshowMain) return;
+            
+            const rect = slideshowMain.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    this.prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.nextSlide();
+                }
+            }
+        });
+    }
+    
+    bindHoverPause() {
+        const slideshowMain = document.querySelector('.slideshow-main');
+        
+        if (slideshowMain) {
+            slideshowMain.addEventListener('mouseenter', () => {
+                this.stopAutoPlay();
+                console.log('⏸️ Auto-play paused');
+            });
+            
+            slideshowMain.addEventListener('mouseleave', () => {
+                this.startAutoPlay();
+                console.log('▶️ Auto-play resumed');
+            });
+        }
+    }
+    
+    bindSwipeGestures() {
+        const slideshowMain = document.querySelector('.slideshow-main');
+        if (!slideshowMain) return;
+        
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        slideshowMain.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        slideshowMain.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe(touchStartX, touchEndX);
+        }, { passive: true });
+    }
+    
+    handleSwipe(startX, endX) {
+        const swipeThreshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                this.nextSlide();
+            } else {
+                this.prevSlide();
+            }
+        }
+    }
+}
+
+// ============================================
+// STAT COUNTER ANIMATION
+// ============================================
+class StatCounter {
+    constructor() {
+        this.statBoxes = document.querySelectorAll('.stat-box');
+        if (this.statBoxes.length > 0) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('📊 Stat counter initialized');
+        
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    this.animateCounter(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        this.statBoxes.forEach(box => observer.observe(box));
+    }
+    
+    animateCounter(statBox) {
+        const numberElement = statBox.querySelector('.stat-number-large');
+        if (!numberElement) return;
+        
+        const text = numberElement.textContent;
+        const hasPlus = text.includes('+');
+        const hasSlash = text.includes('/');
+        
+        if (hasSlash) {
+            this.animateText(numberElement, text);
+            return;
+        }
+        
+        const number = parseInt(text.replace(/[^0-9]/g, ''));
+        
+        if (isNaN(number)) return;
+        
+        let current = 0;
+        const increment = number / 60;
+        const duration = 1500;
+        const stepTime = duration / 60;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= number) {
+                numberElement.textContent = number + (hasPlus ? '+' : '');
+                clearInterval(timer);
+            } else {
+                numberElement.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+            }
+        }, stepTime);
+        
+        console.log(`🔢 Animated counter: ${number}`);
+    }
+    
+    animateText(element, text) {
+        element.style.opacity = '0';
+        element.style.transform = 'scale(0.5)';
+        
+        setTimeout(() => {
+            element.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            element.style.opacity = '1';
+            element.style.transform = 'scale(1)';
+        }, 100);
+    }
+}
+
+// ============================================
+// FEATURE POINTS ANIMATOR
+// ============================================
+class FeaturePointsAnimator {
+    constructor() {
+        this.featurePoints = document.querySelectorAll('.feature-point');
+        if (this.featurePoints.length > 0) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('🎯 Feature points animated');
+        
+        this.animateEntrance();
+        this.addHoverEffects();
+        this.addParallaxEffect();
+    }
+    
+    animateEntrance() {
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        this.featurePoints.forEach(point => observer.observe(point));
+    }
+    
+    addHoverEffects() {
+        this.featurePoints.forEach(point => {
+            const icon = point.querySelector('.point-icon');
+            const number = point.querySelector('.point-number');
+            
+            point.addEventListener('mouseenter', () => {
+                if (icon) {
+                    icon.style.animation = 'iconPulse 0.6s ease';
+                }
+                
+                if (number) {
+                    number.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                }
+            });
+            
+            point.addEventListener('mouseleave', () => {
+                if (icon) {
+                    icon.style.animation = '';
+                }
+            });
+        });
+    }
+    
+    addParallaxEffect() {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+    
+    handleParallax() {
+        this.featurePoints.forEach((point, index) => {
+            const rect = point.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible) {
+                const scrolled = window.pageYOffset;
+                const speed = 0.02 * (index + 1);
+                const yPos = -(scrolled - rect.top) * speed;
+                
+                point.style.transform = `translateY(${yPos}px)`;
+            }
+        });
+    }
+}
+
+// ============================================
+// SHOWCASE LABEL ANIMATOR
+// ============================================
+class ShowcaseLabelAnimator {
+    constructor() {
+        this.labels = document.querySelectorAll('.showcase-label');
+        if (this.labels.length > 0) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('🏷️ Showcase labels animated');
+        
+        this.labels.forEach(label => {
+            this.animateLabel(label);
+        });
+    }
+    
+    animateLabel(label) {
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('label-animated')) {
+                    entry.target.classList.add('label-animated');
+                    this.addShimmerEffect(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        observer.observe(label);
+    }
+    
+    addShimmerEffect(label) {
+        label.style.position = 'relative';
+        label.style.overflow = 'hidden';
+        
+        const shimmer = document.createElement('div');
+        shimmer.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: shimmerMove 1.5s ease-in-out;
+        `;
+        
+        label.appendChild(shimmer);
+        
+        setTimeout(() => {
+            shimmer.remove();
+        }, 1500);
+    }
+}
+
+// ============================================
+// BUILDING SHOWCASE ANIMATOR
+// ============================================
+class BuildingShowcaseAnimator {
+    constructor() {
+        this.showcase = document.querySelector('.building-showcase');
+        if (this.showcase) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('🏢 Building showcase animated');
+        
+        this.addFloatingEffect();
+        this.addMagneticEffect();
+    }
+    
+    addFloatingEffect() {
+        const showcaseContent = document.querySelector('.showcase-content');
+        if (!showcaseContent) return;
+        
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const rect = showcaseContent.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible) {
+                        const scrolled = window.pageYOffset;
+                        const offset = (scrolled - rect.top) * 0.05;
+                        showcaseContent.style.transform = `translateY(${offset}px)`;
+                    }
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+    
+    addMagneticEffect() {
+        const statBoxes = document.querySelectorAll('.stat-box');
+        
+        statBoxes.forEach(box => {
+            box.addEventListener('mousemove', (e) => {
+                const rect = box.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const icon = box.querySelector('.stat-icon-wrapper');
+                if (icon) {
+                    icon.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.1) rotate(-5deg)`;
+                }
+            });
+            
+            box.addEventListener('mouseleave', () => {
+                const icon = box.querySelector('.stat-icon-wrapper');
+                if (icon) {
+                    icon.style.transform = '';
+                }
+            });
+        });
+    }
+}
+
+// ============================================
+// PREMIUM AMENITIES CONTROLLER
+// ============================================
 class PremiumAmenitiesController {
     constructor() {
         this.bentoItems = document.querySelectorAll('.bento-item');
         this.statBoxes = document.querySelectorAll('.stat-box');
         this.featurePoints = document.querySelectorAll('.feature-point');
         
-        if (this.bentoItems.length > 0) {
+        if (this.bentoItems.length > 0 || this.statBoxes.length > 0) {
             this.init();
         }
     }
@@ -466,20 +917,12 @@ class PremiumAmenitiesController {
     init() {
         console.log('✨ Premium Amenities Controller initialized');
         
-        // Add magnetic hover effects
         this.initMagneticEffects();
-        
-        // Add parallax scroll effects
         this.initParallaxEffects();
-        
-        // Add stat counter animations
         this.initStatCounters();
-        
-        // Add bento item interactions
         this.initBentoInteractions();
     }
     
-    // Magnetic hover effect for bento items
     initMagneticEffects() {
         this.bentoItems.forEach(item => {
             item.addEventListener('mousemove', (e) => {
@@ -487,7 +930,6 @@ class PremiumAmenitiesController {
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
                 
-                // Apply subtle magnetic pull
                 const icon = item.querySelector('.bento-icon');
                 if (icon) {
                     icon.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px) scale(1.1) rotate(-5deg)`;
@@ -505,7 +947,6 @@ class PremiumAmenitiesController {
         console.log('🧲 Magnetic effects initialized');
     }
     
-    // Parallax scroll effects
     initParallaxEffects() {
         let ticking = false;
         
@@ -523,7 +964,6 @@ class PremiumAmenitiesController {
     handleParallaxScroll() {
         const scrolled = window.pageYOffset;
         
-        // Parallax for building features
         this.featurePoints.forEach((point, index) => {
             const rect = point.getBoundingClientRect();
             const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
@@ -536,7 +976,6 @@ class PremiumAmenitiesController {
         });
     }
     
-    // Animated stat counters
     initStatCounters() {
         const observerOptions = {
             threshold: 0.5,
@@ -566,8 +1005,8 @@ class PremiumAmenitiesController {
         if (isNaN(number)) return;
         
         let current = 0;
-        const increment = number / 60; // 60 frames for smooth animation
-        const duration = 1500; // 1.5 seconds
+        const increment = number / 60;
+        const duration = 1500;
         const stepTime = duration / 60;
         
         const timer = setInterval(() => {
@@ -583,17 +1022,14 @@ class PremiumAmenitiesController {
         console.log(`📊 Animated counter: ${number}`);
     }
     
-    // Bento item interactions
     initBentoInteractions() {
         this.bentoItems.forEach(item => {
-            // Add ripple effect on click
             item.addEventListener('click', (e) => {
                 this.createRipple(e, item);
             });
             
-            // Add 3D tilt effect on hover
             item.addEventListener('mousemove', (e) => {
-                if (window.innerWidth > 968) { // Only on desktop
+                if (window.innerWidth > 968) {
                     this.add3DTilt(e, item);
                 }
             });
@@ -645,23 +1081,9 @@ class PremiumAmenitiesController {
     }
 }
 
-// Add ripple animation style for amenities
-const amenitiesRippleStyle = document.createElement('style');
-amenitiesRippleStyle.textContent = `
-    @keyframes rippleAnimation {
-        0% {
-            transform: scale(0);
-            opacity: 1;
-        }
-        100% {
-            transform: scale(2);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(amenitiesRippleStyle);
-
-// ==================== SCROLL ANIMATIONS CLASS ====================
+// ============================================
+// SCROLL ANIMATIONS
+// ============================================
 class ScrollAnimations {
     constructor(options = {}) {
         this.elements = Array.from(document.querySelectorAll('[data-animate]'));
@@ -671,10 +1093,14 @@ class ScrollAnimations {
             rootMargin: '0px 0px -100px 0px'
         };
         
-        this.init();
+        if (this.elements.length > 0) {
+            this.init();
+        }
     }
     
     init() {
+        console.log('🎬 Scroll animations initialized');
+        
         this.observer = new IntersectionObserver(
             (entries) => this.handleIntersection(entries),
             this.observerOptions
@@ -693,16 +1119,22 @@ class ScrollAnimations {
     }
 }
 
-// ==================== FAQ ACCORDION CLASS ====================
+// ============================================
+// FAQ ACCORDION
+// ============================================
 class FAQAccordion {
     constructor(container) {
         this.container = container;
         this.items = Array.from(container.querySelectorAll('.faq-item'));
         
-        this.init();
+        if (this.items.length > 0) {
+            this.init();
+        }
     }
     
     init() {
+        console.log('❓ FAQ accordion initialized');
+        
         this.items.forEach(item => {
             const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => this.toggleItem(item));
@@ -712,35 +1144,36 @@ class FAQAccordion {
     toggleItem(item) {
         const isActive = item.classList.contains('active');
         
-        // Close all items
         this.items.forEach(i => i.classList.remove('active'));
         
-        // Open clicked item if it wasn't active
         if (!isActive) {
             item.classList.add('active');
         }
     }
 }
 
-// ==================== CONTACT FORM CLASS ====================
+// ============================================
+// CONTACT FORM
+// ============================================
 class ContactForm {
     constructor(form) {
         this.form = form;
-        this.init();
+        if (this.form) {
+            this.init();
+        }
     }
     
     init() {
+        console.log('📧 Contact form initialized');
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
     }
     
     handleSubmit(e) {
         e.preventDefault();
         
-        // Get form data
         const formData = new FormData(this.form);
         const data = Object.fromEntries(formData.entries());
         
-        // Validate form
         if (this.validate(data)) {
             this.submitForm(data);
         }
@@ -765,13 +1198,9 @@ class ContactForm {
     
     async submitForm(data) {
         try {
-            // Simulate form submission
             console.log('Form submitted:', data);
             
-            // Show success message
             this.showMessage('Thank you! We will contact you soon.', 'success');
-            
-            // Reset form
             this.form.reset();
         } catch (error) {
             this.showMessage('Something went wrong. Please try again.', 'error');
@@ -779,18 +1208,15 @@ class ContactForm {
     }
     
     showMessage(text, type) {
-        // Remove existing messages
         const existingMessage = this.form.querySelector('.form-message');
         if (existingMessage) {
             existingMessage.remove();
         }
         
-        // Create message element
         const message = document.createElement('div');
         message.className = `form-message form-message-${type}`;
         message.textContent = text;
         
-        // Style message
         Object.assign(message.style, {
             padding: '16px 20px',
             marginTop: '20px',
@@ -803,10 +1229,8 @@ class ContactForm {
             color: type === 'success' ? '#5c8d5a' : '#dc2626'
         });
         
-        // Append message
         this.form.appendChild(message);
         
-        // Remove message after 5 seconds
         setTimeout(() => {
             message.style.opacity = '0';
             message.style.transform = 'translateY(-10px)';
@@ -816,17 +1240,20 @@ class ContactForm {
     }
 }
 
-// ==================== PARALLAX EFFECTS CLASS ====================
+// ============================================
+// PARALLAX EFFECTS
+// ============================================
 class ParallaxEffects {
     constructor() {
         this.elements = Array.from(document.querySelectorAll('.amenities-parallax'));
-        this.init();
+        if (this.elements.length > 0) {
+            this.init();
+        }
     }
     
     init() {
-        if (this.elements.length > 0) {
-            window.addEventListener('scroll', () => this.handleScroll());
-        }
+        console.log('🌊 Parallax effects initialized');
+        window.addEventListener('scroll', () => this.handleScroll());
     }
     
     handleScroll() {
@@ -844,14 +1271,17 @@ class ParallaxEffects {
     }
 }
 
-// ==================== SMOOTH SCROLL CLASS ====================
+// ============================================
+// SMOOTH SCROLL
+// ============================================
 class SmoothScroll {
     constructor() {
         this.init();
     }
     
     init() {
-        // Smooth scroll for all anchor links
+        console.log('🎯 Smooth scroll initialized');
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 const href = anchor.getAttribute('href');
@@ -871,20 +1301,166 @@ class SmoothScroll {
     }
 }
 
-// ==================== PAGE LOADER CLASS ====================
+// ============================================
+// PAGE LOADER
+// ============================================
 class PageLoader {
     constructor() {
         this.init();
     }
     
     init() {
+        console.log('⏳ Page loader initialized');
+        
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
+            console.log('✅ Page fully loaded');
         });
     }
 }
 
-// ==================== UTILITIES CLASS ====================
+// ============================================
+// ADD ANIMATION STYLES
+// ============================================
+function addAnimationStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Ripple Effect */
+        @keyframes rippleEffect {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        /* Ripple Animation for Amenities */
+        @keyframes rippleAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        /* Icon Pulse Animation */
+        @keyframes iconPulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+            25% {
+                transform: scale(1.15) rotate(-8deg);
+            }
+            75% {
+                transform: scale(1.1) rotate(8deg);
+            }
+        }
+        
+        /* Shimmer Move Animation */
+        @keyframes shimmerMove {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        /* Feature Point Entrance Animation */
+        .feature-point {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-point.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .feature-point:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .feature-point:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .feature-point:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        /* Stat Box Entrance Animation */
+        .stat-box {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-box.counted {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        /* Showcase Label Animation */
+        .showcase-label {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.9);
+            transition: opacity 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                        transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .showcase-label.label-animated {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        /* Showcase Title Animation */
+        .showcase-title {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: titleFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+        
+        @keyframes titleFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Showcase Description Animation */
+        .showcase-description {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: descFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes descFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    console.log('🎨 Animation styles added');
+}
+
+// ============================================
+// UTILITIES
+// ============================================
 class Utilities {
     static debounce(func, wait) {
         let timeout;
@@ -922,7 +1498,9 @@ class Utilities {
     }
 }
 
-// ==================== APP INITIALIZATION CLASS ====================
+// ============================================
+// MAIN PARK CITY APP
+// ============================================
 class ParkCityApp {
     constructor() {
         this.components = {};
@@ -930,7 +1508,6 @@ class ParkCityApp {
     }
     
     init() {
-        // Wait for DOM to be ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.initializeComponents());
         } else {
@@ -941,8 +1518,12 @@ class ParkCityApp {
     initializeComponents() {
         try {
             console.log('🏙️ Initializing Park City 3&4 Apartments...');
+            console.log('═══════════════════════════════════════');
             
-            // Initialize Fixed Luxury Hero Components
+            // Add animation styles first
+            addAnimationStyles();
+            
+            // Initialize Hero Components
             this.components.fixedHero = new FixedLuxuryHero();
             this.components.buttonInteractions = new ButtonInteractions();
             
@@ -953,6 +1534,13 @@ class ParkCityApp {
             this.components.scrollAnimations = new ScrollAnimations({
                 threshold: 0.1
             });
+            
+            // Initialize About & Slideshow Components
+            this.components.slideshow = new LuxurySlideshow();
+            this.components.statCounter = new StatCounter();
+            this.components.featurePoints = new FeaturePointsAnimator();
+            this.components.showcaseLabel = new ShowcaseLabelAnimator();
+            this.components.buildingShowcase = new BuildingShowcaseAnimator();
             
             // Initialize Premium Amenities
             this.components.premiumAmenities = new PremiumAmenitiesController();
@@ -978,11 +1566,14 @@ class ParkCityApp {
             // Initialize Page Loader
             this.components.pageLoader = new PageLoader();
             
+            console.log('═══════════════════════════════════════');
             console.log('✅ All components initialized successfully!');
-            console.log('🎨 Auto-switch enabled: Images change every 5 seconds');
+            console.log('📸 Slideshow: Auto-play enabled (5s intervals)');
+            console.log('🎯 Animations: Scroll-triggered entrance effects');
+            console.log('🎨 Interactive: Hover effects and magnetic animations');
             console.log('🗽 NYC-themed icons with smooth animations');
-            console.log('✨ Premium Amenities with interactive bento grid');
             console.log('🏙️ Park City 3&4 Apartments - Ready!');
+            console.log('═══════════════════════════════════════');
             
         } catch (error) {
             console.error('❌ Error initializing components:', error);
@@ -990,11 +1581,15 @@ class ParkCityApp {
     }
 }
 
-// ==================== INITIALIZE APPLICATION ====================
-const app = new ParkCityApp();
+// ============================================
+// INITIALIZE APPLICATION
+// ============================================
+const parkCityApp = new ParkCityApp();
 
 // Scroll to top on load
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
     console.log('🎬 Page loaded and scrolled to top');
 });
+
+console.log('🌟 Park City 3&4 Script loaded and ready');
