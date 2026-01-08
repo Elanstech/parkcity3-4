@@ -1,13 +1,6 @@
-/**
- * ============================================
- * PARK CITY 3&4 APARTMENTS
- * Complete JavaScript - ES6 Class Architecture
- * ============================================
- */
-
-// ============================================
-// FIXED LUXURY HERO CONTROLLER
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🎬 LUXURY HERO CONTROLLER
+// ═══════════════════════════════════════════════════════════════
 class FixedLuxuryHero {
     constructor() {
         this.hero = document.querySelector('.luxury-hero');
@@ -27,8 +20,8 @@ class FixedLuxuryHero {
     }
     
     init() {
-        console.log('✨ Fixed Luxury Hero initialized');
-        console.log(`📸 Found ${this.totalImages} images`);
+        console.log('✨ Luxury Hero: Initialized with sparkles');
+        console.log(`📸 Found ${this.totalImages} gorgeous images`);
         
         this.setActiveLayer(0);
         this.updateProgress(0);
@@ -37,37 +30,77 @@ class FixedLuxuryHero {
         this.bindScrollIndicator();
         
         setTimeout(() => {
-            console.log('🔄 Starting auto-switch...');
+            console.log('🔄 Auto-switching engaged...');
             this.startAutoSwitch();
         }, 1000);
         
         this.bindHoverPause();
+        this.addCreativeEnhancements();
+    }
+    
+    addCreativeEnhancements() {
+        // Add subtle cursor trail effect on hero
+        if (window.innerWidth > 968) {
+            this.hero.addEventListener('mousemove', (e) => {
+                this.createCursorGlow(e);
+            });
+        }
+    }
+    
+    createCursorGlow(e) {
+        const glow = document.createElement('div');
+        glow.className = 'hero-cursor-glow';
+        glow.style.cssText = `
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.15), transparent 70%);
+            pointer-events: none;
+            z-index: 4;
+            left: ${e.clientX}px;
+            top: ${e.clientY}px;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        `;
+        
+        this.hero.appendChild(glow);
+        
+        requestAnimationFrame(() => {
+            glow.style.opacity = '1';
+        });
+        
+        setTimeout(() => {
+            glow.style.opacity = '0';
+            setTimeout(() => glow.remove(), 300);
+        }, 100);
     }
     
     startAutoSwitch() {
         this.autoSwitchTimer = setInterval(() => {
             if (!this.isTransitioning) {
                 const nextIndex = (this.currentIndex + 1) % this.totalImages;
-                console.log(`🔄 Auto-switching from ${this.currentIndex} to ${nextIndex}`);
+                console.log(`🎬 Gracefully transitioning from ${this.currentIndex} → ${nextIndex}`);
                 this.switchToImage(nextIndex);
             }
         }, this.autoSwitchInterval);
         
-        console.log('✅ Auto-switch started - images will change every 5 seconds');
+        console.log('✅ Auto-switch: Running smoothly (5s intervals)');
     }
     
     stopAutoSwitch() {
         if (this.autoSwitchTimer) {
             clearInterval(this.autoSwitchTimer);
             this.autoSwitchTimer = null;
-            console.log('⏸️ Auto-switch paused');
+            console.log('⏸️ Auto-switch: Paused gracefully');
         }
     }
     
     resetAutoSwitch() {
         this.stopAutoSwitch();
         this.startAutoSwitch();
-        console.log('🔄 Auto-switch reset');
+        console.log('🔄 Auto-switch: Reset & refreshed');
     }
     
     bindHoverPause() {
@@ -83,7 +116,7 @@ class FixedLuxuryHero {
     switchToImage(index) {
         if (this.isTransitioning || index === this.currentIndex) return;
         
-        console.log(`🎬 Switching to image ${index}`);
+        console.log(`🎭 Switching to slide ${index + 1}`);
         this.isTransitioning = true;
         
         this.setActiveLayer(index);
@@ -92,7 +125,7 @@ class FixedLuxuryHero {
         
         setTimeout(() => {
             this.isTransitioning = false;
-            console.log('✅ Transition complete');
+            console.log('✨ Transition complete & beautiful');
         }, 1500);
     }
     
@@ -100,7 +133,6 @@ class FixedLuxuryHero {
         this.parallaxLayers.forEach((layer, i) => {
             if (i === index) {
                 layer.classList.add('active');
-                console.log(`✅ Layer ${i} activated`);
             } else {
                 layer.classList.remove('active');
             }
@@ -121,9 +153,7 @@ class FixedLuxuryHero {
             } else {
                 item.classList.remove('active');
                 const fill = item.querySelector('.progress-fill');
-                if (fill) {
-                    fill.style.animation = 'none';
-                }
+                if (fill) fill.style.animation = 'none';
             }
         });
     }
@@ -132,7 +162,7 @@ class FixedLuxuryHero {
         this.progressItems.forEach((item, index) => {
             item.addEventListener('click', () => {
                 if (!this.isTransitioning && index !== this.currentIndex) {
-                    console.log(`👆 Manual switch to image ${index}`);
+                    console.log(`👆 Manual selection: Image ${index + 1}`);
                     this.switchToImage(index);
                     this.resetAutoSwitch();
                 }
@@ -170,7 +200,7 @@ class FixedLuxuryHero {
     bindScrollIndicator() {
         if (this.scrollIndicator) {
             this.scrollIndicator.addEventListener('click', () => {
-                const nextSection = document.querySelector('.premium-amenities') || 
+                const nextSection = document.querySelector('.about-premium-section') || 
                                   document.querySelector('#amenities');
                 if (nextSection) {
                     const offsetTop = nextSection.offsetTop - 80;
@@ -184,9 +214,9 @@ class FixedLuxuryHero {
     }
 }
 
-// ============================================
-// BUTTON INTERACTIONS
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 💎 BUTTON INTERACTIONS WITH SPARKLE EFFECTS
+// ═══════════════════════════════════════════════════════════════
 class ButtonInteractions {
     constructor() {
         this.buttons = document.querySelectorAll('.luxury-btn');
@@ -194,21 +224,48 @@ class ButtonInteractions {
     }
     
     init() {
-        console.log('🎨 Button interactions initialized');
+        console.log('🎨 Button Interactions: Active & gorgeous');
         
         this.buttons.forEach(button => {
+            // Hover effects
             button.addEventListener('mouseenter', () => {
                 button.style.transform = 'translateY(-3px) scale(1.02)';
+                this.createSparkles(button);
             });
             
             button.addEventListener('mouseleave', () => {
                 button.style.transform = 'translateY(0) scale(1)';
             });
             
+            // Click ripple
             button.addEventListener('click', (e) => {
                 this.createRipple(e, button);
             });
         });
+    }
+    
+    createSparkles(button) {
+        // Subtle sparkle effect on hover
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                const sparkle = document.createElement('span');
+                sparkle.textContent = '✨';
+                sparkle.style.cssText = `
+                    position: absolute;
+                    font-size: 12px;
+                    pointer-events: none;
+                    animation: sparkleFloat 1s ease-out forwards;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    z-index: 10;
+                `;
+                
+                button.style.position = 'relative';
+                button.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }, i * 100);
+        }
     }
     
     createRipple(event, button) {
@@ -236,9 +293,9 @@ class ButtonInteractions {
     }
 }
 
-// ============================================
-// MODERN NAVIGATION
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🧭 MODERN NAVIGATION
+// ═══════════════════════════════════════════════════════════════
 class HeaderNavigation {
     constructor() {
         this.nav = document.getElementById('mainNav');
@@ -254,7 +311,7 @@ class HeaderNavigation {
     }
     
     init() {
-        console.log('🧭 Navigation initialized');
+        console.log('🧭 Navigation: Initialized & polished');
         
         this.bindEvents();
         this.handleScroll();
@@ -308,7 +365,7 @@ class HeaderNavigation {
         this.navToggle.classList.add('active');
         document.body.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
-        console.log('📱 Mobile menu opened');
+        console.log('📱 Mobile menu: Opened beautifully');
     }
     
     closeMobileMenu() {
@@ -321,7 +378,7 @@ class HeaderNavigation {
             document.body.style.overflow = '';
         }, 400);
         
-        console.log('📱 Mobile menu closed');
+        console.log('📱 Mobile menu: Closed gracefully');
     }
     
     handleScroll() {
@@ -418,41 +475,57 @@ class HeaderNavigation {
     }
 }
 
-// ============================================
-// LUXURY SLIDESHOW
-// ============================================
-class LuxurySlideshow {
+// ═══════════════════════════════════════════════════════════════
+// 🎬 ULTRA-SLEEK AUTO-SLIDESHOW (ABOUT SECTION)
+// ═══════════════════════════════════════════════════════════════
+class UltraSleekSlideshow {
     constructor() {
-        this.slides = document.querySelectorAll('.slide');
-        this.thumbnails = document.querySelectorAll('.thumbnail');
-        this.prevBtn = document.querySelector('.slide-prev');
-        this.nextBtn = document.querySelector('.slide-next');
-        this.progressBar = document.querySelector('.progress-bar');
+        this.container = document.querySelector('.about-slideshow-container');
+        this.slides = document.querySelectorAll('.slideshow-image');
+        this.dots = document.querySelectorAll('.progress-dot');
+        this.progressBar = document.querySelector('.progress-bar-fill');
         
         this.currentIndex = 0;
         this.totalSlides = this.slides.length;
-        this.autoPlayInterval = 5000;
+        this.autoPlayDuration = 4000; // 4 seconds - snappy!
         this.autoPlayTimer = null;
+        this.progressInterval = null;
         this.isTransitioning = false;
         
-        if (this.slides.length > 0) {
+        if (this.container && this.slides.length > 0) {
             this.init();
         }
     }
     
     init() {
-        console.log('✨ Luxury Slideshow initialized');
-        console.log(`📸 ${this.totalSlides} slides loaded`);
+        console.log('✨ Ultra-Sleek Slideshow: Initialized with elegance');
+        console.log(`📸 ${this.totalSlides} stunning images loaded`);
         
         this.showSlide(0);
-        this.bindNavigation();
-        this.bindThumbnails();
-        this.bindKeyboard();
-        this.bindHoverPause();
-        this.bindSwipeGestures();
         this.startAutoPlay();
+        this.bindDotClicks();
+        this.bindHoverPause();
+        this.bindKeyboard();
+        this.addCreativeEnhancements();
         
-        console.log('▶️ Auto-play started');
+        console.log('▶️ Auto-play: Running smoothly (4s intervals)');
+    }
+    
+    addCreativeEnhancements() {
+        // Add subtle image scale animation
+        this.slides.forEach(slide => {
+            const img = slide.querySelector('img');
+            if (img) {
+                slide.addEventListener('mouseenter', () => {
+                    img.style.transform = 'scale(1.05)';
+                    img.style.transition = 'transform 0.8s ease';
+                });
+                
+                slide.addEventListener('mouseleave', () => {
+                    img.style.transform = 'scale(1)';
+                });
+            }
+        });
     }
     
     showSlide(index) {
@@ -460,32 +533,37 @@ class LuxurySlideshow {
         
         this.isTransitioning = true;
         
-        this.slides.forEach(slide => slide.classList.remove('active'));
-        this.thumbnails.forEach(thumb => thumb.classList.remove('active'));
+        // Update slides
+        this.slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
         
-        this.slides[index].classList.add('active');
-        this.thumbnails[index].classList.add('active');
+        // Update dots
+        this.dots.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
         
         this.currentIndex = index;
         this.resetProgressBar();
         
         setTimeout(() => {
             this.isTransitioning = false;
-        }, 800);
+        }, 1200);
         
-        console.log(`📍 Showing slide ${index + 1}/${this.totalSlides}`);
+        console.log(`📍 Displaying: Slide ${index + 1}/${this.totalSlides}`);
     }
     
     nextSlide() {
         const nextIndex = (this.currentIndex + 1) % this.totalSlides;
         this.showSlide(nextIndex);
-        this.resetAutoPlay();
-    }
-    
-    prevSlide() {
-        const prevIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
-        this.showSlide(prevIndex);
-        this.resetAutoPlay();
     }
     
     startAutoPlay() {
@@ -493,7 +571,9 @@ class LuxurySlideshow {
             if (!this.isTransitioning) {
                 this.nextSlide();
             }
-        }, this.autoPlayInterval);
+        }, this.autoPlayDuration);
+        
+        this.startProgressBar();
     }
     
     stopAutoPlay() {
@@ -501,6 +581,8 @@ class LuxurySlideshow {
             clearInterval(this.autoPlayTimer);
             this.autoPlayTimer = null;
         }
+        
+        this.stopProgressBar();
     }
     
     resetAutoPlay() {
@@ -508,542 +590,286 @@ class LuxurySlideshow {
         this.startAutoPlay();
     }
     
-    resetProgressBar() {
+    startProgressBar() {
         if (this.progressBar) {
-            this.progressBar.style.animation = 'none';
-            setTimeout(() => {
-                this.progressBar.style.animation = 'slideProgressAnim 5s linear forwards';
-            }, 10);
+            let progress = 0;
+            const increment = 100 / (this.autoPlayDuration / 50);
+            
+            this.progressInterval = setInterval(() => {
+                progress += increment;
+                if (progress >= 100) {
+                    progress = 100;
+                }
+                this.progressBar.style.width = `${progress}%`;
+            }, 50);
         }
     }
     
-    bindNavigation() {
-        if (this.prevBtn) {
-            this.prevBtn.addEventListener('click', () => this.prevSlide());
-        }
-        
-        if (this.nextBtn) {
-            this.nextBtn.addEventListener('click', () => this.nextSlide());
+    stopProgressBar() {
+        if (this.progressInterval) {
+            clearInterval(this.progressInterval);
+            this.progressInterval = null;
         }
     }
     
-    bindThumbnails() {
-        this.thumbnails.forEach((thumb, index) => {
-            thumb.addEventListener('click', () => {
+    resetProgressBar() {
+        this.stopProgressBar();
+        if (this.progressBar) {
+            this.progressBar.style.width = '0%';
+        }
+        this.startProgressBar();
+    }
+    
+    bindDotClicks() {
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
                 if (index !== this.currentIndex && !this.isTransitioning) {
                     this.showSlide(index);
                     this.resetAutoPlay();
                 }
             });
-        });
-    }
-    
-    bindKeyboard() {
-        document.addEventListener('keydown', (e) => {
-            const slideshowMain = document.querySelector('.slideshow-main');
-            if (!slideshowMain) return;
             
-            const rect = slideshowMain.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            // Add cute hover effect
+            dot.addEventListener('mouseenter', () => {
+                dot.style.transform = 'scale(1.3)';
+            });
             
-            if (isVisible) {
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    this.prevSlide();
-                } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    this.nextSlide();
-                }
-            }
+            dot.addEventListener('mouseleave', () => {
+                dot.style.transform = '';
+            });
         });
     }
     
     bindHoverPause() {
-        const slideshowMain = document.querySelector('.slideshow-main');
-        
-        if (slideshowMain) {
-            slideshowMain.addEventListener('mouseenter', () => {
+        if (this.container) {
+            this.container.addEventListener('mouseenter', () => {
                 this.stopAutoPlay();
-                console.log('⏸️ Auto-play paused');
+                console.log('⏸️ Slideshow: Paused gracefully');
             });
             
-            slideshowMain.addEventListener('mouseleave', () => {
+            this.container.addEventListener('mouseleave', () => {
                 this.startAutoPlay();
-                console.log('▶️ Auto-play resumed');
+                console.log('▶️ Slideshow: Resumed smoothly');
             });
         }
     }
     
-    bindSwipeGestures() {
-        const slideshowMain = document.querySelector('.slideshow-main');
-        if (!slideshowMain) return;
-        
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        slideshowMain.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        slideshowMain.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            this.handleSwipe(touchStartX, touchEndX);
-        }, { passive: true });
-    }
-    
-    handleSwipe(startX, endX) {
-        const swipeThreshold = 50;
-        const diff = startX - endX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                this.nextSlide();
-            } else {
-                this.prevSlide();
+    bindKeyboard() {
+        document.addEventListener('keydown', (e) => {
+            const rect = this.container.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible && !this.isTransitioning) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    const prevIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+                    this.showSlide(prevIndex);
+                    this.resetAutoPlay();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.nextSlide();
+                    this.resetAutoPlay();
+                }
             }
-        }
+        });
     }
 }
 
-// ============================================
-// STAT COUNTER ANIMATION
-// ============================================
-class StatCounter {
+// ═══════════════════════════════════════════════════════════════
+// 📊 STAT COUNTER ANIMATOR (ABOUT SECTION)
+// ═══════════════════════════════════════════════════════════════
+class StatCounterAnimator {
     constructor() {
-        this.statBoxes = document.querySelectorAll('.stat-box');
-        if (this.statBoxes.length > 0) {
+        this.statCards = document.querySelectorAll('.about-stat-card');
+        this.hasAnimated = false;
+        
+        if (this.statCards.length > 0) {
             this.init();
         }
     }
     
     init() {
-        console.log('📊 Stat counter initialized');
+        console.log('📊 Stat Counter: Armed & ready to count');
         
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px'
-        };
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !this.hasAnimated) {
+                        this.hasAnimated = true;
+                        this.animateAllStats();
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    this.animateCounter(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        this.statBoxes.forEach(box => observer.observe(box));
+        this.statCards.forEach(card => observer.observe(card));
     }
     
-    animateCounter(statBox) {
-        const numberElement = statBox.querySelector('.stat-number-large');
-        if (!numberElement) return;
+    animateAllStats() {
+        this.statCards.forEach((card, index) => {
+            setTimeout(() => {
+                this.animateStat(card);
+            }, index * 150); // Staggered for cuteness
+        });
+    }
+    
+    animateStat(card) {
+        const valueElement = card.querySelector('.stat-card-value');
+        if (!valueElement) return;
         
-        const text = numberElement.textContent;
-        const hasPlus = text.includes('+');
-        const hasSlash = text.includes('/');
+        const target = parseInt(valueElement.dataset.count);
         
-        if (hasSlash) {
-            this.animateText(numberElement, text);
+        if (isNaN(target)) {
+            valueElement.style.transform = 'scale(1)';
+            valueElement.style.opacity = '1';
             return;
         }
         
-        const number = parseInt(text.replace(/[^0-9]/g, ''));
-        
-        if (isNaN(number)) return;
+        // Smooth counting animation
+        const duration = 2000;
+        const steps = 60;
+        const stepTime = duration / steps;
+        const increment = target / steps;
         
         let current = 0;
-        const increment = number / 60;
-        const duration = 1500;
-        const stepTime = duration / 60;
         
-        const timer = setInterval(() => {
+        const counter = setInterval(() => {
             current += increment;
-            if (current >= number) {
-                numberElement.textContent = number + (hasPlus ? '+' : '');
-                clearInterval(timer);
+            
+            if (current >= target) {
+                valueElement.textContent = target;
+                clearInterval(counter);
+                console.log(`🎯 Counted to: ${target}!`);
             } else {
-                numberElement.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+                valueElement.textContent = Math.floor(current);
             }
         }, stepTime);
-        
-        console.log(`🔢 Animated counter: ${number}`);
-    }
-    
-    animateText(element, text) {
-        element.style.opacity = '0';
-        element.style.transform = 'scale(0.5)';
-        
-        setTimeout(() => {
-            element.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-            element.style.opacity = '1';
-            element.style.transform = 'scale(1)';
-        }, 100);
     }
 }
 
-// ============================================
-// FEATURE POINTS ANIMATOR
-// ============================================
-class FeaturePointsAnimator {
+// ═══════════════════════════════════════════════════════════════
+// 🎯 FEATURE POINT ANIMATOR (ABOUT SECTION)
+// ═══════════════════════════════════════════════════════════════
+class FeaturePointAnimator {
     constructor() {
-        this.featurePoints = document.querySelectorAll('.feature-point');
+        this.featurePoints = document.querySelectorAll('.about-feature-point');
+        this.hasAnimated = false;
+        
         if (this.featurePoints.length > 0) {
             this.init();
         }
     }
     
     init() {
-        console.log('🎯 Feature points animated');
+        console.log('🎯 Feature Points: Locked & loaded');
         
-        this.animateEntrance();
-        this.addHoverEffects();
-        this.addParallaxEffect();
-    }
-    
-    animateEntrance() {
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !this.hasAnimated) {
+                        this.hasAnimated = true;
+                        this.animateFeatures();
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
         
         this.featurePoints.forEach(point => observer.observe(point));
+        this.addMagneticEffect();
     }
     
-    addHoverEffects() {
-        this.featurePoints.forEach(point => {
-            const icon = point.querySelector('.point-icon');
-            const number = point.querySelector('.point-number');
-            
-            point.addEventListener('mouseenter', () => {
-                if (icon) {
-                    icon.style.animation = 'iconPulse 0.6s ease';
-                }
+    animateFeatures() {
+        this.featurePoints.forEach((point, index) => {
+            setTimeout(() => {
+                point.style.opacity = '0';
+                point.style.transform = 'translateX(-40px)';
                 
-                if (number) {
-                    number.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                setTimeout(() => {
+                    point.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                    point.style.opacity = '1';
+                    point.style.transform = 'translateX(0)';
+                }, 50);
+            }, index * 200);
+        });
+        
+        console.log('✨ Features: Animated beautifully');
+    }
+    
+    addMagneticEffect() {
+        this.featurePoints.forEach(point => {
+            point.addEventListener('mousemove', (e) => {
+                const rect = point.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const indicator = point.querySelector('.feature-point-indicator');
+                if (indicator) {
+                    indicator.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
                 }
             });
             
             point.addEventListener('mouseleave', () => {
-                if (icon) {
-                    icon.style.animation = '';
-                }
-            });
-        });
-    }
-    
-    addParallaxEffect() {
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    this.handleParallax();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-    
-    handleParallax() {
-        this.featurePoints.forEach((point, index) => {
-            const rect = point.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            
-            if (isVisible) {
-                const scrolled = window.pageYOffset;
-                const speed = 0.02 * (index + 1);
-                const yPos = -(scrolled - rect.top) * speed;
-                
-                point.style.transform = `translateY(${yPos}px)`;
-            }
-        });
-    }
-}
-
-// ============================================
-// SHOWCASE LABEL ANIMATOR
-// ============================================
-class ShowcaseLabelAnimator {
-    constructor() {
-        this.labels = document.querySelectorAll('.showcase-label');
-        if (this.labels.length > 0) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('🏷️ Showcase labels animated');
-        
-        this.labels.forEach(label => {
-            this.animateLabel(label);
-        });
-    }
-    
-    animateLabel(label) {
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('label-animated')) {
-                    entry.target.classList.add('label-animated');
-                    this.addShimmerEffect(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        observer.observe(label);
-    }
-    
-    addShimmerEffect(label) {
-        label.style.position = 'relative';
-        label.style.overflow = 'hidden';
-        
-        const shimmer = document.createElement('div');
-        shimmer.style.cssText = `
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            animation: shimmerMove 1.5s ease-in-out;
-        `;
-        
-        label.appendChild(shimmer);
-        
-        setTimeout(() => {
-            shimmer.remove();
-        }, 1500);
-    }
-}
-
-// ============================================
-// BUILDING SHOWCASE ANIMATOR
-// ============================================
-class BuildingShowcaseAnimator {
-    constructor() {
-        this.showcase = document.querySelector('.building-showcase');
-        if (this.showcase) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('🏢 Building showcase animated');
-        
-        this.addFloatingEffect();
-        this.addMagneticEffect();
-    }
-    
-    addFloatingEffect() {
-        const showcaseContent = document.querySelector('.showcase-content');
-        if (!showcaseContent) return;
-        
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const rect = showcaseContent.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                    
-                    if (isVisible) {
-                        const scrolled = window.pageYOffset;
-                        const offset = (scrolled - rect.top) * 0.05;
-                        showcaseContent.style.transform = `translateY(${offset}px)`;
-                    }
-                    
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-    
-    addMagneticEffect() {
-        const statBoxes = document.querySelectorAll('.stat-box');
-        
-        statBoxes.forEach(box => {
-            box.addEventListener('mousemove', (e) => {
-                const rect = box.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                const icon = box.querySelector('.stat-icon-wrapper');
-                if (icon) {
-                    icon.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.1) rotate(-5deg)`;
-                }
-            });
-            
-            box.addEventListener('mouseleave', () => {
-                const icon = box.querySelector('.stat-icon-wrapper');
-                if (icon) {
-                    icon.style.transform = '';
+                const indicator = point.querySelector('.feature-point-indicator');
+                if (indicator) {
+                    indicator.style.transform = '';
                 }
             });
         });
     }
 }
 
-// ============================================
-// PREMIUM AMENITIES CONTROLLER
-// ============================================
-class PremiumAmenitiesController {
+// ═══════════════════════════════════════════════════════════════
+// 💎 STAT CARD INTERACTIONS (ABOUT SECTION)
+// ═══════════════════════════════════════════════════════════════
+class StatCardInteractions {
     constructor() {
-        this.bentoItems = document.querySelectorAll('.bento-item');
-        this.statBoxes = document.querySelectorAll('.stat-box');
-        this.featurePoints = document.querySelectorAll('.feature-point');
+        this.statCards = document.querySelectorAll('.about-stat-card');
         
-        if (this.bentoItems.length > 0 || this.statBoxes.length > 0) {
+        if (this.statCards.length > 0) {
             this.init();
         }
     }
     
     init() {
-        console.log('✨ Premium Amenities Controller initialized');
+        console.log('💎 Stat Cards: Interactive & gorgeous');
         
-        this.initMagneticEffects();
-        this.initParallaxEffects();
-        this.initStatCounters();
-        this.initBentoInteractions();
-    }
-    
-    initMagneticEffects() {
-        this.bentoItems.forEach(item => {
-            item.addEventListener('mousemove', (e) => {
-                const rect = item.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
+        this.statCards.forEach(card => {
+            // 3D tilt effect
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 
-                const icon = item.querySelector('.bento-icon');
-                if (icon) {
-                    icon.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px) scale(1.1) rotate(-5deg)`;
-                }
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `
+                    perspective(1000px) 
+                    rotateX(${rotateX}deg) 
+                    rotateY(${rotateY}deg) 
+                    translateY(-8px) 
+                    scale(1.02)
+                `;
             });
             
-            item.addEventListener('mouseleave', () => {
-                const icon = item.querySelector('.bento-icon');
-                if (icon) {
-                    icon.style.transform = '';
-                }
-            });
-        });
-        
-        console.log('🧲 Magnetic effects initialized');
-    }
-    
-    initParallaxEffects() {
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    this.handleParallaxScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-    
-    handleParallaxScroll() {
-        const scrolled = window.pageYOffset;
-        
-        this.featurePoints.forEach((point, index) => {
-            const rect = point.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            
-            if (isVisible) {
-                const speed = 0.05 * (index + 1);
-                const yPos = (scrolled - rect.top) * speed;
-                point.style.transform = `translateY(${yPos}px)`;
-            }
-        });
-    }
-    
-    initStatCounters() {
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    this.animateCounter(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        this.statBoxes.forEach(box => observer.observe(box));
-    }
-    
-    animateCounter(statBox) {
-        const numberElement = statBox.querySelector('.stat-number-large');
-        if (!numberElement) return;
-        
-        const text = numberElement.textContent;
-        const hasPlus = text.includes('+');
-        const number = parseInt(text.replace(/[^0-9]/g, ''));
-        
-        if (isNaN(number)) return;
-        
-        let current = 0;
-        const increment = number / 60;
-        const duration = 1500;
-        const stepTime = duration / 60;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= number) {
-                numberElement.textContent = number + (hasPlus ? '+' : '');
-                clearInterval(timer);
-            } else {
-                numberElement.textContent = Math.floor(current) + (hasPlus ? '+' : '');
-            }
-        }, stepTime);
-        
-        console.log(`📊 Animated counter: ${number}`);
-    }
-    
-    initBentoInteractions() {
-        this.bentoItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                this.createRipple(e, item);
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
             });
             
-            item.addEventListener('mousemove', (e) => {
-                if (window.innerWidth > 968) {
-                    this.add3DTilt(e, item);
-                }
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = '';
+            // Ripple on click
+            card.addEventListener('click', (e) => {
+                this.createRipple(e, card);
             });
         });
-        
-        console.log('🎨 Bento interactions initialized');
     }
     
     createRipple(event, element) {
-        const ripple = document.createElement('span');
+        const ripple = document.createElement('div');
         const rect = element.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const x = event.clientX - rect.left - size / 2;
@@ -1054,36 +880,82 @@ class PremiumAmenitiesController {
             width: ${size}px;
             height: ${size}px;
             border-radius: 50%;
-            background: rgba(212, 165, 116, 0.4);
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.4) 0%, transparent 70%);
             top: ${y}px;
             left: ${x}px;
             pointer-events: none;
-            animation: rippleAnimation 0.8s ease-out;
-            z-index: 0;
+            transform: scale(0);
+            opacity: 1;
+            z-index: 100;
         `;
         
         element.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 800);
-    }
-    
-    add3DTilt(event, element) {
-        const rect = element.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
         
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+        requestAnimationFrame(() => {
+            ripple.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
+            ripple.style.transform = 'scale(2)';
+            ripple.style.opacity = '0';
+        });
         
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        setTimeout(() => ripple.remove(), 600);
     }
 }
 
-// ============================================
-// SCROLL ANIMATIONS
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🌊 ABOUT PARALLAX EFFECTS
+// ═══════════════════════════════════════════════════════════════
+class AboutParallaxEffects {
+    constructor() {
+        this.contentSide = document.querySelector('.about-content-side');
+        this.gallerySide = document.querySelector('.about-gallery-side');
+        
+        if (this.contentSide && this.gallerySide) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('🌊 Parallax: Flowing gracefully');
+        
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+    
+    handleScroll() {
+        const scrollY = window.scrollY;
+        const section = document.querySelector('.about-premium-section');
+        
+        if (!section) return;
+        
+        const rect = section.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isVisible) {
+            const offset = (scrollY - section.offsetTop) * 0.15;
+            
+            if (this.contentSide) {
+                this.contentSide.style.transform = `translateY(${offset}px)`;
+            }
+            
+            if (this.gallerySide) {
+                this.gallerySide.style.transform = `translateY(${-offset}px)`;
+            }
+        }
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 🎬 SCROLL ANIMATIONS
+// ═══════════════════════════════════════════════════════════════
 class ScrollAnimations {
     constructor(options = {}) {
         this.elements = Array.from(document.querySelectorAll('[data-animate]'));
@@ -1099,7 +971,7 @@ class ScrollAnimations {
     }
     
     init() {
-        console.log('🎬 Scroll animations initialized');
+        console.log('🎬 Scroll Animations: Observing with precision');
         
         this.observer = new IntersectionObserver(
             (entries) => this.handleIntersection(entries),
@@ -1119,9 +991,9 @@ class ScrollAnimations {
     }
 }
 
-// ============================================
-// FAQ ACCORDION
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// ❓ FAQ ACCORDION
+// ═══════════════════════════════════════════════════════════════
 class FAQAccordion {
     constructor(container) {
         this.container = container;
@@ -1133,7 +1005,7 @@ class FAQAccordion {
     }
     
     init() {
-        console.log('❓ FAQ accordion initialized');
+        console.log('❓ FAQ Accordion: Ready to answer');
         
         this.items.forEach(item => {
             const question = item.querySelector('.faq-question');
@@ -1152,9 +1024,9 @@ class FAQAccordion {
     }
 }
 
-// ============================================
-// CONTACT FORM
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 📧 CONTACT FORM
+// ═══════════════════════════════════════════════════════════════
 class ContactForm {
     constructor(form) {
         this.form = form;
@@ -1164,7 +1036,7 @@ class ContactForm {
     }
     
     init() {
-        console.log('📧 Contact form initialized');
+        console.log('📧 Contact Form: Ready to submit');
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
     }
     
@@ -1183,13 +1055,13 @@ class ContactForm {
         const { name, email, phone, interest, message } = data;
         
         if (!name || !email || !phone || !interest || !message) {
-            this.showMessage('Please fill in all fields', 'error');
+            this.showMessage('Please fill in all fields ✨', 'error');
             return false;
         }
         
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            this.showMessage('Please enter a valid email address', 'error');
+            this.showMessage('Please enter a valid email address 💌', 'error');
             return false;
         }
         
@@ -1198,12 +1070,12 @@ class ContactForm {
     
     async submitForm(data) {
         try {
-            console.log('Form submitted:', data);
+            console.log('✉️ Form submitted:', data);
             
-            this.showMessage('Thank you! We will contact you soon.', 'success');
+            this.showMessage('Thank you! We will contact you soon. 🎉', 'success');
             this.form.reset();
         } catch (error) {
-            this.showMessage('Something went wrong. Please try again.', 'error');
+            this.showMessage('Something went wrong. Please try again. 😔', 'error');
         }
     }
     
@@ -1240,9 +1112,9 @@ class ContactForm {
     }
 }
 
-// ============================================
-// PARALLAX EFFECTS
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🌊 PARALLAX EFFECTS
+// ═══════════════════════════════════════════════════════════════
 class ParallaxEffects {
     constructor() {
         this.elements = Array.from(document.querySelectorAll('.amenities-parallax'));
@@ -1252,7 +1124,7 @@ class ParallaxEffects {
     }
     
     init() {
-        console.log('🌊 Parallax effects initialized');
+        console.log('🌊 Parallax Effects: Flowing');
         window.addEventListener('scroll', () => this.handleScroll());
     }
     
@@ -1271,16 +1143,16 @@ class ParallaxEffects {
     }
 }
 
-// ============================================
-// SMOOTH SCROLL
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🎯 SMOOTH SCROLL
+// ═══════════════════════════════════════════════════════════════
 class SmoothScroll {
     constructor() {
         this.init();
     }
     
     init() {
-        console.log('🎯 Smooth scroll initialized');
+        console.log('🎯 Smooth Scroll: Gliding gracefully');
         
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
@@ -1301,30 +1173,46 @@ class SmoothScroll {
     }
 }
 
-// ============================================
-// PAGE LOADER
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// ⏳ PAGE LOADER
+// ═══════════════════════════════════════════════════════════════
 class PageLoader {
     constructor() {
         this.init();
     }
     
     init() {
-        console.log('⏳ Page loader initialized');
+        console.log('⏳ Page Loader: Standing by');
         
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
-            console.log('✅ Page fully loaded');
+            console.log('✅ Page: Fully loaded & gorgeous');
         });
     }
 }
 
-// ============================================
-// ADD ANIMATION STYLES
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🎨 CREATIVE ANIMATION STYLES
+// ═══════════════════════════════════════════════════════════════
 function addAnimationStyles() {
     const style = document.createElement('style');
     style.textContent = `
+        /* Sparkle Float */
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-40px) scale(0.5);
+            }
+        }
+        
         /* Ripple Effect */
         @keyframes rippleEffect {
             0% {
@@ -1337,42 +1225,7 @@ function addAnimationStyles() {
             }
         }
         
-        /* Ripple Animation for Amenities */
-        @keyframes rippleAnimation {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-        
-        /* Icon Pulse Animation */
-        @keyframes iconPulse {
-            0%, 100% {
-                transform: scale(1) rotate(0deg);
-            }
-            25% {
-                transform: scale(1.15) rotate(-8deg);
-            }
-            75% {
-                transform: scale(1.1) rotate(8deg);
-            }
-        }
-        
-        /* Shimmer Move Animation */
-        @keyframes shimmerMove {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-        
-        /* Feature Point Entrance Animation */
+        /* Feature Point Entrance */
         .feature-point {
             opacity: 0;
             transform: translateX(-60px);
@@ -1385,19 +1238,7 @@ function addAnimationStyles() {
             transform: translateX(0);
         }
         
-        .feature-point:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-        
-        .feature-point:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-        
-        .feature-point:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-        
-        /* Stat Box Entrance Animation */
+        /* Stat Box Entrance */
         .stat-box {
             opacity: 0;
             transform: translateY(30px) scale(0.95);
@@ -1409,58 +1250,15 @@ function addAnimationStyles() {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
-        
-        /* Showcase Label Animation */
-        .showcase-label {
-            opacity: 0;
-            transform: translateY(-20px) scale(0.9);
-            transition: opacity 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-                        transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        
-        .showcase-label.label-animated {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-        
-        /* Showcase Title Animation */
-        .showcase-title {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: titleFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 0.2s;
-        }
-        
-        @keyframes titleFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Showcase Description Animation */
-        .showcase-description {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: descFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 0.4s;
-        }
-        
-        @keyframes descFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
     `;
     document.head.appendChild(style);
     
-    console.log('🎨 Animation styles added');
+    console.log('🎨 Animation Styles: Applied beautifully');
 }
 
-// ============================================
-// UTILITIES
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🎮 UTILITIES
+// ═══════════════════════════════════════════════════════════════
 class Utilities {
     static debounce(func, wait) {
         let timeout;
@@ -1498,9 +1296,9 @@ class Utilities {
     }
 }
 
-// ============================================
-// MAIN PARK CITY APP
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🏙️ MAIN PARK CITY APP
+// ═══════════════════════════════════════════════════════════════
 class ParkCityApp {
     constructor() {
         this.components = {};
@@ -1517,35 +1315,41 @@ class ParkCityApp {
     
     initializeComponents() {
         try {
-            console.log('🏙️ Initializing Park City 3&4 Apartments...');
-            console.log('═══════════════════════════════════════');
+            console.log('');
+            console.log('═══════════════════════════════════════════════════════════════');
+            console.log('✨                  PARK CITY 3&4 APARTMENTS                  ✨');
+            console.log('        Apple Precision × Rolls-Royce Luxury × Creative Magic');
+            console.log('═══════════════════════════════════════════════════════════════');
+            console.log('');
             
-            // Add animation styles first
+            // Add animation styles
             addAnimationStyles();
             
-            // Initialize Hero Components
+            // Initialize Hero
+            console.log('🎬 HERO SECTION');
             this.components.fixedHero = new FixedLuxuryHero();
             this.components.buttonInteractions = new ButtonInteractions();
+            console.log('');
             
             // Initialize Navigation
+            console.log('🧭 NAVIGATION');
             this.components.navigation = new HeaderNavigation();
+            console.log('');
             
-            // Initialize Scroll Animations
-            this.components.scrollAnimations = new ScrollAnimations({
-                threshold: 0.1
-            });
+            // Initialize About Section (NEW!)
+            console.log('💎 ABOUT SECTION - ULTRA-PREMIUM');
+            this.components.aboutSlideshow = new UltraSleekSlideshow();
+            this.components.statCounter = new StatCounterAnimator();
+            this.components.featurePoints = new FeaturePointAnimator();
+            this.components.statInteractions = new StatCardInteractions();
+            this.components.aboutParallax = new AboutParallaxEffects();
+            console.log('');
             
-            // Initialize About & Slideshow Components
-            this.components.slideshow = new LuxurySlideshow();
-            this.components.statCounter = new StatCounter();
-            this.components.featurePoints = new FeaturePointsAnimator();
-            this.components.showcaseLabel = new ShowcaseLabelAnimator();
-            this.components.buildingShowcase = new BuildingShowcaseAnimator();
+            // Initialize Global Features
+            console.log('🎨 GLOBAL FEATURES');
+            this.components.scrollAnimations = new ScrollAnimations({ threshold: 0.1 });
             
-            // Initialize Premium Amenities
-            this.components.premiumAmenities = new PremiumAmenitiesController();
-            
-            // Initialize FAQ Accordion
+            // Initialize FAQ
             const faqsContainer = document.querySelector('.faqs-container');
             if (faqsContainer) {
                 this.components.faqAccordion = new FAQAccordion(faqsContainer);
@@ -1557,7 +1361,7 @@ class ParkCityApp {
                 this.components.contactForm = new ContactForm(contactForm);
             }
             
-            // Initialize Parallax Effects
+            // Initialize Parallax
             this.components.parallaxEffects = new ParallaxEffects();
             
             // Initialize Smooth Scroll
@@ -1566,14 +1370,17 @@ class ParkCityApp {
             // Initialize Page Loader
             this.components.pageLoader = new PageLoader();
             
-            console.log('═══════════════════════════════════════');
-            console.log('✅ All components initialized successfully!');
-            console.log('📸 Slideshow: Auto-play enabled (5s intervals)');
+            console.log('');
+            console.log('═══════════════════════════════════════════════════════════════');
+            console.log('✅ ALL COMPONENTS: Initialized successfully!');
+            console.log('📸 Hero Slideshow: Auto-play (5s intervals)');
+            console.log('🎬 About Slideshow: Ultra-fast (4s intervals)');
             console.log('🎯 Animations: Scroll-triggered entrance effects');
-            console.log('🎨 Interactive: Hover effects and magnetic animations');
-            console.log('🗽 NYC-themed icons with smooth animations');
-            console.log('🏙️ Park City 3&4 Apartments - Ready!');
-            console.log('═══════════════════════════════════════');
+            console.log('🎨 Interactions: Hover effects & magnetic animations');
+            console.log('💎 About Section: Apple × Rolls-Royce premium');
+            console.log('🌟 Park City 3&4: Ready to impress!');
+            console.log('═══════════════════════════════════════════════════════════════');
+            console.log('');
             
         } catch (error) {
             console.error('❌ Error initializing components:', error);
@@ -1581,15 +1388,15 @@ class ParkCityApp {
     }
 }
 
-// ============================================
-// INITIALIZE APPLICATION
-// ============================================
+// ═══════════════════════════════════════════════════════════════
+// 🚀 INITIALIZE APPLICATION
+// ═══════════════════════════════════════════════════════════════
 const parkCityApp = new ParkCityApp();
 
 // Scroll to top on load
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
-    console.log('🎬 Page loaded and scrolled to top');
+    console.log('🎬 Page: Loaded & scrolled to top gracefully');
 });
 
-console.log('🌟 Park City 3&4 Script loaded and ready');
+console.log('🌟 Park City 3&4 Script: Loaded, polished & ready to shine!');
