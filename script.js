@@ -1,12 +1,7 @@
 /**
  * PARK CITY 3&4 APARTMENTS
- * Complete Final JavaScript - All Issues Fixed
+ * Complete Final JavaScript - All Components Integrated
  * ES6 Class-Based Architecture
- * 
- * FIXES:
- * ✅ Auto-switch working (5 seconds)
- * ✅ Text stays still (no cursor movement)
- * ✅ "Park City" text clearly visible
  */
 
 // ==================== FIXED LUXURY HERO CONTROLLER ====================
@@ -190,7 +185,7 @@ class FixedLuxuryHero {
     bindScrollIndicator() {
         if (this.scrollIndicator) {
             this.scrollIndicator.addEventListener('click', () => {
-                const nextSection = document.querySelector('.highlights') || 
+                const nextSection = document.querySelector('.premium-amenities') || 
                                   document.querySelector('#amenities');
                 if (nextSection) {
                     const offsetTop = nextSection.offsetTop - 80;
@@ -455,6 +450,216 @@ class HeaderNavigation {
         }
     }
 }
+
+// ==================== PREMIUM AMENITIES CONTROLLER ====================
+class PremiumAmenitiesController {
+    constructor() {
+        this.bentoItems = document.querySelectorAll('.bento-item');
+        this.statBoxes = document.querySelectorAll('.stat-box');
+        this.featurePoints = document.querySelectorAll('.feature-point');
+        
+        if (this.bentoItems.length > 0) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('✨ Premium Amenities Controller initialized');
+        
+        // Add magnetic hover effects
+        this.initMagneticEffects();
+        
+        // Add parallax scroll effects
+        this.initParallaxEffects();
+        
+        // Add stat counter animations
+        this.initStatCounters();
+        
+        // Add bento item interactions
+        this.initBentoInteractions();
+    }
+    
+    // Magnetic hover effect for bento items
+    initMagneticEffects() {
+        this.bentoItems.forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Apply subtle magnetic pull
+                const icon = item.querySelector('.bento-icon');
+                if (icon) {
+                    icon.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px) scale(1.1) rotate(-5deg)`;
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                const icon = item.querySelector('.bento-icon');
+                if (icon) {
+                    icon.style.transform = '';
+                }
+            });
+        });
+        
+        console.log('🧲 Magnetic effects initialized');
+    }
+    
+    // Parallax scroll effects
+    initParallaxEffects() {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleParallaxScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+    
+    handleParallaxScroll() {
+        const scrolled = window.pageYOffset;
+        
+        // Parallax for building features
+        this.featurePoints.forEach((point, index) => {
+            const rect = point.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible) {
+                const speed = 0.05 * (index + 1);
+                const yPos = (scrolled - rect.top) * speed;
+                point.style.transform = `translateY(${yPos}px)`;
+            }
+        });
+    }
+    
+    // Animated stat counters
+    initStatCounters() {
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    this.animateCounter(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        this.statBoxes.forEach(box => observer.observe(box));
+    }
+    
+    animateCounter(statBox) {
+        const numberElement = statBox.querySelector('.stat-number-large');
+        if (!numberElement) return;
+        
+        const text = numberElement.textContent;
+        const hasPlus = text.includes('+');
+        const number = parseInt(text.replace(/[^0-9]/g, ''));
+        
+        if (isNaN(number)) return;
+        
+        let current = 0;
+        const increment = number / 60; // 60 frames for smooth animation
+        const duration = 1500; // 1.5 seconds
+        const stepTime = duration / 60;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= number) {
+                numberElement.textContent = number + (hasPlus ? '+' : '');
+                clearInterval(timer);
+            } else {
+                numberElement.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+            }
+        }, stepTime);
+        
+        console.log(`📊 Animated counter: ${number}`);
+    }
+    
+    // Bento item interactions
+    initBentoInteractions() {
+        this.bentoItems.forEach(item => {
+            // Add ripple effect on click
+            item.addEventListener('click', (e) => {
+                this.createRipple(e, item);
+            });
+            
+            // Add 3D tilt effect on hover
+            item.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 968) { // Only on desktop
+                    this.add3DTilt(e, item);
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = '';
+            });
+        });
+        
+        console.log('🎨 Bento interactions initialized');
+    }
+    
+    createRipple(event, element) {
+        const ripple = document.createElement('span');
+        const rect = element.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.4);
+            top: ${y}px;
+            left: ${x}px;
+            pointer-events: none;
+            animation: rippleAnimation 0.8s ease-out;
+            z-index: 0;
+        `;
+        
+        element.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 800);
+    }
+    
+    add3DTilt(event, element) {
+        const rect = element.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
+        element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    }
+}
+
+// Add ripple animation style for amenities
+const amenitiesRippleStyle = document.createElement('style');
+amenitiesRippleStyle.textContent = `
+    @keyframes rippleAnimation {
+        0% {
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(amenitiesRippleStyle);
 
 // ==================== SCROLL ANIMATIONS CLASS ====================
 class ScrollAnimations {
@@ -749,6 +954,9 @@ class ParkCityApp {
                 threshold: 0.1
             });
             
+            // Initialize Premium Amenities
+            this.components.premiumAmenities = new PremiumAmenitiesController();
+            
             // Initialize FAQ Accordion
             const faqsContainer = document.querySelector('.faqs-container');
             if (faqsContainer) {
@@ -773,6 +981,7 @@ class ParkCityApp {
             console.log('✅ All components initialized successfully!');
             console.log('🎨 Auto-switch enabled: Images change every 5 seconds');
             console.log('🗽 NYC-themed icons with smooth animations');
+            console.log('✨ Premium Amenities with interactive bento grid');
             console.log('🏙️ Park City 3&4 Apartments - Ready!');
             
         } catch (error) {
