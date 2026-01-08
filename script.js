@@ -1,18 +1,36 @@
+/**
+ * ═══════════════════════════════════════════════════════════════
+ *                    🏙️ PARK CITY 3&4 APARTMENTS
+ *            Complete JavaScript - ES6 Architecture
+ *        Rolls-Royce Smooth × Apple Premium × Creative Magic
+ * ═══════════════════════════════════════════════════════════════
+ */
+
 // ═══════════════════════════════════════════════════════════════
-// 🎬 LUXURY HERO CONTROLLER
+// 🏆 PERFECTED LUXURY HERO CONTROLLER
+// Rolls-Royce Smooth × NO BLACK BARS × GPU Accelerated
 // ═══════════════════════════════════════════════════════════════
-class FixedLuxuryHero {
+class PerfectedLuxuryHero {
     constructor() {
         this.hero = document.querySelector('.luxury-hero');
-        this.parallaxLayers = document.querySelectorAll('.parallax-image-layer');
-        this.progressItems = document.querySelectorAll('.progress-item');
-        this.scrollIndicator = document.querySelector('.luxury-scroll-indicator');
+        this.parallaxWrapper = document.querySelector('.hero-parallax-wrapper');
+        this.parallaxLayers = document.querySelectorAll('.parallax-layer');
+        this.progressIndicators = document.querySelectorAll('.progress-indicator');
+        this.scrollIndicator = document.querySelector('.scroll-indicator');
+        this.buttons = document.querySelectorAll('.hero-btn');
+        this.statItems = document.querySelectorAll('.stat-item');
         
         this.currentIndex = 0;
-        this.totalImages = this.parallaxLayers.length;
+        this.totalSlides = this.parallaxLayers.length;
         this.autoSwitchInterval = 5000;
         this.autoSwitchTimer = null;
         this.isTransitioning = false;
+        this.isHovered = false;
+        
+        // Performance optimization
+        this.rafId = null;
+        this.lastScrollY = 0;
+        this.ticking = false;
         
         if (this.hero && this.parallaxLayers.length > 0) {
             this.init();
@@ -20,181 +38,137 @@ class FixedLuxuryHero {
     }
     
     init() {
-        console.log('✨ Luxury Hero: Initialized with sparkles');
-        console.log(`📸 Found ${this.totalImages} gorgeous images`);
+        console.log('🏆 PERFECTED HERO: Initializing Rolls-Royce smoothness');
         
-        this.setActiveLayer(0);
-        this.updateProgress(0);
+        this.setActiveSlide(0);
         this.bindParallaxScroll();
         this.bindProgressClicks();
         this.bindScrollIndicator();
+        this.bindHoverPause();
+        this.bindButtonInteractions();
+        this.bindStatInteractions();
+        this.bindKeyboardNavigation();
+        this.addCursorEffects();
+        this.addMagneticButtons();
+        this.addNYCIconInteractions();
         
         setTimeout(() => {
-            console.log('🔄 Auto-switching engaged...');
             this.startAutoSwitch();
+            console.log('▶️ Auto-switch: Buttery smooth (5s)');
         }, 1000);
-        
-        this.bindHoverPause();
-        this.addCreativeEnhancements();
     }
     
-    addCreativeEnhancements() {
-        // Add subtle cursor trail effect on hero
-        if (window.innerWidth > 968) {
-            this.hero.addEventListener('mousemove', (e) => {
-                this.createCursorGlow(e);
-            });
-        }
-    }
-    
-    createCursorGlow(e) {
-        const glow = document.createElement('div');
-        glow.className = 'hero-cursor-glow';
-        glow.style.cssText = `
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.15), transparent 70%);
-            pointer-events: none;
-            z-index: 4;
-            left: ${e.clientX}px;
-            top: ${e.clientY}px;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        `;
+    setActiveSlide(index) {
+        if (this.isTransitioning) return;
+        this.isTransitioning = true;
         
-        this.hero.appendChild(glow);
-        
-        requestAnimationFrame(() => {
-            glow.style.opacity = '1';
+        this.parallaxLayers.forEach((layer, i) => {
+            layer.classList.toggle('active', i === index);
         });
         
+        this.progressIndicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+            const fill = indicator.querySelector('.indicator-fill');
+            if (fill) {
+                fill.style.animation = 'none';
+                if (i === index) {
+                    requestAnimationFrame(() => {
+                        fill.style.animation = 'indicatorFill 5s linear forwards';
+                    });
+                }
+            }
+        });
+        
+        this.currentIndex = index;
+        this.createSlideChangeRipple();
+        
         setTimeout(() => {
-            glow.style.opacity = '0';
-            setTimeout(() => glow.remove(), 300);
-        }, 100);
+            this.isTransitioning = false;
+            console.log(`✨ Slide ${index + 1}/${this.totalSlides}: Perfect transition`);
+        }, 1800);
+    }
+    
+    nextSlide() {
+        const nextIndex = (this.currentIndex + 1) % this.totalSlides;
+        this.setActiveSlide(nextIndex);
+    }
+    
+    prevSlide() {
+        const prevIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+        this.setActiveSlide(prevIndex);
     }
     
     startAutoSwitch() {
         this.autoSwitchTimer = setInterval(() => {
-            if (!this.isTransitioning) {
-                const nextIndex = (this.currentIndex + 1) % this.totalImages;
-                console.log(`🎬 Gracefully transitioning from ${this.currentIndex} → ${nextIndex}`);
-                this.switchToImage(nextIndex);
+            if (!this.isTransitioning && !this.isHovered) {
+                this.nextSlide();
             }
         }, this.autoSwitchInterval);
-        
-        console.log('✅ Auto-switch: Running smoothly (5s intervals)');
     }
     
     stopAutoSwitch() {
         if (this.autoSwitchTimer) {
             clearInterval(this.autoSwitchTimer);
             this.autoSwitchTimer = null;
-            console.log('⏸️ Auto-switch: Paused gracefully');
         }
     }
     
     resetAutoSwitch() {
         this.stopAutoSwitch();
         this.startAutoSwitch();
-        console.log('🔄 Auto-switch: Reset & refreshed');
-    }
-    
-    bindHoverPause() {
-        this.hero.addEventListener('mouseenter', () => {
-            this.stopAutoSwitch();
-        });
-        
-        this.hero.addEventListener('mouseleave', () => {
-            this.startAutoSwitch();
-        });
-    }
-    
-    switchToImage(index) {
-        if (this.isTransitioning || index === this.currentIndex) return;
-        
-        console.log(`🎭 Switching to slide ${index + 1}`);
-        this.isTransitioning = true;
-        
-        this.setActiveLayer(index);
-        this.updateProgress(index);
-        this.currentIndex = index;
-        
-        setTimeout(() => {
-            this.isTransitioning = false;
-            console.log('✨ Transition complete & beautiful');
-        }, 1500);
-    }
-    
-    setActiveLayer(index) {
-        this.parallaxLayers.forEach((layer, i) => {
-            if (i === index) {
-                layer.classList.add('active');
-            } else {
-                layer.classList.remove('active');
-            }
-        });
-    }
-    
-    updateProgress(index) {
-        this.progressItems.forEach((item, i) => {
-            if (i === index) {
-                item.classList.add('active');
-                const fill = item.querySelector('.progress-fill');
-                if (fill) {
-                    fill.style.animation = 'none';
-                    setTimeout(() => {
-                        fill.style.animation = 'progressFill 5s linear forwards';
-                    }, 10);
-                }
-            } else {
-                item.classList.remove('active');
-                const fill = item.querySelector('.progress-fill');
-                if (fill) fill.style.animation = 'none';
-            }
-        });
-    }
-    
-    bindProgressClicks() {
-        this.progressItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                if (!this.isTransitioning && index !== this.currentIndex) {
-                    console.log(`👆 Manual selection: Image ${index + 1}`);
-                    this.switchToImage(index);
-                    this.resetAutoSwitch();
-                }
-            });
-        });
     }
     
     bindParallaxScroll() {
-        let ticking = false;
-        
         window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
+            this.lastScrollY = window.pageYOffset;
+            if (!this.ticking) {
+                this.rafId = window.requestAnimationFrame(() => {
                     this.handleParallaxScroll();
-                    ticking = false;
+                    this.ticking = false;
                 });
-                ticking = true;
+                this.ticking = true;
             }
-        });
+        }, { passive: true });
     }
     
     handleParallaxScroll() {
-        const scrolled = window.pageYOffset;
+        const scrollY = this.lastScrollY;
         const heroHeight = this.hero.offsetHeight;
         
-        if (scrolled < heroHeight) {
+        if (scrollY < heroHeight) {
             this.parallaxLayers.forEach((layer) => {
-                const speed = parseFloat(layer.dataset.speed) || 0.5;
-                const yPos = -(scrolled * speed);
-                layer.style.transform = `translateY(${yPos}px)`;
+                if (layer.classList.contains('active')) {
+                    const speed = parseFloat(layer.dataset.speed) || 0.5;
+                    const yPos = -(scrollY * speed);
+                    layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                    layer.style.willChange = 'transform';
+                }
+            });
+        } else {
+            this.parallaxLayers.forEach(layer => {
+                layer.style.willChange = 'auto';
             });
         }
+    }
+    
+    bindProgressClicks() {
+        this.progressIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                if (!this.isTransitioning && index !== this.currentIndex) {
+                    this.setActiveSlide(index);
+                    this.resetAutoSwitch();
+                    this.createClickSparkle(indicator);
+                }
+            });
+            
+            indicator.addEventListener('mouseenter', () => {
+                indicator.style.transform = 'scaleY(2) scaleX(1.1)';
+            });
+            
+            indicator.addEventListener('mouseleave', () => {
+                indicator.style.transform = '';
+            });
+        });
     }
     
     bindScrollIndicator() {
@@ -203,93 +177,186 @@ class FixedLuxuryHero {
                 const nextSection = document.querySelector('.about-premium-section') || 
                                   document.querySelector('#amenities');
                 if (nextSection) {
-                    const offsetTop = nextSection.offsetTop - 80;
                     window.scrollTo({
-                        top: offsetTop,
+                        top: nextSection.offsetTop - 80,
                         behavior: 'smooth'
                     });
+                    this.createScrollRipple();
                 }
             });
         }
     }
-}
-
-// ═══════════════════════════════════════════════════════════════
-// 💎 BUTTON INTERACTIONS WITH SPARKLE EFFECTS
-// ═══════════════════════════════════════════════════════════════
-class ButtonInteractions {
-    constructor() {
-        this.buttons = document.querySelectorAll('.luxury-btn');
-        this.init();
+    
+    bindHoverPause() {
+        this.hero.addEventListener('mouseenter', () => {
+            this.isHovered = true;
+            this.stopAutoSwitch();
+        });
+        
+        this.hero.addEventListener('mouseleave', () => {
+            this.isHovered = false;
+            this.startAutoSwitch();
+        });
     }
     
-    init() {
-        console.log('🎨 Button Interactions: Active & gorgeous');
-        
+    bindButtonInteractions() {
         this.buttons.forEach(button => {
-            // Hover effects
-            button.addEventListener('mouseenter', () => {
-                button.style.transform = 'translateY(-3px) scale(1.02)';
-                this.createSparkles(button);
+            button.addEventListener('click', (e) => this.createButtonRipple(e, button));
+            button.addEventListener('mouseenter', () => this.createButtonSparkles(button));
+        });
+    }
+    
+    bindStatInteractions() {
+        this.statItems.forEach(stat => {
+            stat.addEventListener('mousemove', (e) => {
+                const rect = stat.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                stat.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
             });
-            
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = 'translateY(0) scale(1)';
-            });
-            
-            // Click ripple
-            button.addEventListener('click', (e) => {
-                this.createRipple(e, button);
+            stat.addEventListener('mouseleave', () => {
+                stat.style.transform = '';
             });
         });
     }
     
-    createSparkles(button) {
-        // Subtle sparkle effect on hover
-        for (let i = 0; i < 3; i++) {
+    bindKeyboardNavigation() {
+        document.addEventListener('keydown', (e) => {
+            const rect = this.hero.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isVisible && !this.isTransitioning && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                e.preventDefault();
+                if (e.key === 'ArrowLeft') {
+                    this.prevSlide();
+                } else {
+                    this.nextSlide();
+                }
+                this.resetAutoSwitch();
+            }
+        });
+    }
+    
+    addCursorEffects() {
+        if (window.innerWidth <= 968) return;
+        let cursorTimeout;
+        this.hero.addEventListener('mousemove', (e) => {
+            clearTimeout(cursorTimeout);
+            cursorTimeout = setTimeout(() => this.createCursorGlow(e), 50);
+        });
+    }
+    
+    createCursorGlow(e) {
+        const glow = document.createElement('div');
+        glow.style.cssText = `position:fixed;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(212,165,116,0.12),transparent 70%);pointer-events:none;z-index:9;left:${e.clientX}px;top:${e.clientY}px;transform:translate(-50%,-50%);transition:opacity 0.4s;opacity:0`;
+        this.hero.appendChild(glow);
+        requestAnimationFrame(() => glow.style.opacity = '1');
+        setTimeout(() => { glow.style.opacity = '0'; setTimeout(() => glow.remove(), 400); }, 100);
+    }
+    
+    addMagneticButtons() {
+        if (window.innerWidth <= 968) return;
+        this.buttons.forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.15;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.15;
+                button.style.transform = `translate(${x}px, ${y}px) translateY(-4px) scale(1.03)`;
+            });
+            button.addEventListener('mouseleave', () => button.style.transform = '');
+        });
+    }
+    
+    addNYCIconInteractions() {
+        document.querySelectorAll('.nyc-icon').forEach((icon, i) => {
+            icon.addEventListener('click', () => this.createIconBurst(icon));
+            icon.style.animationDelay = `${i * 0.15}s`;
+        });
+    }
+    
+    createSlideChangeRipple() {
+        const ripple = document.createElement('div');
+        ripple.style.cssText = 'position:absolute;top:50%;left:50%;width:100px;height:100px;border-radius:50%;border:2px solid rgba(212,165,116,0.4);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:5';
+        this.hero.appendChild(ripple);
+        requestAnimationFrame(() => {
+            ripple.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+            ripple.style.transform = 'translate(-50%, -50%) scale(8)';
+            ripple.style.opacity = '0';
+        });
+        setTimeout(() => ripple.remove(), 1000);
+    }
+    
+    createClickSparkle(element) {
+        for (let i = 0; i < 5; i++) {
             setTimeout(() => {
                 const sparkle = document.createElement('span');
                 sparkle.textContent = '✨';
-                sparkle.style.cssText = `
-                    position: absolute;
-                    font-size: 12px;
-                    pointer-events: none;
-                    animation: sparkleFloat 1s ease-out forwards;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    z-index: 10;
-                `;
-                
+                sparkle.style.cssText = `position:absolute;font-size:14px;pointer-events:none;z-index:20;left:${Math.random()*100}%;top:${Math.random()*100}%;animation:sparkleFloat 1s ease-out forwards`;
+                element.style.position = 'relative';
+                element.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }, i * 80);
+        }
+    }
+    
+    createButtonRipple(event, button) {
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.cssText = `position:absolute;width:${size}px;height:${size}px;border-radius:50%;background:rgba(255,255,255,0.4);top:${event.clientY-rect.top-size/2}px;left:${event.clientX-rect.left-size/2}px;pointer-events:none;transform:scale(0);opacity:1;z-index:0`;
+        button.appendChild(ripple);
+        requestAnimationFrame(() => {
+            ripple.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
+            ripple.style.transform = 'scale(3)';
+            ripple.style.opacity = '0';
+        });
+        setTimeout(() => ripple.remove(), 600);
+    }
+    
+    createButtonSparkles(button) {
+        for (let i = 0; i < 4; i++) {
+            setTimeout(() => {
+                const sparkle = document.createElement('span');
+                sparkle.textContent = '✨';
+                sparkle.style.cssText = `position:absolute;font-size:12px;pointer-events:none;z-index:10;left:${Math.random()*100}%;top:${Math.random()*100}%;animation:sparkleFloat 1s ease-out forwards`;
                 button.style.position = 'relative';
                 button.appendChild(sparkle);
-                
                 setTimeout(() => sparkle.remove(), 1000);
             }, i * 100);
         }
     }
     
-    createRipple(event, button) {
-        const ripple = document.createElement('span');
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = event.clientX - rect.left - size / 2;
-        const y = event.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            top: ${y}px;
-            left: ${x}px;
-            pointer-events: none;
-            animation: rippleEffect 0.6s ease-out;
-            z-index: 0;
-        `;
-        
-        button.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
+    createScrollRipple() {
+        const ripple = document.createElement('div');
+        ripple.style.cssText = 'position:absolute;top:50%;left:50%;width:80px;height:80px;border-radius:50%;border:2px solid rgba(212,165,116,0.5);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:0';
+        this.scrollIndicator.appendChild(ripple);
+        requestAnimationFrame(() => {
+            ripple.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
+            ripple.style.transform = 'translate(-50%, -50%) scale(2)';
+            ripple.style.opacity = '0';
+        });
+        setTimeout(() => ripple.remove(), 800);
+    }
+    
+    createIconBurst(icon) {
+        for (let i = 0; i < 6; i++) {
+            const particle = document.createElement('div');
+            const angle = (360 / 6) * i;
+            particle.style.cssText = 'position:absolute;width:4px;height:4px;background:linear-gradient(135deg,#d4a574,#a67c52);border-radius:50%;top:50%;left:50%;pointer-events:none;z-index:10';
+            icon.appendChild(particle);
+            requestAnimationFrame(() => {
+                const radians = (angle * Math.PI) / 180;
+                const x = Math.cos(radians) * 60;
+                const y = Math.sin(radians) * 60;
+                particle.style.transition = 'all 0.6s ease-out';
+                particle.style.transform = `translate(${x}px, ${y}px) scale(0)`;
+                particle.style.opacity = '0';
+            });
+            setTimeout(() => particle.remove(), 600);
+        }
     }
 }
 
@@ -487,7 +554,7 @@ class UltraSleekSlideshow {
         
         this.currentIndex = 0;
         this.totalSlides = this.slides.length;
-        this.autoPlayDuration = 4000; // 4 seconds - snappy!
+        this.autoPlayDuration = 4000;
         this.autoPlayTimer = null;
         this.progressInterval = null;
         this.isTransitioning = false;
@@ -498,8 +565,7 @@ class UltraSleekSlideshow {
     }
     
     init() {
-        console.log('✨ Ultra-Sleek Slideshow: Initialized with elegance');
-        console.log(`📸 ${this.totalSlides} stunning images loaded`);
+        console.log('✨ Ultra-Sleek Slideshow: Initialized');
         
         this.showSlide(0);
         this.startAutoPlay();
@@ -508,11 +574,10 @@ class UltraSleekSlideshow {
         this.bindKeyboard();
         this.addCreativeEnhancements();
         
-        console.log('▶️ Auto-play: Running smoothly (4s intervals)');
+        console.log('▶️ Auto-play: Running (4s intervals)');
     }
     
     addCreativeEnhancements() {
-        // Add subtle image scale animation
         this.slides.forEach(slide => {
             const img = slide.querySelector('img');
             if (img) {
@@ -533,22 +598,12 @@ class UltraSleekSlideshow {
         
         this.isTransitioning = true;
         
-        // Update slides
         this.slides.forEach((slide, i) => {
-            if (i === index) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
-            }
+            slide.classList.toggle('active', i === index);
         });
         
-        // Update dots
         this.dots.forEach((dot, i) => {
-            if (i === index) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
+            dot.classList.toggle('active', i === index);
         });
         
         this.currentIndex = index;
@@ -558,7 +613,7 @@ class UltraSleekSlideshow {
             this.isTransitioning = false;
         }, 1200);
         
-        console.log(`📍 Displaying: Slide ${index + 1}/${this.totalSlides}`);
+        console.log(`📍 Slide ${index + 1}/${this.totalSlides}`);
     }
     
     nextSlide() {
@@ -629,7 +684,6 @@ class UltraSleekSlideshow {
                 }
             });
             
-            // Add cute hover effect
             dot.addEventListener('mouseenter', () => {
                 dot.style.transform = 'scale(1.3)';
             });
@@ -644,12 +698,12 @@ class UltraSleekSlideshow {
         if (this.container) {
             this.container.addEventListener('mouseenter', () => {
                 this.stopAutoPlay();
-                console.log('⏸️ Slideshow: Paused gracefully');
+                console.log('⏸️ Slideshow: Paused');
             });
             
             this.container.addEventListener('mouseleave', () => {
                 this.startAutoPlay();
-                console.log('▶️ Slideshow: Resumed smoothly');
+                console.log('▶️ Slideshow: Resumed');
             });
         }
     }
@@ -689,7 +743,7 @@ class StatCounterAnimator {
     }
     
     init() {
-        console.log('📊 Stat Counter: Armed & ready to count');
+        console.log('📊 Stat Counter: Ready');
         
         const observer = new IntersectionObserver(
             (entries) => {
@@ -710,7 +764,7 @@ class StatCounterAnimator {
         this.statCards.forEach((card, index) => {
             setTimeout(() => {
                 this.animateStat(card);
-            }, index * 150); // Staggered for cuteness
+            }, index * 150);
         });
     }
     
@@ -726,7 +780,6 @@ class StatCounterAnimator {
             return;
         }
         
-        // Smooth counting animation
         const duration = 2000;
         const steps = 60;
         const stepTime = duration / steps;
@@ -740,7 +793,6 @@ class StatCounterAnimator {
             if (current >= target) {
                 valueElement.textContent = target;
                 clearInterval(counter);
-                console.log(`🎯 Counted to: ${target}!`);
             } else {
                 valueElement.textContent = Math.floor(current);
             }
@@ -762,7 +814,7 @@ class FeaturePointAnimator {
     }
     
     init() {
-        console.log('🎯 Feature Points: Locked & loaded');
+        console.log('🎯 Feature Points: Ready');
         
         const observer = new IntersectionObserver(
             (entries) => {
@@ -793,8 +845,6 @@ class FeaturePointAnimator {
                 }, 50);
             }, index * 200);
         });
-        
-        console.log('✨ Features: Animated beautifully');
     }
     
     addMagneticEffect() {
@@ -833,10 +883,9 @@ class StatCardInteractions {
     }
     
     init() {
-        console.log('💎 Stat Cards: Interactive & gorgeous');
+        console.log('💎 Stat Cards: Interactive');
         
         this.statCards.forEach(card => {
-            // 3D tilt effect
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -861,7 +910,6 @@ class StatCardInteractions {
                 card.style.transform = '';
             });
             
-            // Ripple on click
             card.addEventListener('click', (e) => {
                 this.createRipple(e, card);
             });
@@ -915,7 +963,7 @@ class AboutParallaxEffects {
     }
     
     init() {
-        console.log('🌊 Parallax: Flowing gracefully');
+        console.log('🌊 Parallax: Active');
         
         let ticking = false;
         
@@ -971,7 +1019,7 @@ class ScrollAnimations {
     }
     
     init() {
-        console.log('🎬 Scroll Animations: Observing with precision');
+        console.log('🎬 Scroll Animations: Ready');
         
         this.observer = new IntersectionObserver(
             (entries) => this.handleIntersection(entries),
@@ -1005,7 +1053,7 @@ class FAQAccordion {
     }
     
     init() {
-        console.log('❓ FAQ Accordion: Ready to answer');
+        console.log('❓ FAQ Accordion: Ready');
         
         this.items.forEach(item => {
             const question = item.querySelector('.faq-question');
@@ -1036,7 +1084,7 @@ class ContactForm {
     }
     
     init() {
-        console.log('📧 Contact Form: Ready to submit');
+        console.log('📧 Contact Form: Ready');
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
     }
     
@@ -1061,7 +1109,7 @@ class ContactForm {
         
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            this.showMessage('Please enter a valid email address 💌', 'error');
+            this.showMessage('Please enter a valid email 💌', 'error');
             return false;
         }
         
@@ -1113,37 +1161,6 @@ class ContactForm {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 🌊 PARALLAX EFFECTS
-// ═══════════════════════════════════════════════════════════════
-class ParallaxEffects {
-    constructor() {
-        this.elements = Array.from(document.querySelectorAll('.amenities-parallax'));
-        if (this.elements.length > 0) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('🌊 Parallax Effects: Flowing');
-        window.addEventListener('scroll', () => this.handleScroll());
-    }
-    
-    handleScroll() {
-        const scrollY = window.scrollY;
-        
-        this.elements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            
-            if (isVisible) {
-                const offset = (scrollY - el.offsetTop) * 0.3;
-                el.style.transform = `translateY(${offset}px)`;
-            }
-        });
-    }
-}
-
-// ═══════════════════════════════════════════════════════════════
 // 🎯 SMOOTH SCROLL
 // ═══════════════════════════════════════════════════════════════
 class SmoothScroll {
@@ -1152,7 +1169,7 @@ class SmoothScroll {
     }
     
     init() {
-        console.log('🎯 Smooth Scroll: Gliding gracefully');
+        console.log('🎯 Smooth Scroll: Active');
         
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
@@ -1186,114 +1203,28 @@ class PageLoader {
         
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
-            console.log('✅ Page: Fully loaded & gorgeous');
+            console.log('✅ Page: Fully loaded');
         });
     }
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 🎨 CREATIVE ANIMATION STYLES
+// 🎨 ANIMATION STYLES
 // ═══════════════════════════════════════════════════════════════
 function addAnimationStyles() {
     const style = document.createElement('style');
     style.textContent = `
-        /* Sparkle Float */
         @keyframes sparkleFloat {
-            0% {
-                opacity: 0;
-                transform: translateY(0) scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(-20px) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-40px) scale(0.5);
-            }
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            50% { opacity: 1; transform: translateY(-20px) scale(1); }
+            100% { opacity: 0; transform: translateY(-40px) scale(0.5); }
         }
-        
-        /* Ripple Effect */
         @keyframes rippleEffect {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-        
-        /* Feature Point Entrance */
-        .feature-point {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .feature-point.animated {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        /* Stat Box Entrance */
-        .stat-box {
-            opacity: 0;
-            transform: translateY(30px) scale(0.95);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .stat-box.counted {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
         }
     `;
     document.head.appendChild(style);
-    
-    console.log('🎨 Animation Styles: Applied beautifully');
-}
-
-// ═══════════════════════════════════════════════════════════════
-// 🎮 UTILITIES
-// ═══════════════════════════════════════════════════════════════
-class Utilities {
-    static debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-    
-    static throttle(func, limit) {
-        let inThrottle;
-        return function(...args) {
-            if (!inThrottle) {
-                func.apply(this, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    }
-    
-    static isMobile() {
-        return window.innerWidth <= 768;
-    }
-    
-    static isTablet() {
-        return window.innerWidth > 768 && window.innerWidth <= 1024;
-    }
-    
-    static isDesktop() {
-        return window.innerWidth > 1024;
-    }
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1317,27 +1248,25 @@ class ParkCityApp {
         try {
             console.log('');
             console.log('═══════════════════════════════════════════════════════════════');
-            console.log('✨                  PARK CITY 3&4 APARTMENTS                  ✨');
-            console.log('        Apple Precision × Rolls-Royce Luxury × Creative Magic');
+            console.log('✨              PARK CITY 3&4 APARTMENTS                      ✨');
+            console.log('   Rolls-Royce Smooth × Apple Premium × Creative Magic');
             console.log('═══════════════════════════════════════════════════════════════');
             console.log('');
             
-            // Add animation styles
             addAnimationStyles();
             
-            // Initialize Hero
-            console.log('🎬 HERO SECTION');
-            this.components.fixedHero = new FixedLuxuryHero();
-            this.components.buttonInteractions = new ButtonInteractions();
+            // Hero Section
+            console.log('🏆 PERFECTED HERO SECTION');
+            this.components.perfectedHero = new PerfectedLuxuryHero();
             console.log('');
             
-            // Initialize Navigation
+            // Navigation
             console.log('🧭 NAVIGATION');
             this.components.navigation = new HeaderNavigation();
             console.log('');
             
-            // Initialize About Section (NEW!)
-            console.log('💎 ABOUT SECTION - ULTRA-PREMIUM');
+            // About Section
+            console.log('💎 ABOUT SECTION');
             this.components.aboutSlideshow = new UltraSleekSlideshow();
             this.components.statCounter = new StatCounterAnimator();
             this.components.featurePoints = new FeaturePointAnimator();
@@ -1345,45 +1274,36 @@ class ParkCityApp {
             this.components.aboutParallax = new AboutParallaxEffects();
             console.log('');
             
-            // Initialize Global Features
+            // Global Features
             console.log('🎨 GLOBAL FEATURES');
             this.components.scrollAnimations = new ScrollAnimations({ threshold: 0.1 });
             
-            // Initialize FAQ
             const faqsContainer = document.querySelector('.faqs-container');
             if (faqsContainer) {
                 this.components.faqAccordion = new FAQAccordion(faqsContainer);
             }
             
-            // Initialize Contact Form
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 this.components.contactForm = new ContactForm(contactForm);
             }
             
-            // Initialize Parallax
-            this.components.parallaxEffects = new ParallaxEffects();
-            
-            // Initialize Smooth Scroll
             this.components.smoothScroll = new SmoothScroll();
-            
-            // Initialize Page Loader
             this.components.pageLoader = new PageLoader();
             
             console.log('');
             console.log('═══════════════════════════════════════════════════════════════');
             console.log('✅ ALL COMPONENTS: Initialized successfully!');
-            console.log('📸 Hero Slideshow: Auto-play (5s intervals)');
-            console.log('🎬 About Slideshow: Ultra-fast (4s intervals)');
-            console.log('🎯 Animations: Scroll-triggered entrance effects');
-            console.log('🎨 Interactions: Hover effects & magnetic animations');
-            console.log('💎 About Section: Apple × Rolls-Royce premium');
+            console.log('🏆 Hero: Rolls-Royce smooth (NO BLACK BARS!)');
+            console.log('🎬 About: Ultra-fast slideshow (4s)');
+            console.log('🎯 Effects: Magnetic buttons, sparkles, 3D tilts');
+            console.log('💎 Premium: Apple × Rolls-Royce level');
             console.log('🌟 Park City 3&4: Ready to impress!');
             console.log('═══════════════════════════════════════════════════════════════');
             console.log('');
             
         } catch (error) {
-            console.error('❌ Error initializing components:', error);
+            console.error('❌ Error initializing:', error);
         }
     }
 }
@@ -1393,10 +1313,9 @@ class ParkCityApp {
 // ═══════════════════════════════════════════════════════════════
 const parkCityApp = new ParkCityApp();
 
-// Scroll to top on load
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
-    console.log('🎬 Page: Loaded & scrolled to top gracefully');
+    console.log('🎬 Page loaded & scrolled to top');
 });
 
-console.log('🌟 Park City 3&4 Script: Loaded, polished & ready to shine!');
+console.log('🌟 Park City 3&4 Script: Loaded & ready to shine!');
