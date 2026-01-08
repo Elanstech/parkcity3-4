@@ -230,111 +230,196 @@
         </div>
     </div>
 </nav>
-    
-<!-- LUXURY HERO SECTION - Replace your existing hero section with this -->
+
+    <!-- ENHANCED LUXURY HERO SECTION - Replace your existing hero section -->
 <section class="luxury-hero" id="home">
-    <!-- Parallax Image Layers -->
+    <!-- Parallax Image Layers with Auto-Switch -->
     <div class="hero-parallax-container">
-        <!-- Layer 1 - Far Background -->
-        <div class="parallax-image-layer layer-far" data-speed="0.3">
+        <!-- Layer 1 -->
+        <div class="parallax-image-layer layer-1 active" data-speed="0.3">
             <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Park City Building Exterior">
+            <div class="image-vignette"></div>
         </div>
         
-        <!-- Layer 2 - Mid Background -->
-        <div class="parallax-image-layer layer-mid" data-speed="0.5">
+        <!-- Layer 2 -->
+        <div class="parallax-image-layer layer-2" data-speed="0.5">
             <img src="https://parkcity3and4.com/wp-content/uploads/2014/05/ParkCityHomeVsmall.jpg" alt="Park City Building View">
+            <div class="image-vignette"></div>
         </div>
         
-        <!-- Layer 3 - Close Background -->
-        <div class="parallax-image-layer layer-close" data-speed="0.7">
+        <!-- Layer 3 -->
+        <div class="parallax-image-layer layer-3" data-speed="0.7">
             <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Park City Building Details">
+            <div class="image-vignette"></div>
         </div>
         
-        <!-- Elegant Overlay -->
-        <div class="hero-elegant-overlay"></div>
+        <!-- Crisp Overlay -->
+        <div class="hero-crisp-overlay"></div>
     </div>
     
-    <!-- Sophisticated Content -->
+    <!-- Main Content with Advanced Animations -->
     <div class="hero-luxury-content">
         <div class="luxury-content-wrapper">
-            <!-- Premium Badge -->
-            <div class="premium-badge" data-aos="fade-down">
-                <span class="badge-line"></span>
-                <span class="badge-text">Luxury Living</span>
-                <span class="badge-line"></span>
+            <!-- NYC Inspired Icons -->
+            <div class="nyc-icons-row">
+                <div class="nyc-icon" data-icon="1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <!-- Empire State Building -->
+                        <path d="M8 22V6L12 2L16 6V22M6 22H18M10 10H14M10 14H14M10 18H14"/>
+                    </svg>
+                </div>
+                <div class="nyc-icon" data-icon="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <!-- Skyline -->
+                        <path d="M3 22V12H5V22M7 22V8H9V22M11 22V14H13V22M15 22V10H17V22M19 22V6H21V22M2 22H22"/>
+                    </svg>
+                </div>
+                <div class="nyc-icon" data-icon="3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <!-- Bridge -->
+                        <path d="M2 12L4 8L6 12L8 8L10 12L12 8L14 12L16 8L18 12L20 8L22 12M2 12V20M22 12V20M2 20H22"/>
+                    </svg>
+                </div>
+                <div class="nyc-icon" data-icon="4">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <!-- Crown (Statue of Liberty) -->
+                        <path d="M12 2L13 6L17 4L15 8L19 9L16 12H8L5 9L9 8L7 4L11 6L12 2ZM8 12V22M16 12V22M6 22H18"/>
+                    </svg>
+                </div>
             </div>
             
-            <!-- Main Headline -->
-            <h1 class="hero-luxury-title" data-aos="fade-up" data-aos-delay="200">
-                <span class="title-main">Welcome to</span>
-                <span class="title-featured">Park City 3&4</span>
-                <span class="title-sub">Apartments</span>
+            <!-- Animated Badge -->
+            <div class="premium-badge">
+                <span class="badge-icon">✦</span>
+                <span class="badge-text">Luxury Living in the City</span>
+                <span class="badge-icon">✦</span>
+            </div>
+            
+            <!-- Animated Main Title -->
+            <h1 class="hero-luxury-title">
+                <span class="title-line title-welcome">
+                    <span class="word" data-word="1">Welcome</span>
+                    <span class="word" data-word="2">to</span>
+                </span>
+                <span class="title-line title-main">
+                    <span class="letter" data-letter="1">P</span>
+                    <span class="letter" data-letter="2">a</span>
+                    <span class="letter" data-letter="3">r</span>
+                    <span class="letter" data-letter="4">k</span>
+                    <span class="letter-space"></span>
+                    <span class="letter" data-letter="5">C</span>
+                    <span class="letter" data-letter="6">i</span>
+                    <span class="letter" data-letter="7">t</span>
+                    <span class="letter" data-letter="8">y</span>
+                </span>
+                <span class="title-line title-sub">
+                    <span class="word" data-word="3">3&4</span>
+                    <span class="word" data-word="4">Apartments</span>
+                </span>
             </h1>
             
-            <!-- Elegant Description -->
-            <p class="hero-luxury-description" data-aos="fade-up" data-aos-delay="400">
-                A perfect community to call home. Experience refined living with 24/7 security, 
-                premium amenities, and unparalleled service.
-            </p>
+            <!-- Animated Description -->
+            <div class="hero-luxury-description">
+                <p class="description-line" data-line="1">
+                    A perfect community to call home.
+                </p>
+                <p class="description-line" data-line="2">
+                    Experience refined living with 24/7 security, premium amenities,
+                </p>
+                <p class="description-line" data-line="3">
+                    and unparalleled service in the heart of the city.
+                </p>
+            </div>
             
-            <!-- Premium Actions -->
-            <div class="hero-luxury-actions" data-aos="fade-up" data-aos-delay="600">
-                <a href="#contact" class="luxury-btn luxury-btn-primary">
-                    <span class="btn-luxury-text">Schedule Your Tour</span>
-                    <span class="btn-luxury-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
+            <!-- Animated CTAs -->
+            <div class="hero-luxury-actions">
+                <a href="#contact" class="luxury-btn luxury-btn-primary" data-btn="1">
+                    <span class="btn-bg"></span>
+                    <span class="btn-content">
+                        <span class="btn-text">Schedule Tour</span>
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
                     </span>
                 </a>
-                <a href="#amenities" class="luxury-btn luxury-btn-secondary">
-                    <span class="btn-luxury-text">Explore Amenities</span>
-                    <span class="btn-luxury-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
+                <a href="#amenities" class="luxury-btn luxury-btn-secondary" data-btn="2">
+                    <span class="btn-bg"></span>
+                    <span class="btn-content">
+                        <span class="btn-text">View Amenities</span>
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
                     </span>
                 </a>
             </div>
             
-            <!-- Refined Stats -->
-            <div class="hero-luxury-stats" data-aos="fade-up" data-aos-delay="800">
-                <div class="luxury-stat-item">
-                    <div class="stat-luxury-number">24/7</div>
-                    <div class="stat-luxury-label">Security</div>
+            <!-- Animated Stats -->
+            <div class="hero-luxury-stats">
+                <div class="luxury-stat-item" data-stat="1">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Security</div>
+                    </div>
                 </div>
                 <div class="luxury-stat-divider"></div>
-                <div class="luxury-stat-item">
-                    <div class="stat-luxury-number">100+</div>
-                    <div class="stat-luxury-label">Premium Units</div>
+                <div class="luxury-stat-item" data-stat="2">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Premium Units</div>
+                    </div>
                 </div>
                 <div class="luxury-stat-divider"></div>
-                <div class="luxury-stat-item">
-                    <div class="stat-luxury-number">15+</div>
-                    <div class="stat-luxury-label">Amenities</div>
+                <div class="luxury-stat-item" data-stat="3">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Amenities</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Elegant Scroll Indicator -->
-    <div class="luxury-scroll-indicator" data-aos="fade-up" data-aos-delay="1000">
-        <span class="scroll-luxury-text">Discover More</span>
-        <div class="scroll-luxury-line"></div>
+    <!-- Minimal Scroll Indicator -->
+    <div class="luxury-scroll-indicator">
+        <div class="scroll-dot"></div>
+        <div class="scroll-line"></div>
     </div>
     
-    <!-- Image Navigation -->
-    <div class="hero-image-navigation">
-        <button class="image-nav-btn" data-layer="0">
-            <span class="nav-btn-number">01</span>
-        </button>
-        <button class="image-nav-btn active" data-layer="1">
-            <span class="nav-btn-number">02</span>
-        </button>
-        <button class="image-nav-btn" data-layer="2">
-            <span class="nav-btn-number">03</span>
-        </button>
+    <!-- Image Progress Indicators -->
+    <div class="hero-image-progress">
+        <div class="progress-item active" data-index="0">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="progress-item" data-index="1">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="progress-item" data-index="2">
+            <div class="progress-fill"></div>
+        </div>
     </div>
 </section>
     
