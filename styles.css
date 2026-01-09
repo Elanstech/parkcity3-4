@@ -980,38 +980,6 @@ body.menu-open {
     filter: brightness(0.8) contrast(1.1);
 }
 
-/* Video Overlays */
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(0, 0, 0, 0.2) 30%,
-        rgba(0, 0, 0, 0.3) 70%,
-        rgba(0, 0, 0, 0.7) 100%
-    );
-    z-index: 2;
-}
-
-.video-vignette {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        ellipse at center,
-        transparent 0%,
-        rgba(0, 0, 0, 0.2) 65%,
-        rgba(0, 0, 0, 0.5) 100%
-    );
-    z-index: 3;
-}
-
 /* ═══════════════════════════════════════════════════════════════
    CONTENT CONTAINER
    ═══════════════════════════════════════════════════════════════ */
