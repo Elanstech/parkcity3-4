@@ -749,6 +749,324 @@
                 </a>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Premium Map & Location Section -->
+<section class="premium-map-section" id="map-location">
+    <div class="container">
+        
+        <!-- Section Header -->
+        <div class="map-header" data-animate>
+            <span class="map-label">Our Location</span>
+            <h2 class="map-title">
+                Perfectly Positioned<br>in the Heart of Queens
+            </h2>
+            <p class="map-subtitle">Six exceptional buildings surrounded by the best dining, shopping, and entertainment Queens has to offer</p>
+        </div>
+        
+        <!-- Map Container with Tabs -->
+        <div class="map-wrapper" data-animate data-delay="200">
+            
+            <!-- Toggle Tabs -->
+            <div class="map-tabs">
+                <button class="map-tab active" data-tab="buildings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg>
+                    <span>Our Buildings</span>
+                </button>
+                <button class="map-tab" data-tab="attractions">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span>Top Spots</span>
+                </button>
+            </div>
+            
+            <!-- Map Display Area -->
+            <div class="map-display-container">
+                
+                <!-- Interactive Map -->
+                <div class="map-canvas">
+                    <!-- Google Maps Embed -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.1234567890123!2d-73.8654321!3d40.7234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQzJzI0LjQiTiA3M8KwNTEnNTUuNiJX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    
+                    <!-- Custom Map Overlay -->
+                    <div class="map-overlay">
+                        <div class="map-marker" style="top: 45%; left: 48%;" data-building="1">
+                            <div class="marker-pin">
+                                <span>1</span>
+                            </div>
+                        </div>
+                        <div class="map-marker" style="top: 42%; left: 52%;" data-building="2">
+                            <div class="marker-pin">
+                                <span>2</span>
+                            </div>
+                        </div>
+                        <div class="map-marker" style="top: 48%; left: 50%;" data-building="3">
+                            <div class="marker-pin">
+                                <span>3</span>
+                            </div>
+                        </div>
+                        <div class="map-marker" style="top: 50%; left: 46%;" data-building="4">
+                            <div class="marker-pin">
+                                <span>4</span>
+                            </div>
+                        </div>
+                        <div class="map-marker" style="top: 46%; left: 54%;" data-building="5">
+                            <div class="marker-pin">
+                                <span>5</span>
+                            </div>
+                        </div>
+                        <div class="map-marker" style="top: 52%; left: 49%;" data-building="6">
+                            <div class="marker-pin">
+                                <span>6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Location Info Panel -->
+                <div class="location-info-panel">
+                    
+                    <!-- Buildings Tab Content -->
+                    <div class="tab-content active" data-content="buildings">
+                        <h3 class="panel-title">Park City Buildings</h3>
+                        <p class="panel-subtitle">Six premium residential buildings in Forest Hills</p>
+                        
+                        <div class="locations-list">
+                            <div class="location-item" data-building="1">
+                                <div class="location-number">1</div>
+                                <div class="location-details">
+                                    <h4>Building One</h4>
+                                    <p>97-10 62nd Drive</p>
+                                </div>
+                                <div class="location-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item" data-building="2">
+                                <div class="location-number">2</div>
+                                <div class="location-details">
+                                    <h4>Building Two</h4>
+                                    <p>97-20 62nd Drive</p>
+                                </div>
+                                <div class="location-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item" data-building="3">
+                                <div class="location-number">3</div>
+                                <div class="location-details">
+                                    <h4>Building Three</h4>
+                                    <p>97-30 62nd Drive</p>
+                                </div>
+                                <div class="location-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item" data-building="4">
+                                <div class="location-number">4</div>
+                                <div class="location-details">
+                                    <h4>Building Four</h4>
+                                    <p>97-40 62nd Drive</p>
+                                </div>
+                                <div class="location-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item" data-building="5">
+                                <div class="location-number">5</div>
+                                <div class="location-details">
+                                    <h4>Building Five</h4>
+                                    <p>97-50 62nd Drive</p>
+                                </div>
+                                <div class="location-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item" data-building="6">
+                                <div class="location-number">6</div>
+                                <div class="location-details">
+                                    <h4>Building Six</h4>
+                                    <p>97-60 62nd Drive</p>
+                                </div>
+                                <div class="location-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Attractions Tab Content -->
+                    <div class="tab-content" data-content="attractions">
+                        <h3 class="panel-title">Top Spots Nearby</h3>
+                        <p class="panel-subtitle">Everything you love, minutes from home</p>
+                        
+                        <div class="locations-list">
+                            <div class="attraction-item">
+                                <div class="attraction-icon dining">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+                                    </svg>
+                                </div>
+                                <div class="attraction-details">
+                                    <h4>Forest Hills Stadium</h4>
+                                    <p>5 min walk • Concerts & Events</p>
+                                </div>
+                                <div class="attraction-distance">0.3mi</div>
+                            </div>
+                            
+                            <div class="attraction-item">
+                                <div class="attraction-icon shopping">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    </svg>
+                                </div>
+                                <div class="attraction-details">
+                                    <h4>Austin Street Shopping</h4>
+                                    <p>8 min walk • Retail & Dining</p>
+                                </div>
+                                <div class="attraction-distance">0.5mi</div>
+                            </div>
+                            
+                            <div class="attraction-item">
+                                <div class="attraction-icon transit">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                        <rect x="9" y="9" width="6" height="6"></rect>
+                                    </svg>
+                                </div>
+                                <div class="attraction-details">
+                                    <h4>Forest Hills Station</h4>
+                                    <p>10 min walk • E, F, M, R Lines</p>
+                                </div>
+                                <div class="attraction-distance">0.6mi</div>
+                            </div>
+                            
+                            <div class="attraction-item">
+                                <div class="attraction-icon park">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                </div>
+                                <div class="attraction-details">
+                                    <h4>Forest Park</h4>
+                                    <p>12 min walk • Nature & Recreation</p>
+                                </div>
+                                <div class="attraction-distance">0.7mi</div>
+                            </div>
+                            
+                            <div class="attraction-item">
+                                <div class="attraction-icon dining">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+                                    </svg>
+                                </div>
+                                <div class="attraction-details">
+                                    <h4>Restaurant Row</h4>
+                                    <p>7 min walk • Global Cuisine</p>
+                                </div>
+                                <div class="attraction-distance">0.4mi</div>
+                            </div>
+                            
+                            <div class="attraction-item">
+                                <div class="attraction-icon fitness">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 12h4l3 9 4-18 3 9h4"></path>
+                                    </svg>
+                                </div>
+                                <div class="attraction-details">
+                                    <h4>Fitness Centers</h4>
+                                    <p>5 min walk • Multiple Options</p>
+                                </div>
+                                <div class="attraction-distance">0.3mi</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Quick Stats -->
+        <div class="map-quick-stats" data-animate data-delay="400">
+            <div class="quick-stat">
+                <div class="stat-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="10" r="3"></circle>
+                        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"></path>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h4>Prime Location</h4>
+                    <p>Forest Hills, Queens</p>
+                </div>
+            </div>
+            
+            <div class="quick-stat">
+                <div class="stat-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h4>15 Minutes</h4>
+                    <p>To Midtown Manhattan</p>
+                </div>
+            </div>
+            
+            <div class="quick-stat">
+                <div class="stat-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h4>Walkable</h4>
+                    <p>Everything Nearby</p>
+                </div>
+            </div>
+        </div>
         
     </div>
 </section>
