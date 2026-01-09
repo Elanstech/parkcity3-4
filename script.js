@@ -803,43 +803,34 @@ class AboutParallaxEffects {
 // ═══════════════════════════════════════════════════════════════
 class LocationLifestyleController {
     constructor() {
-        this.bentoCards = document.querySelectorAll('.lifestyle-bento-card');
-        this.ctaButton = document.querySelector('.cta-premium-btn');
-        this.ctaWrapper = document.querySelector('.lifestyle-cta-wrapper');
-        this.section = document.querySelector('.location-lifestyle');
+        this.section = document.querySelector('.premium-location-lifestyle');
+        this.header = document.querySelector('.location-header');
+        this.cards = document.querySelectorAll('.visual-feature-card');
+        this.cta = document.querySelector('.lifestyle-premium-cta');
+        this.ctaButton = document.querySelector('.cta-elegant-btn');
         
-        this.animationFrameId = null;
-        this.isHovering = false;
-        
-        if (this.bentoCards.length > 0) {
+        if (this.section) {
             this.init();
         }
     }
     
     init() {
-        console.log('🌆 Location & Lifestyle: Initializing Rolls-Royce animations...');
+        console.log('🌆 Location & Lifestyle: Initializing smooth animations...');
         
-        this.setupScrollAnimations();
-        this.addCardInteractions();
-        this.addMagneticEffects();
-        this.addParallaxEffect();
+        this.setupIntersectionObserver();
+        this.addCardHoverEffects();
         this.addCtaInteractions();
-        this.addFloatingParticles();
-        this.initIntersectionObserver();
+        this.addSmoothParallax();
         
-        console.log('✅ Location & Lifestyle: Premium animations ready');
+        console.log('✅ Location & Lifestyle: Smooth & beautiful');
     }
     
-    setupScrollAnimations() {
-        // Stagger the entrance animations
-        this.bentoCards.forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.15}s`;
-        });
-    }
-    
-    initIntersectionObserver() {
-        const observerOptions = {
-            threshold: 0.15,
+    // ═══════════════════════════════════════════════════════════════
+    // SMOOTH SCROLL REVEAL
+    // ═══════════════════════════════════════════════════════════════
+    setupIntersectionObserver() {
+        const options = {
+            threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
         
@@ -849,50 +840,38 @@ class LocationLifestyleController {
                     entry.target.classList.add('animated');
                 }
             });
-        }, observerOptions);
+        }, options);
         
-        // Observe all cards
-        this.bentoCards.forEach(card => {
-            observer.observe(card);
-        });
-        
-        // Observe CTA wrapper
-        if (this.ctaWrapper) {
-            observer.observe(this.ctaWrapper);
-        }
+        // Observe elements
+        if (this.header) observer.observe(this.header);
+        this.cards.forEach(card => observer.observe(card));
+        if (this.cta) observer.observe(this.cta);
     }
     
-    addCardInteractions() {
-        this.bentoCards.forEach(card => {
-            // 3D Tilt Effect (Desktop only)
-            if (window.innerWidth > 968) {
-                card.addEventListener('mousemove', (e) => {
-                    this.handleCardTilt(e, card);
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    this.resetCardTilt(card);
-                });
-            }
-            
-            // Ripple Effect on Click
-            card.addEventListener('click', (e) => {
-                this.createLuxuryRipple(e, card);
-            });
-            
-            // Glow Enhancement
-            card.addEventListener('mouseenter', () => {
-                this.enhanceCardGlow(card);
-                this.animateCardContent(card);
+    // ═══════════════════════════════════════════════════════════════
+    // CARD HOVER EFFECTS
+    // ═══════════════════════════════════════════════════════════════
+    addCardHoverEffects() {
+        this.cards.forEach(card => {
+            // Smooth mouse tracking
+            card.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 968) {
+                    this.handleCardMouseMove(e, card);
+                }
             });
             
             card.addEventListener('mouseleave', () => {
-                this.resetCardContent(card);
+                this.resetCard(card);
+            });
+            
+            // Click effect
+            card.addEventListener('click', () => {
+                this.pulseCard(card);
             });
         });
     }
     
-    handleCardTilt(event, card) {
+    handleCardMouseMove(event, card) {
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
@@ -900,181 +879,62 @@ class LocationLifestyleController {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = (y - centerY) / 25;
-        const rotateY = (centerX - x) / 25;
+        const rotateX = (y - centerY) / 30;
+        const rotateY = (centerX - x) / 30;
         
-        // Smooth tilt with perspective
         card.style.transform = `
-            perspective(1200px) 
+            perspective(1000px) 
             rotateX(${rotateX}deg) 
-            rotateY(${rotateY}deg) 
-            translateY(-16px) 
-            scale3d(1.03, 1.03, 1.03)
-            translateZ(20px)
+            rotateY(${rotateY}deg)
         `;
         
-        // Update glow position based on mouse
-        const glow = card.querySelector('.bento-card-glow');
-        if (glow) {
-            const glowX = (x / rect.width) * 100;
-            const glowY = (y / rect.height) * 100;
-            glow.style.background = `radial-gradient(circle at ${glowX}% ${glowY}%, rgba(212, 165, 116, 0.4), transparent 70%)`;
+        // Update gradient overlay position
+        const overlay = card.querySelector('.image-gradient');
+        if (overlay) {
+            const xPercent = (x / rect.width) * 100;
+            const yPercent = (y / rect.height) * 100;
+            overlay.style.background = `
+                radial-gradient(circle at ${xPercent}% ${yPercent}%, 
+                    rgba(212, 165, 116, 0.3) 0%, 
+                    transparent 40%),
+                linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%)
+            `;
         }
     }
     
-    resetCardTilt(card) {
+    resetCard(card) {
         card.style.transform = '';
-        card.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-    }
-
-    addMagneticEffects() {
-        if (window.innerWidth <= 968) return;
-        
-        this.bentoCards.forEach(card => {
-            const iconWrapper = card.querySelector('.bento-icon-wrapper');
-            const icon = card.querySelector('.bento-icon');
-            
-            if (iconWrapper && icon) {
-                card.addEventListener('mousemove', (e) => {
-                    this.handleMagneticIcon(e, card, iconWrapper, icon);
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    iconWrapper.style.transform = '';
-                    icon.style.transform = '';
-                });
-            }
-        });
-    }
-    
-    handleMagneticIcon(event, card, iconWrapper, icon) {
-        const cardRect = card.getBoundingClientRect();
-        const iconRect = iconWrapper.getBoundingClientRect();
-        
-        const mouseX = event.clientX - cardRect.left;
-        const mouseY = event.clientY - cardRect.top;
-        
-        const iconCenterX = iconRect.left - cardRect.left + iconRect.width / 2;
-        const iconCenterY = iconRect.top - cardRect.top + iconRect.height / 2;
-        
-        const deltaX = mouseX - iconCenterX;
-        const deltaY = mouseY - iconCenterY;
-        
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-        const maxDistance = 200;
-        
-        if (distance < maxDistance) {
-            const strength = (maxDistance - distance) / maxDistance;
-            const moveX = (deltaX / distance) * 25 * strength;
-            const moveY = (deltaY / distance) * 25 * strength;
-            
-            iconWrapper.style.transform = `
-                translate(${moveX}px, ${moveY}px) 
-                scale(${1.15 + strength * 0.15}) 
-                rotate(-8deg)
-            `;
-            
-            icon.style.transform = `
-                scale(${1.1 + strength * 0.1}) 
-                rotate(${8 + strength * 5}deg)
-            `;
-        }
-    }
-
-    addParallaxEffect() {
-        if (window.innerWidth <= 968) return;
-        
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                this.animationFrameId = window.requestAnimationFrame(() => {
-                    this.handleParallaxScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-    
-    handleParallaxScroll() {
-        const scrollY = window.scrollY;
-        
-        this.bentoCards.forEach((card, index) => {
-            const rect = card.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            
-            if (isVisible) {
-                // Alternating parallax direction
-                const direction = (index % 2 === 0) ? 1 : -1;
-                const speed = 0.05 * direction;
-                const offset = (scrollY - (card.offsetTop - window.innerHeight / 2)) * speed;
-                
-                // Only apply if not being hovered
-                if (!card.matches(':hover')) {
-                    card.style.transform = `translateY(${offset}px)`;
-                }
-            }
-        });
-    }
-
-    animateCardContent(card) {
-        const title = card.querySelector('.bento-title');
-        const description = card.querySelector('.bento-description');
-        const features = card.querySelectorAll('.mini-feature');
-        const highlight = card.querySelector('.bento-highlight');
-        
-        // Animate title
-        if (title) {
-            setTimeout(() => {
-                title.style.transform = 'translateX(8px)';
-            }, 50);
-        }
-        
-        // Animate description
-        if (description) {
-            setTimeout(() => {
-                description.style.transform = 'translateX(4px)';
-            }, 100);
-        }
-        
-        // Stagger animate features
-        features.forEach((feature, index) => {
-            setTimeout(() => {
-                feature.style.transform = 'translateX(12px) scale(1.05)';
-            }, 150 + (index * 50));
-        });
-        
-        // Animate highlight
-        if (highlight) {
-            setTimeout(() => {
-                highlight.style.transform = 'translateX(12px) scale(1.05)';
-            }, 200);
+        const overlay = card.querySelector('.image-gradient');
+        if (overlay) {
+            overlay.style.background = '';
         }
     }
     
-    resetCardContent(card) {
-        const title = card.querySelector('.bento-title');
-        const description = card.querySelector('.bento-description');
-        const features = card.querySelectorAll('.mini-feature');
-        const highlight = card.querySelector('.bento-highlight');
-        
-        [title, description, highlight].forEach(el => {
-            if (el) el.style.transform = '';
-        });
-        
-        features.forEach(feature => {
-            feature.style.transform = '';
-        });
+    pulseCard(card) {
+        card.style.animation = 'cardPulse 0.6s ease-out';
+        setTimeout(() => {
+            card.style.animation = '';
+        }, 600);
     }
     
+    // ═══════════════════════════════════════════════════════════════
+    // CTA BUTTON INTERACTIONS
+    // ═══════════════════════════════════════════════════════════════
     addCtaInteractions() {
         if (!this.ctaButton) return;
         
         // Magnetic effect
         if (window.innerWidth > 968) {
             this.ctaButton.addEventListener('mousemove', (e) => {
-                this.handleMagneticCta(e);
+                const rect = this.ctaButton.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.2;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.2;
+                
+                this.ctaButton.style.transform = `
+                    translate(${x}px, ${y}px) 
+                    translateY(-4px) 
+                    scale(1.05)
+                `;
             });
             
             this.ctaButton.addEventListener('mouseleave', () => {
@@ -1082,223 +942,85 @@ class LocationLifestyleController {
             });
         }
         
-        // Click sparkle effect
+        // Click sparkles
         this.ctaButton.addEventListener('click', (e) => {
-            this.createCtaSparkles();
-            this.createCtaRipple(e);
-        });
-        
-        // Hover glow pulse
-        this.ctaButton.addEventListener('mouseenter', () => {
-            this.pulseCtaGlow();
+            this.createSparkles(e);
         });
     }
     
-    handleMagneticCta(event) {
-        const rect = this.ctaButton.getBoundingClientRect();
-        const x = (event.clientX - rect.left - rect.width / 2) * 0.3;
-        const y = (event.clientY - rect.top - rect.height / 2) * 0.3;
-        
-        this.ctaButton.style.transform = `
-            translate(${x}px, ${y}px) 
-            translateY(-6px) 
-            scale(1.05)
-        `;
-    }
-    
-    pulseCtaGlow() {
-        const card = this.ctaButton.closest('.lifestyle-cta-card');
-        if (!card) return;
-        
-        const glow = card.querySelector('.cta-glow');
-        if (glow) {
-            glow.style.animation = 'ctaGlowPulse 1.5s ease-in-out';
-            setTimeout(() => {
-                glow.style.animation = 'ctaGlowPulse 5s ease-in-out infinite';
-            }, 1500);
-        }
-    }
-    
-    createLuxuryRipple(event, element) {
-        const ripple = document.createElement('div');
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height) * 2;
-        const x = event.clientX - rect.left - size / 2;
-        const y = event.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.5) 0%, rgba(212, 165, 116, 0.2) 40%, transparent 70%);
-            top: ${y}px;
-            left: ${x}px;
-            pointer-events: none;
-            transform: scale(0);
-            opacity: 1;
-            z-index: 100;
-            filter: blur(4px);
-        `;
-        
-        element.appendChild(ripple);
-        
-        requestAnimationFrame(() => {
-            ripple.style.transition = 'transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s cubic-bezier(0.16, 1, 0.3, 1)';
-            ripple.style.transform = 'scale(1)';
-            ripple.style.opacity = '0';
-        });
-        
-        setTimeout(() => ripple.remove(), 1000);
-    }
-    
-    createCtaRipple(event) {
-        const ripple = document.createElement('div');
-        const rect = this.ctaButton.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height) * 2;
-        const x = event.clientX - rect.left - size / 2;
-        const y = event.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
-            top: ${y}px;
-            left: ${x}px;
-            pointer-events: none;
-            transform: scale(0);
-            opacity: 1;
-            z-index: 1;
-        `;
-        
-        this.ctaButton.appendChild(ripple);
-        
-        requestAnimationFrame(() => {
-            ripple.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
-            ripple.style.transform = 'scale(2)';
-            ripple.style.opacity = '0';
-        });
-        
-        setTimeout(() => ripple.remove(), 800);
-    }
-    
-    createCtaSparkles() {
+    createSparkles(event) {
         if (window.innerWidth <= 968) return;
         
-        const sparkleCount = 12;
-        
-        for (let i = 0; i < sparkleCount; i++) {
-            setTimeout(() => {
-                const sparkle = document.createElement('span');
-                const angle = (Math.PI * 2 * i) / sparkleCount;
-                const distance = 60 + Math.random() * 40;
-                
-                sparkle.textContent = '✨';
-                sparkle.style.cssText = `
-                    position: absolute;
-                    font-size: ${12 + Math.random() * 8}px;
-                    pointer-events: none;
-                    z-index: 10;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                    opacity: 0;
-                `;
-                
-                this.ctaButton.style.position = 'relative';
-                this.ctaButton.appendChild(sparkle);
-                
-                requestAnimationFrame(() => {
-                    sparkle.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
-                    sparkle.style.transform = `
-                        translate(-50%, -50%) 
-                        translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)
-                        scale(0)
-                        rotate(${Math.random() * 720}deg)
-                    `;
-                    sparkle.style.opacity = '1';
-                    
-                    setTimeout(() => {
-                        sparkle.style.opacity = '0';
-                    }, 600);
-                });
-                
-                setTimeout(() => sparkle.remove(), 1200);
-            }, i * 40);
-        }
-    }
-    
-    enhanceCardGlow(card) {
-        const glow = card.querySelector('.bento-card-glow');
-        if (glow) {
-            glow.style.transition = 'all 1s cubic-bezier(0.16, 1, 0.3, 1)';
-        }
-    }
-    
-    addFloatingParticles() {
-        if (window.innerWidth <= 968 || !this.section) return;
-        
-        const particleCount = 15;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            const size = Math.random() * 4 + 2;
-            const duration = Math.random() * 20 + 15;
-            const delay = Math.random() * 5;
-            const x = Math.random() * 100;
+        for (let i = 0; i < 8; i++) {
+            const sparkle = document.createElement('div');
+            const angle = (Math.PI * 2 * i) / 8;
+            const distance = 50;
             
-            particle.style.cssText = `
+            sparkle.style.cssText = `
                 position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                background: radial-gradient(circle, rgba(212, 165, 116, 0.3), transparent);
+                width: 4px;
+                height: 4px;
+                background: white;
                 border-radius: 50%;
-                left: ${x}%;
-                bottom: -20px;
+                left: 50%;
+                top: 50%;
                 pointer-events: none;
-                filter: blur(1px);
-                animation: floatUp ${duration}s ease-in-out ${delay}s infinite;
-                opacity: 0;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             `;
             
-            this.section.appendChild(particle);
-        }
-        
-        // Add keyframe animation
-        if (!document.getElementById('floatUpAnimation')) {
-            const style = document.createElement('style');
-            style.id = 'floatUpAnimation';
-            style.textContent = `
-                @keyframes floatUp {
-                    0% {
-                        transform: translateY(0) translateX(0);
-                        opacity: 0;
-                    }
-                    10% {
-                        opacity: 1;
-                    }
-                    90% {
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+            this.ctaButton.appendChild(sparkle);
+            
+            requestAnimationFrame(() => {
+                sparkle.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                sparkle.style.transform = `
+                    translate(-50%, -50%) 
+                    translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)
+                    scale(0)
+                `;
+                sparkle.style.opacity = '0';
+            });
+            
+            setTimeout(() => sparkle.remove(), 800);
         }
     }
     
-    destroy() {
-        if (this.animationFrameId) {
-            cancelAnimationFrame(this.animationFrameId);
+    // ═══════════════════════════════════════════════════════════════
+    // SMOOTH PARALLAX
+    // ═══════════════════════════════════════════════════════════════
+    addSmoothParallax() {
+        if (window.innerWidth <= 968) return;
+        
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+    
+    handleParallax() {
+        const scrollY = window.scrollY;
+        const sectionTop = this.section.offsetTop;
+        const sectionHeight = this.section.offsetHeight;
+        const windowHeight = window.innerHeight;
+        
+        // Only apply when section is in view
+        if (scrollY + windowHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
+            this.cards.forEach((card, index) => {
+                if (!card.matches(':hover')) {
+                    const speed = (index % 2 === 0) ? 0.03 : -0.03;
+                    const offset = (scrollY - sectionTop + windowHeight) * speed;
+                    card.style.transform = `translateY(${offset}px)`;
+                }
+            });
         }
     }
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // 🎬 SCROLL ANIMATIONS
