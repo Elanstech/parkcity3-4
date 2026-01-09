@@ -801,6 +801,8 @@ class AboutParallaxEffects {
 // ═══════════════════════════════════════════════════════════════
 // 🌆 LOCATION & LIFESTYLE
 // ═══════════════════════════════════════════════════════════════
+
+// Premium Location & Lifestyle Controller
 class LocationLifestyleController {
     constructor() {
         this.section = document.querySelector('.premium-location-lifestyle');
@@ -818,16 +820,12 @@ class LocationLifestyleController {
         console.log('🌆 Location & Lifestyle: Initializing smooth animations...');
         
         this.setupIntersectionObserver();
-        this.addCardHoverEffects();
         this.addCtaInteractions();
-        this.addSmoothParallax();
         
         console.log('✅ Location & Lifestyle: Smooth & beautiful');
     }
     
-    // ═══════════════════════════════════════════════════════════════
-    // SMOOTH SCROLL REVEAL
-    // ═══════════════════════════════════════════════════════════════
+    // Smooth Scroll Reveal
     setupIntersectionObserver() {
         const options = {
             threshold: 0.1,
@@ -848,82 +846,11 @@ class LocationLifestyleController {
         if (this.cta) observer.observe(this.cta);
     }
     
-    // ═══════════════════════════════════════════════════════════════
-    // CARD HOVER EFFECTS
-    // ═══════════════════════════════════════════════════════════════
-    addCardHoverEffects() {
-        this.cards.forEach(card => {
-            // Smooth mouse tracking
-            card.addEventListener('mousemove', (e) => {
-                if (window.innerWidth > 968) {
-                    this.handleCardMouseMove(e, card);
-                }
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                this.resetCard(card);
-            });
-            
-            // Click effect
-            card.addEventListener('click', () => {
-                this.pulseCard(card);
-            });
-        });
-    }
-    
-    handleCardMouseMove(event, card) {
-        const rect = card.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 30;
-        const rotateY = (centerX - x) / 30;
-        
-        card.style.transform = `
-            perspective(1000px) 
-            rotateX(${rotateX}deg) 
-            rotateY(${rotateY}deg)
-        `;
-        
-        // Update gradient overlay position
-        const overlay = card.querySelector('.image-gradient');
-        if (overlay) {
-            const xPercent = (x / rect.width) * 100;
-            const yPercent = (y / rect.height) * 100;
-            overlay.style.background = `
-                radial-gradient(circle at ${xPercent}% ${yPercent}%, 
-                    rgba(212, 165, 116, 0.3) 0%, 
-                    transparent 40%),
-                linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%)
-            `;
-        }
-    }
-    
-    resetCard(card) {
-        card.style.transform = '';
-        const overlay = card.querySelector('.image-gradient');
-        if (overlay) {
-            overlay.style.background = '';
-        }
-    }
-    
-    pulseCard(card) {
-        card.style.animation = 'cardPulse 0.6s ease-out';
-        setTimeout(() => {
-            card.style.animation = '';
-        }, 600);
-    }
-    
-    // ═══════════════════════════════════════════════════════════════
-    // CTA BUTTON INTERACTIONS
-    // ═══════════════════════════════════════════════════════════════
+    // CTA Button Interactions
     addCtaInteractions() {
         if (!this.ctaButton) return;
         
-        // Magnetic effect
+        // Magnetic effect on desktop
         if (window.innerWidth > 968) {
             this.ctaButton.addEventListener('mousemove', (e) => {
                 const rect = this.ctaButton.getBoundingClientRect();
@@ -981,43 +908,6 @@ class LocationLifestyleController {
             });
             
             setTimeout(() => sparkle.remove(), 800);
-        }
-    }
-    
-    // ═══════════════════════════════════════════════════════════════
-    // SMOOTH PARALLAX
-    // ═══════════════════════════════════════════════════════════════
-    addSmoothParallax() {
-        if (window.innerWidth <= 968) return;
-        
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    this.handleParallax();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-    
-    handleParallax() {
-        const scrollY = window.scrollY;
-        const sectionTop = this.section.offsetTop;
-        const sectionHeight = this.section.offsetHeight;
-        const windowHeight = window.innerHeight;
-        
-        // Only apply when section is in view
-        if (scrollY + windowHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-            this.cards.forEach((card, index) => {
-                if (!card.matches(':hover')) {
-                    const speed = (index % 2 === 0) ? 0.03 : -0.03;
-                    const offset = (scrollY - sectionTop + windowHeight) * speed;
-                    card.style.transform = `translateY(${offset}px)`;
-                }
-            });
         }
     }
 }
