@@ -1,173 +1,105 @@
 /**
  * ═══════════════════════════════════════════════════════════════
  *                    🏙️ PARK CITY 3&4 APARTMENTS
- *            Complete JavaScript - ES6 Architecture
- *        Rolls-Royce Smooth × Apple Premium × Creative Magic
+ *                  FINAL COMPLETE SCRIPT - OPTIMIZED
+ *        Video Hero × About Section × All Features × Mobile Perfect
  * ═══════════════════════════════════════════════════════════════
  */
 
 // ═══════════════════════════════════════════════════════════════
-// 🏆 PERFECTED LUXURY HERO CONTROLLER
-// Rolls-Royce Smooth × NO BLACK BARS × GPU Accelerated
+// 🎥 VIDEO HERO CONTROLLER - OPTIMIZED
 // ═══════════════════════════════════════════════════════════════
-class PerfectedLuxuryHero {
+class VideoHeroController {
     constructor() {
         this.hero = document.querySelector('.luxury-hero');
-        this.parallaxWrapper = document.querySelector('.hero-parallax-wrapper');
-        this.parallaxLayers = document.querySelectorAll('.parallax-layer');
-        this.progressIndicators = document.querySelectorAll('.progress-indicator');
+        this.video = document.querySelector('.hero-video');
+        this.videoToggle = document.getElementById('videoToggle');
         this.scrollIndicator = document.querySelector('.scroll-indicator');
         this.buttons = document.querySelectorAll('.hero-btn');
         this.statItems = document.querySelectorAll('.stat-item');
         
-        this.currentIndex = 0;
-        this.totalSlides = this.parallaxLayers.length;
-        this.autoSwitchInterval = 5000;
-        this.autoSwitchTimer = null;
-        this.isTransitioning = false;
-        this.isHovered = false;
+        this.isPlaying = true;
         
-        // Performance optimization
-        this.rafId = null;
-        this.lastScrollY = 0;
-        this.ticking = false;
-        
-        if (this.hero && this.parallaxLayers.length > 0) {
+        if (this.hero && this.video) {
             this.init();
         }
     }
     
     init() {
-        console.log('🏆 PERFECTED HERO: Initializing Rolls-Royce smoothness');
+        console.log('🎥 VIDEO HERO: Initializing...');
         
-        this.setActiveSlide(0);
-        this.bindParallaxScroll();
-        this.bindProgressClicks();
+        this.setupVideo();
+        this.bindVideoToggle();
         this.bindScrollIndicator();
-        this.bindHoverPause();
         this.bindButtonInteractions();
         this.bindStatInteractions();
-        this.bindKeyboardNavigation();
-        this.addCursorEffects();
         this.addMagneticButtons();
-        this.addNYCIconInteractions();
+        this.handleVideoErrors();
         
-        setTimeout(() => {
-            this.startAutoSwitch();
-            console.log('▶️ Auto-switch: Buttery smooth (5s)');
-        }, 1000);
+        console.log('✅ Video Hero: Ready & gorgeous');
     }
     
-    setActiveSlide(index) {
-        if (this.isTransitioning) return;
-        this.isTransitioning = true;
+    setupVideo() {
+        // Ensure video plays on mobile
+        this.video.setAttribute('playsinline', '');
+        this.video.setAttribute('muted', '');
         
-        this.parallaxLayers.forEach((layer, i) => {
-            layer.classList.toggle('active', i === index);
+        // Auto-play
+        this.video.play().catch(err => {
+            console.log('⚠️ Video autoplay prevented:', err);
+            this.isPlaying = false;
+            this.updateToggleButton();
         });
         
-        this.progressIndicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index);
-            const fill = indicator.querySelector('.indicator-fill');
-            if (fill) {
-                fill.style.animation = 'none';
-                if (i === index) {
-                    requestAnimationFrame(() => {
-                        fill.style.animation = 'indicatorFill 5s linear forwards';
-                    });
-                }
-            }
-        });
-        
-        this.currentIndex = index;
-        this.createSlideChangeRipple();
-        
-        setTimeout(() => {
-            this.isTransitioning = false;
-            console.log(`✨ Slide ${index + 1}/${this.totalSlides}: Perfect transition`);
-        }, 1800);
-    }
-    
-    nextSlide() {
-        const nextIndex = (this.currentIndex + 1) % this.totalSlides;
-        this.setActiveSlide(nextIndex);
-    }
-    
-    prevSlide() {
-        const prevIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
-        this.setActiveSlide(prevIndex);
-    }
-    
-    startAutoSwitch() {
-        this.autoSwitchTimer = setInterval(() => {
-            if (!this.isTransitioning && !this.isHovered) {
-                this.nextSlide();
-            }
-        }, this.autoSwitchInterval);
-    }
-    
-    stopAutoSwitch() {
-        if (this.autoSwitchTimer) {
-            clearInterval(this.autoSwitchTimer);
-            this.autoSwitchTimer = null;
+        // Optimize for mobile
+        if (window.innerWidth <= 968) {
+            this.video.style.filter = 'brightness(0.7) contrast(1.05)';
         }
     }
     
-    resetAutoSwitch() {
-        this.stopAutoSwitch();
-        this.startAutoSwitch();
-    }
-    
-    bindParallaxScroll() {
-        window.addEventListener('scroll', () => {
-            this.lastScrollY = window.pageYOffset;
-            if (!this.ticking) {
-                this.rafId = window.requestAnimationFrame(() => {
-                    this.handleParallaxScroll();
-                    this.ticking = false;
-                });
-                this.ticking = true;
-            }
-        }, { passive: true });
-    }
-    
-    handleParallaxScroll() {
-        const scrollY = this.lastScrollY;
-        const heroHeight = this.hero.offsetHeight;
-        
-        if (scrollY < heroHeight) {
-            this.parallaxLayers.forEach((layer) => {
-                if (layer.classList.contains('active')) {
-                    const speed = parseFloat(layer.dataset.speed) || 0.5;
-                    const yPos = -(scrollY * speed);
-                    layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
-                    layer.style.willChange = 'transform';
+    bindVideoToggle() {
+        if (this.videoToggle) {
+            this.videoToggle.addEventListener('click', () => {
+                if (this.isPlaying) {
+                    this.video.pause();
+                    this.isPlaying = false;
+                    console.log('⏸️ Video paused');
+                } else {
+                    this.video.play();
+                    this.isPlaying = true;
+                    console.log('▶️ Video playing');
                 }
-            });
-        } else {
-            this.parallaxLayers.forEach(layer => {
-                layer.style.willChange = 'auto';
+                this.updateToggleButton();
             });
         }
     }
     
-    bindProgressClicks() {
-        this.progressIndicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                if (!this.isTransitioning && index !== this.currentIndex) {
-                    this.setActiveSlide(index);
-                    this.resetAutoSwitch();
-                    this.createClickSparkle(indicator);
-                }
-            });
+    updateToggleButton() {
+        if (this.videoToggle) {
+            const playIcon = this.videoToggle.querySelector('.play-icon');
+            const pauseIcon = this.videoToggle.querySelector('.pause-icon');
             
-            indicator.addEventListener('mouseenter', () => {
-                indicator.style.transform = 'scaleY(2) scaleX(1.1)';
-            });
-            
-            indicator.addEventListener('mouseleave', () => {
-                indicator.style.transform = '';
-            });
+            if (this.isPlaying) {
+                playIcon.classList.remove('active');
+                pauseIcon.classList.add('active');
+            } else {
+                playIcon.classList.add('active');
+                pauseIcon.classList.remove('active');
+            }
+        }
+    }
+    
+    handleVideoErrors() {
+        this.video.addEventListener('error', (e) => {
+            console.error('❌ Video error:', e);
+            // Fallback to image background
+            const fallbackImg = this.video.querySelector('img');
+            if (fallbackImg) {
+                const imgSrc = fallbackImg.getAttribute('src');
+                this.hero.style.backgroundImage = `url(${imgSrc})`;
+                this.hero.style.backgroundSize = 'cover';
+                this.hero.style.backgroundPosition = 'center';
+            }
         });
     }
     
@@ -187,18 +119,6 @@ class PerfectedLuxuryHero {
         }
     }
     
-    bindHoverPause() {
-        this.hero.addEventListener('mouseenter', () => {
-            this.isHovered = true;
-            this.stopAutoSwitch();
-        });
-        
-        this.hero.addEventListener('mouseleave', () => {
-            this.isHovered = false;
-            this.startAutoSwitch();
-        });
-    }
-    
     bindButtonInteractions() {
         this.buttons.forEach(button => {
             button.addEventListener('click', (e) => this.createButtonRipple(e, button));
@@ -209,6 +129,8 @@ class PerfectedLuxuryHero {
     bindStatInteractions() {
         this.statItems.forEach(stat => {
             stat.addEventListener('mousemove', (e) => {
+                if (window.innerWidth <= 968) return; // Skip on mobile
+                
                 const rect = stat.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
@@ -218,47 +140,16 @@ class PerfectedLuxuryHero {
                 const rotateY = (centerX - x) / 15;
                 stat.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
             });
+            
             stat.addEventListener('mouseleave', () => {
                 stat.style.transform = '';
             });
         });
     }
     
-    bindKeyboardNavigation() {
-        document.addEventListener('keydown', (e) => {
-            const rect = this.hero.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            if (isVisible && !this.isTransitioning && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
-                e.preventDefault();
-                if (e.key === 'ArrowLeft') {
-                    this.prevSlide();
-                } else {
-                    this.nextSlide();
-                }
-                this.resetAutoSwitch();
-            }
-        });
-    }
-    
-    addCursorEffects() {
-        if (window.innerWidth <= 968) return;
-        let cursorTimeout;
-        this.hero.addEventListener('mousemove', (e) => {
-            clearTimeout(cursorTimeout);
-            cursorTimeout = setTimeout(() => this.createCursorGlow(e), 50);
-        });
-    }
-    
-    createCursorGlow(e) {
-        const glow = document.createElement('div');
-        glow.style.cssText = `position:fixed;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(212,165,116,0.12),transparent 70%);pointer-events:none;z-index:9;left:${e.clientX}px;top:${e.clientY}px;transform:translate(-50%,-50%);transition:opacity 0.4s;opacity:0`;
-        this.hero.appendChild(glow);
-        requestAnimationFrame(() => glow.style.opacity = '1');
-        setTimeout(() => { glow.style.opacity = '0'; setTimeout(() => glow.remove(), 400); }, 100);
-    }
-    
     addMagneticButtons() {
-        if (window.innerWidth <= 968) return;
+        if (window.innerWidth <= 968) return; // Skip on mobile
+        
         this.buttons.forEach(button => {
             button.addEventListener('mousemove', (e) => {
                 const rect = button.getBoundingClientRect();
@@ -266,40 +157,11 @@ class PerfectedLuxuryHero {
                 const y = (e.clientY - rect.top - rect.height / 2) * 0.15;
                 button.style.transform = `translate(${x}px, ${y}px) translateY(-4px) scale(1.03)`;
             });
-            button.addEventListener('mouseleave', () => button.style.transform = '');
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+            });
         });
-    }
-    
-    addNYCIconInteractions() {
-        document.querySelectorAll('.nyc-icon').forEach((icon, i) => {
-            icon.addEventListener('click', () => this.createIconBurst(icon));
-            icon.style.animationDelay = `${i * 0.15}s`;
-        });
-    }
-    
-    createSlideChangeRipple() {
-        const ripple = document.createElement('div');
-        ripple.style.cssText = 'position:absolute;top:50%;left:50%;width:100px;height:100px;border-radius:50%;border:2px solid rgba(212,165,116,0.4);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:5';
-        this.hero.appendChild(ripple);
-        requestAnimationFrame(() => {
-            ripple.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
-            ripple.style.transform = 'translate(-50%, -50%) scale(8)';
-            ripple.style.opacity = '0';
-        });
-        setTimeout(() => ripple.remove(), 1000);
-    }
-    
-    createClickSparkle(element) {
-        for (let i = 0; i < 5; i++) {
-            setTimeout(() => {
-                const sparkle = document.createElement('span');
-                sparkle.textContent = '✨';
-                sparkle.style.cssText = `position:absolute;font-size:14px;pointer-events:none;z-index:20;left:${Math.random()*100}%;top:${Math.random()*100}%;animation:sparkleFloat 1s ease-out forwards`;
-                element.style.position = 'relative';
-                element.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 1000);
-            }, i * 80);
-        }
     }
     
     createButtonRipple(event, button) {
@@ -317,6 +179,8 @@ class PerfectedLuxuryHero {
     }
     
     createButtonSparkles(button) {
+        if (window.innerWidth <= 968) return; // Skip on mobile
+        
         for (let i = 0; i < 4; i++) {
             setTimeout(() => {
                 const sparkle = document.createElement('span');
@@ -340,28 +204,10 @@ class PerfectedLuxuryHero {
         });
         setTimeout(() => ripple.remove(), 800);
     }
-    
-    createIconBurst(icon) {
-        for (let i = 0; i < 6; i++) {
-            const particle = document.createElement('div');
-            const angle = (360 / 6) * i;
-            particle.style.cssText = 'position:absolute;width:4px;height:4px;background:linear-gradient(135deg,#d4a574,#a67c52);border-radius:50%;top:50%;left:50%;pointer-events:none;z-index:10';
-            icon.appendChild(particle);
-            requestAnimationFrame(() => {
-                const radians = (angle * Math.PI) / 180;
-                const x = Math.cos(radians) * 60;
-                const y = Math.sin(radians) * 60;
-                particle.style.transition = 'all 0.6s ease-out';
-                particle.style.transform = `translate(${x}px, ${y}px) scale(0)`;
-                particle.style.opacity = '0';
-            });
-            setTimeout(() => particle.remove(), 600);
-        }
-    }
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 🧭 MODERN NAVIGATION
+// 🧭 NAVIGATION CONTROLLER
 // ═══════════════════════════════════════════════════════════════
 class HeaderNavigation {
     constructor() {
@@ -378,7 +224,7 @@ class HeaderNavigation {
     }
     
     init() {
-        console.log('🧭 Navigation: Initialized & polished');
+        console.log('🧭 Navigation: Initialized');
         
         this.bindEvents();
         this.handleScroll();
@@ -432,7 +278,6 @@ class HeaderNavigation {
         this.navToggle.classList.add('active');
         document.body.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
-        console.log('📱 Mobile menu: Opened beautifully');
     }
     
     closeMobileMenu() {
@@ -444,8 +289,6 @@ class HeaderNavigation {
             document.body.classList.remove('menu-open');
             document.body.style.overflow = '';
         }, 400);
-        
-        console.log('📱 Mobile menu: Closed gracefully');
     }
     
     handleScroll() {
@@ -471,26 +314,11 @@ class HeaderNavigation {
                 item.classList.remove('active');
             }
         });
-        
-        this.menuLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === currentPage || 
-                (currentPage === '' && href === 'index.html') ||
-                (currentPage === '/' && href === 'index.html')) {
-                const wrapper = link.querySelector('.link-wrapper');
-                if (wrapper) {
-                    wrapper.style.background = 'rgba(212, 165, 116, 0.15)';
-                    wrapper.style.borderColor = 'rgba(212, 165, 116, 0.4)';
-                }
-                const linkText = link.querySelector('.link-text');
-                if (linkText) {
-                    linkText.style.color = '#d4a574';
-                }
-            }
-        });
     }
     
     initMagneticEffects() {
+        if (window.innerWidth <= 968) return; // Skip on mobile
+        
         this.menuLinks.forEach(link => {
             link.addEventListener('mousemove', (e) => {
                 const rect = link.getBoundingClientRect();
@@ -510,40 +338,11 @@ class HeaderNavigation {
                 }
             });
         });
-        
-        if (this.menuClose) {
-            this.menuClose.addEventListener('mousemove', (e) => {
-                const rect = this.menuClose.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                this.menuClose.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.1)`;
-            });
-            
-            this.menuClose.addEventListener('mouseleave', () => {
-                this.menuClose.style.transform = '';
-            });
-        }
-        
-        const ctaBtn = document.querySelector('.menu-cta-btn');
-        if (ctaBtn) {
-            ctaBtn.addEventListener('mousemove', (e) => {
-                const rect = ctaBtn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                ctaBtn.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px) translateY(-4px) scale(1.02)`;
-            });
-            
-            ctaBtn.addEventListener('mouseleave', () => {
-                ctaBtn.style.transform = '';
-            });
-        }
     }
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 🎬 ULTRA-SLEEK AUTO-SLIDESHOW (ABOUT SECTION)
+// 🎬 ULTRA-SLEEK SLIDESHOW (ABOUT SECTION)
 // ═══════════════════════════════════════════════════════════════
 class UltraSleekSlideshow {
     constructor() {
@@ -565,22 +364,20 @@ class UltraSleekSlideshow {
     }
     
     init() {
-        console.log('✨ Ultra-Sleek Slideshow: Initialized');
+        console.log('🎬 About Slideshow: Initialized');
         
         this.showSlide(0);
         this.startAutoPlay();
         this.bindDotClicks();
         this.bindHoverPause();
         this.bindKeyboard();
-        this.addCreativeEnhancements();
-        
-        console.log('▶️ Auto-play: Running (4s intervals)');
+        this.addImageEffects();
     }
     
-    addCreativeEnhancements() {
+    addImageEffects() {
         this.slides.forEach(slide => {
             const img = slide.querySelector('img');
-            if (img) {
+            if (img && window.innerWidth > 968) {
                 slide.addEventListener('mouseenter', () => {
                     img.style.transform = 'scale(1.05)';
                     img.style.transition = 'transform 0.8s ease';
@@ -612,8 +409,6 @@ class UltraSleekSlideshow {
         setTimeout(() => {
             this.isTransitioning = false;
         }, 1200);
-        
-        console.log(`📍 Slide ${index + 1}/${this.totalSlides}`);
     }
     
     nextSlide() {
@@ -698,12 +493,10 @@ class UltraSleekSlideshow {
         if (this.container) {
             this.container.addEventListener('mouseenter', () => {
                 this.stopAutoPlay();
-                console.log('⏸️ Slideshow: Paused');
             });
             
             this.container.addEventListener('mouseleave', () => {
                 this.startAutoPlay();
-                console.log('▶️ Slideshow: Resumed');
             });
         }
     }
@@ -730,7 +523,7 @@ class UltraSleekSlideshow {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 📊 STAT COUNTER ANIMATOR (ABOUT SECTION)
+// 📊 STAT COUNTER ANIMATOR
 // ═══════════════════════════════════════════════════════════════
 class StatCounterAnimator {
     constructor() {
@@ -801,7 +594,7 @@ class StatCounterAnimator {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 🎯 FEATURE POINT ANIMATOR (ABOUT SECTION)
+// 🎯 FEATURE POINT ANIMATOR
 // ═══════════════════════════════════════════════════════════════
 class FeaturePointAnimator {
     constructor() {
@@ -848,6 +641,8 @@ class FeaturePointAnimator {
     }
     
     addMagneticEffect() {
+        if (window.innerWidth <= 968) return; // Skip on mobile
+        
         this.featurePoints.forEach(point => {
             point.addEventListener('mousemove', (e) => {
                 const rect = point.getBoundingClientRect();
@@ -871,7 +666,7 @@ class FeaturePointAnimator {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 💎 STAT CARD INTERACTIONS (ABOUT SECTION)
+// 💎 STAT CARD INTERACTIONS
 // ═══════════════════════════════════════════════════════════════
 class StatCardInteractions {
     constructor() {
@@ -886,25 +681,27 @@ class StatCardInteractions {
         console.log('💎 Stat Cards: Interactive');
         
         this.statCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `
-                    perspective(1000px) 
-                    rotateX(${rotateX}deg) 
-                    rotateY(${rotateY}deg) 
-                    translateY(-8px) 
-                    scale(1.02)
-                `;
-            });
+            if (window.innerWidth > 968) {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `
+                        perspective(1000px) 
+                        rotateX(${rotateX}deg) 
+                        rotateY(${rotateY}deg) 
+                        translateY(-8px) 
+                        scale(1.02)
+                    `;
+                });
+            }
             
             card.addEventListener('mouseleave', () => {
                 card.style.transform = '';
@@ -957,7 +754,7 @@ class AboutParallaxEffects {
         this.contentSide = document.querySelector('.about-content-side');
         this.gallerySide = document.querySelector('.about-gallery-side');
         
-        if (this.contentSide && this.gallerySide) {
+        if (this.contentSide && this.gallerySide && window.innerWidth > 968) {
             this.init();
         }
     }
@@ -1249,15 +1046,15 @@ class ParkCityApp {
             console.log('');
             console.log('═══════════════════════════════════════════════════════════════');
             console.log('✨              PARK CITY 3&4 APARTMENTS                      ✨');
-            console.log('   Rolls-Royce Smooth × Apple Premium × Creative Magic');
+            console.log('   Video Hero × Mobile Optimized × Premium Experience');
             console.log('═══════════════════════════════════════════════════════════════');
             console.log('');
             
             addAnimationStyles();
             
-            // Hero Section
-            console.log('🏆 PERFECTED HERO SECTION');
-            this.components.perfectedHero = new PerfectedLuxuryHero();
+            // Video Hero Section
+            console.log('🎥 VIDEO HERO SECTION');
+            this.components.videoHero = new VideoHeroController();
             console.log('');
             
             // Navigation
@@ -1294,9 +1091,10 @@ class ParkCityApp {
             console.log('');
             console.log('═══════════════════════════════════════════════════════════════');
             console.log('✅ ALL COMPONENTS: Initialized successfully!');
-            console.log('🏆 Hero: Rolls-Royce smooth (NO BLACK BARS!)');
+            console.log('🎥 Video Hero: Background video playing');
+            console.log('📱 Mobile: Fully optimized (no overflow!)');
             console.log('🎬 About: Ultra-fast slideshow (4s)');
-            console.log('🎯 Effects: Magnetic buttons, sparkles, 3D tilts');
+            console.log('🎯 Effects: Magnetic, sparkles, 3D tilts');
             console.log('💎 Premium: Apple × Rolls-Royce level');
             console.log('🌟 Park City 3&4: Ready to impress!');
             console.log('═══════════════════════════════════════════════════════════════');
@@ -1318,4 +1116,4 @@ window.addEventListener('load', () => {
     console.log('🎬 Page loaded & scrolled to top');
 });
 
-console.log('🌟 Park City 3&4 Script: Loaded & ready to shine!');
+console.log('🌟 Park City 3&4 Final Script: Loaded & ready!');
