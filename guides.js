@@ -24,7 +24,7 @@ class GuidesScrollAnimations {
         console.log('🎬 Guides Scroll Animations: Initializing...');
         
         this.setupIntersectionObserver();
-        this.addCardHoverEffects();
+        // Card tilt effect removed
         
         console.log('✅ Scroll Animations: Ready');
     }
@@ -47,35 +47,6 @@ class GuidesScrollAnimations {
         // Observe all animated elements
         this.animatedElements.forEach(el => observer.observe(el));
         this.guideHeaders.forEach(el => observer.observe(el));
-    }
-    
-    addCardHoverEffects() {
-        if (window.innerWidth <= 968) return;
-        
-        this.guideCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 30;
-                const rotateY = (centerX - x) / 30;
-                
-                card.style.transform = `
-                    perspective(1000px) 
-                    rotateX(${rotateX}deg) 
-                    rotateY(${rotateY}deg) 
-                    translateY(-8px)
-                `;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-        });
     }
 }
 
