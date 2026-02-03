@@ -1450,92 +1450,239 @@ class FAQAccordion {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 📧 CONTACT FORM
+// 📧 MODERN CONTACT FORM CONTROLLER
 // ═══════════════════════════════════════════════════════════════
-class ContactForm {
-    constructor(form) {
-        this.form = form;
+
+class ModernContactFormController {
+    constructor() {
+        this.form = document.getElementById('modernContactForm');
+        this.submitBtn = this.form?.querySelector('.form-submit-btn');
+        this.successMessage = document.getElementById('formSuccess');
+        this.contactCards = document.querySelectorAll('.contact-card');
+        this.inputWrappers = document.querySelectorAll('.input-wrapper, .select-wrapper, .textarea-wrapper');
+        
         if (this.form) {
             this.init();
         }
     }
     
     init() {
-        console.log('📧 Contact Form: Ready');
-        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        console.log('📧 MODERN CONTACT FORM: Initializing...');
+        
+        this.bindFormSubmit();
+        this.bindInputEffects();
+        this.bindCardAnimations();
+        this.bindScrollReveal();
+        
+        console.log('✅ Modern Contact Form: Ready');
     }
     
-    handleSubmit(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(this.form);
-        const data = Object.fromEntries(formData.entries());
-        
-        if (this.validate(data)) {
-            this.submitForm(data);
-        }
-    }
-    
-    validate(data) {
-        const { name, email, phone, interest, message } = data;
-        
-        if (!name || !email || !phone || !interest || !message) {
-            this.showMessage('Please fill in all fields ✨', 'error');
-            return false;
-        }
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            this.showMessage('Please enter a valid email 💌', 'error');
-            return false;
-        }
-        
-        return true;
-    }
-    
-    async submitForm(data) {
-        try {
-            console.log('✉️ Form submitted:', data);
+    // Form Submission
+    bindFormSubmit() {
+        this.form.addEventListener('submit', async (e) => {
+            e.preventDefault();
             
-            this.showMessage('Thank you! We will contact you soon. 🎉', 'success');
-            this.form.reset();
-        } catch (error) {
-            this.showMessage('Something went wrong. Please try again. 😔', 'error');
-        }
+            if (!this.validateForm()) return;
+            
+            // Show loading state
+            this.submitBtn.classList.add('loading');
+            
+            // Simulate API call
+            await this.simulateSubmit();
+            
+            // Show success
+            this.showSuccess();
+        });
     }
     
-    showMessage(text, type) {
-        const existingMessage = this.form.querySelector('.form-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
+    // Form Validation
+    validateForm() {
+        const inputs = this.form.querySelectorAll('input, select, textarea');
+        let isValid = true;
         
-        const message = document.createElement('div');
-        message.className = `form-message form-message-${type}`;
-        message.textContent = text;
-        
-        Object.assign(message.style, {
-            padding: '16px 20px',
-            marginTop: '20px',
-            borderRadius: '12px',
-            fontSize: '0.938rem',
-            fontWeight: '500',
-            textAlign: 'center',
-            backgroundColor: type === 'success' ? 'rgba(92, 141, 90, 0.15)' : 'rgba(220, 38, 38, 0.15)',
-            border: type === 'success' ? '1px solid rgba(92, 141, 90, 0.3)' : '1px solid rgba(220, 38, 38, 0.3)',
-            color: type === 'success' ? '#5c8d5a' : '#dc2626'
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                isValid = false;
+                this.showInputError(input);
+            }
         });
         
-        this.form.appendChild(message);
+        return isValid;
+    }
+    
+    // Show Input Error
+    showInputError(input) {
+        const wrapper = input.closest('.input-wrapper, .select-wrapper, .textarea-wrapper');
+        if (wrapper) {
+            wrapper.classList.add('error');
+            input.style.borderColor = 'rgba(220, 38, 38, 0.5)';
+            input.style.boxShadow = '0 0 0 4px rgba(220, 38, 38, 0.1)';
+            
+            // Remove error state on focus
+            input.addEventListener('focus', () => {
+                wrapper.classList.remove('error');
+                input.style.borderColor = '';
+                input.style.boxShadow = '';
+            }, { once: true });
+        }
+    }
+    
+    // Simulate Form Submission
+    simulateSubmit() {
+        return new Promise(resolve => {
+            setTimeout(resolve, 1500);
+        });
+    }
+    
+    // Show Success Message
+    showSuccess() {
+        this.submitBtn.classList.remove('loading');
+        this.successMessage.classList.add('active');
         
+        // Reset form after delay
         setTimeout(() => {
-            message.style.opacity = '0';
-            message.style.transform = 'translateY(-10px)';
-            message.style.transition = 'all 0.4s ease';
-            setTimeout(() => message.remove(), 400);
+            this.form.reset();
+        }, 500);
+        
+        // Hide success after 5 seconds
+        setTimeout(() => {
+            this.successMessage.classList.remove('active');
         }, 5000);
     }
+    
+    // Input Focus Effects
+    bindInputEffects() {
+        this.inputWrappers.forEach(wrapper => {
+            const input = wrapper.querySelector('input, select, textarea');
+            const icon = wrapper.querySelector('.input-icon');
+            
+            if (input) {
+                // Focus glow effect
+                input.addEventListener('focus', () => {
+                    this.createFocusGlow(wrapper);
+                });
+                
+                // Input typing effect
+                input.addEventListener('input', () => {
+                    if (input.value.length > 0) {
+                        wrapper.classList.add('has-value');
+                    } else {
+                        wrapper.classList.remove('has-value');
+                    }
+                });
+            }
+        });
+    }
+    
+    // Create Focus Glow
+    createFocusGlow(wrapper) {
+        if (window.innerWidth <= 768) return;
+        
+        const glow = document.createElement('div');
+        glow.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+            transform: translateY(-50%);
+            pointer-events: none;
+            opacity: 0;
+            animation: glowPulse 0.6s ease-out forwards;
+            z-index: 0;
+            border-radius: 12px;
+        `;
+        
+        wrapper.style.position = 'relative';
+        wrapper.appendChild(glow);
+        
+        setTimeout(() => glow.remove(), 600);
+    }
+    
+    // Contact Card Animations
+    bindCardAnimations() {
+        if (window.innerWidth <= 768) return;
+        
+        this.contactCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                this.animateCardIcon(card);
+            });
+        });
+    }
+    
+    // Animate Card Icon
+    animateCardIcon(card) {
+        const icon = card.querySelector('.card-icon');
+        if (icon) {
+            icon.style.animation = 'cardIconPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            setTimeout(() => {
+                icon.style.animation = '';
+            }, 400);
+        }
+    }
+    
+    // Scroll Reveal Animation
+    bindScrollReveal() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('contact-revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements
+        const header = document.querySelector('.contact-header');
+        const infoSide = document.querySelector('.contact-info-side');
+        const formSide = document.querySelector('.contact-form-side');
+        
+        [header, infoSide, formSide].forEach((el, index) => {
+            if (el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(40px)';
+                el.style.transition = `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.15}s`;
+                observer.observe(el);
+            }
+        });
+    }
 }
+
+// Add Contact Form Animation Styles
+function addContactFormAnimationStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .contact-revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        @keyframes glowPulse {
+            0% { opacity: 0; transform: translateY(-50%) scale(0.8); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-50%) scale(1.2); }
+        }
+        
+        @keyframes cardIconPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15) rotate(-5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize Contact Form
+document.addEventListener('DOMContentLoaded', () => {
+    addContactFormAnimationStyles();
+    new ModernContactFormController();
+});
 
 // ═══════════════════════════════════════════════════════════════
 // 🦶 PREMIUM FOOTER CONTROLLER
