@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover premium amenities at Park City 3&4 Apartments - Pool, Fitness Center, 24/7 Security, and more luxury features.">
+    <title>Amenities | Park City 3&4 Apartments</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="amenities.css">
+</head>
+<body>
+
+<!-- Modern Navigation (same as index) -->
+<nav class="modern-nav" id="mainNav">
+    <div class="nav-wrapper">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="logo.png" alt="Park City 3&4 Apartments" class="brand-logo">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-item">Home</a></li>
+                <li><a href="amenities.html" class="nav-item active">Amenities</a></li>
+                <li><a href="community.html" class="nav-item">Resident Forms</a></li>
+                <li><a href="security.html" class="nav-item">Building Guides</a></li>
+                <li><a href="services.html" class="nav-item">Gallery</a></li>
+                <li><a href="services.html" class="nav-item">FAQ</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="apply.html" class="nav-cta">
+                    <span class="cta-text">Apply Now</span>
+                    <span class="cta-icon">→</span>
+                </a>
+            </div>
+            
+            <button class="menu-toggle" id="navToggle" aria-label="Toggle Menu">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu (same as index) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <div class="mesh-gradient"></div>
+        </div>
+        
+        <button class="menu-close" id="menuClose" aria-label="Close Menu">
+            <span class="close-line"></span>
+            <span class="close-line"></span>
+            <div class="close-ripple"></div>
+        </button>
+        
+        <div class="menu-container">
+            <div class="menu-header">
+                <div class="menu-logo">
+                    <img src="logo.png" alt="Park City 3&4" class="menu-logo-img">
+                </div>
+                <div class="menu-tagline">Luxury Living Redefined</div>
+            </div>
+            
+            <ul class="menu-items">
+                <li class="menu-item" data-index="1">
+                    <a href="index.html" class="menu-link">
+                        <span class="link-wrapper">
+                            <span class="link-number">01</span>
+                            <span class="link-content">
+                                <span class="link-text">Home</span>
+                                <span class="link-subtitle">Welcome</span>
+                            </span>
+                            <span class="link-arrow">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="link-bg"></div>
+                    </a>
+                </li>
+                <li class="menu-item" data-index="2">
+                    <a href="amenities.html" class="menu-link">
+                        <span class="link-wrapper">
+                            <span class="link-number">02</span>
+                            <span class="link-content">
+                                <span class="link-text">Amenities</span>
+                                <span class="link-subtitle">Features & Lifestyle</span>
+                            </span>
+                            <span class="link-arrow">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="link-bg"></div>
+                    </a>
+                </li>
+                <li class="menu-item" data-index="3">
+                    <a href="community.html" class="menu-link">
+                        <span class="link-wrapper">
+                            <span class="link-number">03</span>
+                            <span class="link-content">
+                                <span class="link-text">Community</span>
+                                <span class="link-subtitle">Events & Culture</span>
+                            </span>
+                            <span class="link-arrow">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="link-bg"></div>
+                    </a>
+                </li>
+                <li class="menu-item" data-index="4">
+                    <a href="security.html" class="menu-link">
+                        <span class="link-wrapper">
+                            <span class="link-number">04</span>
+                            <span class="link-content">
+                                <span class="link-text">Security</span>
+                                <span class="link-subtitle">24/7 Protection</span>
+                            </span>
+                            <span class="link-arrow">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="link-bg"></div>
+                    </a>
+                </li>
+                <li class="menu-item" data-index="5">
+                    <a href="services.html" class="menu-link">
+                        <span class="link-wrapper">
+                            <span class="link-number">05</span>
+                            <span class="link-content">
+                                <span class="link-text">Services</span>
+                                <span class="link-subtitle">Resident Resources</span>
+                            </span>
+                            <span class="link-arrow">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="link-bg"></div>
+                    </a>
+                </li>
+                <li class="menu-item" data-index="6">
+                    <a href="contact.html" class="menu-link">
+                        <span class="link-wrapper">
+                            <span class="link-number">06</span>
+                            <span class="link-content">
+                                <span class="link-text">Contact</span>
+                                <span class="link-subtitle">Get in Touch</span>
+                            </span>
+                            <span class="link-arrow">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                        <div class="link-bg"></div>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="menu-cta-wrapper">
+                <a href="apply.html" class="menu-cta-btn">
+                    <span class="cta-shine"></span>
+                    <span class="cta-content">
+                        <span class="cta-text">Apply Now</span>
+                        <span class="cta-subtext">Start Your Journey</span>
+                    </span>
+                    <span class="cta-icon">→</span>
+                </a>
+            </div>
+            
+            <div class="menu-footer">
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span>(555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>Rego Park, NY 11374</span>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2026 Park City 3&4 Apartments</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- AMENITIES HERO SECTION -->
+<section class="amenities-hero">
+    
+    <!-- Left Content -->
+    <div class="amenities-hero-left">
+        <div class="amenities-hero-content">
+            
+            <!-- Breadcrumb -->
+            <div class="hero-breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-divider">/</span>
+                <span class="breadcrumb-current">Amenities</span>
+            </div>
+            
+            <!-- Accent -->
+            <div class="hero-accent-line">
+                <span class="accent-bar"></span>
+                <span class="accent-label">Premium Features</span>
+            </div>
+            
+            <!-- Title -->
+            <h1 class="amenities-hero-title">
+                <span class="title-line">Exceptional</span>
+                <span class="title-line title-highlight">Amenities</span>
+            </h1>
+            
+            <!-- Description -->
+            <p class="amenities-hero-desc">
+                Discover a world of premium features designed to elevate your everyday living experience. From resort-style relaxation to state-of-the-art fitness, every detail has been crafted with your comfort in mind.
+            </p>
+            
+            <!-- Quick Stats -->
+            <div class="hero-quick-stats">
+                <div class="quick-stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-text">Premium Amenities</span>
+                </div>
+                <div class="stat-separator"></div>
+                <div class="quick-stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-text">Access Available</span>
+                </div>
+                <div class="stat-separator"></div>
+                <div class="quick-stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-text">Resident Satisfaction</span>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="hero-cta-group">
+                <a href="#featured" class="hero-primary-btn">
+                    <span class="btn-text">Explore Amenities</span>
+                    <span class="btn-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </a>
+                <a href="#contact" class="hero-secondary-btn">
+                    <span class="btn-line"></span>
+                    <span class="btn-text">Schedule Tour</span>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Right Image Grid -->
+    <div class="amenities-hero-right">
+        <div class="hero-image-grid">
+            <div class="hero-img-item hero-img-1">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Fitness Center">
+                <div class="img-overlay"></div>
+                <div class="img-label">
+                    <span class="label-icon">💪</span>
+                    <span>Fitness Center</span>
+                </div>
+            </div>
+            <div class="hero-img-item hero-img-2">
+                <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80" alt="Swimming Pool">
+                <div class="img-overlay"></div>
+                <div class="img-label">
+                    <span class="label-icon">🏊</span>
+                    <span>Pool & Spa</span>
+                </div>
+            </div>
+            <div class="hero-img-item hero-img-3">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80" alt="Lounge">
+                <div class="img-overlay"></div>
+                <div class="img-label">
+                    <span class="label-icon">🛋️</span>
+                    <span>Resident Lounge</span>
+                </div>
+            </div>
+            <div class="hero-img-item hero-img-4">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Rooftop">
+                <div class="img-overlay"></div>
+                <div class="img-label">
+                    <span class="label-icon">🌆</span>
+                    <span>Rooftop Terrace</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Badge -->
+        <div class="hero-floating-badge">
+            <div class="badge-icon">✦</div>
+            <div class="badge-text">
+                <span class="badge-title">Luxury Living</span>
+                <span class="badge-subtitle">Since 1985</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="amenities-scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Scroll to Explore</span>
+    </div>
+    
+</section>
+
+<!-- FEATURED AMENITIES SECTION -->
+<section class="featured-amenities" id="featured">
+    <div class="featured-container">
+        
+        <!-- Section Header -->
+        <div class="featured-header">
+            <div class="header-accent">
+                <span class="accent-line"></span>
+                <span class="accent-text">Featured</span>
+                <span class="accent-line"></span>
+            </div>
+            <h2 class="featured-title">Signature Amenities</h2>
+            <p class="featured-subtitle">The cornerstone of luxury living at Park City 3&4</p>
+        </div>
+        
+        <!-- Featured Grid -->
+        <div class="featured-grid">
+            
+            <!-- Pool & Spa -->
+            <div class="featured-card featured-large" data-amenity="pool">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=80" alt="Resort-Style Pool">
+                    <div class="card-image-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M2 12h2a2 2 0 0 1 2 2v0a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v0a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v0a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v0a2 2 0 0 1 2-2h2"/>
+                            <path d="M2 6h2a2 2 0 0 1 2 2v0a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V8a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v0a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V8a2 2 0 0 1 2-2h2"/>
+                            <path d="M2 18h2a2 2 0 0 1 2 2v0"/>
+                            <path d="M22 18h-2a2 2 0 0 0-2 2v0"/>
+                        </svg>
+                    </div>
+                    <div class="card-badge">Most Popular</div>
+                    <h3 class="card-title">Resort-Style Pool & Spa</h3>
+                    <p class="card-desc">Dive into luxury with our heated outdoor pool, complete with sundeck loungers, private cabanas, and a relaxing hot tub area perfect for unwinding after a long day.</p>
+                    <div class="card-features">
+                        <span class="feature-tag">Heated Pool</span>
+                        <span class="feature-tag">Hot Tub</span>
+                        <span class="feature-tag">Cabanas</span>
+                        <span class="feature-tag">Sundeck</span>
+                    </div>
+                    <div class="card-hours">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <span>Open Daily: 6AM - 10PM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fitness Center -->
+            <div class="featured-card" data-amenity="fitness">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Fitness Center">
+                    <div class="card-image-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M6.5 6.5L17.5 17.5"/>
+                            <path d="M6.5 17.5L17.5 6.5"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <path d="M3 12h4M17 12h4"/>
+                            <path d="M12 3v4M12 17v4"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">State-of-the-Art Fitness</h3>
+                    <p class="card-desc">24/7 access to premium Technogym equipment, free weights, yoga studio, and personal training services.</p>
+                    <div class="card-features">
+                        <span class="feature-tag">24/7 Access</span>
+                        <span class="feature-tag">Yoga Studio</span>
+                        <span class="feature-tag">Personal Training</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rooftop Lounge -->
+            <div class="featured-card" data-amenity="rooftop">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Rooftop Lounge">
+                    <div class="card-image-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Rooftop Sky Lounge</h3>
+                    <p class="card-desc">Panoramic city views, outdoor seating, fire pits, and a fully equipped BBQ area for entertaining.</p>
+                    <div class="card-features">
+                        <span class="feature-tag">City Views</span>
+                        <span class="feature-tag">Fire Pits</span>
+                        <span class="feature-tag">BBQ Grills</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+<!-- AMENITIES CATEGORIES SECTION -->
+<section class="amenities-categories">
+    <div class="categories-container">
+        
+        <!-- Category: Wellness -->
+        <div class="category-section" id="wellness">
+            <div class="category-header">
+                <div class="category-number">01</div>
+                <div class="category-info">
+                    <h3 class="category-title">Wellness & Recreation</h3>
+                    <p class="category-desc">Rejuvenate your body and mind with our comprehensive wellness facilities</p>
+                </div>
+            </div>
+            
+            <div class="amenity-cards">
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18M9 21V9"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Yoga & Meditation Studio</h4>
+                        <p>Dedicated space for yoga, pilates, and meditation with scheduled classes</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+                
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Sauna & Steam Room</h4>
+                        <p>Relax and detox in our premium Finnish sauna and eucalyptus steam room</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+                
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Massage & Spa Services</h4>
+                        <p>On-site massage therapy and spa treatments available by appointment</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Category: Social -->
+        <div class="category-section" id="social">
+            <div class="category-header">
+                <div class="category-number">02</div>
+                <div class="category-info">
+                    <h3 class="category-title">Social & Entertainment</h3>
+                    <p class="category-desc">Connect with neighbors and host unforgettable gatherings</p>
+                </div>
+            </div>
+            
+            <div class="amenity-cards">
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Clubhouse & Event Space</h4>
+                        <p>Elegant venue for private parties, meetings, and community events</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+                
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="7" width="20" height="15" rx="2" ry="2"/>
+                            <polyline points="17 2 12 7 7 2"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Theater & Screening Room</h4>
+                        <p>Private cinema with 4K projection, surround sound, and reclining seats</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+                
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Game Lounge & Bar</h4>
+                        <p>Billiards, shuffleboard, poker tables, and wet bar for entertaining</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Category: Convenience -->
+        <div class="category-section" id="convenience">
+            <div class="category-header">
+                <div class="category-number">03</div>
+                <div class="category-info">
+                    <h3 class="category-title">Convenience & Services</h3>
+                    <p class="category-desc">Thoughtful amenities that simplify your daily life</p>
+                </div>
+            </div>
+            
+            <div class="amenity-cards">
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Package Lockers & Concierge</h4>
+                        <p>24/7 smart package lockers and dedicated concierge services</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+                
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Business Center & Co-Working</h4>
+                        <p>Private offices, conference rooms, high-speed WiFi, and printing services</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+                
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                            <line x1="7" y1="7" x2="7.01" y2="7"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Dry Cleaning & Laundry</h4>
+                        <p>On-site valet dry cleaning pickup and state-of-the-art laundry facilities</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Category: Outdoor -->
+        <div class="category-section" id="outdoor">
+            <div class="category-header">
+                <div class="category-number">04</div>
+                <div class="category-info">
+                    <h3 class="category-title">Outdoor & Pets</h3>
+                    <p class="category-desc">Beautiful outdoor spaces for you and your furry friends</p>
+                </div>
+            </div>
+            
+            <div class="amenity-cards">
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Landscaped Gardens</h4>
+                        <p>Beautifully maintained courtyards, walking paths, and zen garden spaces</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+                
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5M8 14v.5M16 14v.5M11.25 16.25h1.5L12 17l-.75-.75zM4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444c0-1.061-.162-2.2-.493-3.309m-9.243-6.082A8.801 8.801 0 0 1 12 5c.78 0 1.5.108 2.161.306"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Dog Park & Pet Spa</h4>
+                        <p>Fenced off-leash dog park, pet grooming station, and pet-friendly policies</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+                
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                            <line x1="6" y1="6" x2="6.01" y2="6"/>
+                            <line x1="6" y1="18" x2="6.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <div class="amenity-content">
+                        <h4>Covered Parking Garage</h4>
+                        <p>Secure underground parking with EV charging stations and bike storage</p>
+                    </div>
+                    <div class="amenity-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- AMENITIES COMPARISON / HIGHLIGHTS -->
+<section class="amenities-highlights">
+    <div class="highlights-container">
+        
+        <div class="highlights-content">
+            <div class="highlights-text">
+                <div class="text-accent">
+                    <span class="accent-line"></span>
+                    <span>Why Choose Us</span>
+                </div>
+                <h2 class="highlights-title">More Than Just<br><span>An Apartment</span></h2>
+                <p class="highlights-desc">At Park City 3&4, we've reimagined what apartment living can be. Every amenity is designed to enhance your lifestyle, foster community, and provide the comfort you deserve.</p>
+                
+                <div class="highlight-stats">
+                    <div class="highlight-stat">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">4.9/5</span>
+                            <span class="stat-label">Resident Rating</span>
+                        </div>
+                    </div>
+                    <div class="highlight-stat">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">500+</span>
+                            <span class="stat-label">Happy Residents</span>
+                        </div>
+                    </div>
+                    <div class="highlight-stat">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">40+</span>
+                            <span class="stat-label">Years of Excellence</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="index.html#contact" class="highlights-cta">
+                    <span>Schedule Your Tour Today</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="highlights-visual">
+                <div class="visual-card">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="Modern Apartment Living">
+                    <div class="visual-overlay"></div>
+                    <div class="visual-badge">
+                        <span class="badge-number">15+</span>
+                        <span class="badge-text">Premium Amenities</span>
+                    </div>
+                </div>
+                <div class="visual-accent-card">
+                    <div class="accent-content">
+                        <span class="accent-icon">✦</span>
+                        <span class="accent-text">Award-Winning Community</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="amenities-cta">
+    <div class="cta-container">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Experience<br>Luxury Living?</h2>
+            <p class="cta-desc">Schedule a private tour to explore our amenities in person and find your perfect home.</p>
+            <div class="cta-buttons">
+                <a href="index.html#contact" class="cta-primary">
+                    <span>Schedule a Tour</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="tel:5551234567" class="cta-secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>(555) 123-4567</span>
+                </a>
+            </div>
+        </div>
+        <div class="cta-pattern"></div>
+    </div>
+</section>
+
+<!-- PREMIUM FOOTER (same as index) -->
+<footer class="premium-footer">
+    <div class="footer-accent-line"></div>
+    
+    <div class="footer-main">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="logo.png" alt="Park City 3&4" class="footer-logo">
+                    </a>
+                    <p class="footer-brand-text">
+                        A perfect community to call home. Experience refined living with premium amenities in the heart of Queens.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0c0a09"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="amenities.html">Amenities</a></li>
+                        <li><a href="community.html">Resident Forms</a></li>
+                        <li><a href="security.html">Building Guides</a></li>
+                        <li><a href="services.html">Gallery</a></li>
+                        <li><a href="index.html#faqs">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h4 class="footer-col-title">Residents</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">ClickPay Portal</a></li>
+                        <li><a href="#">Pay Rent Online</a></li>
+                        <li><a href="#">Maintenance Request</a></li>
+                        <li><a href="#">Forms & Documents</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Emergency Contacts</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact-col">
+                    <h4 class="footer-col-title">Contact Us</h4>
+                    <div class="footer-contact-items">
+                        <a href="tel:5551234567" class="footer-contact-item">
+                            <div class="contact-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">(555) 123-4567</span>
+                            </div>
+                        </a>
+                        <a href="mailto:info@parkcity34.com" class="footer-contact-item">
+                            <div class="contact-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">info@parkcity34.com</span>
+                            </div>
+                        </a>
+                        <div class="footer-contact-item">
+                            <div class="contact-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Address</span>
+                                <span class="contact-value">Rego Park, NY 11374</span>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="contact-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Office Hours</span>
+                                <span class="contact-value">Mon-Fri: 9AM - 6PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="footer-container">
+            <div class="footer-bottom-inner">
+                <p class="footer-copyright">© 2026 Park City 3&4 Apartments. All rights reserved.</p>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="legal-divider"></span>
+                    <a href="#">Terms of Service</a>
+                    <span class="legal-divider"></span>
+                    <a href="#">Accessibility</a>
+                </div>
+                <div class="footer-back-top" id="backToTop">
+                    <span>Back to Top</span>
+                    <div class="back-top-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="18 15 12 9 6 15"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="script.js"></script>
+<script src="amenities.js"></script>
+
+</body>
+</html>
