@@ -1634,7 +1634,7 @@ class ParkCityApp {
             
             // Video Hero Section
             console.log('🎥 VIDEO HERO SECTION');
-            this.components.videoHero = new VideoHeroController();
+            this.components.videoHero = new SplitHeroController();
             console.log('');
             
             // Navigation
