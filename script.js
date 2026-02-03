@@ -1557,7 +1557,7 @@ class ParkCityApp {
             this.components.featurePoints = new FeaturePointAnimator();
             this.components.statInteractions = new StatCardInteractions();
             this.components.aboutParallax = new AboutParallaxEffects();
-            this.components.map = new InteractiveMapController();();
+            this.components.map = new InteractiveMapController();
             console.log('');
             
             // Location & Lifestyle Section - ROLLS-ROYCE PREMIUM
