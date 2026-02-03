@@ -631,58 +631,6 @@ class StatCardInteractions {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 🌊 ABOUT PARALLAX EFFECTS
-// ═══════════════════════════════════════════════════════════════
-class AboutParallaxEffects {
-    constructor() {
-        this.contentSide = document.querySelector('.about-content-side');
-        this.gallerySide = document.querySelector('.about-gallery-side');
-        
-        if (this.contentSide && this.gallerySide && window.innerWidth > 968) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('🌊 Parallax: Active');
-        
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    this.handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-    
-    handleScroll() {
-        const scrollY = window.scrollY;
-        const section = document.querySelector('.about-premium-section');
-        
-        if (!section) return;
-        
-        const rect = section.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        
-        if (isVisible) {
-            const offset = (scrollY - section.offsetTop) * 0.15;
-            
-            if (this.contentSide) {
-                this.contentSide.style.transform = `translateY(${offset}px)`;
-            }
-            
-            if (this.gallerySide) {
-                this.gallerySide.style.transform = `translateY(${-offset}px)`;
-            }
-        }
-    }
-}
-
-// ═══════════════════════════════════════════════════════════════
 // 🌆 LOCATION & LIFESTYLE
 // ═══════════════════════════════════════════════════════════════
 
