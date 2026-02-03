@@ -913,7 +913,7 @@ class LocationLifestyleController {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 🗺️ INTERACTIVE MAP CONTROLLER (Leaflet.js) - CORRECTED
+// 🗺️ INTERACTIVE MAP CONTROLLER (Leaflet.js) - FINAL CORRECTED
 // ═══════════════════════════════════════════════════════════════
 
 class InteractiveMapController {
@@ -927,61 +927,223 @@ class InteractiveMapController {
         this.activeCategory = 'all';
         
         // Park City 3&4 center coordinates (Rego Park, Queens)
-        this.centerCoords = [40.7291, -73.8615];
+        this.centerCoords = [40.7310, -73.8614];
         
-        // CORRECTED: All 6 building addresses with accurate coordinates
+        // EXACT Building coordinates provided
         this.buildings = [
-            { id: 1, name: '9707 63rd Road', address: '9707 63rd Road, Rego Park, NY 11374', coords: [40.7285, -73.8625] },
-            { id: 2, name: '9710 62nd Drive', address: '9710 62nd Drive, Rego Park, NY 11374', coords: [40.7295, -73.8625] },
-            { id: 3, name: '9737 63rd Road', address: '9737 63rd Road, Rego Park, NY 11374', coords: [40.7285, -73.8615] },
-            { id: 4, name: '9740 62nd Drive', address: '9740 62nd Drive, Rego Park, NY 11374', coords: [40.7295, -73.8615] },
-            { id: 5, name: '9805 63rd Road', address: '9805 63rd Road, Rego Park, NY 11374', coords: [40.7285, -73.8605] },
-            { id: 6, name: '9820 62nd Drive', address: '9820 62nd Drive, Rego Park, NY 11374', coords: [40.7295, -73.8605] }
+            { id: 1, name: '9707 63rd Road', address: '9707 63rd Road, Rego Park, NY 11374', coords: [40.7300, -73.8616] },
+            { id: 2, name: '9710 62nd Drive', address: '9710 62nd Drive, Rego Park, NY 11374', coords: [40.7302, -73.8618] },
+            { id: 3, name: '9737 63rd Road', address: '9737 63rd Road, Rego Park, NY 11374', coords: [40.7310, -73.8612] },
+            { id: 4, name: '9740 62nd Drive', address: '9740 62nd Drive, Rego Park, NY 11374', coords: [40.7311, -73.8615] },
+            { id: 5, name: '9805 63rd Road', address: '9805 63rd Road, Rego Park, NY 11374', coords: [40.7320, -73.8610] },
+            { id: 6, name: '9820 62nd Drive', address: '9820 62nd Drive, Rego Park, NY 11374', coords: [40.7322, -73.8613] }
         ];
         
-        // Attractions data for Rego Park area
+        // EXACT Attractions coordinates provided
         this.attractions = [
-            // Dining
-            { id: 'a1', name: 'Tower Diner', category: 'dining', icon: '🍽️', address: '97-15 Queens Blvd', coords: [40.7310, -73.8580], distance: '0.3mi', hours: '24/7' },
-            { id: 'a2', name: 'Lobster House', category: 'dining', icon: '🦞', address: '97-50 Queens Blvd', coords: [40.7308, -73.8590], distance: '0.3mi', hours: '11am-10pm' },
-            { id: 'a3', name: 'Tropix Bar & Lounge', category: 'dining', icon: '🍹', address: 'Queens Blvd', coords: [40.7315, -73.8575], distance: '0.4mi', hours: '4pm-2am' },
-            { id: 'a4', name: 'Foodtown', category: 'dining', icon: '🛒', address: '63rd Road', coords: [40.7280, -73.8630], distance: '0.1mi', hours: '7am-10pm' },
-            { id: 'a5', name: 'CTown Supermarket', category: 'dining', icon: '🛒', address: '63rd Drive', coords: [40.7300, -73.8640], distance: '0.2mi', hours: '7am-9pm' },
-            { id: 'a6', name: 'Netcost Market', category: 'dining', icon: '🥖', address: 'Queens Blvd', coords: [40.7320, -73.8560], distance: '0.4mi', hours: '8am-9pm' },
+            // ═══════════════════════════════════════
+            // DINING / CAFES
+            // ═══════════════════════════════════════
+            { 
+                id: 'dining-1', 
+                name: 'Rego Park Cafe', 
+                category: 'dining', 
+                icon: '☕', 
+                address: 'Rego Park, NY', 
+                coords: [40.72894, -73.86273], 
+                distance: '0.2mi', 
+                hours: '7am-9pm' 
+            },
+            { 
+                id: 'dining-2', 
+                name: 'Vista 65 Cafe', 
+                category: 'dining', 
+                icon: '☕', 
+                address: 'Rego Park, NY', 
+                coords: [40.72813, -73.85824], 
+                distance: '0.3mi', 
+                hours: '7am-8pm' 
+            },
+            { 
+                id: 'dining-3', 
+                name: 'Il Primo Cafe', 
+                category: 'dining', 
+                icon: '🍝', 
+                address: 'Rego Park, NY', 
+                coords: [40.72636, -73.86505], 
+                distance: '0.4mi', 
+                hours: '8am-10pm' 
+            },
+            { 
+                id: 'dining-4', 
+                name: 'Forest Cafe', 
+                category: 'dining', 
+                icon: '☕', 
+                address: 'Forest Hills, NY', 
+                coords: [40.72131, -73.85178], 
+                distance: '0.8mi', 
+                hours: '6am-9pm' 
+            },
             
-            // Fitness
-            { id: 'a7', name: 'Planet Fitness', category: 'fitness', icon: '💪', address: 'Queens Blvd', coords: [40.7318, -73.8550], distance: '0.5mi', hours: '24/7' },
-            { id: 'a8', name: 'Blink Fitness', category: 'fitness', icon: '🏋️', address: 'Junction Blvd', coords: [40.7325, -73.8540], distance: '0.6mi', hours: '5am-11pm' },
+            // ═══════════════════════════════════════
+            // SHOPPING / GROCERIES
+            // ═══════════════════════════════════════
+            { 
+                id: 'shopping-1', 
+                name: 'CTown Supermarkets', 
+                category: 'shopping', 
+                icon: '🛒', 
+                address: 'Rego Park, NY', 
+                coords: [40.7289, -73.8610], 
+                distance: '0.1mi', 
+                hours: '7am-10pm' 
+            },
+            { 
+                id: 'shopping-2', 
+                name: "Trader Joe's", 
+                category: 'shopping', 
+                icon: '🛒', 
+                address: 'Rego Park, NY', 
+                coords: [40.7330, -73.8650], 
+                distance: '0.3mi', 
+                hours: '8am-9pm' 
+            },
+            { 
+                id: 'shopping-3', 
+                name: 'Foodtown of Rego Park', 
+                category: 'shopping', 
+                icon: '🛒', 
+                address: 'Rego Park, NY', 
+                coords: [40.7255, -73.8605], 
+                distance: '0.4mi', 
+                hours: '7am-10pm' 
+            },
             
-            // Shopping
-            { id: 'a9', name: 'Rego Center (Costco)', category: 'shopping', icon: '🛍️', address: '61-35 Junction Blvd', coords: [40.7315, -73.8620], distance: '0.2mi', hours: '10am-8:30pm' },
-            { id: 'a10', name: 'Marshalls', category: 'shopping', icon: '👕', address: 'Rego Center', coords: [40.7312, -73.8625], distance: '0.2mi', hours: '9:30am-9:30pm' },
-            { id: 'a11', name: 'Best Buy', category: 'shopping', icon: '📱', address: 'Rego Center', coords: [40.7318, -73.8618], distance: '0.2mi', hours: '10am-9pm' },
-            { id: 'a12', name: 'DSW Shoes', category: 'shopping', icon: '👟', address: 'Rego Center', coords: [40.7310, -73.8622], distance: '0.2mi', hours: '10am-9pm' },
-            { id: 'a13', name: 'Aldi', category: 'shopping', icon: '🛒', address: 'Rego Center', coords: [40.7308, -73.8628], distance: '0.2mi', hours: '9am-8pm' },
-            { id: 'a14', name: 'Queens Center Mall', category: 'shopping', icon: '🏬', address: '90-15 Queens Blvd', coords: [40.7350, -73.8700], distance: '0.8mi', hours: '10am-9pm' },
+            // ═══════════════════════════════════════
+            // EDUCATION
+            // ═══════════════════════════════════════
+            { 
+                id: 'education-1', 
+                name: 'P.S. 206 Horace Harding', 
+                category: 'education', 
+                icon: '🏫', 
+                address: 'Rego Park, NY', 
+                coords: [40.73412, -73.86097], 
+                distance: '0.3mi', 
+                hours: '8am-3pm' 
+            },
+            { 
+                id: 'education-2', 
+                name: 'J.H.S. 157 Stephen A. Halsey', 
+                category: 'education', 
+                icon: '🏫', 
+                address: 'Rego Park, NY', 
+                coords: [40.73227, -73.85342], 
+                distance: '0.5mi', 
+                hours: '8am-3pm' 
+            },
+            { 
+                id: 'education-3', 
+                name: 'Forest Hills High School', 
+                category: 'education', 
+                icon: '🎓', 
+                address: 'Forest Hills, NY', 
+                coords: [40.72973, -73.84493], 
+                distance: '1.0mi', 
+                hours: '7:30am-4pm' 
+            },
             
-            // Transit
-            { id: 'a15', name: '63 Drive-Rego Park Station', category: 'transit', icon: '🚇', address: '63rd Dr & Queens Blvd', coords: [40.7297, -73.8617], distance: '0.1mi', lines: 'M, R' },
-            { id: 'a16', name: 'Woodhaven Blvd Station', category: 'transit', icon: '🚇', address: 'Woodhaven Blvd', coords: [40.7330, -73.8530], distance: '0.6mi', lines: 'M, R' },
-            { id: 'a17', name: 'Express Bus to Manhattan', category: 'transit', icon: '🚌', address: 'Queens Blvd', coords: [40.7305, -73.8595], distance: '0.2mi', lines: 'QM11, QM12' },
+            // ═══════════════════════════════════════
+            // TRANSIT
+            // ═══════════════════════════════════════
+            { 
+                id: 'transit-1', 
+                name: '63 Dr-Rego Park Station', 
+                category: 'transit', 
+                icon: '🚇', 
+                address: '63rd Dr & Queens Blvd', 
+                coords: [40.72992, -73.86176], 
+                distance: '0.1mi', 
+                lines: 'M, R' 
+            },
+            { 
+                id: 'transit-2', 
+                name: 'Forest Hills-71 Av Station', 
+                category: 'transit', 
+                icon: '🚇', 
+                address: '71st Ave & Queens Blvd', 
+                coords: [40.72144, -73.84466], 
+                distance: '0.9mi', 
+                lines: 'E, F, M, R' 
+            },
+            { 
+                id: 'transit-3', 
+                name: 'LIRR Forest Hills Station', 
+                category: 'transit', 
+                icon: '🚂', 
+                address: 'Forest Hills, NY', 
+                coords: [40.71969, -73.84482], 
+                distance: '1.0mi', 
+                lines: 'LIRR' 
+            },
             
-            // Parks
-            { id: 'a18', name: 'Horace Harding Playground', category: 'parks', icon: '🌳', address: '62nd Dr & 99th St', coords: [40.7290, -73.8590], distance: '0.1mi', hours: 'Dawn-Dusk' },
-            { id: 'a19', name: 'Lost Battalion Playground', category: 'parks', icon: '🌲', address: 'Queens Blvd', coords: [40.7275, -73.8650], distance: '0.3mi', hours: 'Dawn-Dusk' },
-            { id: 'a20', name: 'Forest Park', category: 'parks', icon: '🏞️', address: 'Woodhaven Blvd', coords: [40.7200, -73.8500], distance: '1.2mi', hours: 'Dawn-Dusk' },
+            // ═══════════════════════════════════════
+            // PARKS
+            // ═══════════════════════════════════════
+            { 
+                id: 'parks-1', 
+                name: 'Flushing Meadows Corona Park', 
+                category: 'parks', 
+                icon: '🌳', 
+                address: 'Corona, NY', 
+                coords: [40.74070, -73.84960], 
+                distance: '1.2mi', 
+                hours: 'Dawn-Dusk' 
+            },
+            { 
+                id: 'parks-2', 
+                name: 'Juniper Valley Park', 
+                category: 'parks', 
+                icon: '🌲', 
+                address: 'Middle Village, NY', 
+                coords: [40.72048, -73.87967], 
+                distance: '1.1mi', 
+                hours: 'Dawn-Dusk' 
+            },
             
-            // Entertainment
-            { id: 'a21', name: 'Queens Zoo', category: 'entertainment', icon: '🦁', address: 'Flushing Meadows', coords: [40.7445, -73.8490], distance: '1.5mi', hours: '10am-5pm' },
-            { id: 'a22', name: 'New York Hall of Science', category: 'entertainment', icon: '🔬', address: 'Flushing Meadows', coords: [40.7470, -73.8515], distance: '1.6mi', hours: '10am-5pm' },
-            
-            // Healthcare
-            { id: 'a23', name: 'Elmhurst Hospital Center', category: 'healthcare', icon: '🏥', address: '79-01 Broadway', coords: [40.7440, -73.8860], distance: '2.1mi', hours: '24/7' },
-            { id: 'a24', name: 'CVS Pharmacy', category: 'healthcare', icon: '💊', address: 'Queens Blvd', coords: [40.7305, -73.8570], distance: '0.3mi', hours: '8am-10pm' },
-            
-            // Education
-            { id: 'a25', name: 'PS 206 Horace Harding School', category: 'education', icon: '🏫', address: '61-02 98th St', coords: [40.7288, -73.8600], distance: '0.1mi', hours: '8am-3pm' },
-            { id: 'a26', name: 'Queens College', category: 'education', icon: '🎓', address: '65-30 Kissena Blvd', coords: [40.7365, -73.8195], distance: '3.0mi', hours: 'Varies' }
+            // ═══════════════════════════════════════
+            // ENTERTAINMENT
+            // ═══════════════════════════════════════
+            { 
+                id: 'entertainment-1', 
+                name: 'Regal UA Midway', 
+                category: 'entertainment', 
+                icon: '🎬', 
+                address: 'Forest Hills, NY', 
+                coords: [40.72048, -73.84358], 
+                distance: '1.2mi', 
+                hours: '11am-11pm' 
+            },
+            { 
+                id: 'entertainment-2', 
+                name: 'Cinemart Cinemas', 
+                category: 'entertainment', 
+                icon: '🎬', 
+                address: 'Forest Hills, NY', 
+                coords: [40.71003, -73.84696], 
+                distance: '1.8mi', 
+                hours: '12pm-12am' 
+            },
+            { 
+                id: 'entertainment-3', 
+                name: 'Queens Theatre', 
+                category: 'entertainment', 
+                icon: '🎭', 
+                address: 'Flushing Meadows Park', 
+                coords: [40.74413, -73.84443], 
+                distance: '1.5mi', 
+                hours: 'Event-based' 
+            }
         ];
         
         if (this.mapContainer) {
