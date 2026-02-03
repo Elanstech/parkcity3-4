@@ -1967,7 +1967,6 @@ class ParkCityApp {
             this.components.statCounter = new StatCounterAnimator();
             this.components.featurePoints = new FeaturePointAnimator();
             this.components.statInteractions = new StatCardInteractions();
-            this.components.aboutParallax = new AboutParallaxEffects();
             this.components.map = new InteractiveMapController();
             console.log('');
             
