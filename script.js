@@ -1538,6 +1538,230 @@ class ContactForm {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// 🦶 PREMIUM FOOTER CONTROLLER
+// ═══════════════════════════════════════════════════════════════
+
+class PremiumFooterController {
+    constructor() {
+        this.footer = document.querySelector('.premium-footer');
+        this.backToTop = document.getElementById('backToTop');
+        this.socialLinks = document.querySelectorAll('.social-link');
+        this.footerLinks = document.querySelectorAll('.footer-links a');
+        this.contactItems = document.querySelectorAll('.footer-contact-item');
+        
+        if (this.footer) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('🦶 PREMIUM FOOTER: Initializing...');
+        
+        this.bindBackToTop();
+        this.bindScrollReveal();
+        this.addMagneticEffect();
+        this.bindLinkAnimations();
+        
+        console.log('✅ Premium Footer: Ready');
+    }
+    
+    // Back to Top Functionality
+    bindBackToTop() {
+        if (this.backToTop) {
+            this.backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Add click feedback
+                this.createRipple(this.backToTop.querySelector('.back-top-icon'));
+            });
+        }
+    }
+    
+    // Scroll Reveal Animation
+    bindScrollReveal() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('footer-revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe footer columns
+        const columns = this.footer.querySelectorAll('.footer-brand-col, .footer-links-col, .footer-contact-col');
+        columns.forEach((col, index) => {
+            col.style.opacity = '0';
+            col.style.transform = 'translateY(30px)';
+            col.style.transition = `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s`;
+            observer.observe(col);
+        });
+    }
+    
+    // Magnetic Effect for Social Icons (Desktop only)
+    addMagneticEffect() {
+        if (window.innerWidth <= 968) return;
+        
+        this.socialLinks.forEach(link => {
+            link.addEventListener('mousemove', (e) => {
+                const rect = link.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+                
+                link.style.transform = `translate(${x}px, ${y}px) translateY(-4px)`;
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = '';
+            });
+        });
+    }
+    
+    // Link Hover Animations
+    bindLinkAnimations() {
+        this.footerLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                this.createHoverGlow(link);
+            });
+        });
+        
+        this.contactItems.forEach(item => {
+            if (item.tagName === 'A') {
+                item.addEventListener('mouseenter', () => {
+                    const icon = item.querySelector('.contact-icon-wrap');
+                    if (icon) {
+                        this.pulseIcon(icon);
+                    }
+                });
+            }
+        });
+    }
+    
+    // Create subtle glow effect on link hover
+    createHoverGlow(element) {
+        if (window.innerWidth <= 768) return;
+        
+        const glow = document.createElement('span');
+        glow.className = 'link-hover-glow';
+        glow.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            width: 4px;
+            height: 4px;
+            background: rgba(212, 165, 116, 0.8);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+            animation: glowPulse 0.6s ease-out forwards;
+        `;
+        
+        element.style.position = 'relative';
+        element.appendChild(glow);
+        
+        setTimeout(() => glow.remove(), 600);
+    }
+    
+    // Pulse animation for contact icons
+    pulseIcon(icon) {
+        if (window.innerWidth <= 768) return;
+        
+        icon.style.animation = 'iconPulse 0.4s ease-out';
+        setTimeout(() => {
+            icon.style.animation = '';
+        }, 400);
+    }
+    
+    // Ripple effect for back to top button
+    createRipple(element) {
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 165, 116, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            pointer-events: none;
+            animation: rippleExpand 0.6s ease-out forwards;
+        `;
+        
+        element.style.position = 'relative';
+        element.style.overflow = 'hidden';
+        element.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    }
+}
+
+// Add required CSS animations via JavaScript
+function addFooterAnimationStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .footer-revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        @keyframes glowPulse {
+            0% {
+                opacity: 0;
+                transform: translateY(-50%) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-50%) scale(1.5);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50%) scale(1);
+            }
+        }
+        
+        @keyframes iconPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes rippleExpand {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize Footer
+document.addEventListener('DOMContentLoaded', () => {
+    addFooterAnimationStyles();
+    new PremiumFooterController();
+});
+
+// ═══════════════════════════════════════════════════════════════
 // 🎯 SMOOTH SCROLL
 // ═══════════════════════════════════════════════════════════════
 class SmoothScroll {
