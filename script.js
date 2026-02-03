@@ -7,17 +7,14 @@
  */
 
 // ═══════════════════════════════════════════════════════════════
-// 🎥 VIDEO HERO CONTROLLER - OPTIMIZED
+// 🎥 SPLIT HERO VIDEO CONTROLLER
 // ═══════════════════════════════════════════════════════════════
-class VideoHeroController {
+
+class SplitHeroController {
     constructor() {
-        this.hero = document.querySelector('.luxury-hero');
-        this.video = document.querySelector('.hero-video');
-        this.videoToggle = document.getElementById('videoToggle');
-        this.scrollIndicator = document.querySelector('.scroll-indicator');
-        this.buttons = document.querySelectorAll('.hero-btn');
-        this.statItems = document.querySelectorAll('.stat-item');
-        
+        this.hero = document.querySelector('.split-hero');
+        this.video = document.querySelector('.split-hero-video');
+        this.videoToggle = document.getElementById('splitVideoToggle');
         this.isPlaying = true;
         
         if (this.hero && this.video) {
@@ -26,35 +23,24 @@ class VideoHeroController {
     }
     
     init() {
-        console.log('🎥 VIDEO HERO: Initializing...');
+        console.log('🎥 SPLIT HERO: Initializing...');
         
         this.setupVideo();
         this.bindVideoToggle();
-        this.bindScrollIndicator();
-        this.bindButtonInteractions();
-        this.bindStatInteractions();
-        this.addMagneticButtons();
         this.handleVideoErrors();
         
-        console.log('✅ Video Hero: Ready & gorgeous');
+        console.log('✅ Split Hero: Ready');
     }
     
     setupVideo() {
-        // Ensure video plays on mobile
         this.video.setAttribute('playsinline', '');
         this.video.setAttribute('muted', '');
         
-        // Auto-play
         this.video.play().catch(err => {
             console.log('⚠️ Video autoplay prevented:', err);
             this.isPlaying = false;
             this.updateToggleButton();
         });
-        
-        // Optimize for mobile
-        if (window.innerWidth <= 968) {
-            this.video.style.filter = 'brightness(0.7) contrast(1.05)';
-        }
     }
     
     bindVideoToggle() {
@@ -92,119 +78,17 @@ class VideoHeroController {
     handleVideoErrors() {
         this.video.addEventListener('error', (e) => {
             console.error('❌ Video error:', e);
-            // Fallback to image background
-            const fallbackImg = this.video.querySelector('img');
-            if (fallbackImg) {
-                const imgSrc = fallbackImg.getAttribute('src');
-                this.hero.style.backgroundImage = `url(${imgSrc})`;
-                this.hero.style.backgroundSize = 'cover';
-                this.hero.style.backgroundPosition = 'center';
-            }
+            // Fallback to gradient background
+            this.hero.querySelector('.hero-right').style.background = 
+                'linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%)';
         });
-    }
-    
-    bindScrollIndicator() {
-        if (this.scrollIndicator) {
-            this.scrollIndicator.addEventListener('click', () => {
-                const nextSection = document.querySelector('.about-premium-section') || 
-                                  document.querySelector('#amenities');
-                if (nextSection) {
-                    window.scrollTo({
-                        top: nextSection.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    this.createScrollRipple();
-                }
-            });
-        }
-    }
-    
-    bindButtonInteractions() {
-        this.buttons.forEach(button => {
-            button.addEventListener('click', (e) => this.createButtonRipple(e, button));
-            button.addEventListener('mouseenter', () => this.createButtonSparkles(button));
-        });
-    }
-    
-    bindStatInteractions() {
-        this.statItems.forEach(stat => {
-            stat.addEventListener('mousemove', (e) => {
-                if (window.innerWidth <= 968) return; // Skip on mobile
-                
-                const rect = stat.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 15;
-                const rotateY = (centerX - x) / 15;
-                stat.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-            });
-            
-            stat.addEventListener('mouseleave', () => {
-                stat.style.transform = '';
-            });
-        });
-    }
-    
-    addMagneticButtons() {
-        if (window.innerWidth <= 968) return; // Skip on mobile
-        
-        this.buttons.forEach(button => {
-            button.addEventListener('mousemove', (e) => {
-                const rect = button.getBoundingClientRect();
-                const x = (e.clientX - rect.left - rect.width / 2) * 0.15;
-                const y = (e.clientY - rect.top - rect.height / 2) * 0.15;
-                button.style.transform = `translate(${x}px, ${y}px) translateY(-4px) scale(1.03)`;
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = '';
-            });
-        });
-    }
-    
-    createButtonRipple(event, button) {
-        const ripple = document.createElement('span');
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        ripple.style.cssText = `position:absolute;width:${size}px;height:${size}px;border-radius:50%;background:rgba(255,255,255,0.4);top:${event.clientY-rect.top-size/2}px;left:${event.clientX-rect.left-size/2}px;pointer-events:none;transform:scale(0);opacity:1;z-index:0`;
-        button.appendChild(ripple);
-        requestAnimationFrame(() => {
-            ripple.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
-            ripple.style.transform = 'scale(3)';
-            ripple.style.opacity = '0';
-        });
-        setTimeout(() => ripple.remove(), 600);
-    }
-    
-    createButtonSparkles(button) {
-        if (window.innerWidth <= 968) return; // Skip on mobile
-        
-        for (let i = 0; i < 4; i++) {
-            setTimeout(() => {
-                const sparkle = document.createElement('span');
-                sparkle.textContent = '✨';
-                sparkle.style.cssText = `position:absolute;font-size:12px;pointer-events:none;z-index:10;left:${Math.random()*100}%;top:${Math.random()*100}%;animation:sparkleFloat 1s ease-out forwards`;
-                button.style.position = 'relative';
-                button.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 1000);
-            }, i * 100);
-        }
-    }
-    
-    createScrollRipple() {
-        const ripple = document.createElement('div');
-        ripple.style.cssText = 'position:absolute;top:50%;left:50%;width:80px;height:80px;border-radius:50%;border:2px solid rgba(212,165,116,0.5);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:0';
-        this.scrollIndicator.appendChild(ripple);
-        requestAnimationFrame(() => {
-            ripple.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
-            ripple.style.transform = 'translate(-50%, -50%) scale(2)';
-            ripple.style.opacity = '0';
-        });
-        setTimeout(() => ripple.remove(), 800);
     }
 }
+
+// Initialize the split hero
+document.addEventListener('DOMContentLoaded', () => {
+    new SplitHeroController();
+});
 
 // ═══════════════════════════════════════════════════════════════
 // 🧭 NAVIGATION CONTROLLER
