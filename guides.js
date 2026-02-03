@@ -285,40 +285,6 @@ class StepCounterAnimation {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 💫 MAGNETIC BUTTON EFFECTS
-// ═══════════════════════════════════════════════════════════════
-
-class MagneticButtons {
-    constructor() {
-        this.buttons = document.querySelectorAll('.card-cta, .email-btn, .mgmt-btn');
-        
-        if (this.buttons.length > 0 && window.innerWidth > 968) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('💫 Magnetic Buttons: Initializing...');
-        
-        this.buttons.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = (e.clientX - rect.left - rect.width / 2) * 0.15;
-                const y = (e.clientY - rect.top - rect.height / 2) * 0.15;
-                
-                btn.style.transform = `translate(${x}px, ${y}px)`;
-            });
-            
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = '';
-            });
-        });
-        
-        console.log('✅ Magnetic Buttons: Ready');
-    }
-}
-
-// ═══════════════════════════════════════════════════════════════
 // 📊 COVERAGE TABLE HIGHLIGHT
 // ═══════════════════════════════════════════════════════════════
 
