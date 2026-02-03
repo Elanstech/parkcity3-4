@@ -913,6 +913,380 @@ class LocationLifestyleController {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// 🗺️ INTERACTIVE MAP CONTROLLER (Leaflet.js)
+// ═══════════════════════════════════════════════════════════════
+
+class InteractiveMapController {
+    constructor() {
+        this.mapContainer = document.getElementById('leafletMap');
+        this.map = null;
+        this.markers = [];
+        this.buildingMarkers = [];
+        this.attractionMarkers = [];
+        this.activeTab = 'buildings';
+        this.activeCategory = 'all';
+        
+        // Park City coordinates (Forest Hills, Queens)
+        this.centerCoords = [40.7196, -73.8448];
+        
+        // Building data
+        this.buildings = [
+            { id: 1, name: 'Building One', address: '97-10 62nd Drive', coords: [40.7198, -73.8455] },
+            { id: 2, name: 'Building Two', address: '97-20 62nd Drive', coords: [40.7196, -73.8450] },
+            { id: 3, name: 'Building Three', address: '97-30 62nd Drive', coords: [40.7194, -73.8445] },
+            { id: 4, name: 'Building Four', address: '97-40 62nd Drive', coords: [40.7192, -73.8440] },
+            { id: 5, name: 'Building Five', address: '97-50 62nd Drive', coords: [40.7190, -73.8435] },
+            { id: 6, name: 'Building Six', address: '97-60 62nd Drive', coords: [40.7188, -73.8430] }
+        ];
+        
+        // Attractions data - Add your real locations here!
+        this.attractions = [
+            // Dining
+            { id: 'a1', name: "Nick's Pizza", category: 'dining', icon: '🍕', address: '108-26 Ascan Ave', coords: [40.7205, -73.8465], distance: '0.3mi', hours: '11am-10pm' },
+            { id: 'a2', name: 'Station House', category: 'dining', icon: '🍽️', address: '103-05 Metropolitan Ave', coords: [40.7180, -73.8490], distance: '0.5mi', hours: '11am-11pm' },
+            { id: 'a3', name: 'Keuka Restaurant', category: 'dining', icon: '🍷', address: '112-25 Queens Blvd', coords: [40.7215, -73.8420], distance: '0.4mi', hours: '5pm-10pm' },
+            { id: 'a4', name: "Alberto's", category: 'dining', icon: '🍝', address: '98-31 Metropolitan Ave', coords: [40.7175, -73.8510], distance: '0.6mi', hours: '12pm-10pm' },
+            
+            // Fitness
+            { id: 'a5', name: 'Equinox Forest Hills', category: 'fitness', icon: '💪', address: '112-01 Queens Blvd', coords: [40.7210, -73.8430], distance: '0.4mi', hours: '5am-11pm' },
+            { id: 'a6', name: 'Planet Fitness', category: 'fitness', icon: '🏋️', address: '71-25 Austin St', coords: [40.7225, -73.8455], distance: '0.6mi', hours: '24/7' },
+            { id: 'a7', name: 'Pure Yoga', category: 'fitness', icon: '🧘', address: '107-15 Continental Ave', coords: [40.7200, -73.8475], distance: '0.3mi', hours: '6am-9pm' },
+            
+            // Shopping
+            { id: 'a8', name: 'Austin Street Shopping', category: 'shopping', icon: '🛍️', address: 'Austin Street', coords: [40.7220, -73.8450], distance: '0.5mi', hours: 'Varies' },
+            { id: 'a9', name: "Trader Joe's", category: 'shopping', icon: '🛒', address: '90-30 Metropolitan Ave', coords: [40.7170, -73.8530], distance: '0.7mi', hours: '8am-9pm' },
+            { id: 'a10', name: 'CVS Pharmacy', category: 'shopping', icon: '💊', address: '71-36 Austin St', coords: [40.7228, -73.8448], distance: '0.5mi', hours: '8am-10pm' },
+            
+            // Transit
+            { id: 'a11', name: 'Forest Hills Station', category: 'transit', icon: '🚇', address: '71st Ave & Queens Blvd', coords: [40.7215, -73.8445], distance: '0.6mi', lines: 'E, F, M, R' },
+            { id: 'a12', name: '67th Ave Station', category: 'transit', icon: '🚇', address: '67th Ave & Queens Blvd', coords: [40.7185, -73.8520], distance: '0.8mi', lines: 'E, F, M, R' },
+            
+            // Parks
+            { id: 'a13', name: 'Forest Park', category: 'parks', icon: '🌳', address: 'Woodhaven Blvd', coords: [40.7150, -73.8550], distance: '0.7mi', hours: 'Dawn-Dusk' },
+            { id: 'a14', name: 'MacDonald Park', category: 'parks', icon: '🌲', address: 'Queens Blvd & Burns St', coords: [40.7230, -73.8460], distance: '0.4mi', hours: 'Dawn-Dusk' },
+            
+            // Entertainment
+            { id: 'a15', name: 'Forest Hills Stadium', category: 'entertainment', icon: '🎭', address: '1 Tennis Pl', coords: [40.7240, -73.8440], distance: '0.3mi', hours: 'Event-based' },
+            { id: 'a16', name: 'Cinemart Cinemas', category: 'entertainment', icon: '🎬', address: '106-03 Metropolitan Ave', coords: [40.7178, -73.8485], distance: '0.5mi', hours: '12pm-12am' }
+        ];
+        
+        if (this.mapContainer) {
+            this.init();
+        }
+    }
+    
+    init() {
+        console.log('🗺️ Interactive Map: Initializing...');
+        
+        this.initMap();
+        this.addBuildingMarkers();
+        this.addAttractionMarkers();
+        this.populateBuildingsList();
+        this.populateAttractionsList();
+        this.bindTabEvents();
+        this.bindCategoryEvents();
+        this.showBuildingsView();
+        
+        console.log('✅ Interactive Map: Ready!');
+    }
+    
+    initMap() {
+        // Initialize Leaflet map
+        this.map = L.map('leafletMap', {
+            center: this.centerCoords,
+            zoom: 16,
+            zoomControl: true,
+            scrollWheelZoom: true
+        });
+        
+        // Add OpenStreetMap tiles (free, no API key needed)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(this.map);
+        
+        // Alternative: Use CartoDB tiles for a cleaner look
+        // L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        //     attribution: '© OpenStreetMap contributors © CARTO',
+        //     maxZoom: 19
+        // }).addTo(this.map);
+    }
+    
+    createCustomIcon(category, content, isBuilding = false) {
+        const size = isBuilding ? 48 : 40;
+        const iconClass = isBuilding ? 'building' : category;
+        
+        return L.divIcon({
+            className: 'custom-marker',
+            html: `
+                <div class="marker-pin ${iconClass}">
+                    <span class="marker-icon">${content}</span>
+                </div>
+            `,
+            iconSize: [size, size],
+            iconAnchor: [size / 2, size],
+            popupAnchor: [0, -size]
+        });
+    }
+    
+    createPopupContent(item, isBuilding = false) {
+        if (isBuilding) {
+            return `
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <div class="popup-icon building">${item.id}</div>
+                        <div>
+                            <h4 class="popup-title">${item.name}</h4>
+                            <span class="popup-category">Park City Apartments</span>
+                        </div>
+                    </div>
+                    <div class="popup-details">
+                        <span class="popup-address">📍 ${item.address}</span>
+                    </div>
+                    <div class="popup-actions">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${item.coords[0]},${item.coords[1]}" 
+                           target="_blank" class="popup-btn">
+                            Get Directions →
+                        </a>
+                    </div>
+                </div>
+            `;
+        } else {
+            return `
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <div class="popup-icon ${item.category}">${item.icon}</div>
+                        <div>
+                            <h4 class="popup-title">${item.name}</h4>
+                            <span class="popup-category">${item.category}</span>
+                        </div>
+                    </div>
+                    <div class="popup-details">
+                        <span class="popup-address">📍 ${item.address}</span>
+                        <span class="popup-distance">🚶 ${item.distance}</span>
+                        ${item.hours ? `<span class="popup-address">🕐 ${item.hours}</span>` : ''}
+                        ${item.lines ? `<span class="popup-address">🚇 Lines: ${item.lines}</span>` : ''}
+                    </div>
+                    <div class="popup-actions">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${item.coords[0]},${item.coords[1]}" 
+                           target="_blank" class="popup-btn">
+                            Get Directions →
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+    }
+    
+    addBuildingMarkers() {
+        this.buildings.forEach(building => {
+            const marker = L.marker(building.coords, {
+                icon: this.createCustomIcon('building', building.id, true)
+            }).addTo(this.map);
+            
+            marker.bindPopup(this.createPopupContent(building, true), {
+                maxWidth: 280,
+                className: 'custom-popup'
+            });
+            
+            marker.buildingData = building;
+            this.buildingMarkers.push(marker);
+        });
+    }
+    
+    addAttractionMarkers() {
+        this.attractions.forEach(attraction => {
+            const marker = L.marker(attraction.coords, {
+                icon: this.createCustomIcon(attraction.category, attraction.icon)
+            }).addTo(this.map);
+            
+            marker.bindPopup(this.createPopupContent(attraction), {
+                maxWidth: 280,
+                className: 'custom-popup'
+            });
+            
+            marker.attractionData = attraction;
+            marker.category = attraction.category;
+            this.attractionMarkers.push(marker);
+        });
+    }
+    
+    populateBuildingsList() {
+        const list = document.getElementById('buildingsList');
+        if (!list) return;
+        
+        list.innerHTML = this.buildings.map(building => `
+            <div class="location-item" data-building-id="${building.id}">
+                <div class="location-number">${building.id}</div>
+                <div class="location-details">
+                    <h4>${building.name}</h4>
+                    <p>${building.address}</p>
+                </div>
+                <div class="location-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </div>
+            </div>
+        `).join('');
+        
+        // Add click handlers
+        list.querySelectorAll('.location-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const id = parseInt(item.dataset.buildingId);
+                this.focusOnBuilding(id);
+                
+                // Update active state
+                list.querySelectorAll('.location-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    }
+    
+    populateAttractionsList(category = 'all') {
+        const list = document.getElementById('attractionsList');
+        const countEl = document.getElementById('attractionsCount');
+        if (!list) return;
+        
+        const filtered = category === 'all' 
+            ? this.attractions 
+            : this.attractions.filter(a => a.category === category);
+        
+        if (countEl) {
+            countEl.textContent = `${filtered.length} locations found`;
+        }
+        
+        list.innerHTML = filtered.map(attraction => `
+            <div class="attraction-item" data-attraction-id="${attraction.id}">
+                <div class="attraction-icon ${attraction.category}">
+                    ${attraction.icon}
+                </div>
+                <div class="attraction-details">
+                    <h4>${attraction.name}</h4>
+                    <p>${attraction.address}</p>
+                </div>
+                <div class="attraction-distance">${attraction.distance}</div>
+            </div>
+        `).join('');
+        
+        // Add click handlers
+        list.querySelectorAll('.attraction-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const id = item.dataset.attractionId;
+                this.focusOnAttraction(id);
+                
+                // Update active state
+                list.querySelectorAll('.attraction-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    }
+    
+    focusOnBuilding(id) {
+        const marker = this.buildingMarkers.find(m => m.buildingData.id === id);
+        if (marker) {
+            this.map.setView(marker.getLatLng(), 17, { animate: true });
+            marker.openPopup();
+        }
+    }
+    
+    focusOnAttraction(id) {
+        const marker = this.attractionMarkers.find(m => m.attractionData.id === id);
+        if (marker) {
+            this.map.setView(marker.getLatLng(), 17, { animate: true });
+            marker.openPopup();
+        }
+    }
+    
+    showBuildingsView() {
+        // Show building markers
+        this.buildingMarkers.forEach(m => m.addTo(this.map));
+        // Hide attraction markers
+        this.attractionMarkers.forEach(m => this.map.removeLayer(m));
+        // Fit bounds to buildings
+        const group = L.featureGroup(this.buildingMarkers);
+        this.map.fitBounds(group.getBounds().pad(0.2));
+        
+        // Hide category filters
+        document.getElementById('categoryFilters')?.classList.add('hidden');
+    }
+    
+    showAttractionsView(category = 'all') {
+        // Hide building markers
+        this.buildingMarkers.forEach(m => this.map.removeLayer(m));
+        // Show/filter attraction markers
+        this.attractionMarkers.forEach(m => {
+            if (category === 'all' || m.category === category) {
+                m.addTo(this.map);
+            } else {
+                this.map.removeLayer(m);
+            }
+        });
+        
+        // Fit bounds to visible markers
+        const visibleMarkers = this.attractionMarkers.filter(m => 
+            category === 'all' || m.category === category
+        );
+        if (visibleMarkers.length > 0) {
+            const group = L.featureGroup(visibleMarkers);
+            this.map.fitBounds(group.getBounds().pad(0.2));
+        }
+        
+        // Show category filters
+        document.getElementById('categoryFilters')?.classList.remove('hidden');
+    }
+    
+    bindTabEvents() {
+        const tabs = document.querySelectorAll('.map-tab');
+        const contents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.dataset.tab;
+                
+                // Update tab styles
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Update content visibility
+                contents.forEach(c => {
+                    c.classList.toggle('active', c.dataset.content === tabName);
+                });
+                
+                // Update map view
+                if (tabName === 'buildings') {
+                    this.activeTab = 'buildings';
+                    this.showBuildingsView();
+                } else {
+                    this.activeTab = 'attractions';
+                    this.showAttractionsView(this.activeCategory);
+                }
+            });
+        });
+    }
+    
+    bindCategoryEvents() {
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+                this.activeCategory = category;
+                
+                // Update button styles
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update map and list
+                this.showAttractionsView(category);
+                this.populateAttractionsList(category);
+            });
+        });
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
 // 🎬 SCROLL ANIMATIONS
 // ═══════════════════════════════════════════════════════════════
 class ScrollAnimations {
@@ -1183,6 +1557,7 @@ class ParkCityApp {
             this.components.featurePoints = new FeaturePointAnimator();
             this.components.statInteractions = new StatCardInteractions();
             this.components.aboutParallax = new AboutParallaxEffects();
+            this.components.map = new InteractiveMapController();();
             console.log('');
             
             // Location & Lifestyle Section - ROLLS-ROYCE PREMIUM
