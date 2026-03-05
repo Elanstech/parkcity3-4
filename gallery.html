@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Park City 3&4 Apartments Gallery - Explore our luxury apartments, amenities, and stunning community spaces in Rego Park, Queens.">
+    <title>Gallery | Park City 3&4 Apartments</title>
+
+    <!-- External Libraries (same as main page) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Gallery-Specific Styles -->
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+
+<!-- Navigation (same as main page) -->
+<nav class="modern-nav" id="mainNav">
+    <div class="nav-wrapper">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="logo.png" alt="Park City 3&4 Apartments" class="brand-logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-item">Home</a></li>
+                <li><a href="amenities.html" class="nav-item">Amenities</a></li>
+                <li><a href="forms.html" class="nav-item">Resident Forms</a></li>
+                <li><a href="guides.html" class="nav-item">Building Guides</a></li>
+                <li><a href="gallery.html" class="nav-item active">Gallery</a></li>
+                <li><a href="faq.html" class="nav-item">FAQ</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="apply.html" class="nav-cta">
+                    <span class="cta-text">Apply Now</span>
+                    <span class="cta-icon">→</span>
+                </a>
+            </div>
+            <button class="menu-toggle" id="navToggle" aria-label="Toggle Menu">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <div class="mesh-gradient"></div>
+        </div>
+        <button class="menu-close" id="menuClose" aria-label="Close Menu">
+            <span class="close-line"></span>
+            <span class="close-line"></span>
+            <div class="close-ripple"></div>
+        </button>
+        <div class="menu-container">
+            <div class="menu-header">
+                <div class="menu-logo"><img src="logo.png" alt="Park City 3&4" class="menu-logo-img"></div>
+                <div class="menu-tagline">Luxury Living Redefined</div>
+            </div>
+            <ul class="menu-items">
+                <li class="menu-item" data-index="1"><a href="index.html" class="menu-link"><span class="link-wrapper"><span class="link-number">01</span><span class="link-content"><span class="link-text">Home</span><span class="link-subtitle">Welcome</span></span><span class="link-arrow"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></span><div class="link-bg"></div></a></li>
+                <li class="menu-item" data-index="2"><a href="amenities.html" class="menu-link"><span class="link-wrapper"><span class="link-number">02</span><span class="link-content"><span class="link-text">Amenities</span><span class="link-subtitle">Features & Lifestyle</span></span><span class="link-arrow"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></span><div class="link-bg"></div></a></li>
+                <li class="menu-item" data-index="3"><a href="gallery.html" class="menu-link"><span class="link-wrapper"><span class="link-number">03</span><span class="link-content"><span class="link-text">Gallery</span><span class="link-subtitle">Our Spaces</span></span><span class="link-arrow"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></span><div class="link-bg"></div></a></li>
+                <li class="menu-item" data-index="4"><a href="faq.html" class="menu-link"><span class="link-wrapper"><span class="link-number">04</span><span class="link-content"><span class="link-text">FAQ</span><span class="link-subtitle">Questions</span></span><span class="link-arrow"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></span><div class="link-bg"></div></a></li>
+                <li class="menu-item" data-index="5"><a href="contact.html" class="menu-link"><span class="link-wrapper"><span class="link-number">05</span><span class="link-content"><span class="link-text">Contact</span><span class="link-subtitle">Get in Touch</span></span><span class="link-arrow"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></span><div class="link-bg"></div></a></li>
+            </ul>
+            <div class="menu-cta-wrapper">
+                <a href="apply.html" class="menu-cta-btn">
+                    <span class="cta-shine"></span>
+                    <span class="cta-content"><span class="cta-text">Apply Now</span><span class="cta-subtext">Start Your Journey</span></span>
+                    <span class="cta-icon">→</span>
+                </a>
+            </div>
+            <div class="menu-footer">
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>(555) 123-4567</span>
+                    </div>
+                </div>
+                <div class="footer-copyright"><p>© 2026 Park City 3&4 Apartments</p></div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<!-- ============================================== -->
+<!-- GALLERY HERO SECTION -->
+<!-- ============================================== -->
+<section class="gallery-hero">
+    <div class="gallery-hero-bg">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920&q=80" alt="Park City Apartments" class="hero-bg-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-grain"></div>
+    </div>
+    <div class="gallery-hero-content">
+        <div class="hero-accent-badge">
+            <span class="badge-line"></span>
+            <span class="badge-text">Our Spaces</span>
+            <span class="badge-line"></span>
+        </div>
+        <h1 class="gallery-hero-title">
+            <span class="title-line" data-delay="0">Experience</span>
+            <span class="title-line title-highlight" data-delay="1">Park City</span>
+            <span class="title-line title-sub" data-delay="2">Living</span>
+        </h1>
+        <p class="gallery-hero-desc">A curated look at our premium apartments, world-class amenities, and vibrant community life.</p>
+        <div class="hero-scroll-hint">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll to Explore</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- GALLERY FILTER BAR -->
+<!-- ============================================== -->
+<section class="gallery-controls" id="galleryControls">
+    <div class="gallery-container">
+        <div class="filter-bar">
+            <div class="filter-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <span>Filter</span>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">
+                    <span class="filter-icon">✦</span>
+                    <span>All</span>
+                </button>
+                <button class="filter-btn" data-filter="exterior">
+                    <span class="filter-icon">🏢</span>
+                    <span>Exterior</span>
+                </button>
+                <button class="filter-btn" data-filter="interior">
+                    <span class="filter-icon">🛋️</span>
+                    <span>Interiors</span>
+                </button>
+                <button class="filter-btn" data-filter="amenities">
+                    <span class="filter-icon">✨</span>
+                    <span>Amenities</span>
+                </button>
+                <button class="filter-btn" data-filter="community">
+                    <span class="filter-icon">🌳</span>
+                    <span>Community</span>
+                </button>
+                <button class="filter-btn" data-filter="neighborhood">
+                    <span class="filter-icon">🗽</span>
+                    <span>Neighborhood</span>
+                </button>
+            </div>
+            <div class="gallery-count">
+                <span id="galleryCount">18</span> Photos
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- MASONRY GALLERY GRID -->
+<!-- ============================================== -->
+<section class="gallery-masonry-section">
+    <div class="gallery-container">
+        <div class="masonry-grid" id="masonryGrid">
+
+            <!-- ROW 1: Featured Full-Width -->
+            <div class="gallery-card gallery-card-featured" data-category="exterior" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Park City 3&4 Building Exterior" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Featured</span>
+                    <h3 class="caption-title">Park City 3&4 Apartments</h3>
+                    <p class="caption-text">Our iconic Rego Park community — where modern luxury meets everyday comfort</p>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <polyline points="9 21 3 21 3 15"></polyline>
+                        <line x1="21" y1="3" x2="14" y2="10"></line>
+                        <line x1="3" y1="21" x2="10" y2="14"></line>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- ROW 2: 3-Column -->
+            <div class="gallery-card" data-category="exterior" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images1.apartments.com/i2/w0ihOyantIGgdVH5kannuRiAF67Al0w3ZbAXVaG89MY/111/park-city-34-apartments-rego-park-ny-building-photo.jpg" alt="Building View" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Exterior</span>
+                    <h3 class="caption-title">Grand Entrance</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="exterior" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images1.apartments.com/i2/tQWAHUnGV-klDb6G_RsjObVWUf5EPzWz_lJIhpySGEo/111/park-city-34-apartments-rego-park-ny-97-10-62nd-drive.jpg" alt="Building Street View" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Exterior</span>
+                    <h3 class="caption-title">Street View</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="amenities" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=80" alt="Pool Area" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Amenities</span>
+                    <h3 class="caption-title">Resort-Style Pool</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <!-- ROW 3: 2-Column Wide -->
+            <div class="gallery-card gallery-card-wide" data-category="interior" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80" alt="Modern Living Room" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Interiors</span>
+                    <h3 class="caption-title">Spacious Living Areas</h3>
+                    <p class="caption-text">Open-concept living with natural light flooding every corner</p>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="interior" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Modern Kitchen" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Interiors</span>
+                    <h3 class="caption-title">Chef's Kitchen</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <!-- ROW 4: 3-Column -->
+            <div class="gallery-card" data-category="amenities" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80" alt="Fitness Center" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Amenities</span>
+                    <h3 class="caption-title">Fitness Center</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="interior" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80" alt="Master Bedroom" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Interiors</span>
+                    <h3 class="caption-title">Master Bedroom</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="community" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80" alt="Community Garden" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Community</span>
+                    <h3 class="caption-title">Garden Spaces</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <!-- ROW 5: 1 + Wide -->
+            <div class="gallery-card" data-category="interior" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80" alt="Bathroom" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Interiors</span>
+                    <h3 class="caption-title">Spa Bathroom</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card gallery-card-wide" data-category="amenities" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80" alt="Lounge Area" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Amenities</span>
+                    <h3 class="caption-title">Residents' Lounge</h3>
+                    <p class="caption-text">A sophisticated gathering space for relaxation and socializing</p>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <!-- ROW 6: 3-Column -->
+            <div class="gallery-card" data-category="neighborhood" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80" alt="Queens Skyline" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Neighborhood</span>
+                    <h3 class="caption-title">City Skyline Views</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="community" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&q=80" alt="Outdoor BBQ Area" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Community</span>
+                    <h3 class="caption-title">Outdoor Living</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="neighborhood" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Nearby Dining" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Neighborhood</span>
+                    <h3 class="caption-title">Local Dining Scene</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <!-- ROW 7: Featured Full-Width -->
+            <div class="gallery-card gallery-card-featured" data-category="community" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1920&q=80" alt="Beautiful Living Space" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Community</span>
+                    <h3 class="caption-title">Beautiful Common Areas</h3>
+                    <p class="caption-text">Thoughtfully designed spaces that bring our community together</p>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <!-- ROW 8: 3-Column -->
+            <div class="gallery-card" data-category="neighborhood" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1476973422084-e0fa29dfb584?w=800&q=80" alt="Nearby Parks" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Neighborhood</span>
+                    <h3 class="caption-title">Local Parks</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="amenities" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80" alt="Laundry Facilities" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Amenities</span>
+                    <h3 class="caption-title">Modern Laundry</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="exterior" data-animate>
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Evening View" loading="lazy">
+                    <div class="card-overlay"></div>
+                    <div class="card-gradient"></div>
+                </div>
+                <div class="card-caption">
+                    <span class="caption-tag">Exterior</span>
+                    <h3 class="caption-title">Golden Hour</h3>
+                </div>
+                <div class="card-zoom-btn" aria-label="View fullscreen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- CTA BANNER -->
+<!-- ============================================== -->
+<section class="gallery-cta-section">
+    <div class="gallery-container">
+        <div class="gallery-cta-banner" data-animate>
+            <div class="cta-bg-blur"></div>
+            <div class="cta-inner">
+                <div class="cta-text-block">
+                    <h2 class="cta-title">See It in Person</h2>
+                    <p class="cta-desc">Photos can only tell part of the story. Schedule a personal tour to experience the warmth and beauty of Park City living firsthand.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="contact.html" class="gallery-cta-primary">
+                        <span class="btn-bg"></span>
+                        <span class="btn-content">
+                            <span>Schedule Tour</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                        <span class="btn-shimmer"></span>
+                    </a>
+                    <a href="apply.html" class="gallery-cta-secondary">
+                        <span>Apply Now</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- LIGHTBOX MODAL -->
+<!-- ============================================== -->
+<div class="lightbox-overlay" id="lightboxOverlay">
+    <div class="lightbox-backdrop"></div>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous Image">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next Image">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+    </button>
+    <div class="lightbox-content">
+        <img id="lightboxImage" src="" alt="Gallery Photo">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+
+<!-- ============================================== -->
+<!-- FOOTER (same as main page) -->
+<!-- ============================================== -->
+<footer class="premium-footer">
+    <div class="footer-accent-line"></div>
+    <div class="footer-main">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="logo.png" alt="Park City 3&4" class="footer-logo">
+                    </a>
+                    <p class="footer-brand-text">A perfect community to call home. Experience refined living with premium amenities in the heart of Queens.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links-col">
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="amenities.html">Amenities</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4 class="footer-col-title">Residents</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">ClickPay Portal</a></li>
+                        <li><a href="#">Pay Rent Online</a></li>
+                        <li><a href="#">Maintenance Request</a></li>
+                        <li><a href="#">Forms & Documents</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-col">
+                    <h4 class="footer-col-title">Contact Us</h4>
+                    <div class="footer-contact-items">
+                        <a href="tel:5551234567" class="footer-contact-item">
+                            <div class="contact-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                            <div class="contact-text"><span class="contact-label">Phone</span><span class="contact-value">(555) 123-4567</span></div>
+                        </a>
+                        <a href="mailto:info@parkcity34.com" class="footer-contact-item">
+                            <div class="contact-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                            <div class="contact-text"><span class="contact-label">Email</span><span class="contact-value">info@parkcity34.com</span></div>
+                        </a>
+                        <div class="footer-contact-item">
+                            <div class="contact-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                            <div class="contact-text"><span class="contact-label">Address</span><span class="contact-value">Rego Park, NY 11374</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-container">
+            <div class="footer-bottom-inner">
+                <p class="footer-copyright">© 2026 Park City 3&4 Apartments. All rights reserved.</p>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="legal-divider"></span>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <div class="footer-back-top" id="backToTop">
+                    <span>Back to Top</span>
+                    <div class="back-top-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Main Site Script -->
+<script src="script.js"></script>
+<!-- Gallery-Specific Script -->
+<script src="gallery.js"></script>
+</body>
+</html>
