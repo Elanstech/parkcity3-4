@@ -12,6 +12,55 @@
 </head>
 <body>
 
+<!-- ==================== LOGIN GATE ==================== -->
+<div class="login-gate" id="loginGate">
+    <div class="login-bg-canvas">
+        <div class="login-orb login-orb-1"></div>
+        <div class="login-orb login-orb-2"></div>
+        <div class="login-orb login-orb-3"></div>
+        <div class="login-mesh"></div>
+    </div>
+    <div class="login-card" id="loginCard">
+        <div class="login-card-inner">
+            <!-- Logo -->
+            <div class="login-logo-area">
+                <img src="logo.png" alt="Park City 3&4" class="login-logo">
+                <div class="login-logo-text">
+                    <h2 class="login-company">PARK CITY 3&4</h2>
+                    <p class="login-company-sub">APARTMENTS, INC.</p>
+                </div>
+            </div>
+            <!-- Divider -->
+            <div class="login-divider"><span></span></div>
+            <!-- Title -->
+            <h1 class="login-title">Resident Portal</h1>
+            <p class="login-subtitle">Enter your resident password to access building forms and documents.</p>
+            <!-- Password Field -->
+            <div class="login-field-wrap" id="loginFieldWrap">
+                <div class="login-input-group">
+                    <svg class="login-lock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <input type="password" id="loginPassword" class="login-input" placeholder="Enter password" autocomplete="off" autofocus>
+                    <button type="button" class="login-eye-btn" id="loginEyeBtn" aria-label="Toggle password visibility">
+                        <svg class="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <svg class="eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    </button>
+                </div>
+                <p class="login-error" id="loginError">Incorrect password. Please try again.</p>
+            </div>
+            <!-- Submit -->
+            <button class="login-submit-btn" id="loginSubmitBtn">
+                <span class="login-btn-bg"></span>
+                <span class="login-btn-content">
+                    <span class="login-btn-text">Access Forms</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+            </button>
+            <!-- Hint -->
+            <p class="login-hint">Contact the management office if you've forgotten your password.</p>
+        </div>
+    </div>
+</div>
+
 <!-- ==================== NAVIGATION ==================== -->
 <nav class="modern-nav" id="mainNav">
     <div class="nav-wrapper">
@@ -45,13 +94,58 @@
     </div>
 </nav>
 
-<!-- ==================== HERO ==================== -->
+<!-- ==================== FULL HERO ==================== -->
 <section class="forms-page-hero">
-    <div class="forms-hero-bg-canvas"><div class="fh-orb fh-orb-1"></div><div class="fh-orb fh-orb-2"></div><div class="fh-mesh"></div></div>
+    <!-- Animated Background -->
+    <div class="forms-hero-bg-canvas">
+        <div class="fh-orb fh-orb-1"></div>
+        <div class="fh-orb fh-orb-2"></div>
+        <div class="fh-orb fh-orb-3"></div>
+        <div class="fh-mesh"></div>
+        <div class="fh-grain"></div>
+    </div>
+    <!-- Decorative Paper Stack -->
+    <div class="hero-paper-stack">
+        <div class="hero-paper hero-paper-1"></div>
+        <div class="hero-paper hero-paper-2"></div>
+        <div class="hero-paper hero-paper-3"></div>
+    </div>
+    <!-- Content -->
     <div class="forms-hero-inner">
-        <div class="fh-label-row"><span class="fh-label-line"></span><span class="fh-label">Resident Resources</span></div>
+        <div class="fh-label-row">
+            <span class="fh-label-line"></span>
+            <span class="fh-label">Resident Resources</span>
+            <span class="fh-label-line fh-label-line-r"></span>
+        </div>
         <h1 class="fh-title">Resident<br><span class="fh-title-accent">Forms</span></h1>
         <p class="fh-subtitle">Submit building forms online — no printing, no trips to the office. Click any form below to fill it out and send it directly to management.</p>
+        <!-- Quick Stats -->
+        <div class="fh-stats-row">
+            <div class="fh-stat">
+                <span class="fh-stat-value">9</span>
+                <span class="fh-stat-label">Forms Available</span>
+            </div>
+            <div class="fh-stat-divider"></div>
+            <div class="fh-stat">
+                <span class="fh-stat-value">24hr</span>
+                <span class="fh-stat-label">Processing</span>
+            </div>
+            <div class="fh-stat-divider"></div>
+            <div class="fh-stat">
+                <span class="fh-stat-value">100%</span>
+                <span class="fh-stat-label">Digital</span>
+            </div>
+        </div>
+        <!-- Scroll CTA -->
+        <a href="#forms" class="fh-scroll-cta">
+            <span>Browse Forms</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+    </div>
+    <!-- Scroll Indicator -->
+    <div class="fh-scroll-indicator">
+        <div class="fh-scroll-line"></div>
+        <span>Scroll</span>
     </div>
 </section>
 
@@ -65,7 +159,7 @@
 
         <div class="forms-tiles-grid">
 
-            <!-- 1. BICYCLE RACK APPLICATION ✅ -->
+            <!-- 1. BICYCLE RACK APPLICATION -->
             <div class="form-tile" data-form="bike-rack" data-animate data-delay="100">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
@@ -87,7 +181,7 @@
             </div>
 
             <!-- 2. ALTERATION APPLICATION -->
-            <div class="form-tile form-tile-disabled" data-animate data-delay="200">
+            <div class="form-tile" data-form="alteration" data-animate data-delay="200">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
                         <div class="mini-header"><div class="mini-logo-block"></div><div class="mini-lines-block"><span></span><span></span><span></span></div></div>
@@ -97,18 +191,18 @@
                         <div class="mini-fields"><span></span><span></span><span></span><span></span></div>
                         <div class="mini-footer-bar"></div>
                     </div>
-                    <div class="tile-coming-soon-badge">Coming Soon</div>
                 </div>
                 <div class="tile-info">
                     <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
                     <h3 class="tile-name">Alteration Application</h3>
                     <p class="tile-desc">Apply for apartment renovations. $750 fee + deposits required.</p>
-                    <div class="tile-cta tile-cta-disabled"><span>Coming Soon</span></div>
+                    <div class="tile-cta"><span>Fill Out Form</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                <div class="tile-shine"></div>
             </div>
 
             <!-- 3. ALTERNATE BILLING ADDRESS -->
-            <div class="form-tile form-tile-disabled" data-animate data-delay="300">
+            <div class="form-tile" data-form="billing-address" data-animate data-delay="300">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
                         <div class="mini-header"><div class="mini-logo-block"></div><div class="mini-lines-block"><span></span><span></span><span></span></div></div>
@@ -116,18 +210,18 @@
                         <div class="mini-fields"><span></span><span></span><span></span><span></span><span></span><span></span></div>
                         <div class="mini-footer-bar"></div>
                     </div>
-                    <div class="tile-coming-soon-badge">Coming Soon</div>
                 </div>
                 <div class="tile-info">
                     <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
                     <h3 class="tile-name">Alternate Billing Address</h3>
                     <p class="tile-desc">Update or set an alternate address for billing correspondence.</p>
-                    <div class="tile-cta tile-cta-disabled"><span>Coming Soon</span></div>
+                    <div class="tile-cta"><span>Fill Out Form</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                <div class="tile-shine"></div>
             </div>
 
             <!-- 4. GARAGE SPACE WAITING LIST -->
-            <div class="form-tile form-tile-disabled" data-animate data-delay="400">
+            <div class="form-tile" data-form="garage-waitlist" data-animate data-delay="400">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
                         <div class="mini-header"><div class="mini-logo-block"></div><div class="mini-lines-block"><span></span><span></span><span></span></div></div>
@@ -136,18 +230,18 @@
                         <div class="mini-fields"><span></span><span></span><span></span><span></span><span></span></div>
                         <div class="mini-footer-bar"></div>
                     </div>
-                    <div class="tile-coming-soon-badge">Coming Soon</div>
                 </div>
                 <div class="tile-info">
                     <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="13.5" cy="18.5" r="2.5"/></svg></div>
                     <h3 class="tile-name">Garage Space Waiting List</h3>
                     <p class="tile-desc">Apply for a parking space. Driver's license &amp; registration required.</p>
-                    <div class="tile-cta tile-cta-disabled"><span>Coming Soon</span></div>
+                    <div class="tile-cta"><span>Fill Out Form</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                <div class="tile-shine"></div>
             </div>
 
             <!-- 5. GARAGE PARKING SWAP -->
-            <div class="form-tile form-tile-disabled" data-animate data-delay="500">
+            <div class="form-tile" data-form="parking-swap" data-animate data-delay="500">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
                         <div class="mini-header"><div class="mini-logo-block"></div><div class="mini-lines-block"><span></span><span></span><span></span></div></div>
@@ -156,18 +250,18 @@
                         <div class="mini-fields"><span></span><span></span></div>
                         <div class="mini-footer-bar"></div>
                     </div>
-                    <div class="tile-coming-soon-badge">Coming Soon</div>
                 </div>
                 <div class="tile-info">
                     <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
                     <h3 class="tile-name">Garage Parking Swap</h3>
                     <p class="tile-desc">Request to swap your current garage parking space.</p>
-                    <div class="tile-cta tile-cta-disabled"><span>Coming Soon</span></div>
+                    <div class="tile-cta"><span>Fill Out Form</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                <div class="tile-shine"></div>
             </div>
 
             <!-- 6. SURRENDER PARKING (Vehicle) -->
-            <div class="form-tile form-tile-disabled" data-animate data-delay="600">
+            <div class="form-tile" data-form="surrender-vehicle" data-animate data-delay="600">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
                         <div class="mini-header"><div class="mini-logo-block"></div><div class="mini-lines-block"><span></span><span></span><span></span></div></div>
@@ -175,18 +269,18 @@
                         <div class="mini-fields"><span></span><span></span><span></span><span></span><span></span><span></span></div>
                         <div class="mini-footer-bar"></div>
                     </div>
-                    <div class="tile-coming-soon-badge">Coming Soon</div>
                 </div>
                 <div class="tile-info">
                     <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
                     <h3 class="tile-name">Surrender Parking (Vehicle)</h3>
                     <p class="tile-desc">30-day notice to surrender your vehicle parking space.</p>
-                    <div class="tile-cta tile-cta-disabled"><span>Coming Soon</span></div>
+                    <div class="tile-cta"><span>Fill Out Form</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                <div class="tile-shine"></div>
             </div>
 
             <!-- 7. SURRENDER PARKING (Bicycle) -->
-            <div class="form-tile form-tile-disabled" data-animate data-delay="700">
+            <div class="form-tile" data-form="surrender-bicycle" data-animate data-delay="700">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
                         <div class="mini-header"><div class="mini-logo-block"></div><div class="mini-lines-block"><span></span><span></span><span></span></div></div>
@@ -194,18 +288,18 @@
                         <div class="mini-fields"><span></span><span></span><span></span><span></span><span></span></div>
                         <div class="mini-footer-bar"></div>
                     </div>
-                    <div class="tile-coming-soon-badge">Coming Soon</div>
                 </div>
                 <div class="tile-info">
-                    <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+                    <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/><line x1="4" y1="4" x2="20" y2="20" stroke-width="2"/></svg></div>
                     <h3 class="tile-name">Surrender Parking (Bicycle)</h3>
                     <p class="tile-desc">30-day notice to surrender your bicycle parking space.</p>
-                    <div class="tile-cta tile-cta-disabled"><span>Coming Soon</span></div>
+                    <div class="tile-cta"><span>Fill Out Form</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                <div class="tile-shine"></div>
             </div>
 
             <!-- 8. INTERCOM QUESTIONNAIRE -->
-            <div class="form-tile form-tile-disabled" data-animate data-delay="800">
+            <div class="form-tile" data-form="intercom" data-animate data-delay="800">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
                         <div class="mini-header"><div class="mini-logo-block"></div><div class="mini-lines-block"><span></span><span></span><span></span></div></div>
@@ -215,18 +309,18 @@
                         <div class="mini-fields"><span></span><span></span></div>
                         <div class="mini-footer-bar"></div>
                     </div>
-                    <div class="tile-coming-soon-badge">Coming Soon</div>
                 </div>
                 <div class="tile-info">
                     <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
                     <h3 class="tile-name">Intercom Questionnaire</h3>
                     <p class="tile-desc">Register phone numbers for the new intercom entry system.</p>
-                    <div class="tile-cta tile-cta-disabled"><span>Coming Soon</span></div>
+                    <div class="tile-cta"><span>Fill Out Form</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                <div class="tile-shine"></div>
             </div>
 
             <!-- 9. PET REGISTRATION -->
-            <div class="form-tile form-tile-disabled" data-animate data-delay="800">
+            <div class="form-tile" data-form="pet-registration" data-animate data-delay="800">
                 <div class="tile-preview">
                     <div class="tile-paper-mini">
                         <div class="mini-header"><div class="mini-logo-block"></div><div class="mini-lines-block"><span></span><span></span><span></span></div></div>
@@ -235,14 +329,14 @@
                         <div class="mini-fields"><span></span><span></span><span></span><span></span><span></span><span></span></div>
                         <div class="mini-footer-bar"></div>
                     </div>
-                    <div class="tile-coming-soon-badge">Coming Soon</div>
                 </div>
                 <div class="tile-info">
                     <div class="tile-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-1.5 0-3-1.5-3-3s1.5-3 3-3 3 1.5 3 3-1.5 3-3 3z"/><path d="M6.5 11c-1.38 0-2.5-1.12-2.5-2.5S5.12 6 6.5 6 9 7.12 9 8.5 7.88 11 6.5 11z"/><path d="M17.5 11c-1.38 0-2.5-1.12-2.5-2.5S16.12 6 17.5 6 20 7.12 20 8.5 18.88 11 17.5 11z"/><path d="M9 5.5C9 4.12 10.12 3 11.5 3S14 4.12 14 5.5 12.88 8 11.5 8 9 6.88 9 5.5z"/></svg></div>
                     <h3 class="tile-name">Pet Registration</h3>
                     <p class="tile-desc">Register your cat or dog. Max 16 lbs for dogs. Board approval required.</p>
-                    <div class="tile-cta tile-cta-disabled"><span>Coming Soon</span></div>
+                    <div class="tile-cta"><span>Fill Out Form</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                <div class="tile-shine"></div>
             </div>
 
         </div>
@@ -263,19 +357,21 @@
         </div>
         <div class="paper-stack"><div class="paper-shadow-layer"></div><div class="paper-shadow-layer-2"></div></div>
 
-        <!-- PAPER: BICYCLE RACK APPLICATION -->
-        <div class="paper-document" id="paperDocument">
+        <!-- ============================================ -->
+        <!-- PAPER 1: BICYCLE RACK APPLICATION            -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-bike-rack">
             <div class="paper-texture"></div>
-            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" id="bikeRackFormEl" class="paper-form">
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="bike-rack">
                 <input type="hidden" name="_subject" value="🚲 New Bicycle Rack Application">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_replyto" value="">
-                <input type="hidden" name="_autoresponse" value="Thank you for submitting your Bicycle Rack Application to Park City 3&4 Apartments! We have received your form and will process it within 2-3 business days. Contact us at parkcity3and4@akam.com with questions.">
+                <input type="hidden" name="_autoresponse" value="Thank you for submitting your Bicycle Rack Application to Park City 3&4 Apartments! We have received your form and will process it within 2-3 business days.">
                 <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=bike">
                 <input type="text" name="_honey" style="display:none">
 
-                <!-- HEADER -->
+                <!-- Header -->
                 <div class="paper-header">
                     <div class="paper-header-left">
                         <img src="logo.png" alt="Park City 3&4" class="paper-logo">
@@ -294,15 +390,12 @@
                     </div>
                 </div>
 
-                <!-- DATE -->
                 <div class="paper-date-row">
                     <div class="paper-date-field"><span class="paper-label">Date:</span><input type="date" name="Date" required class="paper-input paper-input-underline date-input"></div>
                 </div>
 
-                <!-- TITLE -->
                 <h3 class="paper-form-title">BICYCLE RACK APPLICATION</h3>
 
-                <!-- APPLICANT -->
                 <div class="paper-field-group">
                     <div class="paper-field"><span class="paper-label">APPLICANT:</span><input type="text" name="Applicant Name" required placeholder="Full Name" class="paper-input paper-input-underline"></div>
                     <div class="paper-field"><span class="paper-label">ADDRESS:</span><input type="text" name="Address" required placeholder="Street Address" class="paper-input paper-input-underline"></div>
@@ -312,7 +405,6 @@
                     <div class="paper-field"><span class="paper-label">PHOTO ID ON FILE:</span><input type="text" name="Photo ID On File" placeholder="ID Type / Number" class="paper-input paper-input-underline"></div>
                 </div>
 
-                <!-- RACK SELECTION -->
                 <div class="paper-field-group paper-rack-section">
                     <div class="paper-field-inline">
                         <span class="paper-label">BIKE RACK #:</span>
@@ -331,19 +423,16 @@
                     </div>
                 </div>
 
-                <!-- BICYCLE INFO -->
                 <div class="paper-field-group">
                     <div class="paper-field"><span class="paper-label">BICYCLE MANUFACTURER:</span><input type="text" name="Bicycle Manufacturer" required placeholder="Brand / Manufacturer" class="paper-input paper-input-underline"></div>
                     <div class="paper-field"><span class="paper-label">BICYCLE COLOR:</span><input type="text" name="Bicycle Color" required placeholder="Color" class="paper-input paper-input-underline"></div>
                 </div>
 
-                <!-- CHARGES -->
                 <div class="paper-field-group paper-acceptance-section">
                     <p class="paper-static-text"><strong>BIKE RACK ACCEPTED:</strong></p>
                     <p class="paper-static-text"><strong>CHARGES FOR BIKE:</strong> $120/Year</p>
                 </div>
 
-                <!-- AGREEMENT -->
                 <div class="paper-agreement">
                     <label class="paper-checkbox paper-checkbox-agreement">
                         <input type="checkbox" name="Agreement" value="I agree to the $120/year charge and bike rack terms" required>
@@ -352,24 +441,14 @@
                     </label>
                 </div>
 
-                <!-- APPROVED BY -->
                 <div class="paper-field-group paper-approval-section">
                     <div class="paper-field"><span class="paper-label">APPROVED BY:</span><div class="paper-office-line"><span class="office-use-tag">Office Use Only</span></div></div>
                 </div>
 
-                <!-- SUBMIT -->
                 <div class="paper-submit-area">
-                    <button type="submit" class="paper-submit-btn" id="paperSubmitBtn">
-                        <span class="submit-btn-bg"></span>
-                        <span class="submit-btn-content">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                            <span class="submit-btn-text">Submit Application</span>
-                        </span>
-                        <span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span>
-                    </button>
+                    <button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Application</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button>
                 </div>
 
-                <!-- FOOTER -->
                 <div class="paper-footer">
                     <div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div>
                     <div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div>
@@ -377,8 +456,470 @@
                 </div>
             </form>
         </div>
-    </div>
-</div>
+
+        <!-- ============================================ -->
+        <!-- PAPER 2: ALTERATION APPLICATION              -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-alteration" style="display:none">
+            <div class="paper-texture"></div>
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="alteration">
+                <input type="hidden" name="_subject" value="🔨 New Alteration Application">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="Thank you for submitting your Alteration Application. We will review your submission and contact you within 5-7 business days.">
+                <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=alteration">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="paper-header">
+                    <div class="paper-header-left"><img src="logo.png" alt="Park City 3&4" class="paper-logo"><div class="paper-header-text"><h2 class="paper-company-name">PARK CITY 3&4</h2><p class="paper-company-sub">APARTMENTS, INC.</p><p class="paper-company-tagline">Preferred Community For Living</p></div></div>
+                    <div class="paper-header-right"><div class="paper-tree-graphic"><div class="tree-row tree-row-1"><span></span><span></span><span></span></div><div class="tree-row tree-row-2"><span></span><span></span><span></span></div><div class="tree-row tree-row-3"><span></span><span></span><span></span></div></div></div>
+                </div>
+
+                <h3 class="paper-form-title">ALTERATION APPLICATION</h3>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">SHAREHOLDER NAME(S):</span><input type="text" name="Shareholder Name" required placeholder="Full Name(s)" class="paper-input paper-input-underline"></div>
+
+                    <p class="paper-static-text" style="margin-bottom:12px"><strong>BUILDING:</strong></p>
+                    <div class="paper-field-inline" style="margin-bottom:10px">
+                        <span class="paper-label" style="min-width:80px">63rd Road:</span>
+                        <div class="paper-checkbox-group">
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="97-07 63rd Road" required><span class="checkbox-box"></span><span class="checkbox-label">97-07</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="97-37 63rd Road"><span class="checkbox-box"></span><span class="checkbox-label">97-37</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="98-05 63rd Road"><span class="checkbox-box"></span><span class="checkbox-label">98-05</span></label>
+                        </div>
+                    </div>
+                    <div class="paper-field-inline">
+                        <span class="paper-label" style="min-width:80px">62nd Drive:</span>
+                        <div class="paper-checkbox-group">
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="97-10 62nd Drive"><span class="checkbox-box"></span><span class="checkbox-label">97-10</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="97-40 62nd Drive"><span class="checkbox-box"></span><span class="checkbox-label">97-40</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="98-20 62nd Drive"><span class="checkbox-box"></span><span class="checkbox-label">98-20</span></label>
+                        </div>
+                    </div>
+
+                    <div class="paper-field"><span class="paper-label">APARTMENT #:</span><input type="text" name="Apartment Number" required placeholder="Apt #" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">TELEPHONE:</span><input type="tel" name="Telephone" required placeholder="(xxx) xxx-xxxx" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">EMAIL:</span><input type="email" name="email" required placeholder="your@email.com" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>DESCRIPTION OF PROPOSED WORK:</strong></p>
+                    <textarea name="Description of Work" required placeholder="Please provide a detailed description of the alterations you wish to make..." class="paper-textarea" rows="6"></textarea>
+                </div>
+
+                <div class="paper-checklist">
+                    <p class="paper-static-text" style="margin-bottom:12px"><strong>REQUIRED SUBMISSIONS CHECKLIST:</strong></p>
+                    <div class="paper-checklist-item"><label class="paper-checkbox"><input type="checkbox" name="Checklist - Alteration Agreement" value="Yes"><span class="checkbox-box"></span><span class="checkbox-label">Completed Alteration Agreement</span></label></div>
+                    <div class="paper-checklist-item"><label class="paper-checkbox"><input type="checkbox" name="Checklist - Application Fee" value="Yes"><span class="checkbox-box"></span><span class="checkbox-label">Application Fee of $750.00</span></label></div>
+                    <div class="paper-checklist-item"><label class="paper-checkbox"><input type="checkbox" name="Checklist - Security Deposit" value="Yes"><span class="checkbox-box"></span><span class="checkbox-label">Alteration Security Deposit of $2,500.00</span></label></div>
+                    <div class="paper-checklist-item"><label class="paper-checkbox"><input type="checkbox" name="Checklist - Review Deposit" value="Yes"><span class="checkbox-box"></span><span class="checkbox-label">Alteration Review Deposit of $2,500.00 (as needed)</span></label></div>
+                    <div class="paper-checklist-item"><label class="paper-checkbox"><input type="checkbox" name="Checklist - Scope of Work" value="Yes"><span class="checkbox-box"></span><span class="checkbox-label">ATTACHMENT A: Detailed Scope of Work</span></label></div>
+                    <div class="paper-checklist-item"><label class="paper-checkbox"><input type="checkbox" name="Checklist - Insurance" value="Yes"><span class="checkbox-box"></span><span class="checkbox-label">ATTACHMENT B: Shareholder's Insurance</span></label></div>
+                    <div class="paper-checklist-item"><label class="paper-checkbox"><input type="checkbox" name="Checklist - Contractor" value="Yes"><span class="checkbox-box"></span><span class="checkbox-label">ATTACHMENT C: Contractor's Agreement, License & Insurance</span></label></div>
+                    <div class="paper-checklist-item"><label class="paper-checkbox"><input type="checkbox" name="Checklist - Other Docs" value="Yes"><span class="checkbox-box"></span><span class="checkbox-label">ATTACHMENT D: Any other Requested Documents</span></label></div>
+                </div>
+
+                <div class="paper-agreement">
+                    <label class="paper-checkbox paper-checkbox-agreement">
+                        <input type="checkbox" name="Agreement" value="I agree to the alteration terms and conditions" required>
+                        <span class="checkbox-box"></span>
+                        <span class="checkbox-label">I have read and agree to the Alteration Agreement terms. I understand all fees, deposits, and conditions outlined above.</span>
+                    </label>
+                </div>
+
+                <div class="paper-field-group paper-approval-section">
+                    <div class="paper-office-box">
+                        <p class="paper-office-box-title">OFFICE USE ONLY</p>
+                        <div class="paper-field"><span class="paper-label">APPROVED / NOT APPROVED</span></div>
+                        <div class="paper-field"><span class="paper-label">BY:</span><div class="paper-office-line"><span class="office-use-tag">Office Use Only</span></div></div>
+                        <div class="paper-field"><span class="paper-label">DATE:</span><div class="paper-office-line"><span class="office-use-tag">Office Use Only</span></div></div>
+                    </div>
+                </div>
+
+                <div class="paper-submit-area"><button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Application</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button></div>
+                <div class="paper-footer"><div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div><div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div><div class="paper-footer-col paper-footer-right"><p>parkcity3and4@akam.com</p><p>parkcity3and4.com</p></div></div>
+            </form>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PAPER 3: ALTERNATE BILLING ADDRESS           -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-billing-address" style="display:none">
+            <div class="paper-texture"></div>
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="billing-address">
+                <input type="hidden" name="_subject" value="📬 Alternate Billing Address Request">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="Thank you for submitting your Alternate Billing Address form. We will process it within 2-3 business days.">
+                <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=billing">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="paper-header"><div class="paper-header-left"><img src="logo.png" alt="Park City 3&4" class="paper-logo"><div class="paper-header-text"><h2 class="paper-company-name">PARK CITY 3&4</h2><p class="paper-company-sub">APARTMENTS, INC.</p><p class="paper-company-tagline">Preferred Community For Living</p></div></div><div class="paper-header-right"><div class="paper-tree-graphic"><div class="tree-row tree-row-1"><span></span><span></span><span></span></div><div class="tree-row tree-row-2"><span></span><span></span><span></span></div><div class="tree-row tree-row-3"><span></span><span></span><span></span></div></div></div></div>
+
+                <div class="paper-date-row"><div class="paper-date-field"><span class="paper-label">Date:</span><input type="date" name="Date" required class="paper-input paper-input-underline date-input"></div></div>
+
+                <h3 class="paper-form-title">ALTERNATE BILLING ADDRESS</h3>
+
+                <div class="paper-field-group">
+                    <div class="paper-field-inline">
+                        <div class="paper-field" style="flex:1"><span class="paper-label">BUILDING #:</span><input type="text" name="Building Number" required placeholder="Building #" class="paper-input paper-input-underline"></div>
+                        <div class="paper-field" style="flex:1"><span class="paper-label">APT:</span><input type="text" name="Apt Number" required placeholder="Apt #" class="paper-input paper-input-underline"></div>
+                        <div class="paper-field" style="flex:1.5"><span class="paper-label">ACCOUNT #:</span><input type="text" name="Account Number" placeholder="Account #" class="paper-input paper-input-underline"></div>
+                    </div>
+                    <div class="paper-field"><span class="paper-label">NAME(S) ON APT:</span><input type="text" name="Names on Apt" required placeholder="Full Name(s)" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">NAME(S) ON ALT. ADDRESS:</span><input type="text" name="Names on Alternate Address" required placeholder="Full Name(s)" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">EMAIL:</span><input type="email" name="email" required placeholder="your@email.com" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>CURRENT ADDRESS:</strong></p>
+                    <div class="paper-field"><span class="paper-label">LINE 1:</span><input type="text" name="Current Address Line 1" required placeholder="Street Address" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">LINE 2:</span><input type="text" name="Current Address Line 2" placeholder="City, State, ZIP" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>ALTERNATE ADDRESS:</strong></p>
+                    <div class="paper-field"><span class="paper-label">LINE 1:</span><input type="text" name="Alternate Address Line 1" required placeholder="Street Address" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">LINE 2:</span><input type="text" name="Alternate Address Line 2" placeholder="City, State, ZIP" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group paper-approval-section">
+                    <div class="paper-field"><span class="paper-label">APPROVED BY:</span><div class="paper-office-line"><span class="office-use-tag">Office Use Only</span></div></div>
+                </div>
+
+                <div class="paper-submit-area"><button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Form</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button></div>
+                <div class="paper-footer"><div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div><div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div><div class="paper-footer-col paper-footer-right"><p>parkcity3and4@akam.com</p><p>parkcity3and4.com</p></div></div>
+            </form>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PAPER 4: GARAGE SPACE WAITING LIST           -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-garage-waitlist" style="display:none">
+            <div class="paper-texture"></div>
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="garage-waitlist">
+                <input type="hidden" name="_subject" value="🅿️ Garage Space Waiting List Application">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="Thank you for applying to the Garage Space Waiting List. We will notify you when a space becomes available.">
+                <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=garage">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="paper-header"><div class="paper-header-left"><img src="logo.png" alt="Park City 3&4" class="paper-logo"><div class="paper-header-text"><h2 class="paper-company-name">PARK CITY 3&4</h2><p class="paper-company-sub">APARTMENTS, INC.</p><p class="paper-company-tagline">Preferred Community For Living</p></div></div><div class="paper-header-right"><div class="paper-tree-graphic"><div class="tree-row tree-row-1"><span></span><span></span><span></span></div><div class="tree-row tree-row-2"><span></span><span></span><span></span></div><div class="tree-row tree-row-3"><span></span><span></span><span></span></div></div></div></div>
+
+                <h3 class="paper-form-title">APPLICATION FOR GARAGE SPACE WAITING LIST</h3>
+
+                <div class="paper-field-group">
+                    <div class="paper-field-inline" style="margin-bottom:18px">
+                        <span class="paper-label">TYPE:</span>
+                        <div class="paper-checkbox-group">
+                            <label class="paper-checkbox"><input type="radio" name="Space Type" value="Single" required><span class="checkbox-box"></span><span class="checkbox-label">SINGLE</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Space Type" value="Family"><span class="checkbox-box"></span><span class="checkbox-label">FAMILY</span></label>
+                        </div>
+                    </div>
+                    <div class="paper-date-row"><div class="paper-date-field"><span class="paper-label">Date:</span><input type="date" name="Date" required class="paper-input paper-input-underline date-input"></div></div>
+                </div>
+
+                <div class="paper-body-text">Please fill out this form and submit it to the Management Office if you would like to apply for a Parking Space. Please attach a copy of your Driver's License and your updated Car Registration.</div>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">FULL NAME:</span><input type="text" name="Full Name" required placeholder="Full Name" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">LICENSE PLATE #:</span><input type="text" name="License Plate" required placeholder="License Plate Number" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">MAKE / MODEL:</span><input type="text" name="Make and Model" required placeholder="Make and Model of Car" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">YEAR OF CAR:</span><input type="text" name="Year of Car" required placeholder="Year" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">BUILDING / APT:</span><input type="text" name="Building and Apt" required placeholder="Building / Apt #" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">PHONE #:</span><input type="tel" name="Phone" required placeholder="(xxx) xxx-xxxx" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">EMAIL:</span><input type="email" name="email" required placeholder="your@email.com" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-agreement">
+                    <label class="paper-checkbox paper-checkbox-agreement">
+                        <input type="checkbox" name="Agreement" value="I agree to the garage waiting list terms" required>
+                        <span class="checkbox-box"></span>
+                        <span class="checkbox-label">I understand that I must be the owner of a car and must be current on my maintenance payments for my name to remain on the waiting list.</span>
+                    </label>
+                </div>
+
+                <div class="paper-submit-area"><button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Application</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button></div>
+                <div class="paper-footer"><div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div><div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div><div class="paper-footer-col paper-footer-right"><p>parkcity3and4@akam.com</p><p>parkcity3and4.com</p></div></div>
+            </form>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PAPER 5: GARAGE PARKING SWAP                 -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-parking-swap" style="display:none">
+            <div class="paper-texture"></div>
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="parking-swap">
+                <input type="hidden" name="_subject" value="🔄 Garage Parking Swap Request">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="Thank you for submitting your Garage Parking Swap request. We will review and process it within 3-5 business days.">
+                <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=swap">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="paper-header"><div class="paper-header-left"><img src="logo.png" alt="Park City 3&4" class="paper-logo"><div class="paper-header-text"><h2 class="paper-company-name">PARK CITY 3&4</h2><p class="paper-company-sub">APARTMENTS, INC.</p><p class="paper-company-tagline">Preferred Community For Living</p></div></div><div class="paper-header-right"><div class="paper-tree-graphic"><div class="tree-row tree-row-1"><span></span><span></span><span></span></div><div class="tree-row tree-row-2"><span></span><span></span><span></span></div><div class="tree-row tree-row-3"><span></span><span></span><span></span></div></div></div></div>
+
+                <h3 class="paper-form-title">GARAGE PARKING SWAP LIST</h3>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">SHAREHOLDER NAME:</span><input type="text" name="Shareholder Name" required placeholder="Full Name" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">BUILDING & APT:</span><input type="text" name="Building and Apartment" required placeholder="Building / Apt #" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">CURRENT GARAGE:</span><input type="text" name="Current Garage" required placeholder="Garage A or B" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">SPACE NUMBER:</span><input type="text" name="Space Number" required placeholder="Space #" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>REASON FOR SWAP:</strong></p>
+                    <textarea name="Reason for Swap" required placeholder="Please describe why you are requesting a parking swap..." class="paper-textarea" rows="4"></textarea>
+                </div>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">EMAIL:</span><input type="email" name="email" required placeholder="your@email.com" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">PHONE:</span><input type="tel" name="Phone" required placeholder="(xxx) xxx-xxxx" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-submit-area"><button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Request</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button></div>
+                <div class="paper-footer"><div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div><div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div><div class="paper-footer-col paper-footer-right"><p>parkcity3and4@akam.com</p><p>parkcity3and4.com</p></div></div>
+            </form>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PAPER 6: SURRENDER PARKING (Vehicle)         -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-surrender-vehicle" style="display:none">
+            <div class="paper-texture"></div>
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="surrender-vehicle">
+                <input type="hidden" name="_subject" value="🚗 30-Day Notice to Surrender Vehicle Parking Space">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="We have received your 30-day notice to surrender your vehicle parking space. Your charges will continue until the effective date.">
+                <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=surrender-v">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="paper-header"><div class="paper-header-left"><img src="logo.png" alt="Park City 3&4" class="paper-logo"><div class="paper-header-text"><h2 class="paper-company-name">PARK CITY 3&4</h2><p class="paper-company-sub">APARTMENTS, INC.</p><p class="paper-company-tagline">Preferred Community For Living</p></div></div><div class="paper-header-right"><div class="paper-tree-graphic"><div class="tree-row tree-row-1"><span></span><span></span><span></span></div><div class="tree-row tree-row-2"><span></span><span></span><span></span></div><div class="tree-row tree-row-3"><span></span><span></span><span></span></div></div></div></div>
+
+                <div class="paper-date-row"><div class="paper-date-field"><span class="paper-label">Date:</span><input type="date" name="Date" required class="paper-input paper-input-underline date-input"></div></div>
+
+                <h3 class="paper-form-title">30 DAY NOTICE TO SURRENDER PARKING SPACE (VEHICLE)</h3>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">FULL NAME:</span><input type="text" name="Full Name" required placeholder="Full Name" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">BUILDING / APT:</span><input type="text" name="Building and Apt" required placeholder="Address, Rego Park, NY 11374" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">EFFECTIVE DATE:</span><input type="date" name="Effective Surrender Date" required class="paper-input paper-input-underline date-input"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>PARKING SPACE INFORMATION:</strong></p>
+                    <div class="paper-field"><span class="paper-label">SPACE #:</span><input type="text" name="Parking Space Number" required placeholder="Space #" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">GARAGE:</span><input type="text" name="Garage" required placeholder="Garage A or B" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">VEHICLE INFO:</span><input type="text" name="Vehicle Info" required placeholder="Make, Model, License Plate #" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>REASON FOR SURRENDER:</strong></p>
+                    <textarea name="Reason" required placeholder="Please explain your reason for surrendering the parking space..." class="paper-textarea" rows="3"></textarea>
+                </div>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">EMAIL:</span><input type="email" name="email" required placeholder="your@email.com" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">PHONE:</span><input type="tel" name="Phone" required placeholder="(xxx) xxx-xxxx" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-agreement">
+                    <label class="paper-checkbox paper-checkbox-agreement">
+                        <input type="checkbox" name="Agreement" value="I understand charges continue until effective date" required>
+                        <span class="checkbox-box"></span>
+                        <span class="checkbox-label">I understand that my responsibility for parking space charges will continue until the effective date of surrender and I will remove my vehicle by that date.</span>
+                    </label>
+                </div>
+
+                <div class="paper-submit-area"><button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Notice</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button></div>
+                <div class="paper-footer"><div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div><div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div><div class="paper-footer-col paper-footer-right"><p>parkcity3and4@akam.com</p><p>parkcity3and4.com</p></div></div>
+            </form>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PAPER 7: SURRENDER PARKING (Bicycle)         -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-surrender-bicycle" style="display:none">
+            <div class="paper-texture"></div>
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="surrender-bicycle">
+                <input type="hidden" name="_subject" value="🚲 30-Day Notice to Surrender Bicycle Parking Space">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="We have received your 30-day notice to surrender your bicycle parking space. Your charges will continue until the effective date.">
+                <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=surrender-b">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="paper-header"><div class="paper-header-left"><img src="logo.png" alt="Park City 3&4" class="paper-logo"><div class="paper-header-text"><h2 class="paper-company-name">PARK CITY 3&4</h2><p class="paper-company-sub">APARTMENTS, INC.</p><p class="paper-company-tagline">Preferred Community For Living</p></div></div><div class="paper-header-right"><div class="paper-tree-graphic"><div class="tree-row tree-row-1"><span></span><span></span><span></span></div><div class="tree-row tree-row-2"><span></span><span></span><span></span></div><div class="tree-row tree-row-3"><span></span><span></span><span></span></div></div></div></div>
+
+                <div class="paper-date-row"><div class="paper-date-field"><span class="paper-label">Date:</span><input type="date" name="Date" required class="paper-input paper-input-underline date-input"></div></div>
+
+                <h3 class="paper-form-title">30 DAY NOTICE TO SURRENDER PARKING SPACE (BICYCLE)</h3>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">SHAREHOLDER NAME:</span><input type="text" name="Shareholder Name" required placeholder="Full Name" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">BUILDING / APT:</span><input type="text" name="Building and Apt" required placeholder="Building / Apt #" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">EFFECTIVE DATE:</span><input type="date" name="Effective Surrender Date" required class="paper-input paper-input-underline date-input"></div>
+                    <div class="paper-field"><span class="paper-label">SPACE #:</span><input type="text" name="Parking Space Number" required placeholder="Space #" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">GARAGE:</span><input type="text" name="Garage" required placeholder="Garage A or B" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">BICYCLE INFO:</span><input type="text" name="Bicycle Info" required placeholder="Brand, Color, etc." class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>REASON FOR SURRENDER:</strong></p>
+                    <textarea name="Reason" required placeholder="Please explain your reason for surrendering..." class="paper-textarea" rows="3"></textarea>
+                </div>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">EMAIL:</span><input type="email" name="email" required placeholder="your@email.com" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">PHONE:</span><input type="tel" name="Phone" required placeholder="(xxx) xxx-xxxx" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-agreement">
+                    <label class="paper-checkbox paper-checkbox-agreement">
+                        <input type="checkbox" name="Agreement" value="I understand charges continue until effective date" required>
+                        <span class="checkbox-box"></span>
+                        <span class="checkbox-label">I understand that my responsibility for parking space charges will continue until the effective date and I will remove my bicycle by that date.</span>
+                    </label>
+                </div>
+
+                <div class="paper-submit-area"><button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Notice</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button></div>
+                <div class="paper-footer"><div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div><div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div><div class="paper-footer-col paper-footer-right"><p>parkcity3and4@akam.com</p><p>parkcity3and4.com</p></div></div>
+            </form>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PAPER 8: INTERCOM QUESTIONNAIRE              -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-intercom" style="display:none">
+            <div class="paper-texture"></div>
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="intercom">
+                <input type="hidden" name="_subject" value="📞 Intercom Questionnaire Submission">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="Thank you for completing the Intercom Questionnaire. Your phone numbers have been registered for the new intercom entry system.">
+                <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=intercom">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="paper-header"><div class="paper-header-left"><img src="logo.png" alt="Park City 3&4" class="paper-logo"><div class="paper-header-text"><h2 class="paper-company-name">PARK CITY 3&4</h2><p class="paper-company-sub">APARTMENTS, INC.</p><p class="paper-company-tagline">Preferred Community For Living</p></div></div><div class="paper-header-right"><div class="paper-tree-graphic"><div class="tree-row tree-row-1"><span></span><span></span><span></span></div><div class="tree-row tree-row-2"><span></span><span></span><span></span></div><div class="tree-row tree-row-3"><span></span><span></span><span></span></div></div></div></div>
+
+                <h3 class="paper-form-title">INTERCOM / ENTRY SYSTEM QUESTIONNAIRE</h3>
+
+                <div class="paper-body-text">Residents will now be able to give access to visitors directly from their phone. All residents (shareholders, sublets) are required to complete the questionnaire below. You can provide up to three telephone numbers you wish to receive the intercom calls.</div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text" style="margin-bottom:12px"><strong>BUILDING:</strong></p>
+                    <div class="paper-field-inline">
+                        <div class="paper-checkbox-group">
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="9707" required><span class="checkbox-box"></span><span class="checkbox-label">9707</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="9710"><span class="checkbox-box"></span><span class="checkbox-label">9710</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="9737"><span class="checkbox-box"></span><span class="checkbox-label">9737</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="9740"><span class="checkbox-box"></span><span class="checkbox-label">9740</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="9805"><span class="checkbox-box"></span><span class="checkbox-label">9805</span></label>
+                            <label class="paper-checkbox"><input type="radio" name="Building" value="9820"><span class="checkbox-box"></span><span class="checkbox-label">9820</span></label>
+                        </div>
+                    </div>
+                    <div class="paper-field"><span class="paper-label">APARTMENT #:</span><input type="text" name="Apartment Number" required placeholder="Apt #" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field-inline">
+                        <div class="paper-field" style="flex:1"><span class="paper-label">GARAGE SPACE A:</span><input type="text" name="Garage Space A" placeholder="If applicable" class="paper-input paper-input-underline"></div>
+                        <div class="paper-field" style="flex:1"><span class="paper-label">GARAGE SPACE B:</span><input type="text" name="Garage Space B" placeholder="If applicable" class="paper-input paper-input-underline"></div>
+                    </div>
+                    <div class="paper-field"><span class="paper-label">SHAREHOLDER NAME:</span><input type="text" name="Shareholder Name" required placeholder="Shareholder Full Name" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">TENANT NAME:</span><input type="text" name="Tenant Name" placeholder="Tenant Full Name (if applicable)" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>CONTACT DETAILS — UP TO 3 PHONE NUMBERS:</strong></p>
+                    <p class="paper-body-text" style="font-size:.75rem;color:#7a6f65">No Google/Zoom/Skype or other VOIP numbers. Landlines and mobile numbers only.</p>
+                    <div class="paper-field"><span class="paper-label">EMAIL:</span><input type="email" name="email" required placeholder="your@email.com" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">PHONE 1:</span><input type="tel" name="Phone 1" required placeholder="Primary number" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">PHONE 2:</span><input type="tel" name="Phone 2" placeholder="Second number (optional)" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">PHONE 3:</span><input type="tel" name="Phone 3" placeholder="Third number (optional)" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text"><strong>NAMES OF ALL RESIDING IN THE UNIT:</strong></p>
+                    <div class="paper-field"><span class="paper-label">ADULTS:</span><input type="text" name="Adults" required placeholder="Names of all adults" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">CHILDREN:</span><input type="text" name="Children" placeholder="Names of children (if any)" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-body-text" style="margin-top:20px;padding:16px;background:rgba(212,165,116,.06);border-radius:8px;border:1px dashed rgba(166,124,82,.25)"><strong>How the new Intercom system works:</strong> Each building will have an intercom listing registered units. Visitors press the button for your unit, and you'll receive a call on your designated phone. Pick up and <strong>press "9"</strong> to open the main door.</div>
+
+                <div class="paper-submit-area"><button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Questionnaire</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button></div>
+                <div class="paper-footer"><div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div><div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div><div class="paper-footer-col paper-footer-right"><p>parkcity3and4@akam.com</p><p>parkcity3and4.com</p></div></div>
+            </form>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PAPER 9: PET REGISTRATION                    -->
+        <!-- ============================================ -->
+        <div class="paper-document paper-form-page" id="form-pet-registration" style="display:none">
+            <div class="paper-texture"></div>
+            <form action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" class="paper-form" data-form-id="pet-registration">
+                <input type="hidden" name="_subject" value="🐾 Pet Registration Form">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="Thank you for submitting your Pet Registration. The Board will review your application and contact you with their decision.">
+                <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=pet">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="paper-header"><div class="paper-header-left"><img src="logo.png" alt="Park City 3&4" class="paper-logo"><div class="paper-header-text"><h2 class="paper-company-name">PARK CITY 3&4</h2><p class="paper-company-sub">APARTMENTS, INC.</p><p class="paper-company-tagline">Preferred Community For Living</p></div></div><div class="paper-header-right"><div class="paper-tree-graphic"><div class="tree-row tree-row-1"><span></span><span></span><span></span></div><div class="tree-row tree-row-2"><span></span><span></span><span></span></div><div class="tree-row tree-row-3"><span></span><span></span><span></span></div></div></div></div>
+
+                <h3 class="paper-form-title">PET REGISTRATION FORM</h3>
+
+                <!-- Pet Policy Summary -->
+                <div class="paper-body-text" style="padding:16px;background:rgba(212,165,116,.06);border-radius:8px;border:1px dashed rgba(166,124,82,.25);margin-bottom:24px">
+                    <strong>Pet Policy Highlights:</strong> Only cats and dogs are permitted (with Board approval). Dogs must not exceed 16 lbs adult weight. Pitbulls and Rottweilers are prohibited. Exotic animals and birds are NOT allowed. Dogs must use basement/service entrances only. Non-compliance incurs a $250 fine (first occurrence), $500 for each repeat.
+                </div>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">BUILDING:</span><input type="text" name="Building" required placeholder="Building Address" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">APARTMENT #:</span><input type="text" name="Apartment Number" required placeholder="Apt #" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">SHAREHOLDER / RESIDENT:</span><input type="text" name="Shareholder Name" required placeholder="Full Name" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">CONTACT NUMBER:</span><input type="tel" name="Contact Number" required placeholder="(xxx) xxx-xxxx" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">EMAIL:</span><input type="email" name="email" required placeholder="your@email.com" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <p class="paper-static-text" style="margin-bottom:12px"><strong>PET TYPE & NUMBER:</strong></p>
+                    <div class="paper-field-inline">
+                        <div class="paper-checkbox-group">
+                            <label class="paper-checkbox"><input type="checkbox" name="Pet Type - Cat" value="Cat"><span class="checkbox-box"></span><span class="checkbox-label">CAT</span></label>
+                            <label class="paper-checkbox"><input type="checkbox" name="Pet Type - Dog" value="Dog"><span class="checkbox-box"></span><span class="checkbox-label">DOG</span></label>
+                        </div>
+                    </div>
+                    <div class="paper-field"><span class="paper-label">NUMBER OF PETS:</span><input type="number" name="Number of Pets" required placeholder="How many?" min="1" max="3" class="paper-input paper-input-underline paper-input-short"></div>
+                    <div class="paper-field"><span class="paper-label">BREED:</span><input type="text" name="Breed" required placeholder="Breed(s)" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">CURRENT WEIGHT (lbs):</span><input type="text" name="Current Weight" required placeholder="Weight in pounds" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">EXPECTED ADULT WEIGHT:</span><input type="text" name="Expected Adult Weight" required placeholder="Expected adult weight in lbs" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">AGE:</span><input type="text" name="Pet Age" required placeholder="Pet's age" class="paper-input paper-input-underline"></div>
+                    <div class="paper-field"><span class="paper-label">COLOR:</span><input type="text" name="Pet Color" required placeholder="Color(s)" class="paper-input paper-input-underline"></div>
+                </div>
+
+                <div class="paper-field-group">
+                    <div class="paper-field"><span class="paper-label">NYC DOG LICENSE # (if dog):</span><input type="text" name="NYC Dog License" placeholder="License number" class="paper-input paper-input-underline"></div>
+                    <p class="paper-static-text"><strong>ADDITIONAL DETAILS:</strong></p>
+                    <textarea name="Additional Details" placeholder="Any additional notes about your pet(s)..." class="paper-textarea" rows="3"></textarea>
+                </div>
+
+                <div class="paper-agreement">
+                    <label class="paper-checkbox paper-checkbox-agreement">
+                        <input type="checkbox" name="Agreement" value="I agree to the Pet Policy" required>
+                        <span class="checkbox-box"></span>
+                        <span class="checkbox-label">I have read and understand the rules of the Pet Policy of Park City 3&4 Apartments Inc and agree to abide by them. I understand that violating the pet policy rules will result in fines and/or eviction of my pet from the co-op. I accept all responsibility for my pet(s) and its behavior including liability for any damages.</span>
+                    </label>
+                </div>
+
+                <div class="paper-submit-area"><button type="submit" class="paper-submit-btn"><span class="submit-btn-bg"></span><span class="submit-btn-content"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="submit-btn-text">Submit Registration</span></span><span class="submit-btn-loading"><svg class="submit-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/></svg></span></button></div>
+                <div class="paper-footer"><div class="paper-footer-col"><p>Park City 3&4 Apartments, Inc.</p><p>97-07 63rd Road, Mgmt Office,</p><p>Rego Park, NY 11374</p></div><div class="paper-footer-col paper-footer-center"><p>Mon-Fri:</p><p>8:00am to 4:00pm</p></div><div class="paper-footer-col paper-footer-right"><p>parkcity3and4@akam.com</p><p>parkcity3and4.com</p></div></div>
+            </form>
+        </div>
+
+    </div><!-- end .form-overlay-container -->
+</div><!-- end .form-overlay -->
 
 <!-- ==================== SUCCESS OVERLAY ==================== -->
 <div class="form-success-overlay" id="formSuccessOverlay">
