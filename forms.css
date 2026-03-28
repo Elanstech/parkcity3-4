@@ -1,0 +1,1130 @@
+/* ===================================
+   PARK CITY 3&4 APARTMENTS
+   RESIDENT FORMS PAGE STYLES
+   Paper Document + Premium Cream UI
+   =================================== */
+
+/* ==================== FORMS HERO ==================== */
+
+.forms-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 160px 40px 80px;
+    overflow: hidden;
+    background: #0c0a09;
+}
+
+.forms-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+}
+
+.hero-orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 165, 116, 0.2) 0%, transparent 70%);
+    top: -20%;
+    right: -10%;
+    animation: heroOrbDrift 20s ease-in-out infinite;
+}
+
+.hero-orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(166, 124, 82, 0.15) 0%, transparent 70%);
+    bottom: -20%;
+    left: -10%;
+    animation: heroOrbDrift 25s ease-in-out infinite reverse;
+}
+
+@keyframes heroOrbDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+.hero-mesh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(at 25% 40%, rgba(212, 165, 116, 0.06) 0%, transparent 50%),
+        radial-gradient(at 75% 60%, rgba(166, 124, 82, 0.04) 0%, transparent 50%);
+}
+
+/* Grain texture */
+.forms-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 2;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.forms-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+}
+
+.hero-accent-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 0.3s forwards;
+}
+
+.hero-accent-line {
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(212, 165, 116, 0.8), transparent);
+}
+
+.hero-accent-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(212, 165, 116, 0.9);
+    font-weight: 400;
+}
+
+.forms-hero-title {
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 200;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+.forms-hero-subtitle {
+    font-size: 1.063rem;
+    line-height: 1.8;
+    color: #78716c;
+    font-weight: 300;
+    max-width: 520px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll Indicator */
+.forms-hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 3;
+    opacity: 0;
+    animation: fadeSlideUp 0.6s ease 1.2s forwards;
+}
+
+.scroll-line-anim {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(180deg, rgba(212, 165, 116, 0.5), transparent);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-line-anim::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background: rgba(212, 165, 116, 1);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0% { transform: translateY(-16px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(48px); opacity: 0; }
+}
+
+.forms-hero-scroll span {
+    font-size: 0.625rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #57534e;
+}
+
+/* ==================== FORMS SELECTOR SECTION ==================== */
+
+.forms-selector-section {
+    position: relative;
+    padding: 100px 0 120px;
+    background: linear-gradient(180deg, #faf8f5 0%, #f0ebe3 50%, #faf8f5 100%);
+    min-height: 100vh;
+}
+
+.forms-container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ==================== FORM TABS ==================== */
+
+.form-tabs-wrapper {
+    margin-bottom: 60px;
+}
+
+.form-tabs {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+    border-radius: 100px;
+    font-size: 0.938rem;
+    font-weight: 600;
+    color: #5a4f47;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: inherit;
+    position: relative;
+}
+
+.form-tab:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(212, 165, 116, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(166, 124, 82, 0.15);
+}
+
+.form-tab.active {
+    background: linear-gradient(135deg, #a67c52 0%, #d4a574 100%);
+    border-color: #a67c52;
+    color: white;
+    box-shadow: 0 8px 32px rgba(166, 124, 82, 0.35);
+}
+
+.form-tab:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tab-badge {
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    background: rgba(212, 165, 116, 0.2);
+    border-radius: 100px;
+    color: #a67c52;
+}
+
+.form-tab.active .tab-badge {
+    background: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ==================== PAPER FORM WRAPPER ==================== */
+
+.paper-form-wrapper {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Paper Stack Effect */
+.paper-stack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.paper-shadow-layer {
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    width: 100%;
+    height: 100%;
+    background: rgba(232, 227, 216, 0.6);
+    border-radius: 4px;
+    transform: rotate(0.4deg);
+}
+
+.paper-shadow-layer-2 {
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    background: rgba(217, 211, 197, 0.4);
+    border-radius: 4px;
+    transform: rotate(0.8deg);
+}
+
+/* ==================== THE PAPER DOCUMENT ==================== */
+
+.paper-document {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.06),
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 20px 60px rgba(166, 124, 82, 0.12),
+        0 40px 100px rgba(166, 124, 82, 0.08);
+    overflow: hidden;
+    transition: box-shadow 0.5s ease, transform 0.5s ease;
+}
+
+.paper-document:hover {
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.06),
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 24px 72px rgba(166, 124, 82, 0.16),
+        0 48px 120px rgba(166, 124, 82, 0.1);
+    transform: translateY(-4px);
+}
+
+/* Paper Texture */
+.paper-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Paper Form Internal Styling */
+.paper-form {
+    position: relative;
+    z-index: 1;
+    padding: 56px 64px 0;
+}
+
+/* ==================== PAPER HEADER ==================== */
+
+.paper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 0;
+}
+
+.paper-header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.paper-logo {
+    height: 56px;
+    width: auto;
+}
+
+.paper-header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.paper-company-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #5a3e28;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.paper-company-sub {
+    font-size: 0.813rem;
+    font-weight: 600;
+    color: #5a3e28;
+    letter-spacing: 0.5px;
+    margin: 2px 0;
+}
+
+.paper-company-tagline {
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #7a6f65;
+    margin-top: 4px;
+}
+
+/* Tree Graphic (CSS recreation) */
+.paper-tree-graphic {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+}
+
+.tree-row {
+    display: flex;
+    gap: 4px;
+}
+
+.tree-row span {
+    display: block;
+    border-radius: 2px;
+}
+
+.tree-row-1 span {
+    width: 18px;
+    height: 12px;
+}
+
+.tree-row-1 span:nth-child(1) { background: #8B6914; }
+.tree-row-1 span:nth-child(2) { background: #A0891A; }
+.tree-row-1 span:nth-child(3) { background: #5B8C3E; }
+
+.tree-row-2 span {
+    width: 18px;
+    height: 12px;
+}
+
+.tree-row-2 span:nth-child(1) { background: #A0891A; }
+.tree-row-2 span:nth-child(2) { background: #5B8C3E; }
+.tree-row-2 span:nth-child(3) { background: #3D7A30; }
+
+.tree-row-3 span {
+    width: 18px;
+    height: 12px;
+}
+
+.tree-row-3 span:nth-child(1) { background: #5B8C3E; }
+.tree-row-3 span:nth-child(2) { background: #3D7A30; }
+.tree-row-3 span:nth-child(3) { background: #2E6B22; }
+
+/* ==================== PAPER DATE ROW ==================== */
+
+.paper-date-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 36px;
+}
+
+.paper-date-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==================== PAPER FORM TITLE ==================== */
+
+.paper-form-title {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    color: #2d2520;
+    margin-bottom: 40px;
+    font-family: 'Times New Roman', 'Georgia', serif;
+}
+
+/* ==================== PAPER FIELDS ==================== */
+
+.paper-field-group {
+    margin-bottom: 28px;
+}
+
+.paper-field {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.paper-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #2d2520;
+    white-space: nowrap;
+    font-family: 'Times New Roman', 'Georgia', serif;
+    letter-spacing: 0.3px;
+}
+
+.paper-input {
+    font-family: inherit;
+    font-size: 0.938rem;
+    color: #1a1512;
+    background: transparent;
+    border: none;
+    outline: none;
+    flex: 1;
+    min-width: 0;
+    transition: all 0.3s ease;
+}
+
+.paper-input-underline {
+    border-bottom: 1px solid #c4bdb3;
+    padding: 6px 4px;
+}
+
+.paper-input-underline:focus {
+    border-bottom-color: #a67c52;
+    background: rgba(212, 165, 116, 0.04);
+}
+
+.paper-input-underline::placeholder {
+    color: #c4bdb3;
+    font-style: italic;
+    font-size: 0.813rem;
+}
+
+.paper-input-short {
+    max-width: 100px;
+}
+
+/* Date input */
+.date-input {
+    max-width: 180px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+    filter: sepia(0.5) hue-rotate(-10deg);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.date-input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* ==================== PAPER INLINE FIELDS ==================== */
+
+.paper-field-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.paper-indent {
+    padding-left: 120px;
+}
+
+/* ==================== PAPER CHECKBOXES ==================== */
+
+.paper-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.paper-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.paper-checkbox input[type="radio"],
+.paper-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkbox-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #a8a29e;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.checkbox-box::after {
+    content: '✓';
+    font-size: 12px;
+    font-weight: 800;
+    color: white;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.paper-checkbox input:checked + .checkbox-box {
+    background: #a67c52;
+    border-color: #a67c52;
+    box-shadow: 0 2px 8px rgba(166, 124, 82, 0.3);
+}
+
+.paper-checkbox input:checked + .checkbox-box::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.paper-checkbox:hover .checkbox-box {
+    border-color: #a67c52;
+    transform: scale(1.05);
+}
+
+.checkbox-label {
+    font-size: 0.813rem;
+    font-weight: 600;
+    color: #2d2520;
+    letter-spacing: 0.3px;
+    font-family: 'Times New Roman', 'Georgia', serif;
+    user-select: none;
+}
+
+/* ==================== STATIC TEXT ==================== */
+
+.paper-static-text {
+    font-size: 0.875rem;
+    font-family: 'Times New Roman', 'Georgia', serif;
+    color: #2d2520;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+/* ==================== AGREEMENT ==================== */
+
+.paper-agreement {
+    margin: 32px 0;
+    padding: 20px 24px;
+    background: rgba(212, 165, 116, 0.06);
+    border: 1px dashed rgba(166, 124, 82, 0.25);
+    border-radius: 8px;
+}
+
+.paper-checkbox-agreement .checkbox-label {
+    font-family: inherit;
+    font-size: 0.813rem;
+    font-weight: 500;
+    color: #5a4f47;
+    line-height: 1.5;
+}
+
+/* ==================== APPROVAL (Office Use) ==================== */
+
+.paper-approval-section {
+    margin-top: 40px;
+    margin-bottom: 32px;
+}
+
+.paper-office-line {
+    flex: 1;
+    border-bottom: 1px solid #c4bdb3;
+    padding: 6px 4px;
+    display: flex;
+    align-items: center;
+}
+
+.office-use-tag {
+    font-size: 0.688rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #a8a29e;
+    padding: 2px 12px;
+    background: rgba(168, 162, 158, 0.1);
+    border: 1px solid rgba(168, 162, 158, 0.2);
+    border-radius: 4px;
+}
+
+/* ==================== SUBMIT BUTTON ==================== */
+
+.paper-submit-area {
+    padding: 32px 0 48px;
+    display: flex;
+    justify-content: center;
+}
+
+.paper-submit-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 48px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: inherit;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.submit-btn-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #a67c52 0%, #d4a574 100%);
+    transition: all 0.4s ease;
+}
+
+.submit-btn-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8b6542 0%, #a67c52 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.paper-submit-btn:hover .submit-btn-bg::before {
+    opacity: 1;
+}
+
+.paper-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(166, 124, 82, 0.4);
+}
+
+.submit-btn-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.submit-btn-content svg {
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.paper-submit-btn:hover .submit-btn-content svg {
+    transform: translateX(2px) rotate(-10deg);
+}
+
+.submit-btn-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.03em;
+}
+
+/* Loading state */
+.submit-btn-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 3;
+}
+
+.submit-spinner {
+    width: 24px;
+    height: 24px;
+    color: white;
+    animation: spinAnim 1s linear infinite;
+}
+
+@keyframes spinAnim {
+    to { transform: rotate(360deg); }
+}
+
+.paper-submit-btn.loading .submit-btn-content {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.paper-submit-btn.loading .submit-btn-loading {
+    opacity: 1;
+    visibility: visible;
+}
+
+.paper-submit-btn.loading {
+    pointer-events: none;
+}
+
+/* ==================== PAPER FOOTER ==================== */
+
+.paper-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 64px;
+    margin: 0 -64px;
+    background: linear-gradient(135deg, #5a3e28 0%, #3d2a1a 100%);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.paper-footer-col p {
+    font-size: 0.688rem;
+    line-height: 1.6;
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+.paper-footer-center {
+    text-align: center;
+}
+
+.paper-footer-right {
+    text-align: right;
+}
+
+/* ==================== SUCCESS OVERLAY ==================== */
+
+.form-success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 10, 9, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+    padding: 24px;
+}
+
+.form-success-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form-success-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 60px 48px;
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-success-overlay.active .form-success-card {
+    transform: scale(1) translateY(0);
+}
+
+.success-checkmark {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(92, 141, 90, 0.15), rgba(92, 141, 90, 0.05));
+    border: 2px solid rgba(92, 141, 90, 0.3);
+    border-radius: 50%;
+}
+
+.success-checkmark svg {
+    width: 36px;
+    height: 36px;
+    color: #5c8d5a;
+}
+
+.form-success-card h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2d2520;
+    margin-bottom: 12px;
+}
+
+.form-success-card p {
+    font-size: 1rem;
+    color: #78716c;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.success-dismiss-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #a67c52, #d4a574);
+    color: white;
+    font-size: 0.938rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.success-dismiss-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(166, 124, 82, 0.4);
+}
+
+.success-dismiss-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.success-dismiss-btn:hover svg {
+    transform: translateX(4px);
+}
+
+/* ==================== ANIMATIONS (data-animate) ==================== */
+
+.forms-selector-section [data-animate] {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forms-selector-section [data-animate].animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.forms-selector-section [data-animate][data-delay="200"] {
+    transition-delay: 0.2s;
+}
+
+/* ==================== FOCUS & ACTIVE FIELD STYLES ==================== */
+
+.paper-field.field-active .paper-label {
+    color: #a67c52;
+}
+
+.paper-field.field-active .paper-input-underline {
+    border-bottom-width: 2px;
+    border-bottom-color: #a67c52;
+}
+
+/* Filled field indicator */
+.paper-input-underline.filled {
+    border-bottom-color: #5c8d5a;
+}
+
+/* ==================== RESPONSIVE - TABLET ==================== */
+
+@media (max-width: 968px) {
+    .forms-hero {
+        min-height: 40vh;
+        padding: 140px 24px 60px;
+    }
+
+    .forms-hero-title {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+    }
+
+    .forms-selector-section {
+        padding: 80px 0 100px;
+    }
+
+    .paper-form {
+        padding: 40px 36px 0;
+    }
+
+    .paper-footer {
+        padding: 16px 36px;
+        margin: 0 -36px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .paper-footer-center,
+    .paper-footer-right {
+        text-align: center;
+    }
+
+    .paper-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .paper-header-right {
+        align-self: flex-end;
+    }
+
+    .paper-field-inline {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .paper-indent {
+        padding-left: 0;
+    }
+
+    .paper-checkbox-group {
+        gap: 12px;
+    }
+}
+
+/* ==================== RESPONSIVE - MOBILE ==================== */
+
+@media (max-width: 600px) {
+    .forms-hero {
+        padding: 120px 20px 48px;
+        min-height: 35vh;
+    }
+
+    .forms-hero-subtitle {
+        font-size: 0.938rem;
+    }
+
+    .forms-selector-section {
+        padding: 60px 0 80px;
+    }
+
+    .forms-container {
+        padding: 0 16px;
+    }
+
+    .form-tabs {
+        flex-direction: column;
+    }
+
+    .form-tab {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.875rem;
+    }
+
+    .paper-form {
+        padding: 32px 24px 0;
+    }
+
+    .paper-footer {
+        margin: 0 -24px;
+        padding: 14px 24px;
+    }
+
+    .paper-logo {
+        height: 40px;
+    }
+
+    .paper-company-name {
+        font-size: 1.25rem;
+    }
+
+    .paper-form-title {
+        font-size: 1.063rem;
+    }
+
+    .paper-label {
+        font-size: 0.75rem;
+    }
+
+    .paper-input {
+        font-size: 0.875rem;
+    }
+
+    .paper-field {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .paper-date-row {
+        justify-content: flex-start;
+    }
+
+    .paper-agreement {
+        padding: 16px;
+    }
+
+    .paper-submit-btn {
+        width: 100%;
+        padding: 16px 32px;
+    }
+
+    .paper-shadow-layer,
+    .paper-shadow-layer-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .paper-form {
+        padding: 24px 18px 0;
+    }
+
+    .paper-footer {
+        margin: 0 -18px;
+        padding: 12px 18px;
+    }
+
+    .paper-footer-col p {
+        font-size: 0.625rem;
+    }
+
+    .checkbox-label {
+        font-size: 0.75rem;
+    }
+}
