@@ -1014,12 +1014,16 @@
 .form-overlay-container {
     position: relative;
     z-index: 1;
-    max-width: 880px;
+    max-width: 780px;
     margin: 0 auto;
     padding: 32px 24px;
     height: 100vh;
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 /* Close Button */
@@ -1041,8 +1045,9 @@
     cursor: pointer;
     font-family: inherit;
     transition: all .3s ease;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, .1);
+    flex-shrink: 0;
 }
 
 .form-overlay-close:hover {
@@ -1093,34 +1098,9 @@
     text-align: right;
 }
 
-/* Paper Stack Shadow */
+/* Paper Stack Shadow — purely decorative, no layout impact */
 .paper-stack {
-    position: relative;
-    pointer-events: none;
-    margin-bottom: -100%;
-    height: 0;
-}
-
-.paper-shadow-layer {
-    position: absolute;
-    top: 8px;
-    left: 6px;
-    width: 100%;
-    height: 100%;
-    background: rgba(232, 227, 216, .6);
-    border-radius: 4px;
-    transform: rotate(.4deg);
-}
-
-.paper-shadow-layer-2 {
-    position: absolute;
-    top: 14px;
-    left: 10px;
-    width: 100%;
-    height: 100%;
-    background: rgba(217, 211, 197, .4);
-    border-radius: 4px;
-    transform: rotate(.8deg);
+    display: none;
 }
 
 
@@ -1137,6 +1117,9 @@
         0 4px 12px rgba(0, 0, 0, .04),
         0 20px 60px rgba(166, 124, 82, .12);
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     transform: translateY(40px) scale(.97);
     opacity: 0;
     transition: all .6s cubic-bezier(.16, 1, .3, 1) .15s;
@@ -1171,7 +1154,9 @@
 .paper-form {
     position: relative;
     z-index: 1;
-    padding: 48px 56px 0;
+    padding: 40px 40px 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 /* Paper Header */
@@ -1691,8 +1676,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 16px 56px;
-    margin: 0 -56px;
+    padding: 16px 40px;
+    margin: 0 -40px;
     background: linear-gradient(135deg, #5a3e28, #3d2a1a);
     color: rgba(255, 255, 255, .85);
 }
@@ -1891,17 +1876,18 @@
 
     /* Overlay */
     .form-overlay-container {
-        padding: 20px 16px;
+        padding: 16px 12px;
+        max-width: 100%;
     }
 
     /* Paper */
     .paper-form {
-        padding: 36px 28px 0;
+        padding: 32px 24px 0;
     }
 
     .paper-footer {
-        padding: 14px 28px;
-        margin: 0 -28px;
+        padding: 14px 24px;
+        margin: 0 -24px;
         flex-direction: column;
         gap: 6px;
         text-align: center;
@@ -1999,12 +1985,12 @@
 
     /* Paper */
     .paper-form {
-        padding: 28px 20px 0;
+        padding: 24px 18px 0;
     }
 
     .paper-footer {
-        margin: 0 -20px;
-        padding: 12px 20px;
+        margin: 0 -18px;
+        padding: 12px 18px;
     }
 
     .paper-logo {
@@ -2031,6 +2017,10 @@
 
     .paper-checkbox-group {
         gap: 10px;
+    }
+
+    .paper-office-box {
+        padding: 16px;
     }
 
     /* Close button */
@@ -2085,12 +2075,12 @@
     }
 
     .paper-form {
-        padding: 24px 16px 0;
+        padding: 20px 14px 0;
     }
 
     .paper-footer {
-        margin: 0 -16px;
-        padding: 10px 16px;
+        margin: 0 -14px;
+        padding: 10px 14px;
     }
 
     .paper-header-left {
