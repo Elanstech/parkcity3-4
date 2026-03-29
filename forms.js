@@ -219,6 +219,19 @@ class FormOverlayController {
             this.backdrop.addEventListener('click', () => this.closeOverlay());
         }
 
+        // Click on overlay itself (outside the paper) to close
+        this.overlay.addEventListener('click', (e) => {
+            // Only close if clicking directly on the overlay, backdrop, or container padding
+            const container = document.querySelector('.form-overlay-container');
+            if (
+                e.target === this.overlay ||
+                e.target === this.backdrop ||
+                e.target === container
+            ) {
+                this.closeOverlay();
+            }
+        });
+
         // Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
@@ -250,11 +263,8 @@ class FormOverlayController {
         this.overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Scroll overlay container to top
-        const container = document.querySelector('.form-overlay-container');
-        if (container) {
-            container.scrollTop = 0;
-        }
+        // Scroll the overlay itself to top (overlay is the scroll container)
+        this.overlay.scrollTop = 0;
 
         // Reset progress
         this.updateProgress();
