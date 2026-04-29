@@ -8,8 +8,7 @@
   'use strict';
 
   /* ──────────── UTILITIES ──────────── */
-  const $  = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const $ = (sel, root) => (root || document).querySelector(sel);
   const ready = (fn) => {
     if (document.readyState !== 'loading') fn();
     else document.addEventListener('DOMContentLoaded', fn);
@@ -35,13 +34,15 @@
     collectRequired() {
       const fields = [];
       const radioNames = new Set();
+      const elements = this.form.elements;
 
-      Array.from(this.form.elements).forEach((el) => {
-        if (!el.required || el.disabled) return;
-        if (el.type === 'hidden') return;
+      for (let i = 0; i < elements.length; i++) {
+        const el = elements[i];
+        if (!el.required || el.disabled) continue;
+        if (el.type === 'hidden') continue;
 
         if (el.type === 'radio') {
-          if (radioNames.has(el.name)) return;
+          if (radioNames.has(el.name)) continue;
           radioNames.add(el.name);
           fields.push({ kind: 'radio', name: el.name });
         } else if (el.type === 'checkbox') {
@@ -49,13 +50,13 @@
         } else {
           fields.push({ kind: 'value', el });
         }
-      });
+      }
       return fields;
     }
 
     isFilled(field) {
       if (field.kind === 'radio') {
-        return !!this.form.querySelector(`input[name="${field.name}"]:checked`);
+        return !!this.form.querySelector('input[name="' + field.name + '"]:checked');
       }
       if (field.kind === 'checkbox') {
         return field.el.checked;
@@ -67,12 +68,15 @@
     calc() {
       const fields = this.collectRequired();
       const total  = fields.length;
-      const filled = fields.filter((f) => this.isFilled(f)).length;
-      const ratio  = total ? filled / total : 0;
-      const pct    = Math.round(ratio * 100);
+      let filled = 0;
+      for (let i = 0; i < fields.length; i++) {
+        if (this.isFilled(fields[i])) filled++;
+      }
+      const ratio = total ? filled / total : 0;
+      const pct   = Math.round(ratio * 100);
 
-      if (this.fillEl) this.fillEl.style.transform = `scaleX(${ratio})`;
-      if (this.textEl) this.textEl.textContent = `${pct}%`;
+      if (this.fillEl) this.fillEl.style.transform = 'scaleX(' + ratio + ')';
+      if (this.textEl) this.textEl.textContent = pct + '%';
     }
 
     destroy() {
@@ -87,7 +91,6 @@
   class FormOverlay {
     constructor() {
       this.overlay     = $('#formOverlay');
-      this.backdrop    = $('#formOverlayBackdrop');
       this.closeBtn    = $('#formOverlayClose');
       this.progressEl  = $('#formProgressFill');
       this.progressTxt = $('#formProgressText');
@@ -95,17 +98,13 @@
       this.successOverlay = $('#formSuccess');
       this.successBtn     = $('#formSuccessDismiss');
 
-      this.papers = $('.paper[data-paper]');
-      this.tiles  = $('.form-tile[data-form]');
-
       this.currentPaper    = null;
       this.currentProgress = null;
       this.savedScrollY    = 0;
 
       if (!this.overlay) return;
 
-      // Tell Lenis (the smooth-scroller from script.js) to leave this overlay alone,
-      // so wheel events scroll the overlay natively instead of being hijacked.
+      // Tell Lenis (the smooth-scroller from script.js) to leave this overlay alone.
       this.overlay.setAttribute('data-lenis-prevent', '');
 
       this.bindTiles();
@@ -118,22 +117,23 @@
 
     /* ── tile click → open paper ── */
     bindTiles() {
-      this.tiles.forEach((tile) => {
+      const tiles = document.querySelectorAll('.form-tile[data-form]');
+      for (let i = 0; i < tiles.length; i++) {
+        const tile = tiles[i];
         tile.addEventListener('click', (e) => {
           e.preventDefault();
-          const id = tile.dataset.form;
-          this.open(id);
+          this.open(tile.dataset.form);
         });
-      });
+      }
     }
 
-    /* ── close button + backdrop + ESC ── */
+    /* ── close button + click-outside-paper + ESC ── */
     bindClose() {
-      this.closeBtn?.addEventListener('click', () => this.close());
+      if (this.closeBtn) {
+        this.closeBtn.addEventListener('click', () => this.close());
+      }
 
-      // Click outside the paper closes — anywhere in the overlay that ISN'T
-      // the paper itself, the close button, or the progress bar.
-      this.overlay?.addEventListener('click', (e) => {
+      this.overlay.addEventListener('click', (e) => {
         if (e.target.closest('.paper')) return;
         if (e.target.closest('.form-overlay__close')) return;
         if (e.target.closest('.form-overlay__progress')) return;
@@ -142,7 +142,7 @@
 
       document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
-        if (this.successOverlay?.classList.contains('is-shown')) {
+        if (this.successOverlay && this.successOverlay.classList.contains('is-shown')) {
           this.dismissSuccess();
         } else if (this.overlay.classList.contains('is-open')) {
           this.close();
@@ -152,62 +152,83 @@
 
     /* ── per-paper cancel buttons ── */
     bindCancels() {
-      $$('[data-form-cancel]').forEach((btn) => {
-        btn.addEventListener('click', () => this.close());
-      });
+      const cancels = document.querySelectorAll('[data-form-cancel]');
+      for (let i = 0; i < cancels.length; i++) {
+        cancels[i].addEventListener('click', () => this.close());
+      }
     }
 
     /* ── intercept all form submits ── */
     bindForms() {
-      this.papers.forEach((paper) => {
-        const form = paper.querySelector('form');
-        if (!form) return;
+      const papers = document.querySelectorAll('.paper[data-paper]');
+      for (let i = 0; i < papers.length; i++) {
+        const form = papers[i].querySelector('form');
+        if (!form) continue;
         form.addEventListener('submit', (e) => this.submit(e, form));
-      });
+      }
     }
 
     /* ── success dismiss ── */
     bindSuccess() {
-      this.successBtn?.addEventListener('click', () => this.dismissSuccess());
+      if (this.successBtn) {
+        this.successBtn.addEventListener('click', () => this.dismissSuccess());
+      }
+    }
+
+    /* Helper — find a paper by its data-paper id */
+    findPaper(formId) {
+      return document.querySelector('.paper[data-paper="' + formId + '"]');
     }
 
     /* ═══ OPEN ═══ */
     open(formId) {
-      const paper = this.papers.find((p) => p.dataset.paper === formId);
-      if (!paper) return;
+      const paper = this.findPaper(formId);
+      if (!paper) {
+        console.warn('[Park City Forms] No paper found for form id:', formId);
+        return;
+      }
 
-      // Show only this paper
-      this.papers.forEach((p) => { p.hidden = (p !== paper); });
+      // Hide all papers, then show this one
+      const allPapers = document.querySelectorAll('.paper[data-paper]');
+      for (let i = 0; i < allPapers.length; i++) {
+        allPapers[i].hidden = (allPapers[i] !== paper);
+      }
       this.currentPaper = paper;
 
-      // Pre-fill today's date in any "Date" field that's empty
-      paper.querySelectorAll('input[type="date"]').forEach((d) => {
+      // Pre-fill today's date in any empty Date field
+      const dates = paper.querySelectorAll('input[type="date"]');
+      for (let i = 0; i < dates.length; i++) {
+        const d = dates[i];
         if (!d.value && d.name === 'Date') {
           d.value = new Date().toISOString().split('T')[0];
         }
-      });
+      }
 
       // Spin up progress tracker
       const form = paper.querySelector('form');
       if (this.currentProgress) this.currentProgress.destroy();
-      this.currentProgress = new PaperProgress(form, this.progressEl, this.progressTxt);
+      if (form) {
+        this.currentProgress = new PaperProgress(form, this.progressEl, this.progressTxt);
+      }
 
-      // Lock body scroll (compatible with Lenis if running)
+      // Lock body scroll
       this.lockScroll();
 
       // Show overlay
       this.overlay.classList.add('is-open');
       this.overlay.setAttribute('aria-hidden', 'false');
 
-      // Reset overlay scroll to top so paper appears from top
+      // Reset overlay scroll to top
       this.overlay.scrollTop = 0;
 
-      // Focus first real input after the entrance animation
+      // Focus first text-like input after entrance animation
       setTimeout(() => {
         const firstField = paper.querySelector(
           'input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), select, textarea'
         );
-        firstField?.focus({ preventScroll: true });
+        if (firstField && typeof firstField.focus === 'function') {
+          firstField.focus({ preventScroll: true });
+        }
       }, 700);
     }
 
@@ -220,10 +241,12 @@
 
       this.unlockScroll();
 
-      // Hide papers after the close transition completes (so it animates out)
       setTimeout(() => {
         if (!this.overlay.classList.contains('is-open')) {
-          this.papers.forEach((p) => { p.hidden = true; });
+          const allPapers = document.querySelectorAll('.paper[data-paper]');
+          for (let i = 0; i < allPapers.length; i++) {
+            allPapers[i].hidden = true;
+          }
           if (this.currentProgress) {
             this.currentProgress.destroy();
             this.currentProgress = null;
@@ -237,21 +260,18 @@
     lockScroll() {
       this.savedScrollY = window.scrollY;
       document.body.classList.add('form-open');
-      // Note: we do NOT call lenis.stop() here. Stopping Lenis can interfere
-      // with native scroll inside the overlay. Instead, body { overflow: hidden }
-      // (CSS) prevents page scroll, and `data-lenis-prevent` on the overlay
-      // lets the overlay scroll natively.
+      // body { overflow: hidden } in CSS handles the lock.
+      // data-lenis-prevent on the overlay lets the overlay scroll natively.
     }
 
     unlockScroll() {
       document.body.classList.remove('form-open');
     }
 
-    /* ═══ SUBMIT (AJAX → FormSubmit) ═══ */
-    async submit(e, form) {
+    /* ═══ SUBMIT (AJAX → FormSubmit, native fallback) ═══ */
+    submit(e, form) {
       e.preventDefault();
 
-      // Native validity gate
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
@@ -260,9 +280,9 @@
       const submitBtn = form.querySelector('.paper__submit');
       const cancelBtn = form.querySelector('.paper__cancel');
 
-      // Honeypot — if bots filled it, silently bail
+      // Honeypot — if a bot filled it, silently bail
       const honey = form.querySelector('input[name="_honey"]');
-      if (honey && honey.value.trim() !== '') {
+      if (honey && honey.value && honey.value.trim() !== '') {
         console.warn('[Park City Forms] Honeypot tripped — submission ignored.');
         return;
       }
@@ -273,60 +293,58 @@
       if (emailEl && replyEl) replyEl.value = emailEl.value;
 
       // UI: loader on
-      submitBtn?.classList.add('is-loading');
-      if (submitBtn) submitBtn.disabled = true;
+      if (submitBtn) {
+        submitBtn.classList.add('is-loading');
+        submitBtn.disabled = true;
+      }
       if (cancelBtn) cancelBtn.disabled = true;
 
-      try {
-        const ok = await this.postFormSubmit(form);
-
-        if (ok) {
-          this.handleSuccess(form);
-        } else {
-          // AJAX returned non-ok — fall back to native submit (full page navigation)
-          form.submit();
-        }
-      } catch (err) {
-        console.error('[Park City Forms] AJAX submit failed, falling back to native:', err);
-        form.submit();
-      } finally {
-        // If we're still on the page (i.e. AJAX worked), restore the buttons
-        submitBtn?.classList.remove('is-loading');
-        if (submitBtn) submitBtn.disabled = false;
-        if (cancelBtn) cancelBtn.disabled = false;
-      }
-    }
-
-    /* ═══ POST to FormSubmit's AJAX endpoint ═══ */
-    async postFormSubmit(form) {
-      // Derive recipient email from form action
-      // action looks like: https://formsubmit.co/parkcity3and4@akam.com
+      // Build AJAX url
       let recipient = '';
       try {
         const actionUrl = new URL(form.action);
         recipient = actionUrl.pathname.replace(/^\//, '').replace(/^ajax\//, '');
       } catch (_) {
-        return false;
+        // bad URL — fall back to native submit
+        form.submit();
+        return;
       }
-      if (!recipient) return false;
+      if (!recipient) {
+        form.submit();
+        return;
+      }
 
-      const ajaxUrl = `https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`;
+      const ajaxUrl = 'https://formsubmit.co/ajax/' + encodeURIComponent(recipient);
 
-      // Build payload from FormData. Multiple values for the same name → array.
+      // Build payload
       const fd = new FormData(form);
       const payload = {};
-      for (const [key, val] of fd.entries()) {
-        if (key === '_honey') continue; // never send the honeypot
-        if (payload[key] === undefined) {
-          payload[key] = val;
-        } else if (Array.isArray(payload[key])) {
-          payload[key].push(val);
-        } else {
-          payload[key] = [payload[key], val];
+      const entries = fd.entries();
+      let entry = entries.next();
+      while (!entry.done) {
+        const key = entry.value[0];
+        const val = entry.value[1];
+        if (key !== '_honey') {
+          if (payload[key] === undefined) {
+            payload[key] = val;
+          } else if (Array.isArray(payload[key])) {
+            payload[key].push(val);
+          } else {
+            payload[key] = [payload[key], val];
+          }
         }
+        entry = entries.next();
       }
 
-      const res = await fetch(ajaxUrl, {
+      const restoreUI = () => {
+        if (submitBtn) {
+          submitBtn.classList.remove('is-loading');
+          submitBtn.disabled = false;
+        }
+        if (cancelBtn) cancelBtn.disabled = false;
+      };
+
+      fetch(ajaxUrl, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -334,20 +352,28 @@
           'Accept': 'application/json'
         },
         body: JSON.stringify(payload)
-      });
-
-      // FormSubmit returns 200 with JSON { success: "true", ... } on success.
-      // First-ever submission to a new email returns an "activation" message — still a 200.
-      // Either way, treat 2xx as success for UI purposes.
-      return res.ok;
+      })
+        .then((res) => {
+          if (res.ok) {
+            this.handleSuccess(form);
+            restoreUI();
+          } else {
+            // AJAX failed — fall back to native submit
+            form.submit();
+          }
+        })
+        .catch((err) => {
+          console.error('[Park City Forms] AJAX submit failed, falling back:', err);
+          form.submit();
+        });
     }
 
     /* ═══ SUCCESS FLOW ═══ */
     handleSuccess(form) {
       this.close();
-      // Tiny delay so the close animation gets out of the way before success card slides in
+      const self = this;
       setTimeout(() => {
-        this.showSuccess();
+        self.showSuccess();
         form.reset();
       }, 300);
     }
@@ -357,9 +383,9 @@
       this.successOverlay.classList.add('is-shown');
       this.successOverlay.setAttribute('aria-hidden', 'false');
 
-      // Auto-dismiss after a long beat in case they don't click
       clearTimeout(this._successTimer);
-      this._successTimer = setTimeout(() => this.dismissSuccess(), 9000);
+      const self = this;
+      this._successTimer = setTimeout(() => self.dismissSuccess(), 9000);
     }
 
     dismissSuccess() {
@@ -374,11 +400,9 @@
       const params = new URLSearchParams(window.location.search);
       if (!params.has('submitted')) return;
 
-      // Show the success overlay
-      // Wait a tick so loader is gone
-      setTimeout(() => this.showSuccess(), 300);
+      const self = this;
+      setTimeout(() => self.showSuccess(), 300);
 
-      // Clean the URL so a refresh doesn't re-trigger
       const url = new URL(window.location.href);
       url.searchParams.delete('submitted');
       window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
@@ -392,10 +416,9 @@
     try {
       window.parkCityForms = new FormOverlay();
 
-      // Console signature
       const css = 'font-family: serif; font-size: 13px; font-style: italic; color: #b8956a;';
       console.log('%cPark City 3 & 4 — Resident Forms ready.', css);
-      console.log('%c9 forms · FormSubmit · AJAX · parkcity3and4@akam.com', 'color:#6b5d4f;font-size:11px;letter-spacing:0.14em;');
+      console.log('%c9 forms · FormSubmit · AJAX', 'color:#6b5d4f;font-size:11px;letter-spacing:0.14em;');
     } catch (err) {
       console.error('[Park City Forms] init error:', err);
     }
