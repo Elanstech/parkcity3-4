@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Park City 3 & 4 Apartments — A cooperative community of six residential buildings in the heart of Rego Park, Queens. Established 1955. Managed by AKAM." />
   <meta name="theme-color" content="#f8f2e6" />
-  <title>Park City 3 &amp; 4 — A Residence by the Park · Rego Park, Queens</title>
+  <title>Park City 3 &amp; 4 Apartments · Rego Park, Queens</title>
 
   <!-- Fraunces · Cormorant Garamond · Instrument Serif · Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,40 +26,28 @@
     <div class="loader__inner">
       <img src="logo.png" alt="" class="loader__logo" />
       <div class="loader__bar"><span></span></div>
-      <div class="loader__caption"><span data-loader-text>A residence by the park</span></div>
+      <div class="loader__caption"><span>A residence in Rego Park</span></div>
     </div>
-  </div>
-
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor" id="cursor" aria-hidden="true">
-    <div class="cursor__dot"></div>
-    <div class="cursor__ring"></div>
-    <span class="cursor__label" data-cursor-label></span>
   </div>
 
   <!-- ═══════════════ NAVIGATION ═══════════════ -->
   <header class="nav" id="nav">
     <div class="nav__shell">
-      <a href="#top" class="nav__brand" aria-label="Park City 3 & 4 home">
+      <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
         <img src="logo.png" alt="Park City 3 & 4" class="nav__logo" />
       </a>
 
       <nav class="nav__menu" aria-label="Primary">
         <ul>
-          <li><a href="#philosophy" data-link><span>01</span> About</a></li>
-          <li><a href="#residences" data-link><span>02</span> Buildings</a></li>
-          <li><a href="#amenities" data-link><span>03</span> Amenities</a></li>
-          <li><a href="#lifestyle" data-link><span>04</span> Lifestyle</a></li>
-          <li><a href="#location" data-link><span>05</span> Location</a></li>
-          <li><a href="#inquire" data-link><span>06</span> Contact</a></li>
+          <li><a href="#philosophy" data-link>About</a></li>
+          <li><a href="#residences" data-link>Buildings</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="forms.html">Forms</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="#inquire" data-link>Contact</a></li>
         </ul>
       </nav>
-
-      <div class="nav__meta">
-        <span class="nav__time" data-local-time>—</span>
-        <span class="nav__divider"></span>
-        <span class="nav__locale">Rego Park, NY</span>
-      </div>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span>
@@ -72,15 +60,16 @@
         <ol class="navmobile__list">
           <li><a href="#philosophy"><em>01</em> About</a></li>
           <li><a href="#residences"><em>02</em> Buildings</a></li>
-          <li><a href="#amenities"><em>03</em> Amenities</a></li>
-          <li><a href="#lifestyle"><em>04</em> Lifestyle</a></li>
-          <li><a href="#location"><em>05</em> Location</a></li>
-          <li><a href="#voices"><em>06</em> Voices</a></li>
-          <li><a href="#inquire"><em>07</em> Contact</a></li>
+          <li><a href="amenities.html"><em>03</em> Amenities</a></li>
+          <li><a href="forms.html"><em>04</em> Forms</a></li>
+          <li><a href="guides.html"><em>05</em> Guides</a></li>
+          <li><a href="faq.html"><em>06</em> FAQ</a></li>
+          <li><a href="#location"><em>07</em> Location</a></li>
+          <li><a href="#inquire"><em>08</em> Contact</a></li>
         </ol>
         <div class="navmobile__foot">
-          <p class="serif-italic">A residence by the park.</p>
-          <p>Rego Park, Queens · New York</p>
+          <p class="serif-italic">A residence in Rego Park.</p>
+          <p>Six buildings · Established 1955</p>
           <p class="navmobile__akam">Managed by <span>AKAM</span></p>
         </div>
       </div>
@@ -90,7 +79,7 @@
   <main id="top">
 
     <!-- ═══════════════ HERO · CINEMATIC VIDEO ═══════════════ -->
-    <section class="hero" id="hero" data-pin-stage>
+    <section class="hero" id="hero">
       <div class="hero__media">
         <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto"
                poster="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=85">
@@ -100,22 +89,10 @@
         <div class="hero__grain"></div>
       </div>
 
-      <div class="hero__frame" aria-hidden="true">
-        <div class="hero__corner hero__corner--tl"><span>N 40°43′</span><span>W 73°52′</span></div>
-        <div class="hero__corner hero__corner--tr"><span>Est. 1955</span><span>Six Buildings</span></div>
-        <div class="hero__corner hero__corner--bl"><span class="serif-italic">Vol. III &amp; IV</span></div>
-        <div class="hero__corner hero__corner--br">
-          <button class="hero__sound" id="heroSound" aria-label="Toggle sound">
-            <span class="hero__sound-bars"><i></i><i></i><i></i><i></i></span>
-            <span class="hero__sound-label">Sound off</span>
-          </button>
-        </div>
-      </div>
-
       <div class="hero__content">
         <span class="hero__eyebrow" data-reveal>
           <span class="hero__eyebrow-line"></span>
-          A residence by the park
+          A residence in Rego Park
         </span>
 
         <h1 class="hero__title" data-split-words>
@@ -124,8 +101,8 @@
         </h1>
 
         <p class="hero__lede serif-italic" data-reveal data-reveal-delay="600">
-          Mediterranean warmth, Manhattan sophistication —<br/>
-          quietly waiting in the heart of Queens.
+          Six buildings, one community —<br/>
+          quietly tended in the heart of Queens.
         </p>
 
         <div class="hero__meta" data-reveal data-reveal-delay="900">
@@ -148,48 +125,48 @@
     <!-- ═══════════════ MARQUEE TICKER ═══════════════ -->
     <section class="marquee" aria-hidden="true">
       <div class="marquee__track" data-marquee>
-        <span>Refined Residences</span><span class="marquee__dot">✦</span>
+        <span>Six Buildings</span><span class="marquee__dot">✦</span>
         <span class="serif-italic">Rego Park, Queens</span><span class="marquee__dot">✦</span>
-        <span>Mediterranean × Manhattan</span><span class="marquee__dot">✦</span>
-        <span class="serif-italic">A perfect community</span><span class="marquee__dot">✦</span>
+        <span>Private Terraces</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">A welcoming community</span><span class="marquee__dot">✦</span>
         <span>Established 1955</span><span class="marquee__dot">✦</span>
-        <span class="serif-italic">Private terraces</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Managed by AKAM</span><span class="marquee__dot">✦</span>
       </div>
       <div class="marquee__track" data-marquee aria-hidden="true">
-        <span>Refined Residences</span><span class="marquee__dot">✦</span>
+        <span>Six Buildings</span><span class="marquee__dot">✦</span>
         <span class="serif-italic">Rego Park, Queens</span><span class="marquee__dot">✦</span>
-        <span>Mediterranean × Manhattan</span><span class="marquee__dot">✦</span>
-        <span class="serif-italic">A perfect community</span><span class="marquee__dot">✦</span>
+        <span>Private Terraces</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">A welcoming community</span><span class="marquee__dot">✦</span>
         <span>Established 1955</span><span class="marquee__dot">✦</span>
-        <span class="serif-italic">Private terraces</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Managed by AKAM</span><span class="marquee__dot">✦</span>
       </div>
     </section>
 
-    <!-- ═══════════════ PHILOSOPHY · EDITORIAL INTRO ═══════════════ -->
+    <!-- ═══════════════ PHILOSOPHY · WARM INTRO ═══════════════ -->
     <section class="philosophy" id="philosophy">
       <div class="philosophy__grid">
         <aside class="philosophy__chapter" data-reveal>
           <span class="chapter-num">I</span>
-          <span class="chapter-label">A Quiet Manifesto</span>
+          <span class="chapter-label">About</span>
         </aside>
 
         <div class="philosophy__body">
           <h2 class="philosophy__head" data-split-lines>
-            <span class="line">Some buildings ask</span>
-            <span class="line">to be admired.</span>
-            <span class="line serif-italic">Ours simply asks</span>
-            <span class="line">you to <em>stay.</em></span>
+            <span class="line">A welcoming home</span>
+            <span class="line">in the heart of</span>
+            <span class="line serif-italic">Rego Park,</span>
+            <span class="line">since <em>1955.</em></span>
           </h2>
 
           <div class="philosophy__column">
             <p data-reveal>
-              Park City 3 &amp; 4 was built in 1955 with a single intuition: that a home should hold its residents the way a courtyard holds a quiet afternoon. Seven decades later, that intuition has only grown more deliberate — six buildings, fourteen stories each, and a private terrace at every door.
+              Park City 3 &amp; 4 Apartments, Inc. is a well-established cooperative community of six residential buildings, each rising fourteen stories. Every apartment opens onto a private terrace with views of the surrounding neighborhood.
             </p>
             <p data-reveal data-reveal-delay="120">
-              Across our cooperative you'll find sun-washed lobbies, meticulously kept grounds, and a community whose first instinct is to look out for one another. We are unhurried, attentive, and proudly unimpressed by trends.
+              The grounds are meticulously maintained, the buildings carefully tended, and the community looked after by an on-site Management Office and Maintenance team — Monday through Friday, 8 AM to 4 PM — alongside our day-to-day partners at AKAM.
             </p>
             <p class="philosophy__sign serif-italic" data-reveal data-reveal-delay="240">
-              — The Shareholders &amp; Stewards of Park City 3 &amp; 4
+              — Park City 3 &amp; 4 Apartments, Inc.
             </p>
           </div>
         </div>
@@ -197,34 +174,34 @@
     </section>
 
     <!-- ═══════════════ ESSENCE · NUMBERS STAGE ═══════════════ -->
-    <section class="essence" id="essence" data-pin-stage>
+    <section class="essence" id="essence">
       <div class="essence__sticky">
         <div class="essence__head">
           <span class="eyebrow"><span class="eyebrow__line"></span>By the Numbers</span>
-          <h3 class="essence__title">A measured kind <em class="serif-italic">of luxury.</em></h3>
+          <h3 class="essence__title">Seven decades. <em class="serif-italic">Six buildings.</em> One community.</h3>
         </div>
 
         <div class="essence__rail" data-essence-rail>
           <article class="essence__card" data-essence-card>
             <span class="essence__num" data-count="1955">0000</span>
-            <h4>Quietly Tended</h4>
-            <p>Seven decades of stewardship — the kind of care a building only earns over time.</p>
+            <h4>Established</h4>
+            <p>Built in 1955 — and lived in ever since.</p>
           </article>
           <article class="essence__card" data-essence-card>
             <span class="essence__num" data-count="6">0</span>
             <h4>Six Buildings</h4>
-            <p>A cooperative community of six residential towers, each rising fourteen stories.</p>
+            <p>A cooperative community spread across 62nd Drive and 63rd Road.</p>
           </article>
           <article class="essence__card" data-essence-card>
             <span class="essence__num" data-count="14">00</span>
             <span class="essence__plus">stories</span>
             <h4>Generous Heights</h4>
-            <p>Every apartment opens onto a private terrace — a pocket of sky in every home.</p>
+            <p>Every apartment opens onto a private terrace.</p>
           </article>
           <article class="essence__card" data-essence-card>
             <span class="essence__num">24/7</span>
-            <h4>A Familiar Face</h4>
-            <p>On-site security, keyless entry, live-in superintendents — and a doorman who remembers your name.</p>
+            <h4>Always On Watch</h4>
+            <p>Live-in supers, on-site security, and keyless entry throughout.</p>
           </article>
         </div>
       </div>
@@ -240,7 +217,7 @@
           <span class="residences__head-tail">of home.</span>
         </h2>
         <p class="residences__lede">
-          Each of our six buildings rises fourteen stories above meticulously kept grounds, with full-service lobbies, oversized windows, and a private terrace in every apartment. They share the same bones — and a community spread thoughtfully between 62nd Drive and 63rd Road.
+          Each of our six buildings rises fourteen stories above carefully kept grounds, with full-service lobbies, oversized windows, and a private terrace in every apartment. They share the same bones — and a community spread thoughtfully between 62nd Drive and 63rd Road.
         </p>
       </div>
 
@@ -248,7 +225,7 @@
         <aside class="residences__sticky">
           <span class="residences__sticky-num">II.</span>
           <h3 class="residences__sticky-title">The <em class="serif-italic">Addresses</em></h3>
-          <p>Six buildings, fourteen stories each, terraces throughout.</p>
+          <p>Six buildings · fourteen stories each · terraces throughout.</p>
           <ol class="residences__index">
             <li data-residence-link="1"><span>01</span> 97-07 63rd Road</li>
             <li data-residence-link="2"><span>02</span> 97-10 62nd Drive</li>
@@ -353,181 +330,117 @@
       </div>
     </section>
 
-    <!-- ═══════════════ AMENITIES · BENTO GRID ═══════════════ -->
-    <section class="amenities" id="amenities">
-      <div class="amenities__head">
-        <span class="eyebrow"><span class="eyebrow__line"></span>Chapter III — Amenities &amp; Services</span>
-        <h2 class="amenities__title">
-          The <em class="serif-italic">small things</em><br/>
-          that make a building feel like home.
-        </h2>
-      </div>
+    <!-- ═══════════════ AMENITIES · CLEAN TEXT LIST ═══════════════ -->
+    <section class="amenities-text" id="amenities-overview">
+      <div class="amenities-text__grid">
+        <header class="amenities-text__head">
+          <span class="eyebrow"><span class="eyebrow__line"></span>Chapter III — Amenities &amp; Services</span>
+          <h2 class="amenities-text__title">
+            The <em class="serif-italic">small things</em><br/>that make a building feel like home.
+          </h2>
+          <p class="amenities-text__lede">A practical list of what's included across all six buildings — from the seasonal pool to the live-in supers.</p>
+          <a href="amenities.html" class="amenities-text__link">
+            <span>Full amenities page</span>
+            <svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+          </a>
+        </header>
 
-      <div class="amenities__bento">
-        <article class="amenity amenity--lg" data-reveal data-amenity="pool">
-          <div class="amenity__media">
-            <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1400&q=85" alt="" loading="lazy"/>
-          </div>
-          <div class="amenity__body">
-            <span class="amenity__num">01</span>
-            <h3>Seasonal <em class="serif-italic">Swimming Pool</em></h3>
-            <p>An outdoor pool managed by a dedicated third-party team — open through the warmer months for residents and their families.</p>
-            <span class="amenity__tag">Summer · Members</span>
-          </div>
-        </article>
-
-        <article class="amenity" data-reveal data-amenity="playground">
-          <div class="amenity__media">
-            <img src="https://images.unsplash.com/photo-1597248374161-426f3d6f1c88?w=1000&q=85" alt="" loading="lazy"/>
-          </div>
-          <div class="amenity__body">
-            <span class="amenity__num">02</span>
-            <h3>Children's <em class="serif-italic">Playground</em></h3>
-            <p>A safe, on-site playground tucked into the grounds — designed for the youngest residents.</p>
-          </div>
-        </article>
-
-        <article class="amenity" data-reveal data-amenity="garage">
-          <div class="amenity__body amenity__body--centered">
-            <span class="amenity__num">03</span>
-            <h3>Indoor <em class="serif-italic">Parking Garages</em></h3>
-            <p>Two 24-hour indoor garages with assigned spaces — covered, secure, climate-protected.</p>
-            <span class="amenity__tag">Two garages · Assigned</span>
-          </div>
-        </article>
-
-        <article class="amenity amenity--wide" data-reveal data-amenity="storage">
-          <div class="amenity__media">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85" alt="" loading="lazy"/>
-          </div>
-          <div class="amenity__body">
-            <span class="amenity__num">04</span>
-            <h3>Private <em class="serif-italic">Storage</em></h3>
-            <p>Personal storage available in every building, professionally managed by Bargold — for the things you'd rather not keep upstairs.</p>
-            <span class="amenity__tag">Managed by Bargold</span>
-          </div>
-        </article>
-
-        <article class="amenity" data-reveal data-amenity="laundry">
-          <div class="amenity__body amenity__body--centered">
-            <span class="amenity__num">05</span>
-            <h3>On-Site <em class="serif-italic">Laundry</em></h3>
-            <p>Conveniently located laundry rooms in every building — never far from your door.</p>
-          </div>
-        </article>
-
-        <article class="amenity" data-reveal data-amenity="super">
-          <div class="amenity__body amenity__body--centered">
-            <span class="amenity__num">06</span>
-            <h3>Live-In <em class="serif-italic">Superintendents</em></h3>
-            <p>On-site, on-call. A familiar face for emergencies — at any hour, in every building.</p>
-          </div>
-        </article>
-
-        <article class="amenity amenity--lg amenity--dark" data-reveal data-amenity="security">
-          <div class="amenity__media">
-            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1400&q=85" alt="" loading="lazy"/>
-          </div>
-          <div class="amenity__body">
-            <span class="amenity__num">07</span>
-            <h3>Always <em class="serif-italic">Watching Over</em></h3>
-            <p>On-site security guards, keyless entry to buildings and garages, electronic fob access for residents — quietly thorough, never imposing.</p>
-            <span class="amenity__tag">24/7 · Keyless · Fob</span>
-          </div>
-        </article>
-
-        <article class="amenity" data-reveal data-amenity="grounds">
-          <div class="amenity__media">
-            <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1000&q=85" alt="" loading="lazy"/>
-          </div>
-          <div class="amenity__body">
-            <span class="amenity__num">08</span>
-            <h3>Park-Like <em class="serif-italic">Grounds</em></h3>
-            <p>Meticulously maintained landscaping — the kind that makes the address feel earned.</p>
-          </div>
-        </article>
+        <ol class="amenities-text__list">
+          <li class="amenity-row" data-reveal>
+            <span class="amenity-row__num">01</span>
+            <div class="amenity-row__body">
+              <h3>Seasonal <em class="serif-italic">Swimming Pool</em></h3>
+              <p>An outdoor pool managed by a third-party operator, open through the warmer months.</p>
+            </div>
+            <span class="amenity-row__tag">Summer</span>
+          </li>
+          <li class="amenity-row" data-reveal>
+            <span class="amenity-row__num">02</span>
+            <div class="amenity-row__body">
+              <h3>On-Site <em class="serif-italic">Children's Playground</em></h3>
+              <p>A safe, well-kept playground tucked into the grounds for the youngest residents.</p>
+            </div>
+          </li>
+          <li class="amenity-row" data-reveal>
+            <span class="amenity-row__num">03</span>
+            <div class="amenity-row__body">
+              <h3>Two <em class="serif-italic">Indoor Parking Garages</em></h3>
+              <p>Two 24-hour indoor garages with assigned spaces — covered, secure, climate-protected.</p>
+            </div>
+            <span class="amenity-row__tag">24/7 · Assigned</span>
+          </li>
+          <li class="amenity-row" data-reveal>
+            <span class="amenity-row__num">04</span>
+            <div class="amenity-row__body">
+              <h3>Private <em class="serif-italic">Storage</em></h3>
+              <p>Personal storage available in every building, professionally managed by Bargold.</p>
+            </div>
+            <span class="amenity-row__tag">Bargold</span>
+          </li>
+          <li class="amenity-row" data-reveal>
+            <span class="amenity-row__num">05</span>
+            <div class="amenity-row__body">
+              <h3>On-Site <em class="serif-italic">Laundry</em></h3>
+              <p>Conveniently located laundry rooms in every building.</p>
+            </div>
+          </li>
+          <li class="amenity-row" data-reveal>
+            <span class="amenity-row__num">06</span>
+            <div class="amenity-row__body">
+              <h3>Live-In <em class="serif-italic">Superintendents</em></h3>
+              <p>On-site, on-call. A familiar face for emergencies — at any hour, in every building.</p>
+            </div>
+          </li>
+          <li class="amenity-row" data-reveal>
+            <span class="amenity-row__num">07</span>
+            <div class="amenity-row__body">
+              <h3>On-Site <em class="serif-italic">Security</em></h3>
+              <p>On-site security guards and a watchful eye throughout the community.</p>
+            </div>
+            <span class="amenity-row__tag">24/7</span>
+          </li>
+          <li class="amenity-row" data-reveal>
+            <span class="amenity-row__num">08</span>
+            <div class="amenity-row__body">
+              <h3>Keyless <em class="serif-italic">Building &amp; Garage Access</em></h3>
+              <p>Electronic fob access for residents — the same system across buildings and parking.</p>
+            </div>
+            <span class="amenity-row__tag">Fob</span>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- ═══════════════ LIFESTYLE · A DAY HERE ═══════════════ -->
-    <section class="lifestyle" id="lifestyle" data-pin-stage>
+    <!-- ═══════════════ LIFESTYLE · 3 CHAPTERS ═══════════════ -->
+    <section class="lifestyle" id="lifestyle">
       <div class="lifestyle__sticky">
         <header class="lifestyle__head">
           <span class="eyebrow"><span class="eyebrow__line"></span>Chapter IV — A Day, Lightly Lived</span>
-          <h2 class="lifestyle__title">From the <em class="serif-italic">terrace</em>, to the city, and home again.</h2>
+          <h2 class="lifestyle__title">From the <em class="serif-italic">terrace,</em> to the city, and home again.</h2>
         </header>
 
         <div class="lifestyle__rail" data-lifestyle-rail>
-          <article class="lifestyle__chapter" data-lifestyle-step="0">
-            <span class="lifestyle__time">07:24</span>
-            <h3 class="serif-italic">A morning on the terrace.</h3>
-            <p>Coffee, the paper, the slow Queens light. Every apartment has a private terrace — a quiet place to begin.</p>
+          <article class="lifestyle__chapter">
+            <span class="lifestyle__time">Morning</span>
+            <h3 class="serif-italic">A coffee on the terrace.</h3>
+            <p>Every apartment has a private terrace — a quiet place to begin the day with the slow Queens light.</p>
             <div class="lifestyle__media"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=85" alt="" loading="lazy"/></div>
           </article>
 
-          <article class="lifestyle__chapter" data-lifestyle-step="1">
-            <span class="lifestyle__time">08:51</span>
+          <article class="lifestyle__chapter">
+            <span class="lifestyle__time">Midday</span>
             <h3 class="serif-italic">A short walk to the train.</h3>
             <p>The 63rd Drive station is moments from the lobby — Manhattan, fifteen minutes east.</p>
             <div class="lifestyle__media"><img src="https://images.ctfassets.net/1aemqu6a6t65/6KI1RM3tLaRsIEA2XHOQOs/e16e8b47a46e27b2d4c694d4f75d7152/52-7-Line-Queens-NYC-Photo-Daniel-Harel.jpg" alt="" loading="lazy"/></div>
           </article>
 
-          <article class="lifestyle__chapter" data-lifestyle-step="2">
-            <span class="lifestyle__time">13:12</span>
-            <h3 class="serif-italic">Lunch on Austin Street.</h3>
-            <p>Forest Hills' main avenue — bookshops, cafés, and a few tables that always seem to have your spot.</p>
-            <div class="lifestyle__media"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=85" alt="" loading="lazy"/></div>
-          </article>
-
-          <article class="lifestyle__chapter" data-lifestyle-step="3">
-            <span class="lifestyle__time">17:38</span>
-            <h3 class="serif-italic">An hour by the pool.</h3>
-            <p>Summers belong to the seasonal pool — a small, quiet luxury at the end of a working day.</p>
-            <div class="lifestyle__media"><img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1400&q=85" alt="" loading="lazy"/></div>
-          </article>
-
-          <article class="lifestyle__chapter" data-lifestyle-step="4">
-            <span class="lifestyle__time">21:07</span>
+          <article class="lifestyle__chapter">
+            <span class="lifestyle__time">Evening</span>
             <h3 class="serif-italic">Home, again.</h3>
-            <p>A nod from the night doorman, the lobby's familiar hush, the elevator's quiet ascent. The city goes on without you for a while.</p>
+            <p>A nod from the doorman, the lobby's familiar hush, the elevator's quiet ascent. The city goes on without you for a while.</p>
             <div class="lifestyle__media"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1400&q=85" alt="" loading="lazy"/></div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════ GALLERY · CINEMATIC PARALLAX ═══════════════ -->
-    <section class="gallery" id="gallery">
-      <header class="gallery__head">
-        <span class="eyebrow"><span class="eyebrow__line"></span>Portrait of a Place</span>
-        <h2 class="gallery__title">Light, <em class="serif-italic">stone, water,</em> sky.</h2>
-      </header>
-
-      <div class="gallery__stack" data-parallax-stack>
-        <figure class="gallery__item gallery__item--1" data-parallax="0.3">
-          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85" alt="" loading="lazy"/>
-          <figcaption><span>i.</span> The North Lobby</figcaption>
-        </figure>
-        <figure class="gallery__item gallery__item--2" data-parallax="-0.2">
-          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1000&q=85" alt="" loading="lazy"/>
-          <figcaption><span>ii.</span> Courtyard, in spring</figcaption>
-        </figure>
-        <figure class="gallery__item gallery__item--3" data-parallax="0.45">
-          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1100&q=85" alt="" loading="lazy"/>
-          <figcaption><span>iii.</span> Late afternoon</figcaption>
-        </figure>
-        <figure class="gallery__item gallery__item--4" data-parallax="-0.35">
-          <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=85" alt="" loading="lazy"/>
-          <figcaption><span>iv.</span> A familiar hush</figcaption>
-        </figure>
-        <figure class="gallery__item gallery__item--5" data-parallax="0.25">
-          <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1100&q=85" alt="" loading="lazy"/>
-          <figcaption><span>v.</span> The grounds</figcaption>
-        </figure>
-        <figure class="gallery__item gallery__item--6" data-parallax="-0.4">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=85" alt="" loading="lazy"/>
-          <figcaption><span>vi.</span> A pocket of sky</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -581,7 +494,7 @@
         </h2>
       </header>
 
-      <div class="voices__rail" data-voices-rail>
+      <div class="voices__rail">
         <figure class="voice" data-reveal>
           <blockquote>
             <p>I've raised two children on this terrace. They're grown now, but they still come back for Sunday coffee — and they always notice that the building feels exactly the same.</p>
@@ -624,46 +537,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ FAQ · ELEGANT ACCORDION ═══════════════ -->
-    <section class="faq" id="faq">
-      <header class="faq__head">
-        <span class="eyebrow"><span class="eyebrow__line"></span>Quietly Answered</span>
-        <h2 class="faq__title">A few <em class="serif-italic">honest answers.</em></h2>
-      </header>
-
-      <div class="faq__list">
-        <details class="faq__item" open>
-          <summary><span class="faq__num">01</span><span class="faq__q">Is Park City 3 &amp; 4 a co-op?</span><span class="faq__icon"></span></summary>
-          <div class="faq__a"><p>Yes. We are a cooperative community of six buildings. Apartments are owned by shareholders rather than rented from a landlord — an arrangement that has shaped the careful, long-term character of the place.</p></div>
-        </details>
-        <details class="faq__item">
-          <summary><span class="faq__num">02</span><span class="faq__q">Who manages the buildings?</span><span class="faq__icon"></span></summary>
-          <div class="faq__a"><p>Our day-to-day management is handled by AKAM — one of New York's most respected residential management firms — alongside our own on-site Management Office and Maintenance team, which operate Monday through Friday, 8:00 AM to 4:00 PM.</p></div>
-        </details>
-        <details class="faq__item">
-          <summary><span class="faq__num">03</span><span class="faq__q">Does every apartment have a terrace?</span><span class="faq__icon"></span></summary>
-          <div class="faq__a"><p>Yes. Every apartment across all six buildings features a private terrace with views of the surrounding neighborhood. It's one of the things this property has always been known for.</p></div>
-        </details>
-        <details class="faq__item">
-          <summary><span class="faq__num">04</span><span class="faq__q">How is parking arranged?</span><span class="faq__icon"></span></summary>
-          <div class="faq__a"><p>Two 24-hour indoor parking garages serve the community, with assigned spaces. Access is handled through the same keyless / fob system used for the buildings themselves.</p></div>
-        </details>
-        <details class="faq__item">
-          <summary><span class="faq__num">05</span><span class="faq__q">Is there storage available?</span><span class="faq__icon"></span></summary>
-          <div class="faq__a"><p>Private storage is available in each building, professionally managed by Bargold. Shareholders can inquire with the management office for current availability.</p></div>
-        </details>
-        <details class="faq__item">
-          <summary><span class="faq__num">06</span><span class="faq__q">When is the pool open?</span><span class="faq__icon"></span></summary>
-          <div class="faq__a"><p>Our outdoor swimming pool is seasonal and managed by a dedicated third-party operator. It opens for the warmer months — exact dates are announced each spring by management.</p></div>
-        </details>
-        <details class="faq__item">
-          <summary><span class="faq__num">07</span><span class="faq__q">How do I reach a superintendent in an emergency?</span><span class="faq__icon"></span></summary>
-          <div class="faq__a"><p>Each building has a live-in superintendent available for emergencies. During business hours, the on-site Management Office can also be reached directly; after hours, the building's emergency line is the right first call.</p></div>
-        </details>
-      </div>
-    </section>
-
-    <!-- ═══════════════ INQUIRE · CONTACT (NOT SELLING) ═══════════════ -->
+    <!-- ═══════════════ INQUIRE · CONTACT ═══════════════ -->
     <section class="inquire" id="inquire">
       <div class="inquire__grid">
         <header class="inquire__head">
@@ -687,7 +561,7 @@
               <span class="inquire-card__value">Mon – Fri · 8 AM – 4 PM</span>
             </div>
             <div class="inquire-card">
-              <span class="inquire-card__label">Address</span>
+              <span class="inquire-card__label">Location</span>
               <span class="inquire-card__value">Rego Park, NY 11374</span>
             </div>
           </div>
@@ -752,7 +626,7 @@
     <div class="foot__top">
       <div class="foot__mark">
         <img src="logo.png" alt="Park City 3 & 4" class="foot__logo"/>
-        <p class="foot__tag serif-italic">A residence by the park.</p>
+        <p class="foot__tag serif-italic">A residence in Rego Park.</p>
         <p class="foot__est">Established 1955 · Six buildings · Rego Park, Queens</p>
       </div>
 
@@ -760,21 +634,21 @@
         <div class="foot__col">
           <h5>Explore</h5>
           <ul>
+            <li><a href="index.html">Home</a></li>
             <li><a href="#philosophy">About</a></li>
-            <li><a href="#residences">The Six Buildings</a></li>
-            <li><a href="#amenities">Amenities</a></li>
-            <li><a href="#lifestyle">Lifestyle</a></li>
+            <li><a href="#residences">Buildings</a></li>
+            <li><a href="amenities.html">Amenities</a></li>
             <li><a href="#location">Location</a></li>
           </ul>
         </div>
         <div class="foot__col">
           <h5>Shareholders</h5>
           <ul>
-            <li><a href="#">Resident Forms</a></li>
-            <li><a href="#">Building Guides</a></li>
-            <li><a href="#">Maintenance Request</a></li>
-            <li><a href="#">House Rules</a></li>
-            <li><a href="#">Emergency Contacts</a></li>
+            <li><a href="forms.html">Resident Forms</a></li>
+            <li><a href="guides.html">Building Guides</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#inquire">Maintenance Request</a></li>
+            <li><a href="#inquire">Emergency Contacts</a></li>
           </ul>
         </div>
         <div class="foot__col">
