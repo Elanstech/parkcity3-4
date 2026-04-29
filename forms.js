@@ -1,819 +1,393 @@
-/**
- * ═══════════════════════════════════════
- *   PARK CITY 3&4 — RESIDENT FORMS JS
- *   Login Gate × Tile Grid × Multi-Form
- *   Overlay × FormSubmit.co × Animations
- * ═══════════════════════════════════════
- */
+/* ═══════════════════════════════════════════════════════════════
+   PARK CITY 3 & 4 — FORMS PAGE SCRIPT
+   Pairs with script.js (loaded first).
+   Handles: overlay, paper switching, progress, FormSubmit AJAX, success.
+   ═══════════════════════════════════════════════════════════════ */
 
+(() => {
+  'use strict';
 
-// ═══════════════════════════════════════
-// LOGIN GATE CONTROLLER
-// ═══════════════════════════════════════
+  /* ──────────── UTILITIES ──────────── */
+  const $  = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const ready = (fn) => {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  };
 
-class LoginGateController {
-    constructor() {
-        this.gate = document.getElementById('loginGate');
-        this.card = document.getElementById('loginCard');
-        this.passwordInput = document.getElementById('loginPassword');
-        this.submitBtn = document.getElementById('loginSubmitBtn');
-        this.fieldWrap = document.getElementById('loginFieldWrap');
-        this.errorMsg = document.getElementById('loginError');
-        this.eyeBtn = document.getElementById('loginEyeBtn');
+  /* ═══════════════════════════════════════════════════════════════
+     1. PAPER PROGRESS — counts required fields & updates the bar
+     ═══════════════════════════════════════════════════════════════ */
+  class PaperProgress {
+    constructor(form, fillEl, textEl) {
+      this.form   = form;
+      this.fillEl = fillEl;
+      this.textEl = textEl;
 
-        this.correctPassword = 'iamaresident';
-        this.sessionKey = 'pc34_forms_auth';
-        this.showingPassword = false;
+      this.handler = () => this.calc();
+      this.form.addEventListener('input', this.handler);
+      this.form.addEventListener('change', this.handler);
 
-        if (!this.gate) return;
-        this.init();
+      this.calc();
     }
 
-    init() {
-        // Check if already authenticated this session
-        if (sessionStorage.getItem(this.sessionKey) === 'true') {
-            this.gate.style.display = 'none';
-            document.body.style.overflow = '';
-            return;
-        }
+    /* Returns a list of "fields" — each scalar field is itself, radios are grouped by name */
+    collectRequired() {
+      const fields = [];
+      const radioNames = new Set();
 
-        // Lock scroll while login is showing
-        document.body.style.overflow = 'hidden';
+      Array.from(this.form.elements).forEach((el) => {
+        if (!el.required || el.disabled) return;
+        if (el.type === 'hidden') return;
 
-        // Bind submit button
-        this.submitBtn.addEventListener('click', () => {
-            this.attemptLogin();
-        });
-
-        // Bind enter key
-        this.passwordInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                this.attemptLogin();
-            }
-        });
-
-        // Clear error on input
-        this.passwordInput.addEventListener('input', () => {
-            this.fieldWrap.classList.remove('error');
-        });
-
-        // Eye toggle
-        if (this.eyeBtn) {
-            this.eyeBtn.addEventListener('click', () => {
-                this.togglePasswordVisibility();
-            });
-        }
-    }
-
-    attemptLogin() {
-        const value = this.passwordInput.value.trim().toLowerCase();
-
-        if (value === this.correctPassword) {
-            // Success — save to session and hide gate
-            sessionStorage.setItem(this.sessionKey, 'true');
-            this.gate.classList.add('hidden');
-            document.body.style.overflow = '';
-
-            // Remove gate from DOM after animation
-            setTimeout(() => {
-                this.gate.style.display = 'none';
-            }, 700);
+        if (el.type === 'radio') {
+          if (radioNames.has(el.name)) return;
+          radioNames.add(el.name);
+          fields.push({ kind: 'radio', name: el.name });
+        } else if (el.type === 'checkbox') {
+          fields.push({ kind: 'checkbox', el });
         } else {
-            // Error — shake and show message
-            this.fieldWrap.classList.add('error');
-            this.passwordInput.focus();
-            this.passwordInput.select();
+          fields.push({ kind: 'value', el });
         }
+      });
+      return fields;
     }
 
-    togglePasswordVisibility() {
-        this.showingPassword = !this.showingPassword;
+    isFilled(field) {
+      if (field.kind === 'radio') {
+        return !!this.form.querySelector(`input[name="${field.name}"]:checked`);
+      }
+      if (field.kind === 'checkbox') {
+        return field.el.checked;
+      }
+      const v = field.el.value;
+      return typeof v === 'string' ? v.trim() !== '' : !!v;
+    }
 
-        if (this.showingPassword) {
-            this.passwordInput.type = 'text';
-            this.eyeBtn.querySelector('.eye-open').style.display = 'none';
-            this.eyeBtn.querySelector('.eye-closed').style.display = 'block';
+    calc() {
+      const fields = this.collectRequired();
+      const total  = fields.length;
+      const filled = fields.filter((f) => this.isFilled(f)).length;
+      const ratio  = total ? filled / total : 0;
+      const pct    = Math.round(ratio * 100);
+
+      if (this.fillEl) this.fillEl.style.transform = `scaleX(${ratio})`;
+      if (this.textEl) this.textEl.textContent = `${pct}%`;
+    }
+
+    destroy() {
+      this.form.removeEventListener('input', this.handler);
+      this.form.removeEventListener('change', this.handler);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     2. FORM OVERLAY — orchestrates everything
+     ═══════════════════════════════════════════════════════════════ */
+  class FormOverlay {
+    constructor() {
+      this.overlay     = $('#formOverlay');
+      this.backdrop    = $('#formOverlayBackdrop');
+      this.closeBtn    = $('#formOverlayClose');
+      this.progressEl  = $('#formProgressFill');
+      this.progressTxt = $('#formProgressText');
+
+      this.successOverlay = $('#formSuccess');
+      this.successBtn     = $('#formSuccessDismiss');
+
+      this.papers = $$('.paper[data-paper]');
+      this.tiles  = $$('.form-tile[data-form]');
+
+      this.currentPaper    = null;
+      this.currentProgress = null;
+      this.savedScrollY    = 0;
+
+      if (!this.overlay) return;
+
+      this.bindTiles();
+      this.bindClose();
+      this.bindCancels();
+      this.bindForms();
+      this.bindSuccess();
+      this.checkSubmittedParam();
+    }
+
+    /* ── tile click → open paper ── */
+    bindTiles() {
+      this.tiles.forEach((tile) => {
+        tile.addEventListener('click', (e) => {
+          e.preventDefault();
+          const id = tile.dataset.form;
+          this.open(id);
+        });
+      });
+    }
+
+    /* ── close button + backdrop + ESC ── */
+    bindClose() {
+      this.closeBtn?.addEventListener('click', () => this.close());
+      this.backdrop?.addEventListener('click', () => this.close());
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        if (this.successOverlay?.classList.contains('is-shown')) {
+          this.dismissSuccess();
+        } else if (this.overlay.classList.contains('is-open')) {
+          this.close();
+        }
+      });
+    }
+
+    /* ── per-paper cancel buttons ── */
+    bindCancels() {
+      $$('[data-form-cancel]').forEach((btn) => {
+        btn.addEventListener('click', () => this.close());
+      });
+    }
+
+    /* ── intercept all form submits ── */
+    bindForms() {
+      this.papers.forEach((paper) => {
+        const form = paper.querySelector('form');
+        if (!form) return;
+        form.addEventListener('submit', (e) => this.submit(e, form));
+      });
+    }
+
+    /* ── success dismiss ── */
+    bindSuccess() {
+      this.successBtn?.addEventListener('click', () => this.dismissSuccess());
+    }
+
+    /* ═══ OPEN ═══ */
+    open(formId) {
+      const paper = this.papers.find((p) => p.dataset.paper === formId);
+      if (!paper) return;
+
+      // Show only this paper
+      this.papers.forEach((p) => { p.hidden = (p !== paper); });
+      this.currentPaper = paper;
+
+      // Pre-fill today's date in any "Date" field that's empty
+      paper.querySelectorAll('input[type="date"]').forEach((d) => {
+        if (!d.value && d.name === 'Date') {
+          d.value = new Date().toISOString().split('T')[0];
+        }
+      });
+
+      // Spin up progress tracker
+      const form = paper.querySelector('form');
+      if (this.currentProgress) this.currentProgress.destroy();
+      this.currentProgress = new PaperProgress(form, this.progressEl, this.progressTxt);
+
+      // Lock body scroll (compatible with Lenis if running)
+      this.lockScroll();
+
+      // Show overlay
+      this.overlay.classList.add('is-open');
+      this.overlay.setAttribute('aria-hidden', 'false');
+
+      // Reset overlay scroll to top so paper appears from top
+      this.overlay.scrollTop = 0;
+
+      // Focus first real input after the entrance animation
+      setTimeout(() => {
+        const firstField = paper.querySelector(
+          'input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), select, textarea'
+        );
+        firstField?.focus({ preventScroll: true });
+      }, 700);
+    }
+
+    /* ═══ CLOSE ═══ */
+    close() {
+      if (!this.overlay.classList.contains('is-open')) return;
+
+      this.overlay.classList.remove('is-open');
+      this.overlay.setAttribute('aria-hidden', 'true');
+
+      this.unlockScroll();
+
+      // Hide papers after the close transition completes (so it animates out)
+      setTimeout(() => {
+        if (!this.overlay.classList.contains('is-open')) {
+          this.papers.forEach((p) => { p.hidden = true; });
+          if (this.currentProgress) {
+            this.currentProgress.destroy();
+            this.currentProgress = null;
+          }
+          this.currentPaper = null;
+        }
+      }, 650);
+    }
+
+    /* ═══ SCROLL LOCK ═══ */
+    lockScroll() {
+      this.savedScrollY = window.scrollY;
+      document.body.classList.add('form-open');
+
+      // Stop Lenis if it's running on this page
+      const lenis = window.parkCity?.smoothScroll?.lenis;
+      if (lenis && typeof lenis.stop === 'function') lenis.stop();
+    }
+
+    unlockScroll() {
+      document.body.classList.remove('form-open');
+
+      const lenis = window.parkCity?.smoothScroll?.lenis;
+      if (lenis && typeof lenis.start === 'function') lenis.start();
+    }
+
+    /* ═══ SUBMIT (AJAX → FormSubmit) ═══ */
+    async submit(e, form) {
+      e.preventDefault();
+
+      // Native validity gate
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const submitBtn = form.querySelector('.paper__submit');
+      const cancelBtn = form.querySelector('.paper__cancel');
+
+      // Honeypot — if bots filled it, silently bail
+      const honey = form.querySelector('input[name="_honey"]');
+      if (honey && honey.value.trim() !== '') {
+        console.warn('[Park City Forms] Honeypot tripped — submission ignored.');
+        return;
+      }
+
+      // Auto-fill _replyto with the email field's value
+      const emailEl = form.querySelector('input[name="email"]');
+      const replyEl = form.querySelector('input[name="_replyto"]');
+      if (emailEl && replyEl) replyEl.value = emailEl.value;
+
+      // UI: loader on
+      submitBtn?.classList.add('is-loading');
+      if (submitBtn) submitBtn.disabled = true;
+      if (cancelBtn) cancelBtn.disabled = true;
+
+      try {
+        const ok = await this.postFormSubmit(form);
+
+        if (ok) {
+          this.handleSuccess(form);
         } else {
-            this.passwordInput.type = 'password';
-            this.eyeBtn.querySelector('.eye-open').style.display = 'block';
-            this.eyeBtn.querySelector('.eye-closed').style.display = 'none';
+          // AJAX returned non-ok — fall back to native submit (full page navigation)
+          form.submit();
         }
-
-        this.passwordInput.focus();
-    }
-}
-
-
-// ═══════════════════════════════════════
-// NAV CONTROLLER
-// ═══════════════════════════════════════
-
-class FormsNav {
-    constructor() {
-        this.nav = document.getElementById('mainNav');
-        this.toggle = document.getElementById('navToggle');
-        this.menu = document.getElementById('mobileMenu');
-        this.close = document.getElementById('menuClose');
-        this.open = false;
-
-        if (!this.nav) return;
-        this.init();
+      } catch (err) {
+        console.error('[Park City Forms] AJAX submit failed, falling back to native:', err);
+        form.submit();
+      } finally {
+        // If we're still on the page (i.e. AJAX worked), restore the buttons
+        submitBtn?.classList.remove('is-loading');
+        if (submitBtn) submitBtn.disabled = false;
+        if (cancelBtn) cancelBtn.disabled = false;
+      }
     }
 
-    init() {
-        // Toggle button
-        if (this.toggle) {
-            this.toggle.addEventListener('click', () => this.flip());
+    /* ═══ POST to FormSubmit's AJAX endpoint ═══ */
+    async postFormSubmit(form) {
+      // Derive recipient email from form action
+      // action looks like: https://formsubmit.co/parkcity3and4@akam.com
+      let recipient = '';
+      try {
+        const actionUrl = new URL(form.action);
+        recipient = actionUrl.pathname.replace(/^\//, '').replace(/^ajax\//, '');
+      } catch (_) {
+        return false;
+      }
+      if (!recipient) return false;
+
+      const ajaxUrl = `https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`;
+
+      // Build payload from FormData. Multiple values for the same name → array.
+      const fd = new FormData(form);
+      const payload = {};
+      for (const [key, val] of fd.entries()) {
+        if (key === '_honey') continue; // never send the honeypot
+        if (payload[key] === undefined) {
+          payload[key] = val;
+        } else if (Array.isArray(payload[key])) {
+          payload[key].push(val);
+        } else {
+          payload[key] = [payload[key], val];
         }
+      }
 
-        // Close button
-        if (this.close) {
-            this.close.addEventListener('click', () => this.shut());
-        }
+      const res = await fetch(ajaxUrl, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
 
-        // Menu links close menu
-        document.querySelectorAll('.menu-link').forEach(l => {
-            l.addEventListener('click', () => {
-                setTimeout(() => this.shut(), 300);
-            });
-        });
-
-        // Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.open) {
-                this.shut();
-            }
-        });
-
-        // Click outside
-        if (this.menu) {
-            this.menu.addEventListener('click', (e) => {
-                if (e.target === this.menu) this.shut();
-            });
-        }
-
-        // Scroll effect
-        window.addEventListener('scroll', () => {
-            this.nav.classList.toggle('scrolled', window.scrollY > 50);
-        }, { passive: true });
+      // FormSubmit returns 200 with JSON { success: "true", ... } on success.
+      // First-ever submission to a new email returns an "activation" message — still a 200.
+      // Either way, treat 2xx as success for UI purposes.
+      return res.ok;
     }
 
-    flip() {
-        this.open ? this.shut() : this.show();
+    /* ═══ SUCCESS FLOW ═══ */
+    handleSuccess(form) {
+      this.close();
+      // Tiny delay so the close animation gets out of the way before success card slides in
+      setTimeout(() => {
+        this.showSuccess();
+        form.reset();
+      }, 300);
     }
 
-    show() {
-        this.open = true;
-        this.menu.classList.add('active');
-        this.toggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    showSuccess() {
+      if (!this.successOverlay) return;
+      this.successOverlay.classList.add('is-shown');
+      this.successOverlay.setAttribute('aria-hidden', 'false');
+
+      // Auto-dismiss after a long beat in case they don't click
+      clearTimeout(this._successTimer);
+      this._successTimer = setTimeout(() => this.dismissSuccess(), 9000);
     }
 
-    shut() {
-        this.open = false;
-        this.menu.classList.remove('active');
-        this.toggle.classList.remove('active');
-        setTimeout(() => {
-            document.body.style.overflow = '';
-        }, 400);
-    }
-}
-
-
-// ═══════════════════════════════════════
-// TILE → OVERLAY CONTROLLER (MULTI-FORM)
-// ═══════════════════════════════════════
-
-class FormOverlayController {
-    constructor() {
-        this.overlay = document.getElementById('formOverlay');
-        this.backdrop = document.getElementById('formOverlayBackdrop');
-        this.closeBtn = document.getElementById('formOverlayClose');
-        this.tiles = document.querySelectorAll('.form-tile[data-form]');
-        this.progressFill = document.getElementById('formProgressFill');
-        this.progressText = document.getElementById('formProgressText');
-        this.allFormPages = document.querySelectorAll('.paper-form-page');
-        this.currentFormId = null;
-
-        if (!this.overlay) return;
-        this.init();
+    dismissSuccess() {
+      if (!this.successOverlay) return;
+      this.successOverlay.classList.remove('is-shown');
+      this.successOverlay.setAttribute('aria-hidden', 'true');
+      clearTimeout(this._successTimer);
     }
 
-    init() {
-        // Tile clicks open overlay with the right form
-        this.tiles.forEach(tile => {
-            tile.addEventListener('click', () => {
-                const formId = tile.dataset.form;
-                this.openOverlay(formId);
-            });
-        });
+    /* ═══ Detect ?submitted= redirect from FormSubmit native fallback ═══ */
+    checkSubmittedParam() {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has('submitted')) return;
 
-        // Close button
-        if (this.closeBtn) {
-            this.closeBtn.addEventListener('click', () => this.closeOverlay());
-        }
+      // Show the success overlay
+      // Wait a tick so loader is gone
+      setTimeout(() => this.showSuccess(), 300);
 
-        // Backdrop click
-        if (this.backdrop) {
-            this.backdrop.addEventListener('click', () => this.closeOverlay());
-        }
-
-        // Click on overlay itself (outside the paper) to close
-        this.overlay.addEventListener('click', (e) => {
-            // Only close if clicking directly on the overlay, backdrop, or container padding
-            const container = document.querySelector('.form-overlay-container');
-            if (
-                e.target === this.overlay ||
-                e.target === this.backdrop ||
-                e.target === container
-            ) {
-                this.closeOverlay();
-            }
-        });
-
-        // Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
-                this.closeOverlay();
-            }
-        });
-
-        // Bind progress tracking on all forms
-        this.bindProgressTracking();
+      // Clean the URL so a refresh doesn't re-trigger
+      const url = new URL(window.location.href);
+      url.searchParams.delete('submitted');
+      window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
     }
+  }
 
-    openOverlay(formId) {
-        this.currentFormId = formId;
+  /* ═══════════════════════════════════════════════════════════════
+     3. BOOT
+     ═══════════════════════════════════════════════════════════════ */
+  ready(() => {
+    try {
+      window.parkCityForms = new FormOverlay();
 
-        // Hide all form pages first
-        this.allFormPages.forEach(page => {
-            page.classList.remove('active-form');
-            page.style.display = 'none';
-        });
-
-        // Show the selected form
-        const targetForm = document.getElementById('form-' + formId);
-        if (targetForm) {
-            targetForm.style.display = 'block';
-            targetForm.classList.add('active-form');
-        }
-
-        // Show overlay
-        this.overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-
-        // Scroll the overlay itself to top (overlay is the scroll container)
-        this.overlay.scrollTop = 0;
-
-        // Reset progress
-        this.updateProgress();
-
-        // Auto-fill date fields in the active form
-        if (targetForm) {
-            const dateInputs = targetForm.querySelectorAll('.date-input');
-            dateInputs.forEach(input => {
-                if (!input.value) {
-                    const d = new Date();
-                    const yyyy = d.getFullYear();
-                    const mm = String(d.getMonth() + 1).padStart(2, '0');
-                    const dd = String(d.getDate()).padStart(2, '0');
-                    input.value = `${yyyy}-${mm}-${dd}`;
-                }
-            });
-        }
+      // Console signature
+      const css = 'font-family: serif; font-size: 13px; font-style: italic; color: #b8956a;';
+      console.log('%cPark City 3 & 4 — Resident Forms ready.', css);
+      console.log('%c9 forms · FormSubmit · AJAX · parkcity3and4@akam.com', 'color:#6b5d4f;font-size:11px;letter-spacing:0.14em;');
+    } catch (err) {
+      console.error('[Park City Forms] init error:', err);
     }
-
-    closeOverlay() {
-        this.overlay.classList.remove('active');
-        this.currentFormId = null;
-
-        setTimeout(() => {
-            document.body.style.overflow = '';
-        }, 300);
-    }
-
-    bindProgressTracking() {
-        // Listen to all inputs inside all forms
-        const allForms = this.overlay.querySelectorAll('form');
-
-        allForms.forEach(form => {
-            const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-            const events = ['input', 'change', 'blur'];
-
-            inputs.forEach(input => {
-                events.forEach(evt => {
-                    input.addEventListener(evt, () => this.updateProgress());
-                });
-            });
-        });
-    }
-
-    updateProgress() {
-        // Find the currently active form
-        const activeForm = document.querySelector('.paper-form-page.active-form form');
-        if (!activeForm) return;
-
-        const required = activeForm.querySelectorAll('input[required], select[required], textarea[required]');
-        let filled = 0;
-        const radioGroups = new Set();
-        const uniqueFields = new Set();
-
-        required.forEach(input => {
-            // Skip hidden fields and honeypot
-            if (input.type === 'hidden' || input.name === '_honey') return;
-
-            if (input.type === 'radio') {
-                if (!radioGroups.has(input.name)) {
-                    radioGroups.add(input.name);
-                    uniqueFields.add(input.name);
-                    if (activeForm.querySelector(`input[name="${input.name}"]:checked`)) {
-                        filled++;
-                    }
-                }
-            } else if (input.type === 'checkbox') {
-                uniqueFields.add(input.name || Math.random());
-                if (input.checked) filled++;
-            } else {
-                uniqueFields.add(input.name || input.id || Math.random());
-                if (input.value.trim()) filled++;
-            }
-        });
-
-        const total = uniqueFields.size;
-        const pct = total > 0 ? Math.min(100, Math.round((filled / total) * 100)) : 0;
-
-        if (this.progressFill) {
-            this.progressFill.style.width = pct + '%';
-        }
-
-        if (this.progressText) {
-            this.progressText.textContent = pct + '%';
-        }
-    }
-}
-
-
-// ═══════════════════════════════════════
-// PAPER FORM CONTROLLER (ALL FORMS)
-// ═══════════════════════════════════════
-
-class PaperFormController {
-    constructor() {
-        this.forms = document.querySelectorAll('.paper-form-page form');
-        this.successOverlay = document.getElementById('formSuccessOverlay');
-        this.successDismiss = document.getElementById('successDismiss');
-
-        if (!this.forms.length) return;
-        this.init();
-    }
-
-    init() {
-        // Setup each form
-        this.forms.forEach(form => {
-            this.bindFieldEffects(form);
-            this.bindFormSubmit(form);
-            this.syncReplyTo(form);
-        });
-
-        // Success dismiss
-        this.bindSuccessDismiss();
-
-        // Check if returning from a FormSubmit redirect
-        this.checkReturnFromSubmit();
-    }
-
-    // --- Field Focus Effects ---
-    bindFieldEffects(form) {
-        form.querySelectorAll('.paper-field').forEach(field => {
-            const input = field.querySelector('.paper-input, .paper-textarea, .paper-select');
-            if (!input) return;
-
-            input.addEventListener('focus', () => {
-                field.classList.add('field-active');
-            });
-
-            input.addEventListener('blur', () => {
-                field.classList.remove('field-active');
-                if (input.value && input.value.trim() !== '') {
-                    input.classList.add('filled');
-                } else {
-                    input.classList.remove('filled');
-                }
-            });
-        });
-    }
-
-    // --- Form Submit Handling ---
-    bindFormSubmit(form) {
-        form.addEventListener('submit', (e) => {
-            // Validate
-            if (!form.checkValidity()) {
-                e.preventDefault();
-                this.highlightErrors(form);
-                return;
-            }
-
-            // Show loading state on the submit button
-            const submitBtn = form.querySelector('.paper-submit-btn');
-            if (submitBtn) {
-                submitBtn.classList.add('loading');
-            }
-        });
-    }
-
-    // --- Highlight Errors ---
-    highlightErrors(form) {
-        const invalids = form.querySelectorAll(':invalid');
-
-        invalids.forEach((input, i) => {
-            // Skip hidden/honeypot
-            if (input.type === 'hidden' || input.name === '_honey') return;
-
-            // Find wrapping element
-            const wrap = input.closest('.paper-field')
-                || input.closest('.paper-field-inline')
-                || input.closest('.paper-agreement')
-                || input.closest('.paper-checkbox-group');
-
-            if (wrap) {
-                wrap.style.background = 'rgba(220, 38, 38, .06)';
-                wrap.style.borderRadius = '6px';
-                wrap.style.transition = 'background .3s ease';
-
-                setTimeout(() => {
-                    wrap.style.background = '';
-                }, 2500);
-            }
-
-            // Focus first invalid
-            if (i === 0) {
-                input.focus();
-                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        });
-
-        // Shake the paper
-        const paper = form.closest('.paper-document');
-        if (paper) {
-            paper.style.animation = 'formShake .5s ease';
-            setTimeout(() => {
-                paper.style.animation = '';
-            }, 500);
-        }
-    }
-
-    // --- Sync email to _replyto hidden field ---
-    syncReplyTo(form) {
-        const emailInput = form.querySelector('input[name="email"]');
-        const replyTo = form.querySelector('input[name="_replyto"]');
-
-        if (emailInput && replyTo) {
-            emailInput.addEventListener('input', () => {
-                replyTo.value = emailInput.value;
-            });
-        }
-    }
-
-    // --- Check Return From FormSubmit ---
-    checkReturnFromSubmit() {
-        const params = new URLSearchParams(window.location.search);
-
-        if (params.get('submitted')) {
-            setTimeout(() => {
-                if (this.successOverlay) {
-                    this.successOverlay.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            }, 500);
-
-            // Clean URL
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
-    }
-
-    // --- Success Dismiss ---
-    bindSuccessDismiss() {
-        const dismiss = () => {
-            if (this.successOverlay) {
-                this.successOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            // Close the form overlay too
-            const formOverlay = document.getElementById('formOverlay');
-            if (formOverlay) {
-                formOverlay.classList.remove('active');
-            }
-
-            // Reset all forms
-            this.forms.forEach(form => {
-                form.reset();
-
-                // Re-fill date inputs
-                form.querySelectorAll('.date-input').forEach(input => {
-                    const d = new Date();
-                    const yyyy = d.getFullYear();
-                    const mm = String(d.getMonth() + 1).padStart(2, '0');
-                    const dd = String(d.getDate()).padStart(2, '0');
-                    input.value = `${yyyy}-${mm}-${dd}`;
-                });
-
-                // Remove loading state from submit buttons
-                const submitBtn = form.querySelector('.paper-submit-btn');
-                if (submitBtn) {
-                    submitBtn.classList.remove('loading');
-                }
-
-                // Remove filled classes
-                form.querySelectorAll('.filled').forEach(el => {
-                    el.classList.remove('filled');
-                });
-            });
-        };
-
-        // Dismiss button
-        if (this.successDismiss) {
-            this.successDismiss.addEventListener('click', dismiss);
-        }
-
-        // Click outside card
-        if (this.successOverlay) {
-            this.successOverlay.addEventListener('click', (e) => {
-                if (e.target === this.successOverlay) {
-                    dismiss();
-                }
-            });
-        }
-    }
-}
-
-
-// ═══════════════════════════════════════
-// SCROLL ANIMATIONS (Intersection Observer)
-// ═══════════════════════════════════════
-
-class FormsScrollAnim {
-    constructor() {
-        this.elements = document.querySelectorAll('[data-animate]');
-
-        if (!this.elements.length) return;
-        this.init();
-    }
-
-    init() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -60px 0px'
-        });
-
-        this.elements.forEach(el => observer.observe(el));
-    }
-}
-
-
-// ═══════════════════════════════════════
-// SMOOTH SCROLL FOR ANCHOR LINKS
-// ═══════════════════════════════════════
-
-class FormsSmoothScroll {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                const href = anchor.getAttribute('href');
-
-                if (href && href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-
-                    if (target) {
-                        const offsetTop = target.offsetTop - 80;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-    }
-}
-
-
-// ═══════════════════════════════════════
-// FOOTER CONTROLLER
-// ═══════════════════════════════════════
-
-class FormsFooter {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        // Back to top
-        const btn = document.getElementById('backToTop');
-        if (btn) {
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-
-        // Footer column reveal
-        const footer = document.querySelector('.premium-footer');
-        if (!footer) return;
-
-        const cols = footer.querySelectorAll('.footer-brand-col, .footer-links-col, .footer-contact-col');
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        cols.forEach((col, i) => {
-            col.style.opacity = '0';
-            col.style.transform = 'translateY(30px)';
-            col.style.transition = `all .8s cubic-bezier(.16, 1, .3, 1) ${i * .1}s`;
-            observer.observe(col);
-        });
-    }
-}
-
-
-// ═══════════════════════════════════════
-// HERO PARALLAX (subtle orb movement)
-// ═══════════════════════════════════════
-
-class HeroParallax {
-    constructor() {
-        this.hero = document.querySelector('.forms-page-hero');
-        this.orbs = document.querySelectorAll('.fh-orb');
-
-        if (!this.hero || !this.orbs.length) return;
-
-        // Only on desktop
-        if (window.innerWidth > 968) {
-            this.init();
-        }
-    }
-
-    init() {
-        this.hero.addEventListener('mousemove', (e) => {
-            const rect = this.hero.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-            this.orbs.forEach((orb, i) => {
-                const speed = (i + 1) * 15;
-                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
-        });
-
-        this.hero.addEventListener('mouseleave', () => {
-            this.orbs.forEach(orb => {
-                orb.style.transform = '';
-                orb.style.transition = 'transform 0.8s ease';
-
-                setTimeout(() => {
-                    orb.style.transition = '';
-                }, 800);
-            });
-        });
-    }
-}
-
-
-// ═══════════════════════════════════════
-// TILE HOVER SOUND FEEDBACK (optional)
-// ═══════════════════════════════════════
-
-class TileInteractions {
-    constructor() {
-        this.tiles = document.querySelectorAll('.form-tile');
-
-        if (!this.tiles.length) return;
-
-        // Only on desktop
-        if (window.innerWidth > 968) {
-            this.init();
-        }
-    }
-
-    init() {
-        this.tiles.forEach(tile => {
-            // Magnetic tilt on hover
-            tile.addEventListener('mousemove', (e) => {
-                const rect = tile.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-
-                tile.style.transform = `
-                    perspective(800px)
-                    rotateX(${rotateX}deg)
-                    rotateY(${rotateY}deg)
-                    translateY(-8px)
-                `;
-            });
-
-            tile.addEventListener('mouseleave', () => {
-                tile.style.transform = '';
-            });
-        });
-    }
-}
-
-
-// ═══════════════════════════════════════
-// PHONE INPUT FORMATTER
-// ═══════════════════════════════════════
-
-class PhoneFormatter {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        document.querySelectorAll('input[type="tel"]').forEach(input => {
-            input.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\D/g, '');
-
-                if (value.length > 10) {
-                    value = value.substring(0, 10);
-                }
-
-                if (value.length >= 7) {
-                    value = `(${value.substring(0, 3)}) ${value.substring(3, 6)}-${value.substring(6)}`;
-                } else if (value.length >= 4) {
-                    value = `(${value.substring(0, 3)}) ${value.substring(3)}`;
-                } else if (value.length >= 1) {
-                    value = `(${value}`;
-                }
-
-                e.target.value = value;
-            });
-        });
-    }
-}
-
-
-// ═══════════════════════════════════════
-// BOOT — Initialize Everything
-// ═══════════════════════════════════════
-
-function boot() {
-    console.log('');
-    console.log('═══════════════════════════════════════');
-    console.log('📋  PARK CITY 3&4 — RESIDENT FORMS');
-    console.log('    Login × 9 Forms × Animations');
-    console.log('═══════════════════════════════════════');
-    console.log('');
-
-    // Core systems
-    new LoginGateController();
-    new FormsNav();
-    new FormOverlayController();
-    new PaperFormController();
-
-    // Animations & interactions
-    new FormsScrollAnim();
-    new FormsSmoothScroll();
-    new FormsFooter();
-    new HeroParallax();
-    new TileInteractions();
-    new PhoneFormatter();
-
-    console.log('✅ All systems ready');
-    console.log('');
-}
-
-// Start when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-} else {
-    boot();
-}
-
-// Scroll to top on full page load
-window.addEventListener('load', () => {
-    window.scrollTo(0, 0);
-});
+  });
+})();
