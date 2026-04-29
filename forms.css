@@ -590,7 +590,7 @@
 /* Close button — top-right, fixed in viewport */
 .form-overlay__close {
   position: fixed;
-  top: 28px;
+  top: calc(28px + env(safe-area-inset-top));
   right: clamp(24px, 4vw, 56px);
   z-index: 10;
   display: inline-flex;
@@ -627,7 +627,7 @@
 /* Progress indicator — top-left of overlay */
 .form-overlay__progress {
   position: fixed;
-  top: 36px;
+  top: calc(36px + env(safe-area-inset-top));
   left: clamp(24px, 4vw, 56px);
   z-index: 10;
   display: flex;
@@ -686,16 +686,20 @@
 
 @media (max-width: 600px) {
   .form-overlay__close {
-    top: 16px;
-    right: 16px;
+    top: calc(14px + env(safe-area-inset-top));
+    right: 14px;
     padding: 10px 14px;
     font-size: 12px;
   }
   .form-overlay__close-label { display: none; }
   .form-overlay__progress {
-    top: 22px;
-    left: 16px;
+    top: calc(20px + env(safe-area-inset-top));
+    left: 14px;
     width: calc(100% - 130px);
+  }
+  .form-overlay__container {
+    padding-top: calc(96px + env(safe-area-inset-top));
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
   }
 }
 
@@ -1064,11 +1068,13 @@
   content: '';
   position: absolute;
   inset: 4px 6px 6px 4px;
+  background: transparent;
   border-right: 2px solid var(--brass);
   border-bottom: 2px solid var(--brass);
+  opacity: 0;
   transform: rotate(45deg) scale(0);
   transform-origin: center;
-  transition: transform 0.3s var(--e-elastic);
+  transition: opacity 0.3s ease, transform 0.3s var(--e-elastic);
 }
 .paper__agreement:has(input:checked) {
   border-color: var(--brass);
@@ -1078,6 +1084,7 @@
   border-color: var(--brass);
 }
 .paper__agreement:has(input:checked) .paper__choice-mark--lg::after {
+  opacity: 1;
   transform: rotate(45deg) scale(1);
 }
 .paper__agreement:hover { border-color: var(--brass-pale); }
