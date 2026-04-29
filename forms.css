@@ -3,6 +3,23 @@
    Extends styles.css (loaded first). Same tokens, same fonts.
    ═══════════════════════════════════════════════════════════════ */
 
+/* ──────────── 0. NAV OVERRIDE ──────────── */
+/* The forms hero is cream-coloured, NOT a dark video like the main page.
+   Override the inherited "is-hero-light" rules so nav text + logo stay dark. */
+.nav.is-hero-light:not(.is-scrolled),
+.nav.is-hero-light:not(.is-scrolled) .nav__menu a {
+  color: var(--ink);
+}
+.nav.is-hero-light:not(.is-scrolled) .nav__logo {
+  filter: none;
+}
+.nav.is-hero-light:not(.is-scrolled) .nav__menu a:hover {
+  color: var(--brass-deep);
+}
+.nav.is-hero-light:not(.is-scrolled) .nav__toggle {
+  color: var(--ink);
+}
+
 /* ──────────── 1. FORMS HERO ──────────── */
 .forms-hero {
   position: relative;
@@ -547,13 +564,11 @@
   position: fixed;
   inset: 0;
   z-index: 900;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s var(--e-soft), visibility 0.5s var(--e-soft);
   overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
@@ -568,7 +583,7 @@
   background: color-mix(in srgb, var(--ink) 88%, transparent);
   backdrop-filter: blur(12px) saturate(120%);
   -webkit-backdrop-filter: blur(12px) saturate(120%);
-  cursor: pointer;
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -663,9 +678,11 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  pointer-events: none;
+  cursor: pointer;
 }
-.form-overlay__container > * { pointer-events: auto; }
+.form-overlay__container > .paper {
+  cursor: auto;
+}
 
 @media (max-width: 600px) {
   .form-overlay__close {
