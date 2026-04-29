@@ -95,14 +95,18 @@
       this.successOverlay = $('#formSuccess');
       this.successBtn     = $('#formSuccessDismiss');
 
-      this.papers = $$('.paper[data-paper]');
-      this.tiles  = $$('.form-tile[data-form]');
+      this.papers = $('.paper[data-paper]');
+      this.tiles  = $('.form-tile[data-form]');
 
       this.currentPaper    = null;
       this.currentProgress = null;
       this.savedScrollY    = 0;
 
       if (!this.overlay) return;
+
+      // Tell Lenis (the smooth-scroller from script.js) to leave this overlay alone,
+      // so wheel events scroll the overlay natively instead of being hijacked.
+      this.overlay.setAttribute('data-lenis-prevent', '');
 
       this.bindTiles();
       this.bindClose();
@@ -126,7 +130,16 @@
     /* ── close button + backdrop + ESC ── */
     bindClose() {
       this.closeBtn?.addEventListener('click', () => this.close());
-      this.backdrop?.addEventListener('click', () => this.close());
+
+      // Click outside the paper closes — anywhere in the overlay that ISN'T
+      // the paper itself, the close button, or the progress bar.
+      this.overlay?.addEventListener('click', (e) => {
+        if (e.target.closest('.paper')) return;
+        if (e.target.closest('.form-overlay__close')) return;
+        if (e.target.closest('.form-overlay__progress')) return;
+        this.close();
+      });
+
       document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
         if (this.successOverlay?.classList.contains('is-shown')) {
@@ -224,17 +237,14 @@
     lockScroll() {
       this.savedScrollY = window.scrollY;
       document.body.classList.add('form-open');
-
-      // Stop Lenis if it's running on this page
-      const lenis = window.parkCity?.smoothScroll?.lenis;
-      if (lenis && typeof lenis.stop === 'function') lenis.stop();
+      // Note: we do NOT call lenis.stop() here. Stopping Lenis can interfere
+      // with native scroll inside the overlay. Instead, body { overflow: hidden }
+      // (CSS) prevents page scroll, and `data-lenis-prevent` on the overlay
+      // lets the overlay scroll natively.
     }
 
     unlockScroll() {
       document.body.classList.remove('form-open');
-
-      const lenis = window.parkCity?.smoothScroll?.lenis;
-      if (lenis && typeof lenis.start === 'function') lenis.start();
     }
 
     /* ═══ SUBMIT (AJAX → FormSubmit) ═══ */
