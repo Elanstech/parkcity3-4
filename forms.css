@@ -20,6 +20,16 @@
   color: var(--ink);
 }
 
+/* ──────────── 0b. EYEBROW OVERRIDE ──────────── */
+/* Main page's .hero__eyebrow is translucent cream — legible on the dark video
+   hero. On our cream hero we need dark text instead. */
+.forms-hero .hero__eyebrow {
+  color: var(--brass-deep);
+}
+.forms-hero .hero__eyebrow-line {
+  background: var(--brass);
+}
+
 /* ──────────── 1. FORMS HERO ──────────── */
 .forms-hero {
   position: relative;
@@ -191,11 +201,13 @@
 }
 
 .forms-hero__meta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 36px;
   flex-wrap: wrap;
   margin-bottom: 56px;
+  width: fit-content;
+  max-width: 100%;
 }
 .forms-hero__meta > div {
   display: flex;
