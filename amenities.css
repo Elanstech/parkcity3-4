@@ -19,6 +19,16 @@
   color: var(--ink);
 }
 
+/* ──────────── 0b. EYEBROW OVERRIDE ──────────── */
+/* The main page's .hero__eyebrow uses translucent cream for legibility on the
+   dark video hero. Our cream hero needs dark text instead. */
+.am-hero .hero__eyebrow {
+  color: var(--brass-deep);
+}
+.am-hero .hero__eyebrow-line {
+  background: var(--brass);
+}
+
 /* ═══════════════════════════════════════════════════════════════
    1. HERO
    ═══════════════════════════════════════════════════════════════ */
@@ -122,11 +132,13 @@
 }
 
 .am-hero__meta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 36px;
   flex-wrap: wrap;
   margin-bottom: 56px;
+  width: fit-content;
+  max-width: 100%;
 }
 .am-hero__meta > div {
   display: flex;
