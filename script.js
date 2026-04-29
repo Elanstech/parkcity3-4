@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
    PARK CITY 3 & 4 — SCRIPT
-   Cinematic interactions · Smooth scroll · Map · Form
    ═══════════════════════════════════════════════════════════════ */
 
 (() => {
@@ -109,15 +108,14 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     3. NAVIGATION
+     3. NAVIGATION — scroll state + mobile drawer (no scroll tracker)
      ═══════════════════════════════════════════════════════════════ */
   class Navigation {
     constructor() {
-      this.nav      = $('#nav');
-      this.toggle   = $('#navToggle');
-      this.mobile   = $('#navMobile');
-      this.heroEl   = $('#hero');
-      this.menuLinks = $$('.nav__menu a');
+      this.nav    = $('#nav');
+      this.toggle = $('#navToggle');
+      this.mobile = $('#navMobile');
+      this.heroEl = $('#hero');
       if (!this.nav) return;
 
       window.addEventListener('scroll', () => this.onScroll(), { passive: true });
@@ -130,8 +128,6 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') this.closeMobile();
       });
-
-      this.observeSections();
     }
 
     onScroll() {
@@ -160,25 +156,6 @@
       this.toggle.setAttribute('aria-expanded', 'false');
       this.mobile.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-    }
-
-    observeSections() {
-      const ids = ['philosophy', 'residences', 'amenities-overview', 'lifestyle', 'location', 'voices', 'inquire'];
-      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
-      if (!sections.length) return;
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = '#' + entry.target.id;
-            this.menuLinks.forEach(link => {
-              link.classList.toggle('is-active', link.getAttribute('href') === id);
-            });
-          }
-        });
-      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-
-      sections.forEach(s => observer.observe(s));
     }
   }
 
@@ -299,7 +276,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     7. HERO PARALLAX  (subtle scale + content fade)
+     7. HERO PARALLAX
      ═══════════════════════════════════════════════════════════════ */
   class HeroParallax {
     constructor() {
@@ -386,8 +363,7 @@
 
   /* ═══════════════════════════════════════════════════════════════
      9. LIFESTYLE — horizontally scrubbed pinned rail
-     ★ FIX: Section height is now sized DYNAMICALLY based on the rail's
-       actual width. No more hardcoded 500vh dead-scroll.
+     Section height is sized DYNAMICALLY based on rail width.
      ═══════════════════════════════════════════════════════════════ */
   class LifestyleRail {
     constructor() {
@@ -401,7 +377,6 @@
       this.target  = 0;
       this.active  = false;
 
-      // Wait for layout/fonts to settle, then measure
       this.calc();
       onLoad(() => this.calc());
 
@@ -416,7 +391,6 @@
     }
 
     calc() {
-      // Mobile: let the section flow naturally (CSS handles vertical stack)
       if (!isDesktop()) {
         this.section.style.height = '';
         this.rail.style.transform = '';
@@ -426,26 +400,20 @@
         return;
       }
 
-      // Measure rail and viewport
       requestAnimationFrame(() => {
         const railWidth = this.rail.scrollWidth;
         const viewport  = window.innerWidth;
         const padX = parseFloat(getComputedStyle(this.sticky).paddingLeft) || 0;
 
-        // How far the rail needs to translate horizontally
         this.maxTranslate = Math.max(0, railWidth - viewport + padX * 2);
 
         if (this.maxTranslate <= 0) {
-          // Rail fits in viewport — no horizontal scrub needed
           this.section.style.height = '';
           this.rail.style.transform = '';
           this.active = false;
           return;
         }
 
-        // ★ Section height = sticky stage (1 viewport) + scroll distance
-        // Scroll distance is proportional to how much the rail must move,
-        // with a small multiplier for comfortable pacing. NO MORE DEAD SCROLL.
         const scrollDistance = this.maxTranslate * 1.1;
         this.section.style.height = `${window.innerHeight + scrollDistance}px`;
 
@@ -462,7 +430,6 @@
       const scrollable = sectionHeight - stickyHeight;
       if (scrollable <= 0) return;
 
-      // 0 when section top reaches viewport top, 1 when sticky stage ends
       const progress = clamp(-rect.top / scrollable, 0, 1);
       this.target = -this.maxTranslate * progress;
     }
@@ -500,7 +467,27 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     11. INQUIRE FORM
+     11. FAQ PREVIEW — close other items when one opens
+     ═══════════════════════════════════════════════════════════════ */
+  class FAQPreview {
+    constructor() {
+      this.items = $$('.faq-row details');
+      if (!this.items.length) return;
+
+      this.items.forEach(item => {
+        item.addEventListener('toggle', () => {
+          if (item.open) {
+            this.items.forEach(other => {
+              if (other !== item && other.open) other.open = false;
+            });
+          }
+        });
+      });
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     12. INQUIRE FORM
      ═══════════════════════════════════════════════════════════════ */
   class InquireForm {
     constructor() {
@@ -535,251 +522,13 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     12. BACK TO TOP
+     13. BACK TO TOP
      ═══════════════════════════════════════════════════════════════ */
   class BackToTop {
     constructor(smoothScroll) {
       const btn = $('#backToTop');
       if (!btn) return;
       btn.addEventListener('click', () => smoothScroll.scrollTo(0));
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════
-     13. LOCATION MAP — Leaflet with custom theming
-     ═══════════════════════════════════════════════════════════════ */
-  const BUILDINGS = [
-    { id: 1, address: '97-07 63rd Road',  coords: [40.7300, -73.8616] },
-    { id: 2, address: '97-10 62nd Drive', coords: [40.7302, -73.8618] },
-    { id: 3, address: '97-37 63rd Road',  coords: [40.7310, -73.8612] },
-    { id: 4, address: '97-40 62nd Drive', coords: [40.7311, -73.8615] },
-    { id: 5, address: '98-05 63rd Road',  coords: [40.7320, -73.8610] },
-    { id: 6, address: '98-20 62nd Drive', coords: [40.7322, -73.8613] }
-  ];
-
-  const ATTRACTIONS = [
-    // Transit
-    { name: '63 Dr–Rego Park Station',     cat: 'transit',   icon: 'M', meta: 'M, R lines',           dist: '2 min walk',  coords: [40.72992, -73.86176] },
-    { name: 'Forest Hills–71 Av',          cat: 'transit',   icon: 'F', meta: 'E, F, M, R',           dist: '15 min walk', coords: [40.72144, -73.84466] },
-    { name: 'LIRR Forest Hills',           cat: 'transit',   icon: 'L', meta: 'Long Island Rail Road', dist: '17 min walk', coords: [40.71969, -73.84482] },
-    // Shopping
-    { name: 'Trader Joe\'s',               cat: 'shopping',  icon: 'T', meta: 'Grocery',              dist: '5 min walk',  coords: [40.7330, -73.8650] },
-    { name: 'Rego Center',                 cat: 'shopping',  icon: 'R', meta: 'Shopping mall',        dist: '7 min walk',  coords: [40.7280, -73.8620] },
-    { name: 'CTown Supermarkets',          cat: 'shopping',  icon: 'C', meta: 'Grocery',              dist: '3 min walk',  coords: [40.7289, -73.8610] },
-    // Dining
-    { name: 'Austin Street',               cat: 'dining',    icon: 'A', meta: 'Restaurants & cafés',  dist: '12 min walk', coords: [40.7202, -73.8462] },
-    { name: 'Rego Park Cafe',              cat: 'dining',    icon: 'R', meta: 'Coffee · 7am–9pm',     dist: '4 min walk',  coords: [40.72894, -73.86273] },
-    { name: 'Il Primo',                    cat: 'dining',    icon: 'I', meta: 'Italian',              dist: '6 min walk',  coords: [40.72636, -73.86505] },
-    // Parks
-    { name: 'Forest Park',                 cat: 'parks',     icon: 'P', meta: '538-acre park',        dist: '15 min walk', coords: [40.7000, -73.8500] },
-    { name: 'Flushing Meadows',            cat: 'parks',     icon: 'F', meta: 'Iconic Queens park',   dist: '18 min walk', coords: [40.7407, -73.8496] },
-    { name: 'Juniper Valley Park',         cat: 'parks',     icon: 'J', meta: 'Neighborhood park',    dist: '22 min walk', coords: [40.72048, -73.87967] },
-    // Education
-    { name: 'P.S. 206 Horace Harding',     cat: 'education', icon: 'S', meta: 'Elementary school',    dist: '5 min walk',  coords: [40.73412, -73.86097] },
-    { name: 'J.H.S. 157 Stephen A. Halsey',cat: 'education', icon: 'J', meta: 'Middle school',        dist: '10 min walk', coords: [40.73227, -73.85342] },
-    { name: 'Forest Hills High School',    cat: 'education', icon: 'H', meta: 'Public high school',   dist: '15 min walk', coords: [40.72973, -73.84493] }
-  ];
-
-  class LocationMap {
-    constructor() {
-      this.container = $('#leafletMap');
-      if (!this.container || typeof L === 'undefined') return;
-
-      this.tab = 'buildings';
-      this.category = 'all';
-      this.buildingMarkers = [];
-      this.attractionMarkers = [];
-
-      this.initMap();
-      this.addBuildingMarkers();
-      this.addAttractionMarkers();
-      this.bindTabs();
-      this.bindFilters();
-      this.renderList();
-      this.showBuildings();
-    }
-
-    initMap() {
-      this.map = L.map(this.container, {
-        center: [40.7311, -73.8614],
-        zoom: 16,
-        zoomControl: true,
-        scrollWheelZoom: false,
-        attributionControl: true
-      });
-
-      // Carto Voyager — clean, light cartography matching the cream theme
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap · © CARTO',
-        subdomains: 'abcd',
-        maxZoom: 19
-      }).addTo(this.map);
-
-      // Wheel zoom only after focus — prevents accidental zoom while page-scrolling
-      this.map.on('focus', () => this.map.scrollWheelZoom.enable());
-      this.map.on('blur',  () => this.map.scrollWheelZoom.disable());
-      this.container.addEventListener('mouseleave', () => this.map.scrollWheelZoom.disable());
-    }
-
-    addBuildingMarkers() {
-      BUILDINGS.forEach(b => {
-        const marker = L.marker(b.coords, {
-          icon: L.divIcon({
-            className: 'pc-marker pc-marker--building',
-            html: `<div class="pc-marker__pin">${b.id}</div>`,
-            iconSize: [42, 42],
-            iconAnchor: [21, 21]
-          })
-        });
-
-        marker.bindPopup(`
-          <div class="pc-popup">
-            <div class="pc-popup__name">${b.address}</div>
-            <div class="pc-popup__meta">Building ${b.id} of 6</div>
-            <div class="pc-popup__addr">Rego Park, NY 11374 · 14 stories · Private terraces</div>
-          </div>
-        `, { closeButton: false, offset: [0, -10], maxWidth: 260 });
-
-        marker.buildingId = b.id;
-        this.buildingMarkers.push(marker);
-      });
-    }
-
-    addAttractionMarkers() {
-      ATTRACTIONS.forEach(a => {
-        const marker = L.marker(a.coords, {
-          icon: L.divIcon({
-            className: `pc-marker pc-marker--around pc-marker--${a.cat}`,
-            html: `<div class="pc-marker__pin">${a.icon}</div>`,
-            iconSize: [38, 38],
-            iconAnchor: [19, 19]
-          })
-        });
-
-        marker.bindPopup(`
-          <div class="pc-popup">
-            <div class="pc-popup__name">${a.name}</div>
-            <div class="pc-popup__meta">${a.meta}</div>
-            <div class="pc-popup__addr">${a.dist} from Park City</div>
-          </div>
-        `, { closeButton: false, offset: [0, -10], maxWidth: 260 });
-
-        marker.attractionData = a;
-        marker.category = a.cat;
-        this.attractionMarkers.push(marker);
-      });
-    }
-
-    bindTabs() {
-      $$('.location__tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          this.tab = tab.dataset.locTab;
-          $$('.location__tab').forEach(x => x.classList.toggle('is-active', x === tab));
-
-          const filters = $('[data-loc-filters]');
-          if (this.tab === 'around') {
-            filters?.removeAttribute('hidden');
-            this.showAttractions();
-          } else {
-            filters?.setAttribute('hidden', '');
-            this.showBuildings();
-          }
-          this.renderList();
-        });
-      });
-    }
-
-    bindFilters() {
-      $$('.loc-chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-          this.category = chip.dataset.locCat;
-          $$('.loc-chip').forEach(x => x.classList.toggle('is-active', x === chip));
-          this.showAttractions();
-          this.renderList();
-        });
-      });
-    }
-
-    showBuildings() {
-      this.attractionMarkers.forEach(m => this.map.removeLayer(m));
-      this.buildingMarkers.forEach(m => m.addTo(this.map));
-      const group = L.featureGroup(this.buildingMarkers);
-      this.map.flyToBounds(group.getBounds().pad(0.4), { duration: 1.2 });
-    }
-
-    showAttractions() {
-      this.buildingMarkers.forEach(m => this.map.removeLayer(m));
-      this.attractionMarkers.forEach(m => this.map.removeLayer(m));
-
-      const filtered = this.attractionMarkers.filter(m =>
-        this.category === 'all' || m.category === this.category
-      );
-      filtered.forEach(m => m.addTo(this.map));
-
-      // Keep buildings visible as faint context
-      this.buildingMarkers.forEach(m => m.addTo(this.map));
-
-      if (filtered.length) {
-        const group = L.featureGroup([...filtered, ...this.buildingMarkers]);
-        this.map.flyToBounds(group.getBounds().pad(0.25), { duration: 1.2 });
-      }
-    }
-
-    renderList() {
-      const list = $('#locList');
-      if (!list) return;
-
-      if (this.tab === 'buildings') {
-        list.innerHTML = BUILDINGS.map(b => `
-          <button class="loc-item" data-building="${b.id}">
-            <span class="loc-item__num">${b.id}</span>
-            <span class="loc-item__body">
-              <span class="loc-item__name">${b.address}</span>
-              <span class="loc-item__meta">Rego Park · 14 stories · Private terraces</span>
-            </span>
-          </button>
-        `).join('');
-
-        list.querySelectorAll('.loc-item').forEach(item => {
-          item.addEventListener('click', () => {
-            const id = parseInt(item.dataset.building, 10);
-            const m = this.buildingMarkers.find(x => x.buildingId === id);
-            if (m) {
-              this.map.flyTo(m.getLatLng(), 18, { duration: 1 });
-              setTimeout(() => m.openPopup(), 600);
-            }
-            list.querySelectorAll('.loc-item').forEach(x => x.classList.remove('is-active'));
-            item.classList.add('is-active');
-          });
-        });
-      } else {
-        const filtered = ATTRACTIONS.filter(a =>
-          this.category === 'all' || a.cat === this.category
-        );
-        list.innerHTML = filtered.map(a => `
-          <button class="loc-item loc-item--around" data-attraction="${a.name}">
-            <span class="loc-item__num">${a.icon}</span>
-            <span class="loc-item__body">
-              <span class="loc-item__name">${a.name}</span>
-              <span class="loc-item__meta">${a.meta}</span>
-            </span>
-            <span class="loc-item__dist">${a.dist}</span>
-          </button>
-        `).join('');
-
-        list.querySelectorAll('.loc-item').forEach(item => {
-          item.addEventListener('click', () => {
-            const name = item.dataset.attraction;
-            const m = this.attractionMarkers.find(x => x.attractionData.name === name);
-            if (m) {
-              this.map.flyTo(m.getLatLng(), 16, { duration: 1 });
-              setTimeout(() => m.openPopup(), 600);
-            }
-            list.querySelectorAll('.loc-item').forEach(x => x.classList.remove('is-active'));
-            item.classList.add('is-active');
-          });
-        });
-      }
     }
   }
 
@@ -810,15 +559,11 @@
         this.essence = new Essence();
         this.lifestyle = new LifestyleRail();
         this.residencesIndex = new ResidencesIndex(this.smoothScroll);
+        this.faqPreview = new FAQPreview();
 
         // UI
         this.form = new InquireForm();
         this.backToTop = new BackToTop(this.smoothScroll);
-
-        // Map after window load (Leaflet needs final layout)
-        onLoad(() => {
-          this.locationMap = new LocationMap();
-        });
 
         this.signature();
       } catch (err) {
@@ -830,6 +575,7 @@
       const css = 'font-family: serif; font-size: 14px; font-style: italic; color: #b8956a;';
       console.log('%cPark City 3 & 4 — A residence in Rego Park.', css);
       console.log('%cEstablished 1955 · Six buildings · Managed by AKAM', 'color:#6b5d4f;font-size:11px;letter-spacing:0.16em;');
+      console.log('%cDesigned & built by Elan\'s Tech World · elanstechworld.com', 'color:#8a6d4a;font-size:11px;font-style:italic;');
     }
   }
 
