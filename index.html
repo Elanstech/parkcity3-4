@@ -1,1355 +1,824 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Park City 3&4 Apartments - A perfect community to call home. Luxury living with 24/7 security, premium amenities, and modern convenience.">
-    <title>Park City 3&4 Apartments | Luxury Living Redefined</title>
-        
-    <!-- FIXED External Libraries - -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/split-type@0.3.4/umd/index.js"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Park City 3 & 4 Apartments — A cooperative community of six residential buildings in the heart of Rego Park, Queens. Established 1955. Managed by AKAM." />
+  <meta name="theme-color" content="#f8f2e6" />
+  <title>Park City 3 &amp; 4 — A Residence by the Park · Rego Park, Queens</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Fraunces · Cormorant Garamond · Instrument Serif · Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
 
-<!-- Modern Navigation -->
-<nav class="modern-nav" id="mainNav">
-    <div class="nav-wrapper">
-        <div class="nav-content">
-            <!-- Logo -->
-            <div class="nav-brand">
-                <a href="index.html">
-                    <img src="logo.png" alt="Park City 3&4 Apartments" class="brand-logo">
-                </a>
-            </div>
-            
-            <!-- Desktop Menu -->
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-item active">Home</a></li>
-                <li><a href="amenities.html" class="nav-item">Amenities</a></li>
-                <li><a href="forms.html" class="nav-item">Resident Forms</a></li>
-                <li><a href="guides.html" class="nav-item">Building Guides</a></li>
-                <li><a href="gallery.html" class="nav-item">Gallery</a></li>
-                <li><a href="faq.html" class="nav-item">FAQ</a></li>
-                <li><a href="contact.html" class="nav-item">Contact</a></li>
-            </ul>
-            
-            <!-- CTA Button -->
-            <div class="nav-actions">
-                <a href="apply.html" class="nav-cta">
-                    <span class="cta-text">Apply Now</span>
-                    <span class="cta-icon">→</span>
-                </a>
-            </div>
-            
-            <!-- Mobile Toggle -->
-            <button class="menu-toggle" id="navToggle" aria-label="Toggle Menu">
-                <span class="toggle-line"></span>
-                <span class="toggle-line"></span>
-                <span class="toggle-line"></span>
-            </button>
-        </div>
-    </div>
-    
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu" id="mobileMenu">
-        <!-- Animated Background -->
-        <div class="menu-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-            <div class="mesh-gradient"></div>
-        </div>
-        
-        <!-- Close Button -->
-        <button class="menu-close" id="menuClose" aria-label="Close Menu">
-            <span class="close-line"></span>
-            <span class="close-line"></span>
-            <div class="close-ripple"></div>
-        </button>
-        
-        <div class="menu-container">
-            <!-- Menu Header -->
-            <div class="menu-header">
-                <div class="menu-logo">
-                    <img src="logo.png" alt="Park City 3&4" class="menu-logo-img">
-                </div>
-                <div class="menu-tagline">Luxury Living Redefined</div>
-            </div>
-            
-            <!-- Main Navigation -->
-            <ul class="menu-items">
-                <li class="menu-item" data-index="1">
-                    <a href="index.html" class="menu-link" data-text="Home">
-                        <span class="link-wrapper">
-                            <span class="link-number">01</span>
-                            <span class="link-content">
-                                <span class="link-text">Home</span>
-                                <span class="link-subtitle">Welcome</span>
-                            </span>
-                            <span class="link-arrow">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </span>
-                        </span>
-                        <div class="link-bg"></div>
-                    </a>
-                </li>
-                <li class="menu-item" data-index="2">
-                    <a href="amenities.html" class="menu-link" data-text="Amenities">
-                        <span class="link-wrapper">
-                            <span class="link-number">02</span>
-                            <span class="link-content">
-                                <span class="link-text">Amenities</span>
-                                <span class="link-subtitle">Features & Lifestyle</span>
-                            </span>
-                            <span class="link-arrow">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </span>
-                        </span>
-                        <div class="link-bg"></div>
-                    </a>
-                </li>
-                <li class="menu-item" data-index="3">
-                    <a href="community.html" class="menu-link" data-text="Community">
-                        <span class="link-wrapper">
-                            <span class="link-number">03</span>
-                            <span class="link-content">
-                                <span class="link-text">Community</span>
-                                <span class="link-subtitle">Events & Culture</span>
-                            </span>
-                            <span class="link-arrow">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </span>
-                        </span>
-                        <div class="link-bg"></div>
-                    </a>
-                </li>
-                <li class="menu-item" data-index="4">
-                    <a href="security.html" class="menu-link" data-text="Security">
-                        <span class="link-wrapper">
-                            <span class="link-number">04</span>
-                            <span class="link-content">
-                                <span class="link-text">Security</span>
-                                <span class="link-subtitle">24/7 Protection</span>
-                            </span>
-                            <span class="link-arrow">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </span>
-                        </span>
-                        <div class="link-bg"></div>
-                    </a>
-                </li>
-                <li class="menu-item" data-index="5">
-                    <a href="services.html" class="menu-link" data-text="Services">
-                        <span class="link-wrapper">
-                            <span class="link-number">05</span>
-                            <span class="link-content">
-                                <span class="link-text">Services</span>
-                                <span class="link-subtitle">Resident Resources</span>
-                            </span>
-                            <span class="link-arrow">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </span>
-                        </span>
-                        <div class="link-bg"></div>
-                    </a>
-                </li>
-                <li class="menu-item" data-index="6">
-                    <a href="contact.html" class="menu-link" data-text="Contact">
-                        <span class="link-wrapper">
-                            <span class="link-number">06</span>
-                            <span class="link-content">
-                                <span class="link-text">Contact</span>
-                                <span class="link-subtitle">Get in Touch</span>
-                            </span>
-                            <span class="link-arrow">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </span>
-                        </span>
-                        <div class="link-bg"></div>
-                    </a>
-                </li>
-            </ul>
-            
-            <!-- Apply CTA -->
-            <div class="menu-cta-wrapper">
-                <a href="apply.html" class="menu-cta-btn">
-                    <span class="cta-shine"></span>
-                    <span class="cta-content">
-                        <span class="cta-text">Apply Now</span>
-                        <span class="cta-subtext">Start Your Journey</span>
-                    </span>
-                    <span class="cta-icon">→</span>
-                </a>
-            </div>
-            
-            <!-- Menu Footer -->
-            <div class="menu-footer">
-                <div class="footer-contact">
-                    <div class="contact-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <span>(555) 123-4567</span>
-                    </div>
-                    <div class="contact-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <span>123 Park City Blvd</span>
-                    </div>
-                </div>
-                <div class="footer-copyright">
-                    <p>© 2026 Park City 3&4 Apartments</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
- 
+<body data-theme="cream">
 
-<!-- MODERN SPLIT HERO SECTION -->
-<section class="split-hero" id="home">
-    
-    <!-- Left Content Side -->
-    <div class="hero-left">
-        <div class="hero-left-inner">
-            
-            <!-- Accent Line -->
-            <div class="hero-accent">
-                <span class="accent-line"></span>
-                <span class="accent-text">Luxury Living</span>
-            </div>
-            
-            <!-- Main Typography -->
-            <div class="hero-typography">
-                <span class="hero-welcome">Welcome to</span>
-                <h1 class="hero-title-main">Park City</h1>
-                <h1 class="hero-title-number">3&4</h1>
-                <span class="hero-apartments">Apartments</span>
-            </div>
-            
-            <!-- Description -->
-            <p class="hero-desc">
-                A perfect community to call home. Experience refined living with 24/7 security and premium amenities in the heart of Queens.
-            </p>
-            
-            <!-- CTAs -->
-            <div class="hero-ctas">
-                <a href="#contact" class="hero-cta-primary">
-                    <span>Schedule Tour</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="#amenities" class="hero-cta-secondary">
-                    <span class="cta-line"></span>
-                    <span>Explore</span>
-                </a>
-            </div>
-            
-            <!-- Stats -->
-            <div class="hero-stats-row">
-                <div class="hero-stat">
-                    <span class="stat-value">24/7</span>
-                    <span class="stat-label">Security</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="stat-value">100+</span>
-                    <span class="stat-label">Units</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="stat-value">15+</span>
-                    <span class="stat-label">Amenities</span>
-                </div>
-            </div>
-            
-        </div>
+  <!-- LOADER -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <img src="logo.png" alt="" class="loader__logo" />
+      <div class="loader__bar"><span></span></div>
+      <div class="loader__caption"><span data-loader-text>A residence by the park</span></div>
     </div>
-    
-    <!-- Right Video Side -->
-    <div class="hero-right">
-        <div class="hero-video-edge"></div>
-        <div class="hero-video-accent"></div>
-        <video class="split-hero-video" autoplay muted loop playsinline>
-            <source src="hero.mp4" type="video/mp4">
+  </div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <span class="cursor__label" data-cursor-label></span>
+  </div>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__shell">
+      <a href="#top" class="nav__brand" aria-label="Park City 3 & 4 home">
+        <img src="logo.png" alt="Park City 3 & 4" class="nav__logo" />
+      </a>
+
+      <nav class="nav__menu" aria-label="Primary">
+        <ul>
+          <li><a href="#philosophy" data-link><span>01</span> About</a></li>
+          <li><a href="#residences" data-link><span>02</span> Buildings</a></li>
+          <li><a href="#amenities" data-link><span>03</span> Amenities</a></li>
+          <li><a href="#lifestyle" data-link><span>04</span> Lifestyle</a></li>
+          <li><a href="#location" data-link><span>05</span> Location</a></li>
+          <li><a href="#inquire" data-link><span>06</span> Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__meta">
+        <span class="nav__time" data-local-time>—</span>
+        <span class="nav__divider"></span>
+        <span class="nav__locale">Rego Park, NY</span>
+      </div>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navmobile" id="navMobile" aria-hidden="true">
+      <div class="navmobile__inner">
+        <img src="logo.png" alt="" class="navmobile__logo" />
+        <ol class="navmobile__list">
+          <li><a href="#philosophy"><em>01</em> About</a></li>
+          <li><a href="#residences"><em>02</em> Buildings</a></li>
+          <li><a href="#amenities"><em>03</em> Amenities</a></li>
+          <li><a href="#lifestyle"><em>04</em> Lifestyle</a></li>
+          <li><a href="#location"><em>05</em> Location</a></li>
+          <li><a href="#voices"><em>06</em> Voices</a></li>
+          <li><a href="#inquire"><em>07</em> Contact</a></li>
+        </ol>
+        <div class="navmobile__foot">
+          <p class="serif-italic">A residence by the park.</p>
+          <p>Rego Park, Queens · New York</p>
+          <p class="navmobile__akam">Managed by <span>AKAM</span></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ═══════════════ HERO · CINEMATIC VIDEO ═══════════════ -->
+    <section class="hero" id="hero" data-pin-stage>
+      <div class="hero__media">
+        <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto"
+               poster="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=85">
+          <source src="hero.mp4" type="video/mp4" />
         </video>
-        <div class="hero-video-overlay"></div>
-        
-        <!-- Video Control -->
-        <button class="split-video-control" id="splitVideoToggle" aria-label="Pause Video">
-            <svg class="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-            <svg class="pause-icon active" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="6" y="4" width="4" height="16"></rect>
-                <rect x="14" y="4" width="4" height="16"></rect>
-            </svg>
-        </button>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="split-scroll-indicator">
-        <div class="scroll-line"></div>
-        <span>Scroll</span>
-    </div>
-    
-</section>
-    
-<!-- Premium Amenities Section -->
-<section class="about-premium-section" id="amenities">
-    <div class="about-grid-container">
-        
-        <!-- LEFT: Showcase Content -->
-        <div class="about-content-side">
-            <div class="about-inner-wrapper">
-                
-                <!-- Shared Header Components -->
-                <div class="showcase-header">
-                    <span class="showcase-label">About Our Building</span>
-                    <h2 class="showcase-title">Where Luxury<br>Meets Community</h2>
-                    <p class="showcase-subtitle">Park City 3&4 Apartments represents the pinnacle of modern residential living.</p>
-                </div>
-                
-                <!-- Ultra-Sleek Stats -->
-                <div class="about-stats-grid">
-                    <div class="about-stat-card" data-index="0">
-                        <div class="stat-card-glow"></div>
-                        <div class="stat-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                            </svg>
-                        </div>
-                        <div class="stat-card-value" data-count="100">0</div>
-                        <div class="stat-card-plus">+</div>
-                        <div class="stat-card-text">Premium Units</div>
-                        <div class="stat-card-line"></div>
-                    </div>
-                    
-                    <div class="about-stat-card" data-index="1">
-                        <div class="stat-card-glow"></div>
-                        <div class="stat-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <div class="stat-card-value">24/7</div>
-                        <div class="stat-card-text">Security</div>
-                        <div class="stat-card-line"></div>
-                    </div>
-                    
-                    <div class="about-stat-card" data-index="2">
-                        <div class="stat-card-glow"></div>
-                        <div class="stat-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="3" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="14" width="7" height="7"></rect>
-                                <rect x="3" y="14" width="7" height="7"></rect>
-                            </svg>
-                        </div>
-                        <div class="stat-card-value" data-count="15">0</div>
-                        <div class="stat-card-plus">+</div>
-                        <div class="stat-card-text">Amenities</div>
-                        <div class="stat-card-line"></div>
-                    </div>
-                </div>
-                
-                <!-- Premium Feature Points -->
-                <div class="about-features-list">
-                    <div class="about-feature-point" data-feature="0">
-                        <div class="feature-point-indicator">
-                            <div class="indicator-pulse"></div>
-                            <div class="indicator-dot"></div>
-                        </div>
-                        <div class="feature-point-content">
-                            <h4 class="feature-point-title">Secure Living</h4>
-                            <p class="feature-point-desc">Advanced security systems with on-site personnel providing 24/7 peace of mind</p>
-                        </div>
-                        <div class="feature-point-number">01</div>
-                    </div>
-                    
-                    <div class="about-feature-point" data-feature="1">
-                        <div class="feature-point-indicator">
-                            <div class="indicator-pulse"></div>
-                            <div class="indicator-dot"></div>
-                        </div>
-                        <div class="feature-point-content">
-                            <h4 class="feature-point-title">Prime Location</h4>
-                            <p class="feature-point-desc">Convenient access to shopping, dining, and public transit in the heart of the city</p>
-                        </div>
-                        <div class="feature-point-number">02</div>
-                    </div>
-                    
-                    <div class="about-feature-point" data-feature="2">
-                        <div class="feature-point-indicator">
-                            <div class="indicator-pulse"></div>
-                            <div class="indicator-dot"></div>
-                        </div>
-                        <div class="feature-point-content">
-                            <h4 class="feature-point-title">Modern Updates</h4>
-                            <p class="feature-point-desc">Recently renovated facilities and beautifully maintained common areas</p>
-                        </div>
-                        <div class="feature-point-number">03</div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        <!-- RIGHT: Ultra-Sleek Auto Gallery -->
-        <div class="about-gallery-side">
-            <div class="about-gallery-wrapper">
-                
-                <!-- Shared Header for Gallery -->
-                <div class="showcase-header gallery-header-spacing">
-                    <span class="showcase-label">Our Spaces</span>
-                    <h3 class="showcase-subtitle gallery-subtitle-style">Experience Luxury Living</h3>
-                </div>
-                
-                <!-- Sleek Auto-Slideshow Container -->
-                <div class="about-slideshow-container">
-                    <!-- Image Stack -->
-                    <div class="slideshow-image-stack">
-                        <div class="slideshow-image active" data-slide="0">
-                            <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="Building Exterior">
-                            <div class="image-gradient-overlay"></div>
-                            <div class="image-caption-box">
-                                <h4 class="image-caption-title">Modern Architecture</h4>
-                                <p class="image-caption-text">Stunning building design</p>
-                            </div>
-                        </div>
-                        
-                        <div class="slideshow-image" data-slide="1">
-                            <img src="https://images1.apartments.com/i2/w0ihOyantIGgdVH5kannuRiAF67Al0w3ZbAXVaG89MY/111/park-city-34-apartments-rego-park-ny-building-photo.jpg" alt="Building View">
-                            <div class="image-gradient-overlay"></div>
-                            <div class="image-caption-box">
-                                <h4 class="image-caption-title">Prime Location</h4>
-                                <p class="image-caption-text">Vibrant neighborhood</p>
-                            </div>
-                        </div>
-                        
-                        <div class="slideshow-image" data-slide="2">
-                            <img src="https://images1.apartments.com/i2/tQWAHUnGV-klDb6G_RsjObVWUf5EPzWz_lJIhpySGEo/111/park-city-34-apartments-rego-park-ny-97-10-62nd-drive.jpg" alt="Building Details">
-                            <div class="image-gradient-overlay"></div>
-                            <div class="image-caption-box">
-                                <h4 class="image-caption-title">Elegant Details</h4>
-                                <p class="image-caption-text">Thoughtful design</p>
-                            </div>
-                        </div>
-                        
-                        <div class="slideshow-image" data-slide="3">
-                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="Pool Area">
-                            <div class="image-gradient-overlay"></div>
-                            <div class="image-caption-box">
-                                <h4 class="image-caption-title">Resort-Style Pool</h4>
-                                <p class="image-caption-text">Relax and unwind</p>
-                            </div>
-                        </div>
-                        
-                        <div class="slideshow-image" data-slide="4">
-                            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" alt="Common Areas">
-                            <div class="image-gradient-overlay"></div>
-                            <div class="image-caption-box">
-                                <h4 class="image-caption-title">Beautiful Grounds</h4>
-                                <p class="image-caption-text">Park-like setting</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Minimal Progress Indicators -->
-                    <div class="slideshow-progress-dots">
-                        <div class="progress-dot active" data-dot="0"></div>
-                        <div class="progress-dot" data-dot="1"></div>
-                        <div class="progress-dot" data-dot="2"></div>
-                        <div class="progress-dot" data-dot="3"></div>
-                        <div class="progress-dot" data-dot="4"></div>
-                    </div>
-                    
-                    <!-- Sleek Progress Bar -->
-                    <div class="slideshow-progress-bar">
-                        <div class="progress-bar-fill"></div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</section>
+        <div class="hero__veil"></div>
+        <div class="hero__grain"></div>
+      </div>
 
-<!-- Premium Location & Lifestyle Section -->
-<section class="premium-location-lifestyle" id="location">
-    <!-- Animated Background -->
-    <div class="location-bg-canvas">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
-        <div class="mesh-overlay"></div>
-    </div>
-    
-    <div class="container">
-        <!-- Premium Header - Matching About Section Style -->
-        <div class="location-header" data-animate>
-            <span class="location-label">Your Neighborhood</span>
-            <h2 class="location-title">
-                Where Luxury<br>Meets Lifestyle
-            </h2>
-            <p class="location-subtitle">Experience the perfect blend of urban sophistication and everyday convenience</p>
+      <div class="hero__frame" aria-hidden="true">
+        <div class="hero__corner hero__corner--tl"><span>N 40°43′</span><span>W 73°52′</span></div>
+        <div class="hero__corner hero__corner--tr"><span>Est. 1955</span><span>Six Buildings</span></div>
+        <div class="hero__corner hero__corner--bl"><span class="serif-italic">Vol. III &amp; IV</span></div>
+        <div class="hero__corner hero__corner--br">
+          <button class="hero__sound" id="heroSound" aria-label="Toggle sound">
+            <span class="hero__sound-bars"><i></i><i></i><i></i><i></i></span>
+            <span class="hero__sound-label">Sound off</span>
+          </button>
         </div>
-        
-        <!-- Visual Feature Cards - Row Layout -->
-        <div class="lifestyle-visual-grid">
-            
-            <!-- Fine Dining -->
-            <div class="visual-feature-card" data-animate data-delay="100">
-                <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');">
-                    <div class="image-overlay"></div>
-                    <div class="image-gradient"></div>
-                </div>
-                
-                <div class="card-content">
-                    <div class="card-icon-badge">
-                        <div class="icon-glow"></div>
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
-                            <path d="M7 2v20"></path>
-                            <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
-                        </svg>
-                    </div>
-                    
-                    <div class="card-text">
-                        <h3 class="card-title">Fine Dining</h3>
-                        <p class="card-description">Acclaimed restaurants serving globally inspired menus—from modern Italian to high-end sushi, all within minutes.</p>
-                        
-                        <div class="card-highlight-tag">
-                            <span class="tag-dot"></span>
-                            <span>Michelin-rated nearby</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card-shine"></div>
-            </div>
-            
-            <!-- Transport -->
-            <div class="visual-feature-card" data-animate data-delay="200">
-                <div class="card-image-bg" style="background-image: url('https://images.ctfassets.net/1aemqu6a6t65/6KI1RM3tLaRsIEA2XHOQOs/e16e8b47a46e27b2d4c694d4f75d7152/52-7-Line-Queens-NYC-Photo-Daniel-Harel.jpg');">
-                    <div class="image-overlay"></div>
-                    <div class="image-gradient"></div>
-                </div>
-                
-                <div class="card-content">
-                    <div class="card-icon-badge">
-                        <div class="icon-glow"></div>
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                            <rect x="9" y="9" width="6" height="6"></rect>
-                            <line x1="9" y1="1" x2="9" y2="4"></line>
-                            <line x1="15" y1="1" x2="15" y2="4"></line>
-                            <line x1="9" y1="20" x2="9" y2="23"></line>
-                            <line x1="15" y1="20" x2="15" y2="23"></line>
-                            <line x1="20" y1="9" x2="23" y2="9"></line>
-                            <line x1="20" y1="14" x2="23" y2="14"></line>
-                            <line x1="1" y1="9" x2="4" y2="9"></line>
-                            <line x1="1" y1="14" x2="4" y2="14"></line>
-                        </svg>
-                    </div>
-                    
-                    <div class="card-text">
-                        <h3 class="card-title">Transport Hub</h3>
-                        <p class="card-description">Major subway lines and LIRR access for seamless Manhattan commutes.</p>
-                        
-                        <div class="card-highlight-tag">
-                            <span class="tag-dot"></span>
-                            <span>15 min to Midtown</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card-shine"></div>
-            </div>
-            
-            <!-- Leisure -->
-            <div class="visual-feature-card" data-animate data-delay="300">
-                <div class="card-image-bg" style="background-image: url('https://tourscanner.com/blog/wp-content/uploads/2018/03/featured_image.jpg');">
-                    <div class="image-overlay"></div>
-                    <div class="image-gradient"></div>
-                </div>
-                
-                <div class="card-content">
-                    <div class="card-icon-badge">
-                        <div class="icon-glow"></div>
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                        </svg>
-                    </div>
-                    
-                    <div class="card-text">
-                        <h3 class="card-title">Entertainment</h3>
-                        <p class="card-description">Parks, cultural venues, and Forest Hills Stadium moments away.</p>
-                        
-                        <div class="card-highlight-tag">
-                            <span class="tag-dot"></span>
-                            <span>Endless options</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card-shine"></div>
-            </div>
-            
-            <!-- Everyday Essentials -->
-            <div class="visual-feature-card" data-animate data-delay="400">
-                <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=1200&q=80');">
-                    <div class="image-overlay"></div>
-                    <div class="image-gradient"></div>
-                </div>
-                
-                <div class="card-content">
-                    <div class="card-icon-badge">
-                        <div class="icon-glow"></div>
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <path d="M16 10a4 4 0 0 1-8 0"></path>
-                        </svg>
-                    </div>
-                    
-                    <div class="card-text">
-                        <h3 class="card-title">Daily Essentials</h3>
-                        <p class="card-description">Everything you need within reach—fitness, groceries, shopping, and more.</p>
-                        
-                        <div class="essentials-tags">
-                            <span class="mini-tag">Fitness</span>
-                            <span class="mini-tag">Groceries</span>
-                            <span class="mini-tag">Shopping</span>
-                            <span class="mini-tag">Wellness</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card-shine"></div>
-            </div>
-            
-        </div>
-        
-        <!-- Premium CTA Section -->
-        <div class="lifestyle-premium-cta" data-animate data-delay="500">
-            <div class="cta-bg-blur"></div>
-            <div class="cta-content-flex">
-                <div class="cta-text-area">
-                    <h3 class="cta-heading">Experience the Perfect Balance</h3>
-                    <p class="cta-subtext">Where sophisticated city living meets everyday convenience</p>
-                </div>
-                <a href="#contact" class="cta-elegant-btn">
-                    <span class="btn-bg"></span>
-                    <span class="btn-content">
-                        <span class="btn-label">Schedule Your Tour</span>
-                        <span class="btn-icon-wrap">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </span>
-                    <span class="btn-shimmer"></span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+      </div>
 
-<!-- Premium Map & Location Section -->
-<section class="premium-map-section" id="map-location">
-    <div class="container">
-        
-        <!-- Section Header -->
-        <div class="map-header" data-animate>
-            <span class="map-label">Our Location</span>
-            <h2 class="map-title">
-                Perfectly Positioned<br>in the Heart of Queens
-            </h2>
-            <p class="map-subtitle">Explore restaurants, gyms, and facilities near Park City 3&4 Apartments</p>
+      <div class="hero__content">
+        <span class="hero__eyebrow" data-reveal>
+          <span class="hero__eyebrow-line"></span>
+          A residence by the park
+        </span>
+
+        <h1 class="hero__title" data-split-words>
+          <span class="hero__line"><span class="word">Park</span> <span class="word">City</span></span>
+          <span class="hero__line hero__line--accent"><em class="word">three</em> <span class="word amp">&amp;</span> <em class="word">four</em></span>
+        </h1>
+
+        <p class="hero__lede serif-italic" data-reveal data-reveal-delay="600">
+          Mediterranean warmth, Manhattan sophistication —<br/>
+          quietly waiting in the heart of Queens.
+        </p>
+
+        <div class="hero__meta" data-reveal data-reveal-delay="900">
+          <div><span class="hero__meta-num">6</span><span class="hero__meta-label">Buildings</span></div>
+          <span class="hero__meta-rule"></span>
+          <div><span class="hero__meta-num">14</span><span class="hero__meta-label">Stories Each</span></div>
+          <span class="hero__meta-rule"></span>
+          <div><span class="hero__meta-num">1955</span><span class="hero__meta-label">Established</span></div>
         </div>
-        
-        <!-- Map Container with Tabs -->
-        <div class="map-wrapper" data-animate data-delay="200">
-            
-            <!-- Toggle Tabs -->
-            <div class="map-tabs">
-                <button class="map-tab active" data-tab="buildings">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    </svg>
-                    <span>Our Buildings</span>
-                </button>
-                <button class="map-tab" data-tab="attractions">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                    </svg>
-                    <span>Top Spots</span>
-                </button>
-            </div>
-            
-            <!-- Category Filters (visible when attractions tab active) -->
-            <div class="map-category-filters" id="categoryFilters">
-                <button class="category-btn active" data-category="all">
-                    <span class="cat-icon">🗺️</span>
-                    <span>All</span>
-                </button>
-                <button class="category-btn" data-category="dining">
-                    <span class="cat-icon">🍽️</span>
-                    <span>Dining</span>
-                </button>
-                <button class="category-btn" data-category="fitness">
-                    <span class="cat-icon">💪</span>
-                    <span>Fitness</span>
-                </button>
-                <button class="category-btn" data-category="shopping">
-                    <span class="cat-icon">🛍️</span>
-                    <span>Shopping</span>
-                </button>
-                <button class="category-btn" data-category="transit">
-                    <span class="cat-icon">🚇</span>
-                    <span>Transit</span>
-                </button>
-                <button class="category-btn" data-category="parks">
-                    <span class="cat-icon">🌳</span>
-                    <span>Parks</span>
-                </button>
-                <button class="category-btn" data-category="entertainment">
-                    <span class="cat-icon">🎭</span>
-                    <span>Entertainment</span>
-                </button>
-            </div>
-            
-            <!-- Map Display Area -->
-            <div class="map-display-container">
-                
-                <!-- Interactive Leaflet Map -->
-                <div class="map-canvas">
-                    <div id="leafletMap"></div>
-                </div>
-                
-                <!-- Location Info Panel -->
-                <div class="location-info-panel">
-                    
-                    <!-- Buildings Tab Content -->
-                    <div class="tab-content active" data-content="buildings">
-                        <h3 class="panel-title">Park City Buildings</h3>
-                        <p class="panel-subtitle">Click to center on map</p>
-                        
-                        <div class="locations-list" id="buildingsList">
-                            <!-- Buildings populated by JS -->
-                        </div>
-                    </div>
-                    
-                    <!-- Attractions Tab Content -->
-                    <div class="tab-content" data-content="attractions">
-                        <h3 class="panel-title">Nearby Spots</h3>
-                        <p class="panel-subtitle" id="attractionsCount">Everything you need, minutes away</p>
-                        
-                        <div class="locations-list" id="attractionsList">
-                            <!-- Attractions populated by JS -->
-                        </div>
-                    </div>
-                    
-                </div>
-                
-            </div>
-            
-        </div>
-        
-        <!-- Quick Stats -->
-        <div class="map-quick-stats" data-animate data-delay="400">
-            <div class="quick-stat">
-                <div class="stat-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="10" r="3"></circle>
-                        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"></path>
-                    </svg>
-                </div>
-                <div class="stat-content">
-                    <h4>Prime Location</h4>
-                    <p>Forest Hills, Queens</p>
-                </div>
-            </div>
-            
-            <div class="quick-stat">
-                <div class="stat-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                        <rect x="9" y="9" width="6" height="6"></rect>
-                    </svg>
-                </div>
-                <div class="stat-content">
-                    <h4>15 Minutes</h4>
-                    <p>To Midtown Manhattan</p>
-                </div>
-            </div>
-            
-            <div class="quick-stat">
-                <div class="stat-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
-                </div>
-                <div class="stat-content">
-                    <h4>Walkable</h4>
-                    <p>Everything Nearby</p>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</section>
-    
-<!-- FAQs Section -->
-    <section class="faqs" id="faqs">
-        <div class="container">
-            <div class="section-header centered" data-animate>
-                <span class="section-label">FAQs</span>
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Everything you need to know about living at Park City</p>
-            </div>
-            <div class="faqs-container">
-                <div class="faq-category" data-animate>
-                    <h3 class="faq-category-title">Living Here</h3>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>What is included in my rent?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Your rent includes water, trash collection, access to all amenities (pool, fitness center, parking), 24/7 security, and on-site management services. All utilities are included to make your living experience seamless.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Are pets allowed?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes, we are a pet-friendly community! We welcome cats and dogs with a maximum weight limit of 50 lbs. A pet deposit and monthly pet rent apply. Please contact our office for specific pet policy details.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>What are the pool hours?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>The pool is open daily from 8:00 AM to 10:00 PM during summer months (May-September) and 9:00 AM to 8:00 PM during winter months (October-April).</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-category" data-animate data-delay="100">
-                    <h3 class="faq-category-title">Payments</h3>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>How do I pay rent online?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>You can pay rent through our secure ClickPay portal. Simply log in with your resident credentials and follow the payment instructions. ACH transfers are free, while credit/debit cards incur a small convenience fee.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>When is rent due?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Rent is due on the 1st of each month. A grace period extends to the 5th of the month. Late fees apply after the grace period ends.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-category" data-animate data-delay="200">
-                    <h3 class="faq-category-title">Policies</h3>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>What is your guest policy?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Guests are always welcome! Short-term visitors don't require notification. For guests staying longer than 7 consecutive days, please notify the management office.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>How do I submit a maintenance request?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Maintenance requests can be submitted online through your resident portal, by calling the office, or by contacting the on-site superintendent. Emergency maintenance is available 24/7.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+
+      <div class="hero__scroll" data-reveal data-reveal-delay="1200">
+        <span>Scroll to enter</span>
+        <svg width="14" height="44" viewBox="0 0 14 44" fill="none" aria-hidden="true">
+          <path d="M7 1v40m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
     </section>
 
-<!-- MODERN CONTACT SECTION -->
-<section class="modern-contact" id="contact">
-    
-    <!-- Background Elements -->
-    <div class="contact-bg">
-        <div class="contact-gradient-orb orb-1"></div>
-        <div class="contact-gradient-orb orb-2"></div>
-        <div class="contact-grid-pattern"></div>
-    </div>
-    
-    <div class="contact-container">
-        
-        <!-- Section Header -->
-        <div class="contact-header">
-            <div class="contact-header-accent">
-                <span class="header-line"></span>
-                <span class="header-label">Get in Touch</span>
-            </div>
-            <h2 class="contact-title">Ready to Call<br><span>Park City Home?</span></h2>
-            <p class="contact-subtitle">Our leasing team is here to answer your questions and schedule a personal tour of our community.</p>
-        </div>
-        
-        <!-- Contact Content Grid -->
-        <div class="contact-grid">
-            
-            <!-- Left: Contact Info Cards -->
-            <div class="contact-info-side">
-                
-                <!-- Info Cards -->
-                <div class="contact-info-cards">
-                    
-                    <a href="tel:5551234567" class="contact-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-label">Phone</span>
-                            <span class="card-value">(555) 123-4567</span>
-                        </div>
-                        <div class="card-arrow">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </a>
-                    
-                    <a href="mailto:info@parkcity34.com" class="contact-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-label">Email</span>
-                            <span class="card-value">info@parkcity34.com</span>
-                        </div>
-                        <div class="card-arrow">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </a>
-                    
-                    <div class="contact-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-label">Address</span>
-                            <span class="card-value">Rego Park, NY 11374</span>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-label">Office Hours</span>
-                            <span class="card-value">Mon-Fri: 9AM - 6PM<br>Sat: 10AM - 4PM</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Trust Badges -->
-                <div class="contact-trust">
-                    <div class="trust-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <polyline points="9 12 11 14 15 10"/>
-                        </svg>
-                        <span>Verified Property</span>
-                    </div>
-                    <div class="trust-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                        <span>Quick Response</span>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <!-- Right: Contact Form -->
-            <div class="contact-form-side" id="apply">
-                
-                <form class="modern-contact-form" id="modernContactForm">
-                    
-                    <!-- Form Header -->
-                    <div class="form-header">
-                        <h3 class="form-title">Send us a Message</h3>
-                        <p class="form-subtitle">Fill out the form below and we'll get back to you shortly.</p>
-                    </div>
-                    
-                    <!-- Form Fields -->
-                    <div class="form-fields">
-                        
-                        <!-- Name Field -->
-                        <div class="form-group">
-                            <div class="input-wrapper">
-                                <input type="text" id="contactName" name="name" required placeholder=" ">
-                                <label for="contactName">Full Name</label>
-                                <div class="input-border"></div>
-                                <div class="input-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="12" cy="7" r="4"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Email Field -->
-                        <div class="form-group">
-                            <div class="input-wrapper">
-                                <input type="email" id="contactEmail" name="email" required placeholder=" ">
-                                <label for="contactEmail">Email Address</label>
-                                <div class="input-border"></div>
-                                <div class="input-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                        <polyline points="22,6 12,13 2,6"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Phone Field -->
-                        <div class="form-group">
-                            <div class="input-wrapper">
-                                <input type="tel" id="contactPhone" name="phone" required placeholder=" ">
-                                <label for="contactPhone">Phone Number</label>
-                                <div class="input-border"></div>
-                                <div class="input-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Interest Select -->
-                        <div class="form-group">
-                            <div class="select-wrapper">
-                                <select id="contactInterest" name="interest" required>
-                                    <option value="" disabled selected></option>
-                                    <option value="tour">Schedule a Tour</option>
-                                    <option value="apply">Apply Now</option>
-                                    <option value="info">Request Information</option>
-                                    <option value="maintenance">Maintenance Request</option>
-                                </select>
-                                <label for="contactInterest">I'm Interested In</label>
-                                <div class="input-border"></div>
-                                <div class="select-arrow">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="6 9 12 15 18 9"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Message Field -->
-                        <div class="form-group form-group-full">
-                            <div class="textarea-wrapper">
-                                <textarea id="contactMessage" name="message" rows="4" required placeholder=" "></textarea>
-                                <label for="contactMessage">Your Message</label>
-                                <div class="input-border"></div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <!-- Submit Button -->
-                    <button type="submit" class="form-submit-btn">
-                        <span class="btn-bg"></span>
-                        <span class="btn-content">
-                            <span class="btn-text">Send Message</span>
-                            <span class="btn-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="22" y1="2" x2="11" y2="13"/>
-                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="btn-loading">
-                            <svg class="spinner" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/>
-                            </svg>
-                        </span>
-                    </button>
-                    
-                    <!-- Form Success Message -->
-                    <div class="form-success" id="formSuccess">
-                        <div class="success-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        </div>
-                        <h4>Message Sent!</h4>
-                        <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-                    </div>
-                </form>
-            </div>  
-        </div>
-    </div>
-</section>
+    <!-- ═══════════════ MARQUEE TICKER ═══════════════ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track" data-marquee>
+        <span>Refined Residences</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Rego Park, Queens</span><span class="marquee__dot">✦</span>
+        <span>Mediterranean × Manhattan</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">A perfect community</span><span class="marquee__dot">✦</span>
+        <span>Established 1955</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Private terraces</span><span class="marquee__dot">✦</span>
+      </div>
+      <div class="marquee__track" data-marquee aria-hidden="true">
+        <span>Refined Residences</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Rego Park, Queens</span><span class="marquee__dot">✦</span>
+        <span>Mediterranean × Manhattan</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">A perfect community</span><span class="marquee__dot">✦</span>
+        <span>Established 1955</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Private terraces</span><span class="marquee__dot">✦</span>
+      </div>
+    </section>
 
-<!-- MODERN PREMIUM FOOTER -->
-<footer class="premium-footer">
-    
-    <!-- Footer Top Accent -->
-    <div class="footer-accent-line"></div>
-    
-    <!-- Main Footer Content -->
-    <div class="footer-main">
-        <div class="footer-container">
-            
-            <!-- Footer Grid -->
-            <div class="footer-grid">
-                
-                <!-- Brand Column -->
-                <div class="footer-brand-col">
-                    <a href="index.html" class="footer-logo-link">
-                        <img src="logo.png" alt="Park City 3&4" class="footer-logo">
-                    </a>
-                    <p class="footer-brand-text">
-                        A perfect community to call home. Experience refined living with premium amenities in the heart of Queens.
-                    </p>
-                    
-                    <!-- Social Links -->
-                    <div class="footer-socials">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                <rect x="2" y="9" width="4" height="12"/>
-                                <circle cx="4" cy="4" r="2"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0c0a09"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links Column -->
-                <div class="footer-links-col">
-                    <h4 class="footer-col-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="amenities.html">Amenities</a></li>
-                        <li><a href="community.html">Resident Forms</a></li>
-                        <li><a href="security.html">Building Guides</a></li>
-                        <li><a href="services.html">Gallery</a></li>
-                        <li><a href="#faqs">FAQs</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Residents Column -->
-                <div class="footer-links-col">
-                    <h4 class="footer-col-title">Residents</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">ClickPay Portal</a></li>
-                        <li><a href="#">Pay Rent Online</a></li>
-                        <li><a href="#">Maintenance Request</a></li>
-                        <li><a href="#">Forms & Documents</a></li>
-                        <li><a href="#">Community Guidelines</a></li>
-                        <li><a href="#">Emergency Contacts</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Column -->
-                <div class="footer-contact-col">
-                    <h4 class="footer-col-title">Contact Us</h4>
-                    
-                    <div class="footer-contact-items">
-                        <a href="tel:5551234567" class="footer-contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Phone</span>
-                                <span class="contact-value">(555) 123-4567</span>
-                            </div>
-                        </a>
-                        
-                        <a href="mailto:info@parkcity34.com" class="footer-contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                    <polyline points="22,6 12,13 2,6"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">info@parkcity34.com</span>
-                            </div>
-                        </a>
-                        
-                        <div class="footer-contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Address</span>
-                                <span class="contact-value">Rego Park, NY 11374</span>
-                            </div>
-                        </div>
-                        
-                        <div class="footer-contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Office Hours</span>
-                                <span class="contact-value">Mon-Fri: 9AM - 6PM</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
+    <!-- ═══════════════ PHILOSOPHY · EDITORIAL INTRO ═══════════════ -->
+    <section class="philosophy" id="philosophy">
+      <div class="philosophy__grid">
+        <aside class="philosophy__chapter" data-reveal>
+          <span class="chapter-num">I</span>
+          <span class="chapter-label">A Quiet Manifesto</span>
+        </aside>
+
+        <div class="philosophy__body">
+          <h2 class="philosophy__head" data-split-lines>
+            <span class="line">Some buildings ask</span>
+            <span class="line">to be admired.</span>
+            <span class="line serif-italic">Ours simply asks</span>
+            <span class="line">you to <em>stay.</em></span>
+          </h2>
+
+          <div class="philosophy__column">
+            <p data-reveal>
+              Park City 3 &amp; 4 was built in 1955 with a single intuition: that a home should hold its residents the way a courtyard holds a quiet afternoon. Seven decades later, that intuition has only grown more deliberate — six buildings, fourteen stories each, and a private terrace at every door.
+            </p>
+            <p data-reveal data-reveal-delay="120">
+              Across our cooperative you'll find sun-washed lobbies, meticulously kept grounds, and a community whose first instinct is to look out for one another. We are unhurried, attentive, and proudly unimpressed by trends.
+            </p>
+            <p class="philosophy__sign serif-italic" data-reveal data-reveal-delay="240">
+              — The Shareholders &amp; Stewards of Park City 3 &amp; 4
+            </p>
+          </div>
         </div>
-    </div>
-    
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-        <div class="footer-container">
-            <div class="footer-bottom-inner">
-                
-                <p class="footer-copyright">
-                    © 2026 Park City 3&4 Apartments. All rights reserved.
-                </p>
-                
-                <div class="footer-legal-links">
-                    <a href="#">Privacy Policy</a>
-                    <span class="legal-divider"></span>
-                    <a href="#">Terms of Service</a>
-                    <span class="legal-divider"></span>
-                    <a href="#">Accessibility</a>
-                </div>
-                
-                <div class="footer-back-top" id="backToTop">
-                    <span>Back to Top</span>
-                    <div class="back-top-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="18 15 12 9 6 15"/>
-                        </svg>
-                    </div>
-                </div>
-                
-            </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ ESSENCE · NUMBERS STAGE ═══════════════ -->
+    <section class="essence" id="essence" data-pin-stage>
+      <div class="essence__sticky">
+        <div class="essence__head">
+          <span class="eyebrow"><span class="eyebrow__line"></span>By the Numbers</span>
+          <h3 class="essence__title">A measured kind <em class="serif-italic">of luxury.</em></h3>
         </div>
+
+        <div class="essence__rail" data-essence-rail>
+          <article class="essence__card" data-essence-card>
+            <span class="essence__num" data-count="1955">0000</span>
+            <h4>Quietly Tended</h4>
+            <p>Seven decades of stewardship — the kind of care a building only earns over time.</p>
+          </article>
+          <article class="essence__card" data-essence-card>
+            <span class="essence__num" data-count="6">0</span>
+            <h4>Six Buildings</h4>
+            <p>A cooperative community of six residential towers, each rising fourteen stories.</p>
+          </article>
+          <article class="essence__card" data-essence-card>
+            <span class="essence__num" data-count="14">00</span>
+            <span class="essence__plus">stories</span>
+            <h4>Generous Heights</h4>
+            <p>Every apartment opens onto a private terrace — a pocket of sky in every home.</p>
+          </article>
+          <article class="essence__card" data-essence-card>
+            <span class="essence__num">24/7</span>
+            <h4>A Familiar Face</h4>
+            <p>On-site security, keyless entry, live-in superintendents — and a doorman who remembers your name.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ RESIDENCES · THE SIX BUILDINGS ═══════════════ -->
+    <section class="residences" id="residences">
+      <div class="residences__intro">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Chapter II — The Buildings</span>
+        <h2 class="residences__head">
+          Six buildings.<br/>
+          <em class="serif-italic">One quiet idea</em>
+          <span class="residences__head-tail">of home.</span>
+        </h2>
+        <p class="residences__lede">
+          Each of our six buildings rises fourteen stories above meticulously kept grounds, with full-service lobbies, oversized windows, and a private terrace in every apartment. They share the same bones — and a community spread thoughtfully between 62nd Drive and 63rd Road.
+        </p>
+      </div>
+
+      <div class="residences__stage">
+        <aside class="residences__sticky">
+          <span class="residences__sticky-num">II.</span>
+          <h3 class="residences__sticky-title">The <em class="serif-italic">Addresses</em></h3>
+          <p>Six buildings, fourteen stories each, terraces throughout.</p>
+          <ol class="residences__index">
+            <li data-residence-link="1"><span>01</span> 97-07 63rd Road</li>
+            <li data-residence-link="2"><span>02</span> 97-10 62nd Drive</li>
+            <li data-residence-link="3"><span>03</span> 97-37 63rd Road</li>
+            <li data-residence-link="4"><span>04</span> 97-40 62nd Drive</li>
+            <li data-residence-link="5"><span>05</span> 98-05 63rd Road</li>
+            <li data-residence-link="6"><span>06</span> 98-20 62nd Drive</li>
+          </ol>
+        </aside>
+
+        <div class="residences__cards">
+          <article class="residence-card" data-residence="1" data-reveal>
+            <div class="residence-card__media">
+              <img src="http://parkcity3and4.com/wp-content/uploads/2016/05/ParkCityHomeH.jpg" alt="97-07 63rd Road exterior" loading="lazy" />
+            </div>
+            <div class="residence-card__body">
+              <span class="residence-card__num">01 / 06</span>
+              <h4 class="residence-card__title">97-07 <em class="serif-italic">63rd Road</em></h4>
+              <p>Rego Park, NY 11374 · Fourteen stories · Private terraces · Live-in superintendent</p>
+              <span class="residence-card__rule"></span>
+              <ul class="residence-card__chips">
+                <li>Indoor garage</li><li>Bargold storage</li><li>Laundry</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="residence-card residence-card--offset" data-residence="2" data-reveal>
+            <div class="residence-card__media">
+              <img src="https://images1.apartments.com/i2/w0ihOyantIGgdVH5kannuRiAF67Al0w3ZbAXVaG89MY/111/park-city-34-apartments-rego-park-ny-building-photo.jpg" alt="97-10 62nd Drive exterior" loading="lazy" />
+            </div>
+            <div class="residence-card__body">
+              <span class="residence-card__num">02 / 06</span>
+              <h4 class="residence-card__title">97-10 <em class="serif-italic">62nd Drive</em></h4>
+              <p>Rego Park, NY 11374 · Fourteen stories · Private terraces · Live-in superintendent</p>
+              <span class="residence-card__rule"></span>
+              <ul class="residence-card__chips">
+                <li>Indoor garage</li><li>Bargold storage</li><li>Laundry</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="residence-card" data-residence="3" data-reveal>
+            <div class="residence-card__media">
+              <img src="https://images1.apartments.com/i2/tQWAHUnGV-klDb6G_RsjObVWUf5EPzWz_lJIhpySGEo/111/park-city-34-apartments-rego-park-ny-97-10-62nd-drive.jpg" alt="97-37 63rd Road exterior" loading="lazy" />
+            </div>
+            <div class="residence-card__body">
+              <span class="residence-card__num">03 / 06</span>
+              <h4 class="residence-card__title">97-37 <em class="serif-italic">63rd Road</em></h4>
+              <p>Rego Park, NY 11374 · Fourteen stories · Private terraces · Live-in superintendent</p>
+              <span class="residence-card__rule"></span>
+              <ul class="residence-card__chips">
+                <li>Indoor garage</li><li>Bargold storage</li><li>Laundry</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="residence-card residence-card--offset" data-residence="4" data-reveal>
+            <div class="residence-card__media">
+              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85" alt="97-40 62nd Drive exterior" loading="lazy" />
+            </div>
+            <div class="residence-card__body">
+              <span class="residence-card__num">04 / 06</span>
+              <h4 class="residence-card__title">97-40 <em class="serif-italic">62nd Drive</em></h4>
+              <p>Rego Park, NY 11374 · Fourteen stories · Private terraces · Live-in superintendent</p>
+              <span class="residence-card__rule"></span>
+              <ul class="residence-card__chips">
+                <li>Indoor garage</li><li>Bargold storage</li><li>Laundry</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="residence-card" data-residence="5" data-reveal>
+            <div class="residence-card__media">
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=85" alt="98-05 63rd Road exterior" loading="lazy" />
+            </div>
+            <div class="residence-card__body">
+              <span class="residence-card__num">05 / 06</span>
+              <h4 class="residence-card__title">98-05 <em class="serif-italic">63rd Road</em></h4>
+              <p>Rego Park, NY 11374 · Fourteen stories · Private terraces · Live-in superintendent</p>
+              <span class="residence-card__rule"></span>
+              <ul class="residence-card__chips">
+                <li>Indoor garage</li><li>Bargold storage</li><li>Laundry</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="residence-card residence-card--offset" data-residence="6" data-reveal>
+            <div class="residence-card__media">
+              <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=85" alt="98-20 62nd Drive exterior" loading="lazy" />
+            </div>
+            <div class="residence-card__body">
+              <span class="residence-card__num">06 / 06</span>
+              <h4 class="residence-card__title">98-20 <em class="serif-italic">62nd Drive</em></h4>
+              <p>Rego Park, NY 11374 · Fourteen stories · Private terraces · Live-in superintendent</p>
+              <span class="residence-card__rule"></span>
+              <ul class="residence-card__chips">
+                <li>Indoor garage</li><li>Bargold storage</li><li>Laundry</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ AMENITIES · BENTO GRID ═══════════════ -->
+    <section class="amenities" id="amenities">
+      <div class="amenities__head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Chapter III — Amenities &amp; Services</span>
+        <h2 class="amenities__title">
+          The <em class="serif-italic">small things</em><br/>
+          that make a building feel like home.
+        </h2>
+      </div>
+
+      <div class="amenities__bento">
+        <article class="amenity amenity--lg" data-reveal data-amenity="pool">
+          <div class="amenity__media">
+            <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1400&q=85" alt="" loading="lazy"/>
+          </div>
+          <div class="amenity__body">
+            <span class="amenity__num">01</span>
+            <h3>Seasonal <em class="serif-italic">Swimming Pool</em></h3>
+            <p>An outdoor pool managed by a dedicated third-party team — open through the warmer months for residents and their families.</p>
+            <span class="amenity__tag">Summer · Members</span>
+          </div>
+        </article>
+
+        <article class="amenity" data-reveal data-amenity="playground">
+          <div class="amenity__media">
+            <img src="https://images.unsplash.com/photo-1597248374161-426f3d6f1c88?w=1000&q=85" alt="" loading="lazy"/>
+          </div>
+          <div class="amenity__body">
+            <span class="amenity__num">02</span>
+            <h3>Children's <em class="serif-italic">Playground</em></h3>
+            <p>A safe, on-site playground tucked into the grounds — designed for the youngest residents.</p>
+          </div>
+        </article>
+
+        <article class="amenity" data-reveal data-amenity="garage">
+          <div class="amenity__body amenity__body--centered">
+            <span class="amenity__num">03</span>
+            <h3>Indoor <em class="serif-italic">Parking Garages</em></h3>
+            <p>Two 24-hour indoor garages with assigned spaces — covered, secure, climate-protected.</p>
+            <span class="amenity__tag">Two garages · Assigned</span>
+          </div>
+        </article>
+
+        <article class="amenity amenity--wide" data-reveal data-amenity="storage">
+          <div class="amenity__media">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85" alt="" loading="lazy"/>
+          </div>
+          <div class="amenity__body">
+            <span class="amenity__num">04</span>
+            <h3>Private <em class="serif-italic">Storage</em></h3>
+            <p>Personal storage available in every building, professionally managed by Bargold — for the things you'd rather not keep upstairs.</p>
+            <span class="amenity__tag">Managed by Bargold</span>
+          </div>
+        </article>
+
+        <article class="amenity" data-reveal data-amenity="laundry">
+          <div class="amenity__body amenity__body--centered">
+            <span class="amenity__num">05</span>
+            <h3>On-Site <em class="serif-italic">Laundry</em></h3>
+            <p>Conveniently located laundry rooms in every building — never far from your door.</p>
+          </div>
+        </article>
+
+        <article class="amenity" data-reveal data-amenity="super">
+          <div class="amenity__body amenity__body--centered">
+            <span class="amenity__num">06</span>
+            <h3>Live-In <em class="serif-italic">Superintendents</em></h3>
+            <p>On-site, on-call. A familiar face for emergencies — at any hour, in every building.</p>
+          </div>
+        </article>
+
+        <article class="amenity amenity--lg amenity--dark" data-reveal data-amenity="security">
+          <div class="amenity__media">
+            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1400&q=85" alt="" loading="lazy"/>
+          </div>
+          <div class="amenity__body">
+            <span class="amenity__num">07</span>
+            <h3>Always <em class="serif-italic">Watching Over</em></h3>
+            <p>On-site security guards, keyless entry to buildings and garages, electronic fob access for residents — quietly thorough, never imposing.</p>
+            <span class="amenity__tag">24/7 · Keyless · Fob</span>
+          </div>
+        </article>
+
+        <article class="amenity" data-reveal data-amenity="grounds">
+          <div class="amenity__media">
+            <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1000&q=85" alt="" loading="lazy"/>
+          </div>
+          <div class="amenity__body">
+            <span class="amenity__num">08</span>
+            <h3>Park-Like <em class="serif-italic">Grounds</em></h3>
+            <p>Meticulously maintained landscaping — the kind that makes the address feel earned.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══════════════ LIFESTYLE · A DAY HERE ═══════════════ -->
+    <section class="lifestyle" id="lifestyle" data-pin-stage>
+      <div class="lifestyle__sticky">
+        <header class="lifestyle__head">
+          <span class="eyebrow"><span class="eyebrow__line"></span>Chapter IV — A Day, Lightly Lived</span>
+          <h2 class="lifestyle__title">From the <em class="serif-italic">terrace</em>, to the city, and home again.</h2>
+        </header>
+
+        <div class="lifestyle__rail" data-lifestyle-rail>
+          <article class="lifestyle__chapter" data-lifestyle-step="0">
+            <span class="lifestyle__time">07:24</span>
+            <h3 class="serif-italic">A morning on the terrace.</h3>
+            <p>Coffee, the paper, the slow Queens light. Every apartment has a private terrace — a quiet place to begin.</p>
+            <div class="lifestyle__media"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=85" alt="" loading="lazy"/></div>
+          </article>
+
+          <article class="lifestyle__chapter" data-lifestyle-step="1">
+            <span class="lifestyle__time">08:51</span>
+            <h3 class="serif-italic">A short walk to the train.</h3>
+            <p>The 63rd Drive station is moments from the lobby — Manhattan, fifteen minutes east.</p>
+            <div class="lifestyle__media"><img src="https://images.ctfassets.net/1aemqu6a6t65/6KI1RM3tLaRsIEA2XHOQOs/e16e8b47a46e27b2d4c694d4f75d7152/52-7-Line-Queens-NYC-Photo-Daniel-Harel.jpg" alt="" loading="lazy"/></div>
+          </article>
+
+          <article class="lifestyle__chapter" data-lifestyle-step="2">
+            <span class="lifestyle__time">13:12</span>
+            <h3 class="serif-italic">Lunch on Austin Street.</h3>
+            <p>Forest Hills' main avenue — bookshops, cafés, and a few tables that always seem to have your spot.</p>
+            <div class="lifestyle__media"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=85" alt="" loading="lazy"/></div>
+          </article>
+
+          <article class="lifestyle__chapter" data-lifestyle-step="3">
+            <span class="lifestyle__time">17:38</span>
+            <h3 class="serif-italic">An hour by the pool.</h3>
+            <p>Summers belong to the seasonal pool — a small, quiet luxury at the end of a working day.</p>
+            <div class="lifestyle__media"><img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1400&q=85" alt="" loading="lazy"/></div>
+          </article>
+
+          <article class="lifestyle__chapter" data-lifestyle-step="4">
+            <span class="lifestyle__time">21:07</span>
+            <h3 class="serif-italic">Home, again.</h3>
+            <p>A nod from the night doorman, the lobby's familiar hush, the elevator's quiet ascent. The city goes on without you for a while.</p>
+            <div class="lifestyle__media"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1400&q=85" alt="" loading="lazy"/></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ GALLERY · CINEMATIC PARALLAX ═══════════════ -->
+    <section class="gallery" id="gallery">
+      <header class="gallery__head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Portrait of a Place</span>
+        <h2 class="gallery__title">Light, <em class="serif-italic">stone, water,</em> sky.</h2>
+      </header>
+
+      <div class="gallery__stack" data-parallax-stack>
+        <figure class="gallery__item gallery__item--1" data-parallax="0.3">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85" alt="" loading="lazy"/>
+          <figcaption><span>i.</span> The North Lobby</figcaption>
+        </figure>
+        <figure class="gallery__item gallery__item--2" data-parallax="-0.2">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1000&q=85" alt="" loading="lazy"/>
+          <figcaption><span>ii.</span> Courtyard, in spring</figcaption>
+        </figure>
+        <figure class="gallery__item gallery__item--3" data-parallax="0.45">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1100&q=85" alt="" loading="lazy"/>
+          <figcaption><span>iii.</span> Late afternoon</figcaption>
+        </figure>
+        <figure class="gallery__item gallery__item--4" data-parallax="-0.35">
+          <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=85" alt="" loading="lazy"/>
+          <figcaption><span>iv.</span> A familiar hush</figcaption>
+        </figure>
+        <figure class="gallery__item gallery__item--5" data-parallax="0.25">
+          <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1100&q=85" alt="" loading="lazy"/>
+          <figcaption><span>v.</span> The grounds</figcaption>
+        </figure>
+        <figure class="gallery__item gallery__item--6" data-parallax="-0.4">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=85" alt="" loading="lazy"/>
+          <figcaption><span>vi.</span> A pocket of sky</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══════════════ LOCATION · NEIGHBORHOOD MAP ═══════════════ -->
+    <section class="location" id="location">
+      <header class="location__head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Chapter V — The Neighborhood</span>
+        <h2 class="location__title">
+          The <em class="serif-italic">heart of</em><br/>
+          Rego Park, Queens.
+        </h2>
+        <p>Six buildings between 62nd Drive and 63rd Road — minutes from the M and R trains, a short ride to Forest Hills, fifteen minutes from Midtown.</p>
+      </header>
+
+      <div class="location__layout">
+        <aside class="location__panel">
+          <div class="location__tabs" role="tablist">
+            <button class="location__tab is-active" data-loc-tab="buildings" role="tab">Our Six Buildings</button>
+            <button class="location__tab" data-loc-tab="around" role="tab">Around Us</button>
+          </div>
+
+          <div class="location__filters" data-loc-filters hidden>
+            <button class="loc-chip is-active" data-loc-cat="all">All</button>
+            <button class="loc-chip" data-loc-cat="dining">Dining</button>
+            <button class="loc-chip" data-loc-cat="transit">Transit</button>
+            <button class="loc-chip" data-loc-cat="parks">Parks</button>
+            <button class="loc-chip" data-loc-cat="shopping">Shopping</button>
+            <button class="loc-chip" data-loc-cat="education">Schools</button>
+          </div>
+
+          <div class="location__list" id="locList"></div>
+        </aside>
+
+        <div class="location__map">
+          <div id="leafletMap"></div>
+          <div class="location__legend">
+            <span><i class="dot dot--gold"></i>Park City</span>
+            <span><i class="dot dot--olive"></i>Around Us</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ VOICES · TESTIMONIALS ═══════════════ -->
+    <section class="voices" id="voices">
+      <header class="voices__head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Voices from the Buildings</span>
+        <h2 class="voices__title">
+          A community, <em class="serif-italic">told quietly,</em><br/>
+          by the people who live here.
+        </h2>
+      </header>
+
+      <div class="voices__rail" data-voices-rail>
+        <figure class="voice" data-reveal>
+          <blockquote>
+            <p>I've raised two children on this terrace. They're grown now, but they still come back for Sunday coffee — and they always notice that the building feels exactly the same.</p>
+          </blockquote>
+          <figcaption>
+            <span class="voice__name">Eleanor R.</span>
+            <span class="voice__meta">Resident · 28 years · 97-37 63rd Road</span>
+          </figcaption>
+        </figure>
+
+        <figure class="voice" data-reveal data-reveal-delay="120">
+          <blockquote>
+            <p>The doormen know my dog by name before they know mine. That tells you everything about this place.</p>
+          </blockquote>
+          <figcaption>
+            <span class="voice__name">David M.</span>
+            <span class="voice__meta">Resident · 6 years · 98-20 62nd Drive</span>
+          </figcaption>
+        </figure>
+
+        <figure class="voice" data-reveal data-reveal-delay="240">
+          <blockquote>
+            <p>I moved here from Manhattan expecting a quieter life. I got that — and a community I didn't know I was looking for.</p>
+          </blockquote>
+          <figcaption>
+            <span class="voice__name">Priya N.</span>
+            <span class="voice__meta">Resident · 3 years · 97-10 62nd Drive</span>
+          </figcaption>
+        </figure>
+
+        <figure class="voice" data-reveal data-reveal-delay="360">
+          <blockquote>
+            <p>My grandmother lived here. My mother lived here. Now I do. The bones of this building are extraordinary — and the people who tend it know that.</p>
+          </blockquote>
+          <figcaption>
+            <span class="voice__name">Anna K.</span>
+            <span class="voice__meta">Third-generation resident · 98-05 63rd Road</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══════════════ FAQ · ELEGANT ACCORDION ═══════════════ -->
+    <section class="faq" id="faq">
+      <header class="faq__head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Quietly Answered</span>
+        <h2 class="faq__title">A few <em class="serif-italic">honest answers.</em></h2>
+      </header>
+
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary><span class="faq__num">01</span><span class="faq__q">Is Park City 3 &amp; 4 a co-op?</span><span class="faq__icon"></span></summary>
+          <div class="faq__a"><p>Yes. We are a cooperative community of six buildings. Apartments are owned by shareholders rather than rented from a landlord — an arrangement that has shaped the careful, long-term character of the place.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__num">02</span><span class="faq__q">Who manages the buildings?</span><span class="faq__icon"></span></summary>
+          <div class="faq__a"><p>Our day-to-day management is handled by AKAM — one of New York's most respected residential management firms — alongside our own on-site Management Office and Maintenance team, which operate Monday through Friday, 8:00 AM to 4:00 PM.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__num">03</span><span class="faq__q">Does every apartment have a terrace?</span><span class="faq__icon"></span></summary>
+          <div class="faq__a"><p>Yes. Every apartment across all six buildings features a private terrace with views of the surrounding neighborhood. It's one of the things this property has always been known for.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__num">04</span><span class="faq__q">How is parking arranged?</span><span class="faq__icon"></span></summary>
+          <div class="faq__a"><p>Two 24-hour indoor parking garages serve the community, with assigned spaces. Access is handled through the same keyless / fob system used for the buildings themselves.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__num">05</span><span class="faq__q">Is there storage available?</span><span class="faq__icon"></span></summary>
+          <div class="faq__a"><p>Private storage is available in each building, professionally managed by Bargold. Shareholders can inquire with the management office for current availability.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__num">06</span><span class="faq__q">When is the pool open?</span><span class="faq__icon"></span></summary>
+          <div class="faq__a"><p>Our outdoor swimming pool is seasonal and managed by a dedicated third-party operator. It opens for the warmer months — exact dates are announced each spring by management.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary><span class="faq__num">07</span><span class="faq__q">How do I reach a superintendent in an emergency?</span><span class="faq__icon"></span></summary>
+          <div class="faq__a"><p>Each building has a live-in superintendent available for emergencies. During business hours, the on-site Management Office can also be reached directly; after hours, the building's emergency line is the right first call.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ═══════════════ INQUIRE · CONTACT (NOT SELLING) ═══════════════ -->
+    <section class="inquire" id="inquire">
+      <div class="inquire__grid">
+        <header class="inquire__head">
+          <span class="eyebrow"><span class="eyebrow__line"></span>Get in Touch</span>
+          <h2 class="inquire__title">
+            A note to the <em class="serif-italic">management office.</em>
+          </h2>
+          <p>For shareholders, prospective residents, vendors, or anyone with a question we can answer — write to us. The on-site team responds within one business day.</p>
+
+          <div class="inquire__cards">
+            <a href="tel:5551234567" class="inquire-card">
+              <span class="inquire-card__label">By phone</span>
+              <span class="inquire-card__value">(555) 123-4567</span>
+            </a>
+            <a href="mailto:office@parkcity34.com" class="inquire-card">
+              <span class="inquire-card__label">By email</span>
+              <span class="inquire-card__value">office@parkcity34.com</span>
+            </a>
+            <div class="inquire-card">
+              <span class="inquire-card__label">Office hours</span>
+              <span class="inquire-card__value">Mon – Fri · 8 AM – 4 PM</span>
+            </div>
+            <div class="inquire-card">
+              <span class="inquire-card__label">Address</span>
+              <span class="inquire-card__value">Rego Park, NY 11374</span>
+            </div>
+          </div>
+        </header>
+
+        <form class="inquire__form" id="inquireForm" novalidate>
+          <div class="field">
+            <input type="text" id="iName" name="name" required autocomplete="name"/>
+            <label for="iName">Your name</label>
+            <span class="field__rule"></span>
+          </div>
+          <div class="field">
+            <input type="email" id="iEmail" name="email" required autocomplete="email"/>
+            <label for="iEmail">Email</label>
+            <span class="field__rule"></span>
+          </div>
+          <div class="field">
+            <input type="tel" id="iPhone" name="phone" autocomplete="tel"/>
+            <label for="iPhone">Phone <em>(optional)</em></label>
+            <span class="field__rule"></span>
+          </div>
+          <div class="field">
+            <select id="iTopic" name="topic" required>
+              <option value="" selected disabled></option>
+              <option value="shareholder">Shareholder inquiry</option>
+              <option value="prospective">Prospective resident</option>
+              <option value="maintenance">Maintenance / building question</option>
+              <option value="vendor">Vendor / press</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="iTopic">Topic</label>
+            <span class="field__rule"></span>
+          </div>
+          <div class="field field--full">
+            <textarea id="iMessage" name="message" rows="5" required></textarea>
+            <label for="iMessage">A short message</label>
+            <span class="field__rule"></span>
+          </div>
+
+          <button type="submit" class="inquire__submit">
+            <span class="inquire__submit-label">Send to the office</span>
+            <span class="inquire__submit-arrow" aria-hidden="true">
+              <svg width="22" height="14" viewBox="0 0 22 14" fill="none">
+                <path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </span>
+            <span class="inquire__submit-loader" aria-hidden="true"></span>
+          </button>
+
+          <div class="inquire__success" id="inquireSuccess" role="status" aria-live="polite">
+            <span class="inquire__success-mark">✓</span>
+            <p>Thank you. Your note is on its way to the office — we'll be in touch within one business day.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="foot">
+    <div class="foot__top">
+      <div class="foot__mark">
+        <img src="logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <p class="foot__tag serif-italic">A residence by the park.</p>
+        <p class="foot__est">Established 1955 · Six buildings · Rego Park, Queens</p>
+      </div>
+
+      <div class="foot__cols">
+        <div class="foot__col">
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="#philosophy">About</a></li>
+            <li><a href="#residences">The Six Buildings</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#lifestyle">Lifestyle</a></li>
+            <li><a href="#location">Location</a></li>
+          </ul>
+        </div>
+        <div class="foot__col">
+          <h5>Shareholders</h5>
+          <ul>
+            <li><a href="#">Resident Forms</a></li>
+            <li><a href="#">Building Guides</a></li>
+            <li><a href="#">Maintenance Request</a></li>
+            <li><a href="#">House Rules</a></li>
+            <li><a href="#">Emergency Contacts</a></li>
+          </ul>
+        </div>
+        <div class="foot__col">
+          <h5>Office</h5>
+          <ul class="foot__contact">
+            <li><a href="tel:5551234567">(555) 123-4567</a></li>
+            <li><a href="mailto:office@parkcity34.com">office@parkcity34.com</a></li>
+            <li>Mon – Fri · 8 AM – 4 PM</li>
+            <li>Rego Park, NY 11374</li>
+          </ul>
+        </div>
+        <div class="foot__col foot__col--addresses">
+          <h5>Six Buildings</h5>
+          <ul class="foot__addresses">
+            <li>97-07 63rd Road</li>
+            <li>97-10 62nd Drive</li>
+            <li>97-37 63rd Road</li>
+            <li>97-40 62nd Drive</li>
+            <li>98-05 63rd Road</li>
+            <li>98-20 62nd Drive</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    
-</footer>
-    
-<script src="script.js"></script>
+
+    <div class="foot__rule"></div>
+
+    <div class="foot__bottom">
+      <p class="foot__copy">© 2026 Park City 3 &amp; 4 Apartments, Inc.</p>
+      <p class="foot__akam">Professionally managed by <a href="https://www.akam.com" target="_blank" rel="noopener"><span>AKAM</span></a></p>
+      <ul class="foot__legal">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+      <button class="foot__top-link" id="backToTop" aria-label="Back to top">
+        <span>To the top</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M7 13V1m0 0L1 7m6-6l6 6" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
