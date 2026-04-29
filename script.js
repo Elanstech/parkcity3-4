@@ -14,7 +14,6 @@
   const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouchDevice = matchMedia('(hover: none) and (pointer: coarse)').matches;
   const isDesktop = () => window.innerWidth >= 980;
 
   const ready = (fn) => {
@@ -55,6 +54,7 @@
     }
 
     bindAnchors() {
+      // Only intercept SAME-PAGE anchor links — page links (.html) navigate normally
       document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href^="#"]');
         if (!link) return;
@@ -91,7 +91,6 @@
       if (!this.el) return;
 
       onLoad(() => {
-        // Let the bar finish its animation, then dismiss
         setTimeout(() => {
           this.el.classList.add('is-done');
           document.body.classList.add('is-loaded');
@@ -110,79 +109,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     3. CUSTOM CURSOR (desktop only)
-     ═══════════════════════════════════════════════════════════════ */
-  class CustomCursor {
-    constructor() {
-      if (isTouchDevice) return;
-      this.el    = $('#cursor');
-      this.dot   = $('.cursor__dot');
-      this.ring  = $('.cursor__ring');
-      this.label = $('[data-cursor-label]');
-      if (!this.el || !this.dot || !this.ring) return;
-
-      this.mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-      this.dotPos  = { ...this.mouse };
-      this.ringPos = { ...this.mouse };
-
-      document.body.classList.add('has-cursor');
-
-      window.addEventListener('mousemove', (e) => {
-        this.mouse.x = e.clientX;
-        this.mouse.y = e.clientY;
-      });
-      window.addEventListener('mouseleave', () => this.el.style.opacity = '0');
-      window.addEventListener('mouseenter', () => this.el.style.opacity = '1');
-
-      this.bindHovers();
-      this.tick();
-    }
-
-    bindHovers() {
-      const interactive = 'a, button, summary, .residences__index li, .loc-item, [data-cursor]';
-
-      document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest(interactive);
-        if (!target) return;
-        this.el.classList.add('is-hover');
-
-        const labelTarget = target.closest('[data-cursor-text]');
-        if (labelTarget && this.label) {
-          this.label.textContent = labelTarget.dataset.cursorText;
-          this.el.classList.add('is-labeled');
-        }
-      });
-
-      document.addEventListener('mouseout', (e) => {
-        const target = e.target.closest(interactive);
-        if (!target) return;
-        this.el.classList.remove('is-hover', 'is-labeled');
-      });
-    }
-
-    tick() {
-      // Dot follows quickly, ring lags for a soft trailing feel
-      this.dotPos.x  = lerp(this.dotPos.x,  this.mouse.x, 0.55);
-      this.dotPos.y  = lerp(this.dotPos.y,  this.mouse.y, 0.55);
-      this.ringPos.x = lerp(this.ringPos.x, this.mouse.x, 0.16);
-      this.ringPos.y = lerp(this.ringPos.y, this.mouse.y, 0.16);
-
-      this.dot.style.left  = `${this.dotPos.x}px`;
-      this.dot.style.top   = `${this.dotPos.y}px`;
-      this.ring.style.left = `${this.ringPos.x}px`;
-      this.ring.style.top  = `${this.ringPos.y}px`;
-
-      if (this.label) {
-        this.label.style.left = `${this.ringPos.x}px`;
-        this.label.style.top  = `${this.ringPos.y}px`;
-      }
-
-      requestAnimationFrame(() => this.tick());
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════
-     4. NAVIGATION
+     3. NAVIGATION
      ═══════════════════════════════════════════════════════════════ */
   class Navigation {
     constructor() {
@@ -191,10 +118,8 @@
       this.mobile   = $('#navMobile');
       this.heroEl   = $('#hero');
       this.menuLinks = $$('.nav__menu a');
-      this.timeEl   = $('[data-local-time]');
       if (!this.nav) return;
 
-      this.lastY = 0;
       window.addEventListener('scroll', () => this.onScroll(), { passive: true });
       this.onScroll();
 
@@ -207,8 +132,6 @@
       });
 
       this.observeSections();
-      this.updateTime();
-      setInterval(() => this.updateTime(), 30_000);
     }
 
     onScroll() {
@@ -222,8 +145,6 @@
         const heroBottom = this.heroEl.getBoundingClientRect().bottom;
         this.nav.classList.toggle('is-hero-light', heroBottom > 100 && y < 80);
       }
-
-      this.lastY = y;
     }
 
     toggleMobile() {
@@ -242,7 +163,7 @@
     }
 
     observeSections() {
-      const ids = ['philosophy', 'residences', 'amenities', 'lifestyle', 'location', 'inquire'];
+      const ids = ['philosophy', 'residences', 'amenities-overview', 'lifestyle', 'location', 'voices', 'inquire'];
       const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
       if (!sections.length) return;
 
@@ -259,23 +180,10 @@
 
       sections.forEach(s => observer.observe(s));
     }
-
-    updateTime() {
-      if (!this.timeEl) return;
-      try {
-        const time = new Date().toLocaleTimeString('en-US', {
-          timeZone: 'America/New_York',
-          hour: '2-digit', minute: '2-digit', hour12: false
-        });
-        this.timeEl.textContent = time + ' EST';
-      } catch (e) {
-        this.timeEl.textContent = '—';
-      }
-    }
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     5. SCROLL REVEALS  (data-reveal)
+     4. SCROLL REVEALS  (data-reveal)
      ═══════════════════════════════════════════════════════════════ */
   class Reveals {
     constructor() {
@@ -302,15 +210,14 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     6. SPLIT LINES  (data-split-lines on philosophy headline)
-     Wraps each .line's content in an inner span for the slide-up.
+     5. SPLIT LINES  (philosophy headline)
      ═══════════════════════════════════════════════════════════════ */
   class SplitLines {
     constructor() {
       const targets = $$('[data-split-lines]');
       if (!targets.length) return;
 
-      // Wrap .line content
+      // Wrap each .line's content in an inner span for the slide-up
       targets.forEach(target => {
         target.querySelectorAll('.line').forEach(line => {
           line.innerHTML = `<span>${line.innerHTML}</span>`;
@@ -342,7 +249,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     7. WORD REVEAL  (data-split-words on hero title)
+     6. WORD REVEAL  (hero title)
      ═══════════════════════════════════════════════════════════════ */
   class WordReveal {
     constructor() {
@@ -371,7 +278,6 @@
         };
 
         if (inHero) {
-          // Hero waits for loader to finish
           document.addEventListener('app:loaded', trigger, { once: true });
           // Failsafe in case loader event never fires
           setTimeout(() => {
@@ -393,14 +299,13 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     8. HERO PARALLAX  (subtle scale + content fade on scroll)
+     7. HERO PARALLAX  (subtle scale + content fade)
      ═══════════════════════════════════════════════════════════════ */
   class HeroParallax {
     constructor() {
       this.video   = $('.hero__video');
       this.content = $('.hero__content');
       this.scroll  = $('.hero__scroll');
-      this.frame   = $('.hero__frame');
       if (!this.video || prefersReducedMotion) return;
 
       window.addEventListener('scroll', () => this.update(), { passive: true });
@@ -421,48 +326,13 @@
         this.content.style.opacity   = `${1 - progress * 1.4}`;
       }
       if (this.scroll) {
-        this.scroll.style.opacity   = `${1 - progress * 2}`;
-      }
-      if (this.frame) {
-        this.frame.style.opacity = `${1 - progress * 1.6}`;
+        this.scroll.style.opacity = `${1 - progress * 2}`;
       }
     }
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     9. HERO SOUND TOGGLE
-     ═══════════════════════════════════════════════════════════════ */
-  class HeroSound {
-    constructor() {
-      this.btn   = $('#heroSound');
-      this.video = $('#heroVideo');
-      this.label = $('.hero__sound-label');
-      if (!this.btn || !this.video) return;
-
-      this.btn.addEventListener('click', () => {
-        if (this.video.muted) {
-          this.video.muted = false;
-          this.video.volume = 0.6;
-          this.btn.classList.add('is-playing');
-          if (this.label) this.label.textContent = 'Sound on';
-        } else {
-          this.video.muted = true;
-          this.btn.classList.remove('is-playing');
-          if (this.label) this.label.textContent = 'Sound off';
-        }
-      });
-
-      // Keep video playing through tab switches
-      document.addEventListener('visibilitychange', () => {
-        if (!document.hidden && this.video.paused) {
-          this.video.play().catch(() => {});
-        }
-      });
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════
-     10. ESSENCE — counters + card reveal
+     8. ESSENCE — counters + card reveal
      ═══════════════════════════════════════════════════════════════ */
   class Essence {
     constructor() {
@@ -515,7 +385,9 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     11. LIFESTYLE — horizontally scrubbed pinned rail
+     9. LIFESTYLE — horizontally scrubbed pinned rail
+     ★ FIX: Section height is now sized DYNAMICALLY based on the rail's
+       actual width. No more hardcoded 500vh dead-scroll.
      ═══════════════════════════════════════════════════════════════ */
   class LifestyleRail {
     constructor() {
@@ -529,12 +401,14 @@
       this.target  = 0;
       this.active  = false;
 
+      // Wait for layout/fonts to settle, then measure
       this.calc();
+      onLoad(() => this.calc());
+
+      let resizeTimer;
       window.addEventListener('resize', () => {
-        this.calc();
-        if (!isDesktop()) {
-          this.rail.style.transform = '';
-        }
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => this.calc(), 150);
       });
 
       window.addEventListener('scroll', () => this.onScroll(), { passive: true });
@@ -542,16 +416,42 @@
     }
 
     calc() {
+      // Mobile: let the section flow naturally (CSS handles vertical stack)
       if (!isDesktop()) {
-        this.active = false;
+        this.section.style.height = '';
         this.rail.style.transform = '';
+        this.active = false;
+        this.current = 0;
+        this.target = 0;
         return;
       }
-      this.active = true;
-      const railWidth = this.rail.scrollWidth;
-      const viewport  = window.innerWidth;
-      const padX = parseFloat(getComputedStyle(this.sticky).paddingLeft) || 0;
-      this.maxTranslate = Math.max(0, railWidth - viewport + padX * 2);
+
+      // Measure rail and viewport
+      requestAnimationFrame(() => {
+        const railWidth = this.rail.scrollWidth;
+        const viewport  = window.innerWidth;
+        const padX = parseFloat(getComputedStyle(this.sticky).paddingLeft) || 0;
+
+        // How far the rail needs to translate horizontally
+        this.maxTranslate = Math.max(0, railWidth - viewport + padX * 2);
+
+        if (this.maxTranslate <= 0) {
+          // Rail fits in viewport — no horizontal scrub needed
+          this.section.style.height = '';
+          this.rail.style.transform = '';
+          this.active = false;
+          return;
+        }
+
+        // ★ Section height = sticky stage (1 viewport) + scroll distance
+        // Scroll distance is proportional to how much the rail must move,
+        // with a small multiplier for comfortable pacing. NO MORE DEAD SCROLL.
+        const scrollDistance = this.maxTranslate * 1.1;
+        this.section.style.height = `${window.innerHeight + scrollDistance}px`;
+
+        this.active = true;
+        this.onScroll();
+      });
     }
 
     onScroll() {
@@ -560,6 +460,7 @@
       const sectionHeight = this.section.offsetHeight;
       const stickyHeight = window.innerHeight;
       const scrollable = sectionHeight - stickyHeight;
+      if (scrollable <= 0) return;
 
       // 0 when section top reaches viewport top, 1 when sticky stage ends
       const progress = clamp(-rect.top / scrollable, 0, 1);
@@ -577,36 +478,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     12. GALLERY PARALLAX
-     ═══════════════════════════════════════════════════════════════ */
-  class GalleryParallax {
-    constructor() {
-      this.items = $$('[data-parallax]');
-      if (!this.items.length || prefersReducedMotion) return;
-
-      this.update = this.update.bind(this);
-      window.addEventListener('scroll', this.update, { passive: true });
-      window.addEventListener('resize', this.update);
-      this.update();
-    }
-
-    update() {
-      const vh = window.innerHeight;
-      this.items.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        // Skip if far off-screen
-        if (rect.bottom < -200 || rect.top > vh + 200) return;
-        const center = rect.top + rect.height / 2;
-        const distance = center - vh / 2;
-        const factor = parseFloat(item.dataset.parallax) || 0.2;
-        const translate = distance * factor * 0.18;
-        item.style.transform = `translate3d(0, ${translate}px, 0)`;
-      });
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════
-     13. RESIDENCES — index click → scroll to card
+     10. RESIDENCES — index click → scroll to card
      ═══════════════════════════════════════════════════════════════ */
   class ResidencesIndex {
     constructor(smoothScroll) {
@@ -628,27 +500,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     14. FAQ — close other items when one opens
-     ═══════════════════════════════════════════════════════════════ */
-  class FAQ {
-    constructor() {
-      this.items = $$('.faq__item');
-      if (!this.items.length) return;
-
-      this.items.forEach(item => {
-        item.addEventListener('toggle', () => {
-          if (item.open) {
-            this.items.forEach(other => {
-              if (other !== item && other.open) other.open = false;
-            });
-          }
-        });
-      });
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════
-     15. INQUIRE FORM
+     11. INQUIRE FORM
      ═══════════════════════════════════════════════════════════════ */
   class InquireForm {
     constructor() {
@@ -683,7 +535,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     16. BACK TO TOP
+     12. BACK TO TOP
      ═══════════════════════════════════════════════════════════════ */
   class BackToTop {
     constructor(smoothScroll) {
@@ -694,7 +546,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     17. LOCATION MAP — Leaflet with custom theming
+     13. LOCATION MAP — Leaflet with custom theming
      ═══════════════════════════════════════════════════════════════ */
   const BUILDINGS = [
     { id: 1, address: '97-07 63rd Road',  coords: [40.7300, -73.8616] },
@@ -763,7 +615,7 @@
         maxZoom: 19
       }).addTo(this.map);
 
-      // Enable wheel zoom only after click — keeps page scrolling smooth
+      // Wheel zoom only after focus — prevents accidental zoom while page-scrolling
       this.map.on('focus', () => this.map.scrollWheelZoom.enable());
       this.map.on('blur',  () => this.map.scrollWheelZoom.disable());
       this.container.addEventListener('mouseleave', () => this.map.scrollWheelZoom.disable());
@@ -864,7 +716,7 @@
       );
       filtered.forEach(m => m.addTo(this.map));
 
-      // Always include the buildings as faint context
+      // Keep buildings visible as faint context
       this.buildingMarkers.forEach(m => m.addTo(this.map));
 
       if (filtered.length) {
@@ -932,7 +784,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     18. APP — orchestration
+     14. APP — orchestration
      ═══════════════════════════════════════════════════════════════ */
   class App {
     constructor() {
@@ -944,7 +796,6 @@
         // Core
         this.smoothScroll = new SmoothScroll();
         this.loader = new PageLoader();
-        this.cursor = new CustomCursor();
         this.nav = new Navigation();
 
         // Reveal system
@@ -954,20 +805,17 @@
 
         // Hero
         this.heroParallax = new HeroParallax();
-        this.heroSound = new HeroSound();
 
         // Sections
         this.essence = new Essence();
         this.lifestyle = new LifestyleRail();
-        this.gallery = new GalleryParallax();
         this.residencesIndex = new ResidencesIndex(this.smoothScroll);
 
         // UI
-        this.faq = new FAQ();
         this.form = new InquireForm();
         this.backToTop = new BackToTop(this.smoothScroll);
 
-        // Map after window load (Leaflet may need final layout)
+        // Map after window load (Leaflet needs final layout)
         onLoad(() => {
           this.locationMap = new LocationMap();
         });
@@ -980,8 +828,8 @@
 
     signature() {
       const css = 'font-family: serif; font-size: 14px; font-style: italic; color: #b8956a;';
-      console.log('%cPark City 3 & 4 — A residence by the park.', css);
-      console.log('%cEstablished 1955 · Six buildings · Rego Park, Queens', 'color:#6b5d4f;font-size:11px;letter-spacing:0.16em;');
+      console.log('%cPark City 3 & 4 — A residence in Rego Park.', css);
+      console.log('%cEstablished 1955 · Six buildings · Managed by AKAM', 'color:#6b5d4f;font-size:11px;letter-spacing:0.16em;');
     }
   }
 
