@@ -1,1934 +1,1428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Park City 3&4 Apartments - Building Guides, Policies & Important Information for Residents">
-    <title>Building Guides | Park City 3&4 Apartments</title>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="guides.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Park City 3 & 4 building guides — billing, moves, insurance, house rules, sublet policy, and resident newsletters. Click a policy name to read the details." />
+  <meta name="theme-color" content="#f8f2e6" />
+  <title>Building Guides · Park City 3 &amp; 4 Apartments</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="guides.css" />
 </head>
-<body>
 
-<!-- Modern Navigation -->
-<nav class="modern-nav" id="mainNav">
-    <div class="nav-wrapper">
-        <div class="nav-content">
-            <div class="nav-brand">
-                <a href="index.html">
-                    <img src="logo.png" alt="Park City 3&4 Apartments" class="brand-logo">
-                </a>
-            </div>
-            
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-item">Home</a></li>
-                <li><a href="amenities.html" class="nav-item">Amenities</a></li>
-                <li><a href="community.html" class="nav-item">Resident Forms</a></li>
-                <li><a href="guides.html" class="nav-item active">Building Guides</a></li>
-                <li><a href="gallery.html" class="nav-item">Gallery</a></li>
-                <li><a href="faq.html" class="nav-item">FAQ</a></li>
-                <li><a href="contact.html" class="nav-item">Contact</a></li>
-            </ul>
-            
-            <div class="nav-actions">
-                <a href="apply.html" class="nav-cta">
-                    <span class="cta-text">Apply Now</span>
-                    <span class="cta-icon">→</span>
-                </a>
-            </div>
-            
-            <button class="menu-toggle" id="navToggle" aria-label="Toggle Menu">
-                <span class="toggle-line"></span>
-                <span class="toggle-line"></span>
-                <span class="toggle-line"></span>
-            </button>
-        </div>
+<body data-theme="cream">
+
+  <!-- LOADER -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <img src="logo.png" alt="" class="loader__logo" />
+      <div class="loader__bar"><span></span></div>
+      <div class="loader__caption"><span>The everyday architecture of being looked after</span></div>
     </div>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="menu-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-            <div class="mesh-gradient"></div>
+  </div>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__shell">
+      <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
+        <img src="logo.png" alt="Park City 3 & 4" class="nav__logo" />
+      </a>
+
+      <nav class="nav__menu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="forms.html">Forms</a></li>
+          <li><a href="guides.html" class="is-active" aria-current="page">Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navmobile" id="navMobile" aria-hidden="true">
+      <div class="navmobile__inner">
+        <img src="logo.png" alt="" class="navmobile__logo" />
+        <ol class="navmobile__list">
+          <li><a href="index.html"><em>01</em> Home</a></li>
+          <li><a href="amenities.html"><em>02</em> Amenities</a></li>
+          <li><a href="forms.html"><em>03</em> Forms</a></li>
+          <li><a href="guides.html"><em>04</em> Guides</a></li>
+          <li><a href="faq.html"><em>05</em> FAQ</a></li>
+          <li><a href="contact.html"><em>06</em> Contact</a></li>
+        </ol>
+        <div class="navmobile__foot">
+          <p class="serif-italic">A residence in Rego Park.</p>
+          <p>Six buildings · Established 1955</p>
+          <p class="navmobile__akam">Managed by <span>AKAM</span></p>
         </div>
-        
-        <button class="menu-close" id="menuClose" aria-label="Close Menu">
-            <span class="close-line"></span>
-            <span class="close-line"></span>
-        </button>
-        
-        <div class="menu-container">
-            <div class="menu-header">
-                <div class="menu-logo">
-                    <img src="logo.png" alt="Park City 3&4" class="menu-logo-img">
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="guides-hero" id="hero">
+      <div class="guides-hero__grain" aria-hidden="true"></div>
+
+      <div class="guides-hero__grid">
+        <div class="guides-hero__head">
+          <span class="hero__eyebrow" data-reveal>
+            <span class="hero__eyebrow-line"></span>
+            Resident Resources
+          </span>
+
+          <h1 class="guides-hero__title" data-split-lines>
+            <span class="line">Building</span>
+            <span class="line"><em class="serif-italic">guides &amp;</em></span>
+            <span class="line">house rules.</span>
+          </h1>
+
+          <p class="guides-hero__lede serif-italic" data-reveal data-reveal-delay="400">
+            Every policy that shapes the everyday rhythms of the buildings — billing, moves, insurance, the small rules that keep things quietly running. Tap any line to read the detail beneath.
+          </p>
+
+          <div class="guides-hero__meta" data-reveal data-reveal-delay="700">
+            <div>
+              <span class="guides-hero__meta-num">VI</span>
+              <span class="guides-hero__meta-label">Chapters</span>
+            </div>
+            <span class="guides-hero__meta-rule"></span>
+            <div>
+              <span class="guides-hero__meta-num">22</span>
+              <span class="guides-hero__meta-label">Policies</span>
+            </div>
+            <span class="guides-hero__meta-rule"></span>
+            <div>
+              <span class="guides-hero__meta-num">+</span>
+              <span class="guides-hero__meta-label">Newsletters</span>
+            </div>
+          </div>
+
+          <a href="#chapter-1" class="guides-hero__cta" data-reveal data-reveal-delay="1000">
+            <span>Begin reading</span>
+            <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
+              <path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </a>
+        </div>
+
+        <aside class="guides-hero__index" data-reveal data-reveal-delay="600" aria-label="On this page">
+          <span class="guides-hero__index-label">On this page</span>
+          <ol>
+            <li><a href="#chapter-1"><em>I.</em><span>Billing &amp; Payments</span></a></li>
+            <li><a href="#chapter-2"><em>II.</em><span>Moves &amp; Deliveries</span></a></li>
+            <li><a href="#chapter-3"><em>III.</em><span>Insurance &amp; Certificates</span></a></li>
+            <li><a href="#chapter-4"><em>IV.</em><span>House Rules</span></a></li>
+            <li><a href="#chapter-5"><em>V.</em><span>Sublet Policy</span></a></li>
+            <li><a href="#chapter-6"><em>VI.</em><span>Electric Vehicles</span></a></li>
+            <li class="is-divider"><a href="#newsletters"><em>—</em><span>Newsletters</span></a></li>
+          </ol>
+          <span class="guides-hero__index-foot">Forms &amp; applications — <a href="forms.html">forms.html</a></span>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ═══════════════ MARQUEE ═══════════════ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track" data-marquee>
+        <span>Building Guides</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Plainly written</span><span class="marquee__dot">✦</span>
+        <span>Six Buildings</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">A welcoming community</span><span class="marquee__dot">✦</span>
+        <span>Established 1955</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Managed by AKAM</span><span class="marquee__dot">✦</span>
+      </div>
+      <div class="marquee__track" data-marquee aria-hidden="true">
+        <span>Building Guides</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Plainly written</span><span class="marquee__dot">✦</span>
+        <span>Six Buildings</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">A welcoming community</span><span class="marquee__dot">✦</span>
+        <span>Established 1955</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Managed by AKAM</span><span class="marquee__dot">✦</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CHAPTER I — BILLING & PAYMENTS ═══════════════ -->
+    <section class="guides-chapter" id="chapter-1">
+      <div class="guides-chapter__grid">
+        <aside class="guides-chapter__sticky">
+          <span class="guides-chapter__num">I.</span>
+          <h2 class="guides-chapter__title"><em class="serif-italic">Billing</em><br/>&amp; payments.</h2>
+          <p class="guides-chapter__lede">
+            How maintenance is paid, where to send checks, what late looks like — and the tax abatement worth knowing about.
+          </p>
+          <span class="guides-chapter__count" data-guides-count></span>
+        </aside>
+
+        <ol class="guides-list">
+
+          <!-- 1.1 Pay online via ClickPay -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">01</span>
+                <span class="guides-row__q">Pay online via ClickPay</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>The cooperative accepts maintenance and other charges through the secure ClickPay portal. Two methods are available:</p>
+
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">e-Check (ACH)</span>
+                    <span class="guides-table__val guides-table__val--good">Free</span>
+                    <span class="guides-table__note">Bank account transfer</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Credit / Debit Card</span>
+                    <span class="guides-table__val">Fee applies</span>
+                    <span class="guides-table__note">Visa, Mastercard, Amex, Discover</span>
+                  </div>
                 </div>
-                <div class="menu-tagline">Luxury Living Redefined</div>
-            </div>
-            
-            <ul class="menu-items">
-                <li class="menu-item" data-index="1">
-                    <a href="index.html" class="menu-link">
-                        <span class="link-wrapper">
-                            <span class="link-number">01</span>
-                            <span class="link-content">
-                                <span class="link-text">Home</span>
-                                <span class="link-subtitle">Welcome</span>
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li class="menu-item" data-index="2">
-                    <a href="amenities.html" class="menu-link">
-                        <span class="link-wrapper">
-                            <span class="link-number">02</span>
-                            <span class="link-content">
-                                <span class="link-text">Amenities</span>
-                                <span class="link-subtitle">Features & Lifestyle</span>
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li class="menu-item" data-index="3">
-                    <a href="building-guides.html" class="menu-link">
-                        <span class="link-wrapper">
-                            <span class="link-number">03</span>
-                            <span class="link-content">
-                                <span class="link-text">Building Guides</span>
-                                <span class="link-subtitle">Policies & Info</span>
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li class="menu-item" data-index="4">
-                    <a href="contact.html" class="menu-link">
-                        <span class="link-wrapper">
-                            <span class="link-number">04</span>
-                            <span class="link-content">
-                                <span class="link-text">Contact</span>
-                                <span class="link-subtitle">Get in Touch</span>
-                            </span>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 
-<!-- BUILDING GUIDES HERO -->
-<section class="guides-hero">
-    <div class="guides-hero-bg">
-        <div class="hero-gradient-1"></div>
-        <div class="hero-gradient-2"></div>
-        <div class="hero-grid-pattern"></div>
-        <div class="hero-noise"></div>
-    </div>
-    
-    <div class="guides-hero-content">
-        <div class="hero-accent-line">
-            <span class="accent-bar"></span>
-            <span class="accent-label">Resident Resources</span>
-        </div>
-        
-        <h1 class="guides-hero-title">
-            <span class="title-line">Building</span>
-            <span class="title-line title-highlight">Guides</span>
-        </h1>
-        
-        <p class="guides-hero-desc">
-            Everything you need to know about payments, insurance, policies, and building rules. Your complete resource for living at Park City 3&4.
+                <h5 class="guides-row__sub">Setting up an account</h5>
+                <ol class="guides-steps">
+                  <li>
+                    <span class="guides-steps__num">01</span>
+                    <div class="guides-steps__body">
+                      <h6>Visit the portal</h6>
+                      <p>Go to <strong>www.ClickPay.com/AKAM</strong> and select <em class="serif-italic">New York.</em></p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="guides-steps__num">02</span>
+                    <div class="guides-steps__body">
+                      <h6>Register</h6>
+                      <p>Click <strong>Register</strong> and complete your online profile.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="guides-steps__num">03</span>
+                    <div class="guides-steps__body">
+                      <h6>Link your unit</h6>
+                      <p>Use the account number printed on your statement or coupon book.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="guides-steps__num">04</span>
+                    <div class="guides-steps__body">
+                      <h6>Add a payment method</h6>
+                      <p>e-Check is free; card payments carry a processing fee.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="guides-steps__num">05</span>
+                    <div class="guides-steps__body">
+                      <h6>Set up payments</h6>
+                      <p>Enable automatic recurring payments, or pay one-time as needed.</p>
+                    </div>
+                  </li>
+                </ol>
+
+                <a href="https://www.ClickPay.com/AKAM" target="_blank" rel="noopener" class="guides-cta">
+                  <span>Visit ClickPay portal</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M3 3h8m0 0v8m0-8L3 11" stroke="currentColor" stroke-width="1.2"/>
+                  </svg>
+                </a>
+
+                <p class="guides-row__minor">
+                  Trouble logging in? ClickPay support:
+                  <a href="https://www.clickpay.com/help" target="_blank" rel="noopener">Help Center</a> ·
+                  <a href="tel:1-800-533-7901">1-800-533-7901</a> (option 1)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 1.2 Pay by mail -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">02</span>
+                <span class="guides-row__q">Pay by mail</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>For paper checks or Online Bill Pay, mail to the address below. Make checks payable to the cooperative name printed on your statement, and write your account number on the check.</p>
+
+                <address class="guides-address">
+                  <span class="guides-address__label">Mail Payments To</span>
+                  <span class="guides-address__line">P.O. Box 18</span>
+                  <span class="guides-address__line">Emerson, NJ 07630</span>
+                </address>
+
+                <aside class="guides-callout guides-callout--info">
+                  <span class="guides-callout__title">Note</span>
+                  <p>This is a remittance address only. Do not send forms, COIs, or correspondence here — those go to the management office at <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>.</p>
+                </aside>
+              </div>
+            </details>
+          </li>
+
+          <!-- 1.3 Late fees -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">03</span>
+                <span class="guides-row__q">Late fees &amp; bounced checks</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>Maintenance is due on the <strong>1st of each month.</strong> A grace period extends to the <strong>10th.</strong> After that:</p>
+
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Late fee (after the 10th)</span>
+                    <span class="guides-table__val">$40.00</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Bounced check fee</span>
+                    <span class="guides-table__val">$35.00</span>
+                    <span class="guides-table__note">Plus late charges, if applicable</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+
+          <!-- 1.4 Tax abatement -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">04</span>
+                <span class="guides-row__q">The Coop-Condo tax abatement</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>The Coop-Condo Property Tax Abatement is a credit offered by NYC to residential owners who use their apartment as their <em class="serif-italic">primary residence.</em> The credit is typically applied to the <strong>June billing statement</strong> (the final month of the tax year).</p>
+
+                <h5 class="guides-row__sub">When you need to file a Primary Residence Verification (PRV)</h5>
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Your residency status changed during the tax year</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>You purchased your unit recently</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Ownership was transferred to a trust, or a new owner was added</span>
+                  </li>
+                </ul>
+
+                <h5 class="guides-row__sub">Who is not eligible</h5>
+                <ul class="guides-check guides-check--neg">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Investor-owned apartments, including sponsor units</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>LLCs, corporations, partnerships</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Owners of four or more apartments in the same building (unless legally combined)</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Units already receiving J-51, 420c, 421a, 421b, or 421g exemptions</span>
+                  </li>
+                </ul>
+
+                <h5 class="guides-row__sub">Other exemptions worth checking</h5>
+                <p class="guides-row__minor">NYC and NYS offer additional credits — apply directly with the relevant agency.</p>
+                <ul class="guides-links">
+                  <li><a href="https://www.tax.ny.gov/star/" target="_blank" rel="noopener">NYS STAR Credit ↗</a></li>
+                  <li><a href="https://www.nyc.gov/site/finance/property/landlords-sche.page" target="_blank" rel="noopener">Senior Citizens' Exemption (SCHE) ↗</a></li>
+                  <li><a href="https://www.nyc.gov/site/finance/property/landlords-dhe.page" target="_blank" rel="noopener">Disabled Homeowners' Exemption (DHE) ↗</a></li>
+                  <li><a href="https://www.nyc.gov/site/finance/property/landlords-veterans.page" target="_blank" rel="noopener">Veterans Exemption ↗</a></li>
+                </ul>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CHAPTER II — MOVES & DELIVERIES ═══════════════ -->
+    <section class="guides-chapter guides-chapter--alt" id="chapter-2">
+      <div class="guides-chapter__grid">
+        <aside class="guides-chapter__sticky">
+          <span class="guides-chapter__num">II.</span>
+          <h2 class="guides-chapter__title"><em class="serif-italic">Moves</em><br/>&amp; deliveries.</h2>
+          <p class="guides-chapter__lede">
+            What management needs from you, when the service entrance is open, and how the deposit works.
+          </p>
+          <span class="guides-chapter__count" data-guides-count></span>
+        </aside>
+
+        <ol class="guides-list">
+
+          <!-- 2.1 What you need -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">01</span>
+                <span class="guides-row__q">What you need to schedule a move or delivery</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>For any move-in, move-out, or large delivery, the management office requires three things in advance:</p>
+
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span><strong>$500 retainer deposit</strong> — certified check, bank check, or money order, payable to <em class="serif-italic">Park City 3 &amp; 4 Apartments, Inc.</em></span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span><strong>Certificate of Insurance (COI)</strong> from the moving, delivery, or store company</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>If you're moving yourself, a copy of your current <strong>insurance policy</strong></span>
+                  </li>
+                </ul>
+
+                <aside class="guides-callout guides-callout--info">
+                  <span class="guides-callout__title">After we have everything</span>
+                  <p>A <strong>Move-In / Move-Out / Delivery Permit</strong> is issued the day before your scheduled move.</p>
+                </aside>
+              </div>
+            </details>
+          </li>
+
+          <!-- 2.2 Schedule & hours -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">02</span>
+                <span class="guides-row__q">Permitted days, hours &amp; entrances</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <div class="guides-table">
+                  <div class="guides-table__row guides-table__row--highlight">
+                    <span class="guides-table__key">Permitted days &amp; hours</span>
+                    <span class="guides-table__val">Mon – Fri · 8:30 AM – 4:30 PM</span>
+                    <span class="guides-table__note">Excluding legal holidays</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Advance notice</span>
+                    <span class="guides-table__val">1 business day, minimum</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Required entrance</span>
+                    <span class="guides-table__val">Basement / service only</span>
+                    <span class="guides-table__note">All heavy items use the service entrance</span>
+                  </div>
+                </div>
+
+                <aside class="guides-callout guides-callout--warn">
+                  <span class="guides-callout__title">Padded elevator</span>
+                  <p>The padded elevator must be used for all moves and deliveries. Non-compliance carries a <strong>$500 fine.</strong></p>
+                </aside>
+              </div>
+            </details>
+          </li>
+
+          <!-- 2.3 Retainer deposit -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">03</span>
+                <span class="guides-row__q">The $500 retainer deposit</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>The deposit protects the building from damage during a move or delivery. It is <em class="serif-italic">refundable</em> after the move is complete and any damage to the building or elevator has been ruled out.</p>
+
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Make payable to</span>
+                    <span class="guides-table__val">Park City 3 &amp; 4 Apartments, Inc.</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Accepted forms</span>
+                    <span class="guides-table__val">Certified check, bank check, or money order</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Refundable</span>
+                    <span class="guides-table__val guides-table__val--good">Yes — after successful move</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CHAPTER III — INSURANCE & CERTIFICATES ═══════════════ -->
+    <section class="guides-chapter" id="chapter-3">
+      <div class="guides-chapter__grid">
+        <aside class="guides-chapter__sticky">
+          <span class="guides-chapter__num">III.</span>
+          <h2 class="guides-chapter__title"><em class="serif-italic">Insurance</em><br/>&amp; certificates.</h2>
+          <p class="guides-chapter__lede">
+            Your own coverage as a shareholder or sub-tenant, and the COIs we require from contractors and movers.
+          </p>
+          <span class="guides-chapter__count" data-guides-count></span>
+        </aside>
+
+        <ol class="guides-list">
+
+          <!-- 3.1 Resident insurance -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">01</span>
+                <span class="guides-row__q">Required resident insurance</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>All shareholders must maintain a <strong>Homeowner's Insurance Policy</strong> for as long as they own their apartment. Sub-tenants must carry <strong>Renter's Insurance</strong> for the full term of their lease.</p>
+
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Liability coverage</span>
+                    <span class="guides-table__val">$300,000</span>
+                    <span class="guides-table__note">Minimum required</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Personal property</span>
+                    <span class="guides-table__val">$25,000</span>
+                    <span class="guides-table__note">Minimum required</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+
+          <!-- 3.2 Submitting your policy -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">02</span>
+                <span class="guides-row__q">Submitting your policy</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>Email a current copy of your policy to the management office, or drop one off in person. Your policy must list the following as <em class="serif-italic">additional insured:</em></p>
+
+                <div class="guides-parties">
+                  <div class="guides-parties__item">
+                    <span class="guides-parties__num">01</span>
+                    <div>
+                      <strong>Park City 3 &amp; 4 Apartments, Inc.</strong>
+                      <span>Including the Board of Directors</span>
+                      <address>c/o AKAM · 99 Park Avenue, 14th Floor · New York, NY 10016</address>
+                    </div>
+                  </div>
+                  <div class="guides-parties__item">
+                    <span class="guides-parties__num">02</span>
+                    <div>
+                      <strong>AKAM Associates, Inc.</strong>
+                      <address>99 Park Avenue, 14th Floor · New York, NY 10016</address>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="mailto:parkcity3and4@akam.com" class="guides-cta">
+                  <span>Email your policy</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M3 3h8m0 0v8m0-8L3 11" stroke="currentColor" stroke-width="1.2"/>
+                  </svg>
+                </a>
+              </div>
+            </details>
+          </li>
+
+          <!-- 3.3 When a COI is required -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">03</span>
+                <span class="guides-row__q">When a Certificate of Insurance (COI) is required</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>A COI from the contractor, mover, or delivery company is required for any of the following:</p>
+
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Any work being done inside an apartment</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>All move-ins and move-outs</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Large deliveries requiring the service elevator</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Any contractor entering the building</span>
+                  </li>
+                </ul>
+
+                <aside class="guides-callout guides-callout--warn">
+                  <span class="guides-callout__title">Timing</span>
+                  <p>The COI must be received at least <strong>two business days</strong> in advance of the scheduled work or move.</p>
+                </aside>
+              </div>
+            </details>
+          </li>
+
+          <!-- 3.4 COI requirements & how to submit -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">04</span>
+                <span class="guides-row__q">COI coverage requirements &amp; how to submit</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <h5 class="guides-row__sub">Required coverage limits</h5>
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Liability insurance</span>
+                    <span class="guides-table__val">$1,000,000</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Product &amp; completed operations</span>
+                    <span class="guides-table__val">$1,000,000</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Automobile insurance</span>
+                    <span class="guides-table__val">$1,000,000</span>
+                    <span class="guides-table__note">Commercial Auto, or Hired &amp; Non-Owned</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Umbrella liability</span>
+                    <span class="guides-table__val">$5,000,000</span>
+                    <span class="guides-table__note">Adjustable based on the work scope</span>
+                  </div>
+                  <div class="guides-table__row guides-table__row--highlight">
+                    <span class="guides-table__key">Workers' compensation</span>
+                    <span class="guides-table__val">Required</span>
+                    <span class="guides-table__note">Proof must be included</span>
+                  </div>
+                </div>
+
+                <h5 class="guides-row__sub">Certificate holder</h5>
+                <address class="guides-address">
+                  <span class="guides-address__line"><strong>Park City 3 &amp; 4 Apartments, Inc.</strong></span>
+                  <span class="guides-address__line">c/o AKAM</span>
+                  <span class="guides-address__line">99 Park Avenue, 14th Floor</span>
+                  <span class="guides-address__line">New York, NY 10016</span>
+                </address>
+
+                <h5 class="guides-row__sub">Additional insured (on General Liability and Umbrella)</h5>
+                <div class="guides-parties">
+                  <div class="guides-parties__item">
+                    <span class="guides-parties__num">·</span>
+                    <div>
+                      <strong>Park City 3 &amp; 4 Apartments, Inc.</strong>
+                      <span>Including the Board of Directors, c/o AKAM, 99 Park Ave, 14th Fl, NY 10016</span>
+                    </div>
+                  </div>
+                  <div class="guides-parties__item">
+                    <span class="guides-parties__num">·</span>
+                    <div>
+                      <strong>AKAM Associates, Inc.</strong>
+                      <span>99 Park Avenue, 14th Floor, New York, NY 10016</span>
+                    </div>
+                  </div>
+                  <div class="guides-parties__item">
+                    <span class="guides-parties__num">·</span>
+                    <div>
+                      <strong>Resident name, unit number, property address</strong>
+                      <span>If the work is being done for a tenant</span>
+                    </div>
+                  </div>
+                  <div class="guides-parties__item">
+                    <span class="guides-parties__num">·</span>
+                    <div>
+                      <strong>Date of service</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <h5 class="guides-row__sub">How to submit</h5>
+                <p>Email the COI with a cover sheet that includes:</p>
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Unit owner's name</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Unit number</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Description of the work, delivery, or move</span>
+                  </li>
+                </ul>
+
+                <p class="guides-row__minor">
+                  Email to <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>
+                  or <a href="mailto:hkhan@akam.com">hkhan@akam.com</a>
+                </p>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CHAPTER IV — HOUSE RULES ═══════════════ -->
+    <section class="guides-chapter guides-chapter--alt" id="chapter-4">
+      <div class="guides-chapter__grid">
+        <aside class="guides-chapter__sticky">
+          <span class="guides-chapter__num">IV.</span>
+          <h2 class="guides-chapter__title"><em class="serif-italic">House</em><br/>rules.</h2>
+          <p class="guides-chapter__lede">
+            Adopted by the Board of Directors, last revised January 2015. The small things that keep a community working.
+          </p>
+          <span class="guides-chapter__count" data-guides-count></span>
+        </aside>
+
+        <ol class="guides-list">
+
+          <!-- 4.1 Occupancy & guests -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">01</span>
+                <span class="guides-row__q">Occupancy &amp; guest limits</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <h5 class="guides-row__sub">Occupancy</h5>
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Studio</span>
+                    <span class="guides-table__val">2 persons</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">One-bedroom</span>
+                    <span class="guides-table__val">3 persons</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Two-bedroom</span>
+                    <span class="guides-table__val">4 persons</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Three-bedroom</span>
+                    <span class="guides-table__val">5 persons</span>
+                  </div>
+                </div>
+
+                <aside class="guides-callout guides-callout--warn">
+                  <span class="guides-callout__title">Guests</span>
+                  <p>Guests may stay no more than <strong>30 consecutive days.</strong> Management must be notified in writing. Violation fine: <strong>$1,000 per month.</strong></p>
+                </aside>
+              </div>
+            </details>
+          </li>
+
+          <!-- 4.2 Quiet hours -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">02</span>
+                <span class="guides-row__q">Quiet hours &amp; noise</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <div class="guides-table">
+                  <div class="guides-table__row guides-table__row--highlight">
+                    <span class="guides-table__key">Weekday quiet hours</span>
+                    <span class="guides-table__val">10:30 PM – 8:30 AM</span>
+                  </div>
+                  <div class="guides-table__row guides-table__row--highlight">
+                    <span class="guides-table__key">Weekend quiet hours</span>
+                    <span class="guides-table__val">12:00 AM – 8:30 AM</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Floor coverage required</span>
+                    <span class="guides-table__val">80% minimum</span>
+                    <span class="guides-table__note">Rugs or carpeting, except kitchens and bathrooms</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+
+          <!-- 4.3 Alterations -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">03</span>
+                <span class="guides-row__q">Apartment alterations &amp; renovations</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>Alterations are permitted with prior written approval. The process:</p>
+
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>File work plans with the Management Office</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Obtain Board approval before any work begins</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Provide your contractor's proof of insurance (COI)</span>
+                  </li>
+                </ul>
+
+                <h5 class="guides-row__sub">Fees &amp; terms</h5>
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Refundable deposit</span>
+                    <span class="guides-table__val">$2,500</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Daily fee</span>
+                    <span class="guides-table__val">$20 / day</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Permit duration</span>
+                    <span class="guides-table__val">3 weeks maximum</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Work hours</span>
+                    <span class="guides-table__val">Mon – Fri · 8:30 AM – 4:30 PM</span>
+                  </div>
+                </div>
+
+                <aside class="guides-callout guides-callout--danger">
+                  <span class="guides-callout__title">Non-compliance</span>
+                  <p>$1,000 fine — <em class="serif-italic">no exceptions.</em></p>
+                </aside>
+              </div>
+            </details>
+          </li>
+
+          <!-- 4.4 Prohibited appliances -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">04</span>
+                <span class="guides-row__q">Prohibited appliances</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>The following are not permitted in apartments or on terraces:</p>
+
+                <ul class="guides-check guides-check--neg">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Washing machines and clothes dryers</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Jacuzzis and hot tubs</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Charcoal or gas grills on terraces — fire code violation</span>
+                  </li>
+                </ul>
+
+                <aside class="guides-callout guides-callout--info">
+                  <span class="guides-callout__title">Window air conditioners</span>
+                  <p>Window A/C units must be registered with the Management Office and use approved brackets. Non-compliance fine: <strong>$1,000.</strong></p>
+                </aside>
+              </div>
+            </details>
+          </li>
+
+          <!-- 4.5 Pets -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">05</span>
+                <span class="guides-row__q">Pets &amp; animals</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>Park City 3 &amp; 4 permits <em class="serif-italic">cats and dogs only.</em> Dogs require written Board approval (a policy in effect since July 2004). Pet registration is handled through the <a href="forms.html">Forms page.</a></p>
+
+                <h5 class="guides-row__sub">Dog requirements</h5>
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Adult weight no more than <strong>16 lbs</strong></span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Proper licensing and current health certification</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Always on leash, basement / service entrance only — never the lobby</span>
+                  </li>
+                </ul>
+
+                <h5 class="guides-row__sub">Not permitted</h5>
+                <ul class="guides-check guides-check--neg">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Pitbulls and Rottweilers</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Exotic animals or birds of any kind</span>
+                  </li>
+                </ul>
+
+                <h5 class="guides-row__sub">Violation fines</h5>
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">First violation</span>
+                    <span class="guides-table__val">$250</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Each additional</span>
+                    <span class="guides-table__val">$500</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+
+          <!-- 4.6 Parking -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">06</span>
+                <span class="guides-row__q">Parking &amp; garage rules</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Spaces are for resident shareholders only, current on maintenance</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Vehicles must be registered with Management — make, model, color, and license plate</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Valid vehicle registration and inspection sticker required at all times</span>
+                  </li>
+                </ul>
+
+                <h5 class="guides-row__sub">Not permitted in the garage</h5>
+                <ul class="guides-check guides-check--neg">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Vehicle washing or repairs — <strong>$250 fine</strong></span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Smoking — NYC law, <strong>$250 fine</strong></span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CHAPTER V — SUBLET POLICY ═══════════════ -->
+    <section class="guides-chapter" id="chapter-5">
+      <div class="guides-chapter__grid">
+        <aside class="guides-chapter__sticky">
+          <span class="guides-chapter__num">V.</span>
+          <h2 class="guides-chapter__title"><em class="serif-italic">Sublet</em><br/>policy.</h2>
+          <p class="guides-chapter__lede">
+            For shareholders considering renting out their apartment — eligibility, surcharges, and the application process.
+          </p>
+          <span class="guides-chapter__count" data-guides-count></span>
+        </aside>
+
+        <ol class="guides-list">
+
+          <!-- 5.1 Eligibility -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">01</span>
+                <span class="guides-row__q">Who can sublet, and on what terms</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Shareholder must have <strong>owned and resided</strong> in the apartment for a minimum of <strong>two years</strong></span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Sub-tenants are offered a <strong>one-year lease</strong> only</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Sub-tenants must pass an interview and obtain <strong>written Board approval</strong></span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Renewals require the same approval process before lease expiry</span>
+                  </li>
+                </ul>
+
+                <aside class="guides-callout guides-callout--info">
+                  <span class="guides-callout__title">Income requirement</span>
+                  <p>Sub-tenants must demonstrate annual income of at least <strong>3.5×</strong> their annual rent.</p>
+                </aside>
+              </div>
+            </details>
+          </li>
+
+          <!-- 5.2 Surcharge fees -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">02</span>
+                <span class="guides-row__q">Sublet surcharge fees</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>The shareholder is charged a surcharge — a percentage of monthly maintenance — based on how long the unit has been sublet:</p>
+
+                <div class="guides-table">
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Years 1 – 3</span>
+                    <span class="guides-table__val">15%</span>
+                    <span class="guides-table__note">of monthly maintenance</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Year 4</span>
+                    <span class="guides-table__val">30%</span>
+                    <span class="guides-table__note">of monthly maintenance</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Year 5</span>
+                    <span class="guides-table__val">50%</span>
+                    <span class="guides-table__note">of monthly maintenance</span>
+                  </div>
+                  <div class="guides-table__row guides-table__row--highlight">
+                    <span class="guides-table__key">Year 6 onward</span>
+                    <span class="guides-table__val">100%</span>
+                    <span class="guides-table__note">of monthly maintenance</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+
+          <!-- 5.3 Inspections, renewals & violations -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">03</span>
+                <span class="guides-row__q">Inspections, renewals &amp; violations</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <ul class="guides-check">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>All apartments must be inspected by Management before subletting</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Notify Management in writing when a subtenant moves out, to stop the surcharge</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>The policy may be amended at any time by the Board of Directors</span>
+                  </li>
+                </ul>
+
+                <h5 class="guides-row__sub">Violation fines</h5>
+                <div class="guides-table">
+                  <div class="guides-table__row guides-table__row--danger">
+                    <span class="guides-table__key">Non-renewal compliance</span>
+                    <span class="guides-table__val">$500 / month</span>
+                    <span class="guides-table__note">Until the subtenant is re-certified</span>
+                  </div>
+                  <div class="guides-table__row guides-table__row--danger">
+                    <span class="guides-table__key">Illegal sublet</span>
+                    <span class="guides-table__val">$1,000 + $500/mo</span>
+                    <span class="guides-table__note">Plus legal fees</span>
+                  </div>
+                </div>
+
+                <p class="guides-row__minor">
+                  To request a sublet application, contact the office:
+                  <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a> ·
+                  <a href="tel:5551234567">(555) 123-4567</a>
+                </p>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CHAPTER VI — ELECTRIC VEHICLES ═══════════════ -->
+    <section class="guides-chapter guides-chapter--alt" id="chapter-6">
+      <div class="guides-chapter__grid">
+        <aside class="guides-chapter__sticky">
+          <span class="guides-chapter__num">VI.</span>
+          <h2 class="guides-chapter__title"><em class="serif-italic">Electric</em><br/>vehicles.</h2>
+          <p class="guides-chapter__lede">
+            Approved by the Board following Board communications of November 2022 and June 2023, in response to repeated lithium-battery fires across the city.
+          </p>
+          <span class="guides-chapter__count" data-guides-count></span>
+        </aside>
+
+        <ol class="guides-list">
+
+          <!-- 6.1 The ban -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">01</span>
+                <span class="guides-row__q">E-bikes &amp; e-scooters: the ban</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>To safeguard residents and the buildings against the risk of lithium-battery fires, <strong>e-bikes and e-scooters are not permitted anywhere on Park City 3 &amp; 4 property.</strong> This includes:</p>
+
+                <ul class="guides-check guides-check--neg">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Storing or charging the battery, anywhere on the premises</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>All outdoor co-op spaces — parking garages, walkways, catwalks</span>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Inside buildings — common areas, hallways, elevators, and apartments</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </li>
+
+          <!-- 6.2 Guests & penalties -->
+          <li class="guides-row">
+            <details>
+              <summary>
+                <span class="guides-row__num">02</span>
+                <span class="guides-row__q">Guest policy &amp; penalties</span>
+                <span class="guides-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="guides-row__a">
+                <p>Guests of shareholders who arrive with an e-bike or e-scooter <strong>will not be permitted to leave it on the premises,</strong> and will be refused entry through the lobby or garages, for any duration.</p>
+
+                <h5 class="guides-row__sub">Penalties</h5>
+                <div class="guides-table">
+                  <div class="guides-table__row guides-table__row--highlight">
+                    <span class="guides-table__key">Fine per infringement</span>
+                    <span class="guides-table__val">$150.00</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Legal action</span>
+                    <span class="guides-table__val">May apply</span>
+                    <span class="guides-table__note">All costs are the shareholder's responsibility</span>
+                  </div>
+                  <div class="guides-table__row">
+                    <span class="guides-table__key">Damage liability</span>
+                    <span class="guides-table__val">Full</span>
+                    <span class="guides-table__note">Shareholder liable for all resulting damage</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════ NEWSLETTERS ═══════════════ -->
+    <section class="guides-newsletters" id="newsletters">
+      <div class="guides-newsletters__grid">
+        <aside class="guides-newsletters__head">
+          <span class="eyebrow"><span class="eyebrow__line"></span>From the Office</span>
+          <h2 class="guides-newsletters__title">
+            <em class="serif-italic">Newsletters</em><br/>
+            &amp; building updates.
+          </h2>
+          <p class="guides-newsletters__lede">
+            Quarterly notes from the management office — building works, seasonal reminders, and policy updates as they happen.
+          </p>
+          <p class="guides-newsletters__hint">
+            Looking for something older? Write to the office and we'll send the full archive.
+          </p>
+        </aside>
+
+        <ol class="guides-newsletters__list">
+          <!--
+            ─── HOW TO ADD A NEWSLETTER ───
+            Each <li> below is one newsletter entry. To add a new one:
+            1. Drop the PDF into your /newsletters/ folder
+            2. Copy one <li> block, paste it at the top of this list
+            3. Update the date, title, summary, and href to the new file
+            The newest newsletter should always sit at the top.
+          -->
+
+          <li class="newsletter">
+            <a href="newsletters/sample-spring-2026.pdf" class="newsletter__link" target="_blank" rel="noopener">
+              <span class="newsletter__date">
+                <em class="serif-italic">Spring</em>
+                <span>2026</span>
+              </span>
+              <div class="newsletter__body">
+                <h3 class="newsletter__title">Annual Meeting recap &amp; the year ahead</h3>
+                <p class="newsletter__summary">A summary of the 2026 Annual Shareholders' Meeting — Board election results, the upcoming lobby refresh at 97-37, and seasonal pool dates.</p>
+                <span class="newsletter__meta">PDF · 2 pages</span>
+              </div>
+              <span class="newsletter__arrow" aria-hidden="true">
+                <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+              </span>
+            </a>
+          </li>
+
+          <li class="newsletter">
+            <a href="newsletters/sample-winter-2025.pdf" class="newsletter__link" target="_blank" rel="noopener">
+              <span class="newsletter__date">
+                <em class="serif-italic">Winter</em>
+                <span>2025</span>
+              </span>
+              <div class="newsletter__body">
+                <h3 class="newsletter__title">Heating system maintenance &amp; holiday hours</h3>
+                <p class="newsletter__summary">Scheduled boiler maintenance dates by building, holiday office hours, and a reminder about terrace clearance ahead of the winter storm season.</p>
+                <span class="newsletter__meta">PDF · 3 pages</span>
+              </div>
+              <span class="newsletter__arrow" aria-hidden="true">
+                <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+              </span>
+            </a>
+          </li>
+
+          <li class="newsletter">
+            <a href="newsletters/sample-fall-2025.pdf" class="newsletter__link" target="_blank" rel="noopener">
+              <span class="newsletter__date">
+                <em class="serif-italic">Fall</em>
+                <span>2025</span>
+              </span>
+              <div class="newsletter__body">
+                <h3 class="newsletter__title">ClickPay rollout &amp; the new mailing address</h3>
+                <p class="newsletter__summary">Step-by-step on the move to ClickPay for online payments, and the new P.O. Box for paper checks. Includes the cutover date and FAQ.</p>
+                <span class="newsletter__meta">PDF · 2 pages</span>
+              </div>
+              <span class="newsletter__arrow" aria-hidden="true">
+                <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+              </span>
+            </a>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════ STILL WONDERING — CLOSING CTA ═══════════════ -->
+    <section class="guides-still" id="still">
+      <div class="guides-still__inner">
+        <span class="eyebrow"><span class="eyebrow__line"></span>A note to the office</span>
+        <h2 class="guides-still__title">
+          Need something <em class="serif-italic">a guide</em><br/>
+          doesn't cover?
+        </h2>
+        <p class="guides-still__lede">
+          Forms live on a separate page, the FAQ answers the most common questions, and the office is the right first stop for anything else.
         </p>
-        
-        <div class="guides-quick-nav">
-            <a href="#billing" class="quick-nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <rect x="2" y="5" width="20" height="14" rx="2"/>
-                        <line x1="2" y1="10" x2="22" y2="10"/>
-                    </svg>
-                </span>
-                <span class="nav-text">Billing & Payments</span>
-            </a>
-            <a href="#moves" class="quick-nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <rect x="1" y="3" width="15" height="13" rx="2"/>
-                        <circle cx="5.5" cy="18.5" r="2.5"/>
-                        <circle cx="13.5" cy="18.5" r="2.5"/>
-                        <path d="M16 8h4l3 3v5h-3"/>
-                    </svg>
-                </span>
-                <span class="nav-text">Moves & Deliveries</span>
-            </a>
-            <a href="#house-rules" class="quick-nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                    </svg>
-                </span>
-                <span class="nav-text">House Rules</span>
-            </a>
-            <a href="#sublet" class="quick-nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </span>
-                <span class="nav-text">Sublet Policy</span>
-            </a>
-        </div>
-    </div>
-    
-    <div class="hero-scroll-indicator">
-        <div class="scroll-line"></div>
-        <span>Scroll to explore</span>
-    </div>
-</section>
 
-<!-- BILLING & PAYMENTS SECTION -->
-<section class="guide-section" id="billing">
-    <div class="section-container">
-        
-        <div class="guide-header" data-animate>
-            <div class="header-icon-wrapper">
-                <div class="icon-glow"></div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="2" y="5" width="20" height="14" rx="2"/>
-                    <line x1="2" y1="10" x2="22" y2="10"/>
-                </svg>
-            </div>
-            <div class="header-content">
-                <span class="section-number">01</span>
-                <h2 class="section-title">Billing & Payments</h2>
-                <p class="section-desc">Important changes to how we accept payments through our new ClickPay system</p>
-            </div>
-        </div>
-        
-        <div class="guide-content-grid">
-            
-            <!-- Online Payments Card -->
-            <div class="guide-card featured" data-animate data-delay="100">
-                <div class="card-badge">Preferred Method</div>
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                    </div>
-                    <h3>Online Billing & Payments</h3>
-                </div>
-                <p class="card-desc">Pay your charges online through our secure ClickPay portal with multiple payment options.</p>
-                
-                <div class="payment-options">
-                    <div class="payment-option free">
-                        <span class="option-badge">FREE</span>
-                        <span class="option-name">e-Check (ACH)</span>
-                        <span class="option-desc">Bank account transfer</span>
-                    </div>
-                    <div class="payment-option">
-                        <span class="option-badge fee">Fee Applies</span>
-                        <span class="option-name">Credit/Debit Card</span>
-                        <span class="option-desc">Visa, Mastercard, Amex, Discover</span>
-                    </div>
-                </div>
-                
-                <a href="https://www.ClickPay.com/AKAM" target="_blank" class="card-cta">
-                    <span>Visit ClickPay Portal</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
-            </div>
-            
-            <!-- Setup Steps -->
-            <div class="guide-card steps-card" data-animate data-delay="200">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                    </div>
-                    <h3>Getting Started</h3>
-                </div>
-                
-                <div class="setup-steps">
-                    <div class="step">
-                        <span class="step-number">1</span>
-                        <div class="step-content">
-                            <h4>Visit the Portal</h4>
-                            <p>Go to <strong>www.ClickPay.com/AKAM</strong> and select New York</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">2</span>
-                        <div class="step-content">
-                            <h4>Create Your Profile</h4>
-                            <p>Click Register and complete your online profile</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">3</span>
-                        <div class="step-content">
-                            <h4>Link Your Unit</h4>
-                            <p>Use the account number from your statement or coupon book</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">4</span>
-                        <div class="step-content">
-                            <h4>Add Payment Method</h4>
-                            <p>Choose e-Check (FREE) or Credit Card (fee applies)</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">5</span>
-                        <div class="step-content">
-                            <h4>Set Up Payments</h4>
-                            <p>Enable automatic recurring payments or pay one-time</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mailing Address Card -->
-            <div class="guide-card address-card" data-animate data-delay="300">
-                <div class="card-header">
-                    <div class="card-icon warning">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                    </div>
-                    <h3>New Mailing Address</h3>
-                    <span class="important-tag">Important Change</span>
-                </div>
-                <p class="card-desc">If paying by paper check or Online Bill Pay, use the new address below:</p>
-                
-                <div class="address-box">
-                    <div class="address-content">
-                        <span class="address-label">Mail Payments To:</span>
-                        <address>
-                            <strong>P.O. Box 18</strong><br>
-                            Emerson, NJ 07630
-                        </address>
-                    </div>
-                    <div class="address-note">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="16" x2="12" y2="12"/>
-                            <line x1="12" y1="8" x2="12.01" y2="8"/>
-                        </svg>
-                        <span>Write your account number on your check. Make checks payable to the cooperative name on your statement.</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Late Fees & Other Charges -->
-            <div class="guide-card" data-animate data-delay="400">
-                <div class="card-header">
-                    <div class="card-icon warning">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="8" x2="12" y2="12"/>
-                            <line x1="12" y1="16" x2="12.01" y2="16"/>
-                        </svg>
-                    </div>
-                    <h3>Late Fees & Charges</h3>
-                </div>
-                
-                <div class="coverage-table">
-                    <div class="coverage-row">
-                        <span class="coverage-type">Late Fee (after 10th of month)</span>
-                        <span class="coverage-value">$40.00</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Bounced Check Fee</span>
-                        <span class="coverage-value">$35.00</span>
-                        <span class="coverage-note">Plus late charges if applicable</span>
-                    </div>
-                </div>
-                
-                <div class="support-options" style="margin-top: 20px;">
-                    <a href="https://www.clickpay.com/help" target="_blank" class="support-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                            <line x1="12" y1="17" x2="12.01" y2="17"/>
-                        </svg>
-                        <span>ClickPay Help Center</span>
-                    </a>
-                    <a href="tel:1-800-533-7901" class="support-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        <span>1-800-533-7901 (opt 1)</span>
-                    </a>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
+        <div class="guides-still__paths">
+          <a href="forms.html" class="guides-still__path">
+            <span class="guides-still__path-num">01</span>
+            <span class="guides-still__path-body">
+              <span class="guides-still__path-title">Resident forms</span>
+              <span class="guides-still__path-meta">forms.html · pet registration, alterations, COI, sublet</span>
+            </span>
+            <span class="guides-still__path-arrow" aria-hidden="true">
+              <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+            </span>
+          </a>
 
-<!-- MOVE-IN/MOVE-OUT & DELIVERIES SECTION -->
-<section class="guide-section alt-bg" id="moves">
-    <div class="section-container">
-        
-        <div class="guide-header" data-animate>
-            <div class="header-icon-wrapper">
-                <div class="icon-glow"></div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="1" y="3" width="15" height="13" rx="2"/>
-                    <circle cx="5.5" cy="18.5" r="2.5"/>
-                    <circle cx="13.5" cy="18.5" r="2.5"/>
-                    <path d="M16 8h4l3 3v5h-3"/>
-                </svg>
-            </div>
-            <div class="header-content">
-                <span class="section-number">02</span>
-                <h2 class="section-title">Moves & Deliveries</h2>
-                <p class="section-desc">Requirements for all move-ins, move-outs, and large deliveries</p>
-            </div>
-        </div>
-        
-        <div class="guide-content-grid">
-            
-            <!-- Requirements Overview -->
-            <div class="guide-card featured" data-animate data-delay="100">
-                <div class="card-badge alert">Required Documents</div>
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M9 11l3 3L22 4"/>
-                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                        </svg>
-                    </div>
-                    <h3>What You Need</h3>
-                </div>
-                <p class="card-desc">For any Delivery, Move-In, or Move-Out, building management requires the following:</p>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span><strong>$500 Retainer Deposit</strong> (check or money order) payable to Park City 3 & 4 Apartments, Inc.</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span><strong>Certificate of Insurance (COI)</strong> from the store, delivery, or moving company</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>If moving yourself: Copy of your current <strong>Insurance Policy</strong></span>
-                    </li>
-                </ul>
-                
-                <div class="timeline-notice">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                    <span>Once documents are received, a <strong>Move-In/Move-Out/Delivery Permit</strong> will be issued the day before</span>
-                </div>
-            </div>
-            
-            <!-- Schedule & Hours -->
-            <div class="guide-card" data-animate data-delay="200">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                    </div>
-                    <h3>Schedule & Hours</h3>
-                </div>
-                
-                <div class="coverage-table">
-                    <div class="coverage-row highlight">
-                        <span class="coverage-type">Permitted Days & Hours</span>
-                        <span class="coverage-value">Mon-Fri, 8:30AM - 4:30PM</span>
-                        <span class="coverage-note">Excluding legal holidays</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Schedule in Advance</span>
-                        <span class="coverage-value">Minimum 1 business day</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Entrance Required</span>
-                        <span class="coverage-value">Basement/Service Only</span>
-                        <span class="coverage-note">All heavy items must use service entrance</span>
-                    </div>
-                </div>
-                
-                <div class="address-note" style="margin-top: 20px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span>The padded elevator must be used for all moves and deliveries. Non-compliance results in a <strong>$500 fine</strong>.</span>
-                </div>
-            </div>
-            
-            <!-- Deposit Info -->
-            <div class="guide-card" data-animate data-delay="300">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <line x1="12" y1="1" x2="12" y2="23"/>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
-                    </div>
-                    <h3>$500 Retainer Deposit</h3>
-                </div>
-                <p class="card-desc">The deposit protects against any damage during the move or delivery.</p>
-                
-                <div class="insured-list">
-                    <div class="insured-item">
-                        <span class="insured-number">✓</span>
-                        <div class="insured-content">
-                            <strong>Refundable</strong>
-                            <span>Returned after successful completion with no damage to building or elevator</span>
-                        </div>
-                    </div>
-                    <div class="insured-item">
-                        <span class="insured-number">$</span>
-                        <div class="insured-content">
-                            <strong>Make Payable To</strong>
-                            <span>Park City 3 & 4 Apartments, Inc.</span>
-                        </div>
-                    </div>
-                    <div class="insured-item">
-                        <span class="insured-number">!</span>
-                        <div class="insured-content">
-                            <strong>Accepted Forms</strong>
-                            <span>Certified check, bank check, or money order</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- COI Requirements for Moves -->
-            <div class="guide-card" data-animate data-delay="400">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <h3>COI for Moving Companies</h3>
-                </div>
-                <p class="card-desc">Your moving/delivery company must provide a Certificate of Insurance with:</p>
-                
-                <div class="coverage-table">
-                    <div class="coverage-row">
-                        <span class="coverage-type">Liability Insurance</span>
-                        <span class="coverage-value">$1,000,000</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Automobile Insurance</span>
-                        <span class="coverage-value">$1,000,000</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Workers Compensation</span>
-                        <span class="coverage-value">Required</span>
-                    </div>
-                </div>
-                
-                <a href="#coi" class="card-cta" style="margin-top: 20px;">
-                    <span>Full COI Requirements</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                </a>
-            </div>
-            
-        </div>
-    </div>
-</section>
+          <a href="faq.html" class="guides-still__path">
+            <span class="guides-still__path-num">02</span>
+            <span class="guides-still__path-body">
+              <span class="guides-still__path-title">Frequently asked questions</span>
+              <span class="guides-still__path-meta">faq.html · plain answers, quietly given</span>
+            </span>
+            <span class="guides-still__path-arrow" aria-hidden="true">
+              <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+            </span>
+          </a>
 
-<!-- INSURANCE REQUIREMENTS SECTION -->
-<section class="guide-section" id="insurance">
-    <div class="section-container">
-        
-        <div class="guide-header" data-animate>
-            <div class="header-icon-wrapper">
-                <div class="icon-glow"></div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-            </div>
-            <div class="header-content">
-                <span class="section-number">03</span>
-                <h2 class="section-title">Insurance Requirements</h2>
-                <p class="section-desc">Required coverage for all shareholders and sub-tenants at Park City 3&4</p>
-            </div>
+          <a href="contact.html" class="guides-still__path">
+            <span class="guides-still__path-num">03</span>
+            <span class="guides-still__path-body">
+              <span class="guides-still__path-title">Write to the office</span>
+              <span class="guides-still__path-meta">contact.html · response within one business day</span>
+            </span>
+            <span class="guides-still__path-arrow" aria-hidden="true">
+              <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+            </span>
+          </a>
         </div>
-        
-        <div class="insurance-grid">
-            
-            <!-- Requirements Overview -->
-            <div class="insurance-overview" data-animate data-delay="100">
-                <div class="overview-header">
-                    <h3>Coverage Requirements</h3>
-                    <p>All shareholders must maintain a Homeowner's Insurance Policy for the entire time they own their apartment. Sub-tenants must carry Renter's Insurance for their entire lease period.</p>
-                </div>
-                
-                <div class="coverage-requirements">
-                    <div class="requirement-item">
-                        <div class="requirement-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                <polyline points="9 12 11 14 15 10"/>
-                            </svg>
-                        </div>
-                        <div class="requirement-content">
-                            <span class="requirement-label">Liability Coverage</span>
-                            <span class="requirement-amount">$300,000</span>
-                            <span class="requirement-note">Minimum required</span>
-                        </div>
-                    </div>
-                    
-                    <div class="requirement-item">
-                        <div class="requirement-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                                <line x1="3" y1="9" x2="21" y2="9"/>
-                                <line x1="9" y1="21" x2="9" y2="9"/>
-                            </svg>
-                        </div>
-                        <div class="requirement-content">
-                            <span class="requirement-label">Personal Property</span>
-                            <span class="requirement-amount">$25,000</span>
-                            <span class="requirement-note">Minimum required</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Additional Insured Parties -->
-            <div class="guide-card insured-parties-card" data-animate data-delay="200">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3>Additional Insured Parties</h3>
-                </div>
-                <p class="card-desc">Your policy must list the following as additional insured:</p>
-                
-                <div class="insured-list">
-                    <div class="insured-item">
-                        <span class="insured-number">1</span>
-                        <div class="insured-content">
-                            <strong>Park City 3 & 4 Apartments Inc.</strong>
-                            <span>Including the Board of Directors</span>
-                            <address>C/O AKAM, 99 Park Ave, 14th Floor, New York, NY 10016</address>
-                        </div>
-                    </div>
-                    <div class="insured-item">
-                        <span class="insured-number">2</span>
-                        <div class="insured-content">
-                            <strong>AKAM Associates, Inc.</strong>
-                            <address>99 Park Avenue, 14th Floor, New York, NY 10016</address>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Submit Insurance -->
-            <div class="guide-card submit-card" data-animate data-delay="300">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="17 8 12 3 7 8"/>
-                            <line x1="12" y1="3" x2="12" y2="15"/>
-                        </svg>
-                    </div>
-                    <h3>Submit Your Policy</h3>
-                </div>
-                <p class="card-desc">Please provide a current copy of your insurance policy to the Management Office.</p>
-                
-                <div class="submit-options">
-                    <a href="mailto:Parkcity3and4@akam.com" class="submit-option">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        <div class="option-content">
-                            <span class="option-label">Email To</span>
-                            <span class="option-value">Parkcity3and4@akam.com</span>
-                        </div>
-                    </a>
-                    <div class="submit-option">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                        <div class="option-content">
-                            <span class="option-label">In Person</span>
-                            <span class="option-value">Management Office</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
 
-<!-- CERTIFICATE OF INSURANCE SECTION -->
-<section class="guide-section alt-bg" id="coi">
-    <div class="section-container">
-        
-        <div class="guide-header" data-animate>
-            <div class="header-icon-wrapper">
-                <div class="icon-glow"></div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                </svg>
-            </div>
-            <div class="header-content">
-                <span class="section-number">04</span>
-                <h2 class="section-title">Certificate of Insurance</h2>
-                <p class="section-desc">Required documentation for all contractors, deliveries, and moves</p>
-            </div>
+        <div class="guides-still__direct">
+          <span>Or, more directly —</span>
+          <a href="tel:5551234567">(555) 123-4567</a>
+          <span class="guides-still__direct-dot">·</span>
+          <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>
         </div>
-        
-        <div class="coi-grid">
-            
-            <!-- When Required -->
-            <div class="guide-card when-required" data-animate data-delay="100">
-                <div class="card-badge alert">Required</div>
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="8" x2="12" y2="12"/>
-                            <line x1="12" y1="16" x2="12.01" y2="16"/>
-                        </svg>
-                    </div>
-                    <h3>When is a COI Required?</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>All work being done in an apartment</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>All moves (in/out)</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Large deliveries requiring service elevator</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Any contractor entering the building</span>
-                    </li>
-                </ul>
-                
-                <div class="timeline-notice">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                    <span>COI must be received at least <strong>2 business days</strong> in advance</span>
-                </div>
-            </div>
-            
-            <!-- Coverage Limits -->
-            <div class="guide-card coverage-limits" data-animate data-delay="200">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <h3>Required Coverage Limits</h3>
-                </div>
-                
-                <div class="coverage-table">
-                    <div class="coverage-row">
-                        <span class="coverage-type">Liability Insurance</span>
-                        <span class="coverage-value">$1,000,000</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Product & Completed Operations</span>
-                        <span class="coverage-value">$1,000,000</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Automobile Insurance</span>
-                        <span class="coverage-value">$1,000,000</span>
-                        <span class="coverage-note">Commercial Auto or Hired & Non-Owned</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Umbrella Liability</span>
-                        <span class="coverage-value">$5,000,000</span>
-                        <span class="coverage-note">Adjustable based on work scope</span>
-                    </div>
-                    <div class="coverage-row highlight">
-                        <span class="coverage-type">Workers Compensation</span>
-                        <span class="coverage-value">Required</span>
-                        <span class="coverage-note">Proof must be included</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Certificate Holder Info -->
-            <div class="guide-card cert-holder" data-animate data-delay="300">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="8.5" cy="7" r="4"/>
-                            <line x1="20" y1="8" x2="20" y2="14"/>
-                            <line x1="23" y1="11" x2="17" y2="11"/>
-                        </svg>
-                    </div>
-                    <h3>Certificate Holder</h3>
-                </div>
-                <p class="card-desc">All certificates must list the following as certificate holder:</p>
-                
-                <div class="holder-box">
-                    <div class="holder-content">
-                        <strong>Park City 3 & 4 Apartments Inc.</strong>
-                        <span>C/O AKAM</span>
-                        <address>99 Park Ave, 14th Floor<br>New York, NY 10016</address>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Additional Insured for COI -->
-            <div class="guide-card additional-insured-coi" data-animate data-delay="400">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3>Additional Insured Parties</h3>
-                </div>
-                <p class="card-desc">On General Liability and Umbrella Policies:</p>
-                
-                <div class="additional-list">
-                    <div class="additional-item">
-                        <span class="item-bullet"></span>
-                        <div class="item-content">
-                            <strong>Park City 3 & 4 Apartments Inc.</strong>
-                            <span>Including the Board of Directors, C/O AKAM, 99 Park Ave, 14th Floor, New York, NY 10016</span>
-                        </div>
-                    </div>
-                    <div class="additional-item">
-                        <span class="item-bullet"></span>
-                        <div class="item-content">
-                            <strong>AKAM Associates, Inc.</strong>
-                            <span>99 Park Avenue, 14th Floor, New York, NY 10016</span>
-                        </div>
-                    </div>
-                    <div class="additional-item">
-                        <span class="item-bullet"></span>
-                        <div class="item-content">
-                            <strong>Resident Name, Unit #, Property Address</strong>
-                            <span>(If work is for tenant)</span>
-                        </div>
-                    </div>
-                    <div class="additional-item">
-                        <span class="item-bullet"></span>
-                        <div class="item-content">
-                            <strong>Date of Service</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- How to Submit COI -->
-            <div class="guide-card submit-coi" data-animate data-delay="500">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="17 8 12 3 7 8"/>
-                            <line x1="12" y1="3" x2="12" y2="15"/>
-                        </svg>
-                    </div>
-                    <h3>How to Submit</h3>
-                </div>
-                <p class="card-desc">Email the COI along with a cover sheet including:</p>
-                
-                <ul class="submit-checklist">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <polyline points="9 11 12 14 22 4"/>
-                        </svg>
-                        <span>Unit owner's name</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <polyline points="9 11 12 14 22 4"/>
-                        </svg>
-                        <span>Unit number</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <polyline points="9 11 12 14 22 4"/>
-                        </svg>
-                        <span>Description of work/delivery/move</span>
-                    </li>
-                </ul>
-                
-                <div class="email-options">
-                    <a href="mailto:Parkcity3and4@akam.com" class="email-btn primary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        <span>Parkcity3and4@akam.com</span>
-                    </a>
-                    <a href="mailto:hkhan@akam.com" class="email-btn secondary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        <span>hkhan@akam.com</span>
-                    </a>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- ELECTRIC VEHICLES POLICY SECTION -->
-<section class="guide-section" id="evehicles">
-    <div class="section-container">
-        
-        <div class="guide-header" data-animate>
-            <div class="header-icon-wrapper" style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);">
-                <div class="icon-glow"></div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
-                </svg>
-            </div>
-            <div class="header-content">
-                <span class="section-number">05</span>
-                <h2 class="section-title">Electric Vehicles Policy</h2>
-                <p class="section-desc">Important safety policy regarding E-bikes and E-scooters</p>
-            </div>
-        </div>
-        
-        <div class="guide-content-grid">
-            
-            <!-- Ban Notice -->
-            <div class="guide-card featured" data-animate data-delay="100" style="border-color: rgba(220, 38, 38, 0.3);">
-                <div class="card-badge" style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);">Safety Policy</div>
-                <div class="card-header">
-                    <div class="card-icon" style="background: rgba(220, 38, 38, 0.1); border-color: rgba(220, 38, 38, 0.25);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.5">
-                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                            <line x1="12" y1="9" x2="12" y2="13"/>
-                            <line x1="12" y1="17" x2="12.01" y2="17"/>
-                        </svg>
-                    </div>
-                    <h3>E-Bikes & E-Scooters Are Banned</h3>
-                </div>
-                <p class="card-desc">Due to the frequency of fires involving electric bicycles and electric scooters, and to ensure the safety and wellbeing of all residents and visitors, <strong>E-bikes and E-scooters are banned on all areas of Park City 3&4 Apartments</strong>.</p>
-                
-                <div class="address-note" style="background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span style="color: #991b1b;">This policy was approved by the Board of Directors and incorporates communications from November 23, 2022 and June 20, 2023.</span>
-                </div>
-            </div>
-            
-            <!-- What's Banned -->
-            <div class="guide-card" data-animate data-delay="200">
-                <div class="card-header">
-                    <div class="card-icon" style="background: rgba(220, 38, 38, 0.1); border-color: rgba(220, 38, 38, 0.25);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
-                        </svg>
-                    </div>
-                    <h3>The Ban Includes</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>Storing and charging the battery</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>All coop outdoor spaces (parking garage, walkways, catwalks)</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>Inside residential buildings (common areas, hallways, elevators, apartments)</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Guest Policy -->
-            <div class="guide-card" data-animate data-delay="300">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <line x1="19" y1="8" x2="19" y2="14"/>
-                            <line x1="22" y1="11" x2="16" y2="11"/>
-                        </svg>
-                    </div>
-                    <h3>Guest Policy</h3>
-                </div>
-                <p class="card-desc">Guests of shareholders who bring E-bikes or E-scooters will not be permitted to leave them anywhere on the premises and <strong>will be refused entry</strong> through the lobby entrances or garages for any duration.</p>
-            </div>
-            
-            <!-- Violation Penalties -->
-            <div class="guide-card" data-animate data-delay="400">
-                <div class="card-header">
-                    <div class="card-icon warning">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <line x1="12" y1="1" x2="12" y2="23"/>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
-                    </div>
-                    <h3>Violation Penalties</h3>
-                </div>
-                
-                <div class="coverage-table">
-                    <div class="coverage-row highlight">
-                        <span class="coverage-type">Fine per Infringement</span>
-                        <span class="coverage-value">$150.00</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Legal Action</span>
-                        <span class="coverage-value">May Apply</span>
-                        <span class="coverage-note">All costs are the shareholder's responsibility</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Damage Liability</span>
-                        <span class="coverage-value">Full Responsibility</span>
-                        <span class="coverage-note">Shareholder liable for all damage caused</span>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
+  </main>
 
-<!-- HOUSE RULES SECTION -->
-<section class="guide-section alt-bg" id="house-rules">
-    <div class="section-container">
-        
-        <div class="guide-header" data-animate>
-            <div class="header-icon-wrapper">
-                <div class="icon-glow"></div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                </svg>
-            </div>
-            <div class="header-content">
-                <span class="section-number">06</span>
-                <h2 class="section-title">House Rules</h2>
-                <p class="section-desc">Amended House Rules adopted by the Board of Directors (Revised 1/1/2015)</p>
-            </div>
-        </div>
-        
-        <div class="guide-content-grid">
-            
-            <!-- Occupancy Guidelines -->
-            <div class="guide-card" data-animate data-delay="100">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3>Occupancy Guidelines</h3>
-                </div>
-                
-                <div class="coverage-table">
-                    <div class="coverage-row">
-                        <span class="coverage-type">Studio</span>
-                        <span class="coverage-value">2 persons</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">1 Bedroom</span>
-                        <span class="coverage-value">3 persons</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">2 Bedroom</span>
-                        <span class="coverage-value">4 persons</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">3 Bedroom</span>
-                        <span class="coverage-value">5 persons</span>
-                    </div>
-                </div>
-                
-                <div class="address-note" style="margin-top: 16px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span>Guests may stay no more than 30 days. Management must be notified in writing. Violation fine: <strong>$1,000/month</strong></span>
-                </div>
-            </div>
-            
-            <!-- Quiet Hours & Noise -->
-            <div class="guide-card" data-animate data-delay="200">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                            <line x1="23" y1="9" x2="17" y2="15"/>
-                            <line x1="17" y1="9" x2="23" y2="15"/>
-                        </svg>
-                    </div>
-                    <h3>Quiet Hours & Noise</h3>
-                </div>
-                
-                <div class="coverage-table">
-                    <div class="coverage-row highlight">
-                        <span class="coverage-type">Weekday Quiet Hours</span>
-                        <span class="coverage-value">10:30 PM - 8:30 AM</span>
-                    </div>
-                    <div class="coverage-row highlight">
-                        <span class="coverage-type">Weekend Quiet Hours</span>
-                        <span class="coverage-value">12:00 AM - 8:30 AM</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Floor Coverage Required</span>
-                        <span class="coverage-value">80% minimum</span>
-                        <span class="coverage-note">Rugs/carpeting except kitchen & bath</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Alterations & Renovations -->
-            <div class="guide-card" data-animate data-delay="300">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
-                    </div>
-                    <h3>Alterations & Renovations</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Must file work plans with Management Office</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Board approval required before starting</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Contractor's proof of insurance required</span>
-                    </li>
-                </ul>
-                
-                <div class="coverage-table" style="margin-top: 16px;">
-                    <div class="coverage-row">
-                        <span class="coverage-type">Refundable Deposit</span>
-                        <span class="coverage-value">$2,500</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Daily Fee</span>
-                        <span class="coverage-value">$20/day</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Permit Duration</span>
-                        <span class="coverage-value">3 weeks max</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Work Hours</span>
-                        <span class="coverage-value">Mon-Fri, 8:30AM - 4:30PM</span>
-                    </div>
-                </div>
-                
-                <div class="address-note" style="margin-top: 16px; background: rgba(220, 38, 38, 0.08);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span style="color: #991b1b;">Non-compliance fine: <strong>$1,000 - NO EXCEPTIONS</strong></span>
-                </div>
-            </div>
-            
-            <!-- Appliances -->
-            <div class="guide-card" data-animate data-delay="400">
-                <div class="card-header">
-                    <div class="card-icon" style="background: rgba(220, 38, 38, 0.1); border-color: rgba(220, 38, 38, 0.25);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
-                        </svg>
-                    </div>
-                    <h3>Prohibited Appliances</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span><strong>Washing machines</strong> and <strong>clothes dryers</strong> in apartments</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span><strong>Jacuzzis</strong> and <strong>hot tubs</strong></span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span><strong>Charcoal or gas grills</strong> on terraces (fire code violation)</span>
-                    </li>
-                </ul>
-                
-                <div class="address-note" style="margin-top: 16px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span>Window A/C units must be registered with Management Office and have approved brackets. Fine: <strong>$1,000</strong></span>
-                </div>
-            </div>
-            
-            <!-- Animals -->
-            <div class="guide-card" data-animate data-delay="500">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                        </svg>
-                    </div>
-                    <h3>Animals</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Dogs permitted with <strong>written Board approval</strong> (since July 2004)</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Must have proper licensing and health certification</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Dogs must be on leash and use basement/service entrance</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span><strong>No exotic animals or birds permitted</strong></span>
-                    </li>
-                </ul>
-                
-                <div class="coverage-table" style="margin-top: 16px;">
-                    <div class="coverage-row">
-                        <span class="coverage-type">First Violation</span>
-                        <span class="coverage-value">$250</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Each Additional</span>
-                        <span class="coverage-value">$500</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Parking -->
-            <div class="guide-card" data-animate data-delay="600">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="1" y="3" width="15" height="13" rx="2"/>
-                            <circle cx="5.5" cy="18.5" r="2.5"/>
-                            <circle cx="13.5" cy="18.5" r="2.5"/>
-                        </svg>
-                    </div>
-                    <h3>Parking Areas</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Spaces for resident shareholders only (current on maintenance)</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Register vehicle with Management (make, model, color, plate)</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Valid vehicle registration and inspection sticker required</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>No vehicle washing/repairs in garage ($250 fine)</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>No smoking in garage (NYC law - $250 fine)</span>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    </div>
-</section>
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="foot">
 
-<!-- SUBLET POLICY SECTION -->
-<section class="guide-section" id="sublet">
-    <div class="section-container">
-        
-        <div class="guide-header" data-animate>
-            <div class="header-icon-wrapper">
-                <div class="icon-glow"></div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-            </div>
-            <div class="header-content">
-                <span class="section-number">07</span>
-                <h2 class="section-title">Sublet Policy</h2>
-                <p class="section-desc">Guidelines for shareholders wishing to sublet their apartment</p>
-            </div>
-        </div>
-        
-        <div class="guide-content-grid">
-            
-            <!-- Eligibility -->
-            <div class="guide-card featured" data-animate data-delay="100">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                    </div>
-                    <h3>Eligibility Requirements</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Must <strong>own and reside</strong> in apartment for minimum <strong>2 years</strong></span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Sub-tenants offered <strong>1-year lease</strong> only</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Subject to <strong>interview and written Board approval</strong></span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Renewals require same approval process before expiry</span>
-                    </li>
-                </ul>
-                
-                <div class="address-note" style="margin-top: 16px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span><strong>Income Requirement:</strong> Sub-tenants must show annual income of 3.5× their annual rent</span>
-                </div>
-            </div>
-            
-            <!-- Surcharge Fees -->
-            <div class="guide-card" data-animate data-delay="200">
-                <div class="card-badge alert">Important</div>
-                <div class="card-header">
-                    <div class="card-icon warning">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <line x1="12" y1="1" x2="12" y2="23"/>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
-                    </div>
-                    <h3>Sublet Surcharge Fees</h3>
-                </div>
-                <p class="card-desc">Shareholders are charged a surcharge (percentage of maintenance fee) based on how long the unit has been subleased:</p>
-                
-                <div class="coverage-table">
-                    <div class="coverage-row">
-                        <span class="coverage-type">Year 1-3 of sublease</span>
-                        <span class="coverage-value">15%</span>
-                        <span class="coverage-note">of monthly maintenance</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Year 4 of sublease</span>
-                        <span class="coverage-value">30%</span>
-                        <span class="coverage-note">of monthly maintenance</span>
-                    </div>
-                    <div class="coverage-row">
-                        <span class="coverage-type">Year 5 of sublease</span>
-                        <span class="coverage-value">50%</span>
-                        <span class="coverage-note">of monthly maintenance</span>
-                    </div>
-                    <div class="coverage-row highlight">
-                        <span class="coverage-type">Year 6+ of sublease</span>
-                        <span class="coverage-value">100%</span>
-                        <span class="coverage-note">of monthly maintenance</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Additional Rules -->
-            <div class="guide-card" data-animate data-delay="300">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="16" x2="12" y2="12"/>
-                            <line x1="12" y1="8" x2="12.01" y2="8"/>
-                        </svg>
-                    </div>
-                    <h3>Important Notes</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>All apartments must be inspected by Management before subletting</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Notify Management in writing when subtenant moves out to stop surcharge</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Policy may be amended at any time by the Board of Directors</span>
-                    </li>
-                </ul>
-                
-                <div class="coverage-table" style="margin-top: 16px;">
-                    <div class="coverage-row highlight" style="background: rgba(220, 38, 38, 0.08);">
-                        <span class="coverage-type">Non-Renewal Compliance Fine</span>
-                        <span class="coverage-value">$500/month</span>
-                        <span class="coverage-note">Until subtenant is re-certified</span>
-                    </div>
-                    <div class="coverage-row highlight" style="background: rgba(220, 38, 38, 0.08);">
-                        <span class="coverage-type">Illegal Sublet Fine</span>
-                        <span class="coverage-value">$1,000 + $500/month</span>
-                        <span class="coverage-note">Plus legal fees</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact for Sublet -->
-            <div class="guide-card" data-animate data-delay="400">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                        </svg>
-                    </div>
-                    <h3>Apply for Sublet</h3>
-                </div>
-                <p class="card-desc">To obtain a Sublet Application, please contact the Management Office.</p>
-                
-                <div class="submit-options">
-                    <a href="mailto:Parkcity3and4@akam.com" class="submit-option">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        <div class="option-content">
-                            <span class="option-label">Email</span>
-                            <span class="option-value">Parkcity3and4@akam.com</span>
-                        </div>
-                    </a>
-                    <a href="tel:718-897-2000" class="submit-option">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        <div class="option-content">
-                            <span class="option-label">Phone</span>
-                            <span class="option-value">(718) 897-2000</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-        </div>
+    <div class="foot__statement">
+      <span class="foot__statement-eyebrow">Park City 3 &amp; 4 Apartments, Inc.</span>
+      <h2 class="foot__statement-head">
+        A residence<br/>
+        <em class="serif-italic">in Rego Park.</em>
+      </h2>
+      <p class="foot__statement-meta">Established 1955 · Six buildings · Fourteen stories each · Private terraces throughout.</p>
     </div>
-</section>
 
-<!-- TAX ABATEMENT SECTION -->
-<section class="guide-section alt-bg" id="tax-abatement">
-    <div class="section-container">
-        
-        <div class="guide-header" data-animate>
-            <div class="header-icon-wrapper">
-                <div class="icon-glow"></div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <line x1="12" y1="1" x2="12" y2="23"/>
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                </svg>
-            </div>
-            <div class="header-content">
-                <span class="section-number">08</span>
-                <h2 class="section-title">Tax Abatement</h2>
-                <p class="section-desc">Coop-Condo Property Tax Abatement information for shareholders</p>
-            </div>
-        </div>
-        
-        <div class="guide-content-grid">
-            
-            <!-- What is it -->
-            <div class="guide-card featured" data-animate data-delay="100">
-                <div class="card-badge">Save Money</div>
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                            <line x1="12" y1="17" x2="12.01" y2="17"/>
-                        </svg>
-                    </div>
-                    <h3>What is the Coop-Condo Tax Abatement?</h3>
-                </div>
-                <p class="card-desc">The Coop-Condo Property Tax Abatement is offered to NYC residential property owners who use their apartment as their <strong>primary residence</strong> in order to receive credit or reduce their property tax bill.</p>
-                
-                <div class="address-note" style="margin-top: 16px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span>The credit is typically applied to the <strong>June billing statement</strong> (final month of the tax year).</span>
-                </div>
-            </div>
-            
-            <!-- Who needs to fill out PRV -->
-            <div class="guide-card" data-animate data-delay="200">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                        </svg>
-                    </div>
-                    <h3>Primary Residence Verification (PRV)</h3>
-                </div>
-                <p class="card-desc">You only need to fill out the PRV form if:</p>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Your residency status <strong>changed</strong> from January 6, 2024 to January 5, 2025</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>You <strong>purchased your unit</strong> within that time frame</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        <span>Ownership was <strong>transferred to a trust</strong> or new owner added</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Who is Disqualified -->
-            <div class="guide-card" data-animate data-delay="300">
-                <div class="card-header">
-                    <div class="card-icon" style="background: rgba(220, 38, 38, 0.1); border-color: rgba(220, 38, 38, 0.25);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
-                        </svg>
-                    </div>
-                    <h3>Who is Disqualified?</h3>
-                </div>
-                
-                <ul class="requirements-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>Investor-owned apartments (including sponsor units)</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>LLCs, Corporations, and Partnerships</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>Owners of 4+ apartments in same building (unless legally combined)</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                        <span>Units receiving J-51, 420c, 421a, 421b, 421g exemptions</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Other Abatements -->
-            <div class="guide-card" data-animate data-delay="400">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                        </svg>
-                    </div>
-                    <h3>Other Available Exemptions</h3>
-                </div>
-                <p class="card-desc">NYC & NYS offer additional exemptions. Apply directly with the City or State:</p>
-                
-                <div class="support-options">
-                    <a href="https://www.tax.ny.gov/star/" target="_blank" class="support-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                        </svg>
-                        <span>NYS STAR Credit</span>
-                    </a>
-                    <a href="https://www.nyc.gov/site/finance/property/landlords-sche.page" target="_blank" class="support-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                        </svg>
-                        <span>Senior Citizens' Exemption (SCHE)</span>
-                    </a>
-                    <a href="https://www.nyc.gov/site/finance/property/landlords-dhe.page" target="_blank" class="support-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                            <line x1="9" y1="9" x2="9.01" y2="9"/>
-                            <line x1="15" y1="9" x2="15.01" y2="9"/>
-                        </svg>
-                        <span>Disabled Homeowners' Exemption (DHE)</span>
-                    </a>
-                    <a href="https://www.nyc.gov/site/finance/property/landlords-veterans.page" target="_blank" class="support-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                        <span>Veterans Exemption</span>
-                    </a>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
+    <div class="foot__rule"></div>
 
-<!-- CONTACT MANAGEMENT SECTION -->
-<section class="management-contact-section">
-    <div class="section-container">
-        <div class="management-card" data-animate>
-            <div class="management-header">
-                <div class="management-logo">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </div>
-                <div class="management-info">
-                    <h3>Park City 3 & 4 Apartments</h3>
-                    <span class="managed-by">Managed by AKAM Associates, Inc.</span>
-                </div>
-            </div>
-            
-            <div class="management-details">
-                <div class="detail-item">
-                    <span class="detail-label">On-site Property Manager</span>
-                    <span class="detail-value">David Javidan</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Phone</span>
-                    <a href="tel:718-897-2000" class="detail-value link">(718) 897-2000</a>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Address</span>
-                    <span class="detail-value">97-07 63rd Road, Mgmt Office<br>Rego Park, NY 11374</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Office Hours</span>
-                    <span class="detail-value">Mon-Fri: 8:00am - 4:00pm</span>
-                </div>
-            </div>
-            
-            <div class="management-actions">
-                <a href="mailto:Parkcity3and4@akam.com" class="mgmt-btn primary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                    <span>Email Management</span>
-                </a>
-                <a href="tel:718-897-2000" class="mgmt-btn secondary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                    <span>Call Office</span>
-                </a>
-            </div>
-        </div>
+    <div class="foot__addresses-block">
+      <span class="foot__block-label">The Six Buildings</span>
+      <ul class="foot__addresses-grid">
+        <li><span>01</span>97-07 63rd Road</li>
+        <li><span>02</span>97-10 62nd Drive</li>
+        <li><span>03</span>97-37 63rd Road</li>
+        <li><span>04</span>97-40 62nd Drive</li>
+        <li><span>05</span>98-05 63rd Road</li>
+        <li><span>06</span>98-20 62nd Drive</li>
+      </ul>
     </div>
-</section>
 
-<!-- FOOTER -->
-<footer class="premium-footer">
-    <div class="footer-accent-line"></div>
-    
-    <div class="footer-main">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand-col">
-                    <a href="index.html" class="footer-logo-link">
-                        <img src="logo.png" alt="Park City 3&4" class="footer-logo">
-                    </a>
-                    <p class="footer-brand-text">
-                        A perfect community to call home. Experience refined living with premium amenities in the heart of Queens.
-                    </p>
-                    <div class="footer-socials">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-links-col">
-                    <h4 class="footer-col-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="amenities.html">Amenities</a></li>
-                        <li><a href="community.html">Resident Forms</a></li>
-                        <li><a href="building-guides.html">Building Guides</a></li>
-                        <li><a href="#faqs">FAQs</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links-col">
-                    <h4 class="footer-col-title">Residents</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://www.ClickPay.com/AKAM" target="_blank">ClickPay Portal</a></li>
-                        <li><a href="#">Pay Rent Online</a></li>
-                        <li><a href="#">Maintenance Request</a></li>
-                        <li><a href="#">Community Guidelines</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact-col">
-                    <h4 class="footer-col-title">Contact Us</h4>
-                    <div class="footer-contact-items">
-                        <a href="tel:718-897-2000" class="footer-contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Phone</span>
-                                <span class="contact-value">(718) 897-2000</span>
-                            </div>
-                        </a>
-                        <a href="mailto:Parkcity3and4@akam.com" class="footer-contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                    <polyline points="22,6 12,13 2,6"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">Parkcity3and4@akam.com</span>
-                            </div>
-                        </a>
-                        <div class="footer-contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Address</span>
-                                <span class="contact-value">Rego Park, NY 11374</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <div class="footer-container">
-            <div class="footer-bottom-inner">
-                <p class="footer-copyright">© 2026 Park City 3&4 Apartments. All rights reserved.</p>
-                <div class="footer-legal-links">
-                    <a href="#">Privacy Policy</a>
-                    <span class="legal-divider"></span>
-                    <a href="#">Terms of Service</a>
-                </div>
-                <div class="footer-back-top" id="backToTop">
-                    <span>Back to Top</span>
-                    <div class="back-top-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="18 15 12 9 6 15"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+    <div class="foot__rule"></div>
 
-<script src="script.js"></script>
-<script src="guides.js"></script>
+    <div class="foot__cols">
+      <div class="foot__col foot__col--office">
+        <h5>Management Office</h5>
+        <ul>
+          <li><a href="tel:5551234567">(555) 123-4567</a></li>
+          <li><a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a></li>
+          <li>Monday – Friday</li>
+          <li>8:00 AM – 4:00 PM</li>
+          <li>Rego Park, NY 11374</li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#philosophy">About</a></li>
+          <li><a href="index.html#residences">Buildings</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h5>Shareholders</h5>
+        <ul>
+          <li><a href="forms.html">Resident Forms</a></li>
+          <li><a href="guides.html">Building Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="#newsletters">Newsletters</a></li>
+          <li><a href="contact.html">Maintenance Request</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col foot__col--mark">
+        <img src="logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <p class="foot__akam-note">
+          Professionally managed by<br/>
+          <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <div class="foot__bottom">
+      <p class="foot__copy">© 2026 Park City 3 &amp; 4 Apartments, Inc. All rights reserved.</p>
+
+      <ul class="foot__legal">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+
+      <a href="https://elanstechworld.com" target="_blank" rel="noopener" class="foot__credit" aria-label="Designed and built by Elan's Tech World">
+        <span class="foot__credit-label">Designed &amp; built by</span>
+        <span class="foot__credit-mark">
+          <img src="https://www.elanstechworld.com/assets/images/Elanslogo.jpeg" alt="" class="foot__credit-logo"/>
+          <span class="foot__credit-name">Elan's Tech World</span>
+        </span>
+        <svg class="foot__credit-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <button class="foot__top-link" id="backToTop" aria-label="Back to top">
+        <span>To the top</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M7 13V1m0 0L1 7m6-6l6 6" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="guides.js" defer></script>
 </body>
 </html>
