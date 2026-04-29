@@ -1,459 +1,266 @@
-/**
- * ═══════════════════════════════════════════════════════════════
- *                    BUILDING GUIDES PAGE
- *               Animations & Interactions Controller
- * ═══════════════════════════════════════════════════════════════
- */
+/* ═══════════════════════════════════════════════════════════════
+   PARK CITY 3 & 4 — GUIDES PAGE
+   A small enhancement layer over the shared script.js.
 
-// ═══════════════════════════════════════════════════════════════
-// 🎬 SCROLL ANIMATIONS CONTROLLER
-// ═══════════════════════════════════════════════════════════════
+   Responsibilities:
+     1. Fill in per-chapter policy counts
+     2. Scroll-spy: highlight the active chapter & policy in the TOC
+     3. TOC clicks auto-open the target policy panel
+     4. Handle deep-link arrivals (guides.html#policy-3-4 etc.)
+     5. Open all panels for printing, restore after
 
-class GuidesScrollAnimations {
+   Anchor smooth-scroll, loader, nav, marquee, reveals — all handled
+   by script.js. The .guides-row accordion uses its own class so
+   script.js's FAQPreview never touches it; multiple panels can stay
+   open simultaneously.
+   ═══════════════════════════════════════════════════════════════ */
+
+(() => {
+  'use strict';
+
+  /* ──────────── UTILITIES ──────────── */
+  const $  = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  const ready = (fn) => {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  };
+
+  const NUM_WORDS = [
+    'Zero', 'One', 'Two', 'Three', 'Four', 'Five',
+    'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'
+  ];
+  const numWord = (n) => NUM_WORDS[n] || String(n);
+
+  /* ═══════════════════════════════════════════════════════════════
+     1. PER-CHAPTER POLICY COUNTS
+     Skips the newsletters chapter — it has its own static label.
+     ═══════════════════════════════════════════════════════════════ */
+  function fillChapterCounts() {
+    $$('.guides-chapter').forEach(chapter => {
+      const target = $('[data-guides-count]', chapter);
+      if (!target) return;
+
+      const count = $$('.guides-row', chapter).length;
+      if (!count) return;
+
+      target.textContent = `${numWord(count)} ${count === 1 ? 'policy' : 'policies'} in this chapter`;
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     2. SCROLL-SPY
+     Tracks which chapter and which policy the user is currently
+     reading, and highlights the matching TOC entries.
+
+     Approach: on each rAF-throttled scroll frame, find the topmost
+     section whose top is at or above a virtual trigger line near
+     the top of the viewport. That's the "active" section. Sections
+     are in document order, so we just iterate and pick the last
+     one to cross the line.
+     ═══════════════════════════════════════════════════════════════ */
+  class ScrollSpy {
     constructor() {
-        this.animatedElements = document.querySelectorAll('[data-animate]');
-        this.guideHeaders = document.querySelectorAll('.guide-header');
-        this.guideCards = document.querySelectorAll('.guide-card');
-        
-        if (this.animatedElements.length > 0) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('🎬 Guides Scroll Animations: Initializing...');
-        
-        this.setupIntersectionObserver();
-        // Card tilt effect removed
-        
-        console.log('✅ Scroll Animations: Ready');
-    }
-    
-    setupIntersectionObserver() {
-        const options = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -80px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, options);
-        
-        // Observe all animated elements
-        this.animatedElements.forEach(el => observer.observe(el));
-        this.guideHeaders.forEach(el => observer.observe(el));
-    }
-}
+      this.chapters = $$('.guides-chapter[id]').map(el => ({ id: el.id, el }));
+      this.policies = $$('.guides-row[id]').map(el => ({ id: el.id, el }));
 
-// ═══════════════════════════════════════════════════════════════
-// 🔗 SMOOTH SCROLL FOR QUICK NAV
-// ═══════════════════════════════════════════════════════════════
+      if (!this.chapters.length) return;
 
-class QuickNavController {
-    constructor() {
-        this.quickNavItems = document.querySelectorAll('.quick-nav-item');
-        
-        if (this.quickNavItems.length > 0) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('🔗 Quick Nav: Initializing...');
-        
-        this.quickNavItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = item.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 100;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        console.log('✅ Quick Nav: Ready');
-    }
-}
+      this.lastChapter = undefined;
+      this.lastPolicy = undefined;
+      this.ticking = false;
+      this.triggerY = 140; // px from viewport top — slightly below the nav
 
-// ═══════════════════════════════════════════════════════════════
-// ✨ HERO PARALLAX EFFECT
-// ═══════════════════════════════════════════════════════════════
+      this.boundRequest = this.requestUpdate.bind(this);
+      window.addEventListener('scroll', this.boundRequest, { passive: true });
+      window.addEventListener('resize', this.boundRequest, { passive: true });
 
-class HeroParallaxEffect {
-    constructor() {
-        this.hero = document.querySelector('.guides-hero');
-        this.gradient1 = document.querySelector('.hero-gradient-1');
-        this.gradient2 = document.querySelector('.hero-gradient-2');
-        
-        if (this.hero && window.innerWidth > 768) {
-            this.init();
-        }
+      // Initial run, plus another after fonts/images settle
+      this.requestUpdate();
+      window.addEventListener('load', () => this.requestUpdate(), { once: true });
     }
-    
-    init() {
-        console.log('✨ Hero Parallax: Initializing...');
-        
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    this.handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-        
-        console.log('✅ Hero Parallax: Ready');
-    }
-    
-    handleScroll() {
-        const scrollY = window.scrollY;
-        const heroHeight = this.hero.offsetHeight;
-        
-        if (scrollY < heroHeight) {
-            const parallaxAmount = scrollY * 0.3;
-            
-            if (this.gradient1) {
-                this.gradient1.style.transform = `translate(${-parallaxAmount * 0.5}px, ${parallaxAmount}px)`;
-            }
-            
-            if (this.gradient2) {
-                this.gradient2.style.transform = `translate(${parallaxAmount * 0.3}px, ${-parallaxAmount * 0.5}px)`;
-            }
-        }
-    }
-}
 
-// ═══════════════════════════════════════════════════════════════
-// 📋 COPY TO CLIPBOARD FUNCTIONALITY
-// ═══════════════════════════════════════════════════════════════
+    requestUpdate() {
+      if (this.ticking) return;
+      this.ticking = true;
+      requestAnimationFrame(() => {
+        this.update();
+        this.ticking = false;
+      });
+    }
 
-class CopyToClipboard {
-    constructor() {
-        this.copyTriggers = document.querySelectorAll('[data-copy]');
-        
-        if (this.copyTriggers.length > 0) {
-            this.init();
-        }
-    }
-    
-    init() {
-        this.copyTriggers.forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const textToCopy = trigger.getAttribute('data-copy');
-                this.copyText(textToCopy, trigger);
-            });
-        });
-    }
-    
-    async copyText(text, element) {
-        try {
-            await navigator.clipboard.writeText(text);
-            this.showFeedback(element, 'Copied!');
-        } catch (err) {
-            console.error('Failed to copy:', err);
-            this.showFeedback(element, 'Failed');
-        }
-    }
-    
-    showFeedback(element, message) {
-        const feedback = document.createElement('span');
-        feedback.className = 'copy-feedback';
-        feedback.textContent = message;
-        feedback.style.cssText = `
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 6px 12px;
-            background: #2d2520;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: 6px;
-            opacity: 0;
-            animation: feedbackPop 1.5s ease forwards;
-            pointer-events: none;
-            z-index: 1000;
-        `;
-        
-        element.style.position = 'relative';
-        element.appendChild(feedback);
-        
-        setTimeout(() => feedback.remove(), 1500);
-    }
-}
-
-// Add feedback animation
-const feedbackStyle = document.createElement('style');
-feedbackStyle.textContent = `
-    @keyframes feedbackPop {
-        0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
-        20% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        80% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-    }
-`;
-document.head.appendChild(feedbackStyle);
-
-// ═══════════════════════════════════════════════════════════════
-// 🎯 STEP COUNTER ANIMATION
-// ═══════════════════════════════════════════════════════════════
-
-class StepCounterAnimation {
-    constructor() {
-        this.stepCards = document.querySelectorAll('.steps-card');
-        
-        if (this.stepCards.length > 0) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('🎯 Step Counter: Initializing...');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animateSteps(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        
-        this.stepCards.forEach(card => observer.observe(card));
-    }
-    
-    animateSteps(card) {
-        const steps = card.querySelectorAll('.step');
-        
-        steps.forEach((step, index) => {
-            setTimeout(() => {
-                step.style.opacity = '0';
-                step.style.transform = 'translateX(-30px)';
-                
-                requestAnimationFrame(() => {
-                    step.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-                    step.style.opacity = '1';
-                    step.style.transform = 'translateX(0)';
-                });
-            }, index * 150);
-        });
-    }
-}
-
-// ═══════════════════════════════════════════════════════════════
-// 📊 COVERAGE TABLE HIGHLIGHT
-// ═══════════════════════════════════════════════════════════════
-
-class CoverageTableInteraction {
-    constructor() {
-        this.coverageRows = document.querySelectorAll('.coverage-row');
-        
-        if (this.coverageRows.length > 0) {
-            this.init();
-        }
-    }
-    
-    init() {
-        this.coverageRows.forEach(row => {
-            row.addEventListener('mouseenter', () => {
-                this.coverageRows.forEach(r => {
-                    if (r !== row) {
-                        r.style.opacity = '0.5';
-                    }
-                });
-            });
-            
-            row.addEventListener('mouseleave', () => {
-                this.coverageRows.forEach(r => {
-                    r.style.opacity = '1';
-                });
-            });
-        });
-    }
-}
-
-// ═══════════════════════════════════════════════════════════════
-// 🔝 BACK TO TOP FUNCTIONALITY
-// ═══════════════════════════════════════════════════════════════
-
-class BackToTopController {
-    constructor() {
-        this.backToTop = document.getElementById('backToTop');
-        
-        if (this.backToTop) {
-            this.init();
-        }
-    }
-    
-    init() {
-        this.backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-}
-
-// ═══════════════════════════════════════════════════════════════
-// 🏠 NAVIGATION CONTROLLER (Same as main script)
-// ═══════════════════════════════════════════════════════════════
-
-class GuidesNavigation {
-    constructor() {
-        this.nav = document.getElementById('mainNav');
-        this.navToggle = document.getElementById('navToggle');
-        this.mobileMenu = document.getElementById('mobileMenu');
-        this.menuClose = document.getElementById('menuClose');
-        this.isMenuOpen = false;
-        
-        if (this.nav) {
-            this.init();
-        }
-    }
-    
-    init() {
-        console.log('🧭 Navigation: Initialized');
-        
-        this.bindEvents();
-        this.handleScroll();
-    }
-    
-    bindEvents() {
-        if (this.navToggle) {
-            this.navToggle.addEventListener('click', () => this.toggleMobileMenu());
-        }
-        
-        if (this.menuClose) {
-            this.menuClose.addEventListener('click', () => this.closeMobileMenu());
-        }
-        
-        document.querySelectorAll('.menu-link').forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(() => this.closeMobileMenu(), 300);
-            });
-        });
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.isMenuOpen) {
-                this.closeMobileMenu();
-            }
-        });
-        
-        window.addEventListener('scroll', () => this.handleScroll());
-    }
-    
-    toggleMobileMenu() {
-        if (this.isMenuOpen) {
-            this.closeMobileMenu();
+    update() {
+      let activeChapter = null;
+      for (const { id, el } of this.chapters) {
+        if (el.getBoundingClientRect().top <= this.triggerY) {
+          activeChapter = id;
         } else {
-            this.openMobileMenu();
+          break;
         }
-    }
-    
-    openMobileMenu() {
-        this.isMenuOpen = true;
-        this.mobileMenu.classList.add('active');
-        this.navToggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    closeMobileMenu() {
-        this.isMenuOpen = false;
-        this.mobileMenu.classList.remove('active');
-        this.navToggle.classList.remove('active');
-        
-        setTimeout(() => {
-            document.body.style.overflow = '';
-        }, 400);
-    }
-    
-    handleScroll() {
-        const scrollY = window.scrollY;
-        
-        if (scrollY > 50) {
-            this.nav.classList.add('scrolled');
+      }
+
+      let activePolicy = null;
+      for (const { id, el } of this.policies) {
+        if (el.getBoundingClientRect().top <= this.triggerY) {
+          activePolicy = id;
         } else {
-            this.nav.classList.remove('scrolled');
+          break;
         }
-    }
-}
+      }
 
-// ═══════════════════════════════════════════════════════════════
-// 🚀 INITIALIZE ALL COMPONENTS
-// ═══════════════════════════════════════════════════════════════
-
-class BuildingGuidesApp {
-    constructor() {
-        this.components = {};
-        this.init();
+      if (activeChapter !== this.lastChapter) {
+        this.setActiveChapter(activeChapter);
+        this.lastChapter = activeChapter;
+      }
+      if (activePolicy !== this.lastPolicy) {
+        this.setActivePolicy(activePolicy);
+        this.lastPolicy = activePolicy;
+      }
     }
-    
-    init() {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.initializeComponents());
+
+    setActiveChapter(id) {
+      $$('.guides-toc__chapter.is-active, .guides-toc__divider.is-active')
+        .forEach(el => el.classList.remove('is-active'));
+      if (!id) return;
+      const link = document.querySelector(`.guides-toc__c-link[href="#${id}"]`);
+      const item = link && link.closest('.guides-toc__chapter, .guides-toc__divider');
+      if (item) item.classList.add('is-active');
+    }
+
+    setActivePolicy(id) {
+      $$('[data-toc-policy].is-active').forEach(el => el.classList.remove('is-active'));
+      if (!id) return;
+      const link = document.querySelector(`[data-toc-policy][href="#${id}"]`);
+      if (link) link.classList.add('is-active');
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     3. TOC CLICKS — auto-open the target policy panel
+     If a user taps a policy in the TOC, expand the panel as the
+     smooth scroll lands. Without this they'd arrive at a closed
+     accordion and have to click again, which feels broken.
+     Chapter links don't auto-open anything — chapters are containers,
+     not collapsible panels.
+     ═══════════════════════════════════════════════════════════════ */
+  function bindTocPolicyLinks() {
+    $$('[data-toc-policy]').forEach(link => {
+      link.addEventListener('click', () => {
+        const hash = link.getAttribute('href');
+        if (!hash || !hash.startsWith('#')) return;
+        const target = document.querySelector(hash);
+        if (!target || !target.classList.contains('guides-row')) return;
+
+        const details = target.querySelector('details');
+        if (!details || details.open) return;
+
+        // Open mid-flight on Lenis's ~1.6s scrollTo
+        setTimeout(() => { details.open = true; }, 600);
+      });
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     4. DEEP LINK ON LOAD
+     Browsers + Lenis don't always agree on initial hash scrolling,
+     especially with the loader running. Re-run scroll once
+     app:loaded fires. If the target is a policy, open its panel.
+     ═══════════════════════════════════════════════════════════════ */
+  function bindHashOnLoad() {
+    const hash = window.location.hash;
+    if (!hash || hash === '#' || hash === '#top') return;
+
+    let target;
+    try {
+      target = document.querySelector(hash);
+    } catch (e) {
+      return; // malformed selector — bail
+    }
+    if (!target) return;
+
+    const trigger = () => {
+      setTimeout(() => {
+        const smooth = window.parkCity && window.parkCity.smoothScroll;
+        if (smooth && typeof smooth.scrollTo === 'function') {
+          smooth.scrollTo(target, { offset: -100 });
         } else {
-            this.initializeComponents();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    }
-    
-    initializeComponents() {
-        try {
-            console.log('');
-            console.log('═══════════════════════════════════════════════════════════════');
-            console.log('✨              BUILDING GUIDES PAGE                          ✨');
-            console.log('         Premium Sleek Design - All Features Active');
-            console.log('═══════════════════════════════════════════════════════════════');
-            console.log('');
-            
-            // Initialize all components
-            this.components.navigation = new GuidesNavigation();
-            this.components.scrollAnimations = new GuidesScrollAnimations();
-            this.components.quickNav = new QuickNavController();
-            this.components.heroParallax = new HeroParallaxEffect();
-            this.components.copyToClipboard = new CopyToClipboard();
-            this.components.stepCounter = new StepCounterAnimation();
-            this.components.magneticButtons = new MagneticButtons();
-            this.components.coverageTable = new CoverageTableInteraction();
-            this.components.backToTop = new BackToTopController();
-            
-            console.log('');
-            console.log('═══════════════════════════════════════════════════════════════');
-            console.log('✅ ALL COMPONENTS: Initialized successfully!');
-            console.log('🎬 Scroll Animations: Active');
-            console.log('✨ Hero Parallax: Active');
-            console.log('💫 Magnetic Buttons: Active');
-            console.log('🔗 Quick Navigation: Active');
-            console.log('═══════════════════════════════════════════════════════════════');
-            console.log('');
-            
-        } catch (error) {
-            console.error('❌ Error initializing:', error);
+
+        // If we landed on a policy, open it
+        if (target.classList.contains('guides-row')) {
+          const details = target.querySelector('details');
+          if (details) details.open = true;
         }
+      }, 200);
+    };
+
+    document.addEventListener('app:loaded', trigger, { once: true });
+    setTimeout(trigger, 4500); // failsafe
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     5. PRINT BEHAVIOR
+     People will print this for the building reference binder. Open
+     every panel before printing, restore the user's exact prior
+     state afterward.
+     ═══════════════════════════════════════════════════════════════ */
+  function bindPrintBehavior() {
+    const panels = $$('.guides-row details');
+    if (!panels.length) return;
+
+    const expandAll = () => {
+      panels.forEach(d => {
+        d.dataset.wasOpen = d.open ? '1' : '0';
+        d.open = true;
+      });
+    };
+
+    const restore = () => {
+      panels.forEach(d => {
+        if (d.dataset.wasOpen !== undefined) {
+          d.open = d.dataset.wasOpen === '1';
+          delete d.dataset.wasOpen;
+        }
+      });
+    };
+
+    // Modern path: beforeprint / afterprint
+    window.addEventListener('beforeprint', expandAll);
+    window.addEventListener('afterprint', restore);
+
+    // Safari fallback: matchMedia('print')
+    if (window.matchMedia) {
+      const mql = window.matchMedia('print');
+      const handler = (e) => (e.matches ? expandAll() : restore());
+      if (mql.addEventListener) mql.addEventListener('change', handler);
+      else if (mql.addListener) mql.addListener(handler);
     }
-}
+  }
 
-// Initialize the application
-const buildingGuidesApp = new BuildingGuidesApp();
+  /* ═══════════════════════════════════════════════════════════════
+     6. CONSOLE SIGNATURE
+     ═══════════════════════════════════════════════════════════════ */
+  function signature() {
+    const css = 'font-family: serif; font-style: italic; color: #b8956a;';
+    console.log('%cPark City 3 & 4 — Building Guides. Plainly written.', css);
+  }
 
-// Scroll to top on page load
-window.addEventListener('load', () => {
-    window.scrollTo(0, 0);
-});
+  /* ═══════════════════════════════════════════════════════════════
+     INIT
+     ═══════════════════════════════════════════════════════════════ */
+  ready(() => {
+    try {
+      fillChapterCounts();
+      new ScrollSpy();
+      bindTocPolicyLinks();
+      bindHashOnLoad();
+      bindPrintBehavior();
+      signature();
+    } catch (err) {
+      console.error('[Park City · Guides] init error:', err);
+    }
+  });
 
-console.log('🏢 Building Guides Script: Loaded');
+})();
