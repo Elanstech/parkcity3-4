@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Reach the management office at Park City 3 & 4 Apartments — phone, email, or a short note. The on-site team responds within one business day." />
+  <meta name="theme-color" content="#f8f2e6" />
+  <title>Contact · Park City 3 &amp; 4 Apartments</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+
+<body data-theme="cream">
+
+  <!-- LOADER -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <img src="logo.png" alt="" class="loader__logo" />
+      <div class="loader__bar"><span></span></div>
+      <div class="loader__caption"><span>The office is listening</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__shell">
+      <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
+        <img src="logo.png" alt="Park City 3 & 4" class="nav__logo" />
+      </a>
+
+      <nav class="nav__menu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="forms.html">Forms</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html" class="is-active" aria-current="page">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navmobile" id="navMobile" aria-hidden="true">
+      <div class="navmobile__inner">
+        <img src="logo.png" alt="" class="navmobile__logo" />
+        <ol class="navmobile__list">
+          <li><a href="index.html"><em>01</em> Home</a></li>
+          <li><a href="amenities.html"><em>02</em> Amenities</a></li>
+          <li><a href="forms.html"><em>03</em> Forms</a></li>
+          <li><a href="guides.html"><em>04</em> Guides</a></li>
+          <li><a href="faq.html"><em>05</em> FAQ</a></li>
+          <li><a href="contact.html"><em>06</em> Contact</a></li>
+        </ol>
+        <div class="navmobile__foot">
+          <p class="serif-italic">A residence in Rego Park.</p>
+          <p>Six buildings · Established 1955</p>
+          <p class="navmobile__akam">Managed by <span>AKAM</span></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="contact-hero" id="hero">
+      <div class="contact-hero__grain" aria-hidden="true"></div>
+
+      <div class="contact-hero__inner">
+        <span class="hero__eyebrow" data-reveal>
+          <span class="hero__eyebrow-line"></span>
+          Get in Touch
+        </span>
+
+        <h1 class="contact-hero__title" data-split-lines>
+          <span class="line">A note</span>
+          <span class="line">to the <em class="serif-italic">office.</em></span>
+        </h1>
+
+        <p class="contact-hero__lede serif-italic" data-reveal data-reveal-delay="400">
+          Phone, email, or a short note through the form below. However you'd like to reach us, the on-site team reads everything that comes through — and responds within one business day.
+        </p>
+
+        <div class="contact-hero__rule" aria-hidden="true"></div>
+
+        <div class="contact-hero__quick" data-reveal data-reveal-delay="600">
+          <a href="tel:5551234567" class="contact-hero__quick-link">
+            <span class="contact-hero__quick-label">By phone</span>
+            <span class="contact-hero__quick-value">(555) 123-4567</span>
+          </a>
+          <a href="mailto:parkcity3and4@akam.com" class="contact-hero__quick-link">
+            <span class="contact-hero__quick-label">By email</span>
+            <span class="contact-hero__quick-value">parkcity3and4@akam.com</span>
+          </a>
+          <a href="#send" class="contact-hero__quick-link">
+            <span class="contact-hero__quick-label">In writing</span>
+            <span class="contact-hero__quick-value">Send a note <span aria-hidden="true">↓</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ MARQUEE ═══════════════ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track" data-marquee>
+        <span>Get in Touch</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">The office is listening</span><span class="marquee__dot">✦</span>
+        <span>Six Buildings</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">A welcoming community</span><span class="marquee__dot">✦</span>
+        <span>Established 1955</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Managed by AKAM</span><span class="marquee__dot">✦</span>
+      </div>
+      <div class="marquee__track" data-marquee aria-hidden="true">
+        <span>Get in Touch</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">The office is listening</span><span class="marquee__dot">✦</span>
+        <span>Six Buildings</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">A welcoming community</span><span class="marquee__dot">✦</span>
+        <span>Established 1955</span><span class="marquee__dot">✦</span>
+        <span class="serif-italic">Managed by AKAM</span><span class="marquee__dot">✦</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════ MAIN BODY ═══════════════ -->
+    <section class="contact-body" id="send">
+      <div class="contact-body__grid">
+
+        <!-- ─── INFO SIDEBAR ─── -->
+        <aside class="contact-info">
+          <div class="contact-info__inner">
+            <span class="eyebrow"><span class="eyebrow__line"></span>The Office</span>
+
+            <h2 class="contact-info__head">
+              <em class="serif-italic">Quietly</em> tended,<br/>
+              Monday to Friday.
+            </h2>
+
+            <p class="contact-info__intro">
+              The on-site Management Office sits at the heart of the community, in the lobby of <strong>97-07 63rd Road.</strong> Live-in superintendents are on call after hours.
+            </p>
+
+            <dl class="contact-info__list">
+              <div>
+                <dt>Phone</dt>
+                <dd><a href="tel:5551234567">(555) 123-4567</a></dd>
+              </div>
+              <div>
+                <dt>Email</dt>
+                <dd><a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a></dd>
+              </div>
+              <div>
+                <dt>Office hours</dt>
+                <dd>Monday – Friday<br/>8:00 AM – 4:00 PM</dd>
+              </div>
+              <div>
+                <dt>In person</dt>
+                <dd>97-07 63rd Road<br/>Rego Park, NY 11374</dd>
+              </div>
+              <div>
+                <dt>Response time</dt>
+                <dd><em class="serif-italic">Within one business day</em></dd>
+              </div>
+            </dl>
+
+            <p class="contact-info__minor">
+              For shareholder forms, see the <a href="forms.html">Forms page.</a><br/>
+              For policies &amp; rules, see the <a href="guides.html">Building Guides.</a>
+            </p>
+          </div>
+        </aside>
+
+        <!-- ─── FORM ─── -->
+        <div class="contact-form-wrap">
+          <header class="contact-form-wrap__head">
+            <span class="eyebrow"><span class="eyebrow__line"></span>Send a note</span>
+            <h2 class="contact-form-wrap__title">
+              A short message <em class="serif-italic">is enough.</em>
+            </h2>
+            <p class="contact-form-wrap__lede">
+              Tell us who you are and what we can help with — we'll write back from <em class="serif-italic">parkcity3and4@akam.com.</em>
+            </p>
+          </header>
+
+          <!--
+            ─── FORMSPREE SETUP ───
+            Replace YOUR_FORMSPREE_ID below with your actual form ID.
+            1. Create an account at https://formspree.io
+            2. Add a new form, set the recipient to parkcity3and4@akam.com
+            3. Confirm the email Formspree sends to verify the address
+            4. Copy the form ID from the dashboard (e.g. xrgjkpno)
+            5. Paste it in place of YOUR_FORMSPREE_ID
+          -->
+          <form class="contact-form"
+                id="contactForm"
+                action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+                method="POST"
+                novalidate>
+
+            <!-- Spam honeypot — bots fill this, humans don't -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="contact-form__honeypot" aria-hidden="true">
+
+            <!-- Email subject for the message Formspree sends to the office -->
+            <input type="hidden" name="_subject" value="New message from parkcity3and4.com">
+
+            <div class="contact-form__row">
+              <div class="field">
+                <input type="text" id="cName" name="name" required autocomplete="name" placeholder=" "/>
+                <label for="cName">Your name</label>
+                <span class="field__rule"></span>
+              </div>
+              <div class="field">
+                <input type="email" id="cEmail" name="email" required autocomplete="email" placeholder=" "/>
+                <label for="cEmail">Email</label>
+                <span class="field__rule"></span>
+              </div>
+            </div>
+
+            <div class="contact-form__row">
+              <div class="field">
+                <input type="tel" id="cPhone" name="phone" autocomplete="tel" placeholder=" "/>
+                <label for="cPhone">Phone <em>(optional)</em></label>
+                <span class="field__rule"></span>
+              </div>
+              <div class="field">
+                <select id="cTopic" name="topic" required>
+                  <option value="" selected disabled hidden></option>
+                  <option value="Shareholder inquiry">Shareholder inquiry</option>
+                  <option value="Prospective resident">Prospective resident</option>
+                  <option value="Maintenance / building question">Maintenance / building question</option>
+                  <option value="Resident forms">Resident forms</option>
+                  <option value="Vendor / press">Vendor / press</option>
+                  <option value="Other">Other</option>
+                </select>
+                <label for="cTopic">Topic</label>
+                <span class="field__rule"></span>
+              </div>
+            </div>
+
+            <div class="field field--full">
+              <textarea id="cMessage" name="message" rows="6" required placeholder=" "></textarea>
+              <label for="cMessage">A short message</label>
+              <span class="field__rule"></span>
+            </div>
+
+            <p class="contact-form__privacy">
+              <em class="serif-italic">A note on privacy —</em> messages are read by the on-site team and AKAM, and used only to respond to you. We don't share, sell, or pass them on.
+            </p>
+
+            <button type="submit" class="contact-form__submit">
+              <span class="contact-form__submit-label">Send to the office</span>
+              <span class="contact-form__submit-arrow" aria-hidden="true">
+                <svg width="22" height="14" viewBox="0 0 22 14" fill="none">
+                  <path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+              </span>
+              <span class="contact-form__submit-loader" aria-hidden="true"></span>
+            </button>
+
+            <!-- Success state -->
+            <div class="contact-form__success" id="contactSuccess" role="status" aria-live="polite">
+              <span class="contact-form__success-mark" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1"/>
+                  <path d="M10 16.5l4 4 8-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3 class="contact-form__success-title">Your note is on its way.</h3>
+              <p>Thank you. The on-site team will be in touch within one business day. <em class="serif-italic">If it's an after-hours emergency, please contact your live-in superintendent.</em></p>
+              <button type="button" class="contact-form__success-back" id="contactSuccessBack">
+                Send another
+              </button>
+            </div>
+
+            <!-- Error state -->
+            <div class="contact-form__error" id="contactError" role="status" aria-live="polite">
+              <span class="contact-form__error-mark" aria-hidden="true">!</span>
+              <h3 class="contact-form__error-title">Something didn't go through.</h3>
+              <p id="contactErrorMessage">Please try again, or write to us directly at <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>.</p>
+              <button type="button" class="contact-form__error-back" id="contactErrorBack">
+                Try again
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════ AFTER-HOURS / EMERGENCY ═══════════════ -->
+    <section class="contact-emergency">
+      <div class="contact-emergency__inner">
+        <div class="contact-emergency__head">
+          <span class="eyebrow"><span class="eyebrow__line"></span>If it can't wait</span>
+          <h2 class="contact-emergency__title">
+            For after-hours <em class="serif-italic">emergencies,</em> find your live-in superintendent.
+          </h2>
+        </div>
+
+        <div class="contact-emergency__body">
+          <p>
+            Each of the six buildings has its own live-in super, available around the clock. They're the right call for genuine emergencies — leaks, smoke, gas, lockouts, anything that can't wait until morning. The super's contact details are posted in your lobby and on your apartment door's emergency notice.
+          </p>
+
+          <div class="contact-emergency__divide">
+            <div>
+              <span class="contact-emergency__label">An emergency</span>
+              <ul>
+                <li>Active leak, flood, or burst pipe</li>
+                <li>Smoke, fire, or smell of gas</li>
+                <li>No heat or hot water in winter</li>
+                <li>Apartment lockout</li>
+                <li>Power outage affecting your unit</li>
+              </ul>
+            </div>
+            <div>
+              <span class="contact-emergency__label">Can wait until morning</span>
+              <ul>
+                <li>Routine maintenance requests</li>
+                <li>Forms, applications, registrations</li>
+                <li>Billing &amp; payment questions</li>
+                <li>Pet, sublet, or alteration approvals</li>
+                <li>Anything starting with "I was wondering…"</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="contact-emergency__minor">
+            Outside of an emergency, please contact the management office during business hours — Monday through Friday, 8:00 AM to 4:00 PM.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="foot">
+
+    <div class="foot__statement">
+      <span class="foot__statement-eyebrow">Park City 3 &amp; 4 Apartments, Inc.</span>
+      <h2 class="foot__statement-head">
+        A residence<br/>
+        <em class="serif-italic">in Rego Park.</em>
+      </h2>
+      <p class="foot__statement-meta">Established 1955 · Six buildings · Fourteen stories each · Private terraces throughout.</p>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <div class="foot__addresses-block">
+      <span class="foot__block-label">The Six Buildings</span>
+      <ul class="foot__addresses-grid">
+        <li><span>01</span>97-07 63rd Road</li>
+        <li><span>02</span>97-10 62nd Drive</li>
+        <li><span>03</span>97-37 63rd Road</li>
+        <li><span>04</span>97-40 62nd Drive</li>
+        <li><span>05</span>98-05 63rd Road</li>
+        <li><span>06</span>98-20 62nd Drive</li>
+      </ul>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <div class="foot__cols">
+      <div class="foot__col foot__col--office">
+        <h5>Management Office</h5>
+        <ul>
+          <li><a href="tel:5551234567">(555) 123-4567</a></li>
+          <li><a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a></li>
+          <li>Monday – Friday</li>
+          <li>8:00 AM – 4:00 PM</li>
+          <li>Rego Park, NY 11374</li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#philosophy">About</a></li>
+          <li><a href="index.html#residences">Buildings</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h5>Shareholders</h5>
+        <ul>
+          <li><a href="forms.html">Resident Forms</a></li>
+          <li><a href="guides.html">Building Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="guides.html#newsletters">Newsletters</a></li>
+          <li><a href="contact.html">Maintenance Request</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col foot__col--mark">
+        <img src="logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <p class="foot__akam-note">
+          Professionally managed by<br/>
+          <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <div class="foot__bottom">
+      <p class="foot__copy">© 2026 Park City 3 &amp; 4 Apartments, Inc. All rights reserved.</p>
+
+      <ul class="foot__legal">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+
+      <a href="https://elanstechworld.com" target="_blank" rel="noopener" class="foot__credit" aria-label="Designed and built by Elan's Tech World">
+        <span class="foot__credit-label">Designed &amp; built by</span>
+        <span class="foot__credit-mark">
+          <img src="https://www.elanstechworld.com/assets/images/Elanslogo.jpeg" alt="" class="foot__credit-logo"/>
+          <span class="foot__credit-name">Elan's Tech World</span>
+        </span>
+        <svg class="foot__credit-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <button class="foot__top-link" id="backToTop" aria-label="Back to top">
+        <span>To the top</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M7 13V1m0 0L1 7m6-6l6 6" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="contact.js" defer></script>
+</body>
+</html>
