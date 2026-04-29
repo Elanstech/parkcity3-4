@@ -1,185 +1,139 @@
-/**
- * FAQ Page Controller - Park City 3&4 Apartments
- */
+/* ═══════════════════════════════════════════════════════════════
+   PARK CITY 3 & 4 — FAQ PAGE
+   A small enhancement layer over the shared script.js.
 
-class FAQPageController {
-    constructor() {
-        this.searchInput = document.getElementById('faqSearch');
-        this.searchClear = document.getElementById('searchClear');
-        this.searchResults = document.getElementById('searchResults');
-        this.noResults = document.getElementById('noResults');
-        this.categoryPills = document.querySelectorAll('.cat-pill');
-        this.categoryGroups = document.querySelectorAll('.faq-category-group');
-        this.accordionItems = document.querySelectorAll('.faq-accordion-item');
-        this.activeFilter = 'all';
-        
-        this.init();
-    }
-    
-    init() {
-        console.log('❓ FAQ Page: Initializing...');
-        this.bindAccordion();
-        this.bindSearch();
-        this.bindCategoryFilters();
-        this.bindScrollAnimations();
-        this.updateCategoryCounts();
-        this.bindSmoothScroll();
-        console.log('✅ FAQ Page: Ready');
-    }
-    
-    // Accordion
-    bindAccordion() {
-        this.accordionItems.forEach(item => {
-            const trigger = item.querySelector('.faq-trigger');
-            trigger.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                // Close all in same group
-                const group = item.closest('.faq-items-list');
-                group.querySelectorAll('.faq-accordion-item').forEach(i => i.classList.remove('active'));
-                if (!isActive) item.classList.add('active');
-            });
-        });
-    }
-    
-    // Search
-    bindSearch() {
-        if (!this.searchInput) return;
-        
-        let debounce;
-        this.searchInput.addEventListener('input', () => {
-            clearTimeout(debounce);
-            debounce = setTimeout(() => this.performSearch(), 200);
-            this.searchClear.classList.toggle('visible', this.searchInput.value.length > 0);
-        });
-        
-        this.searchClear.addEventListener('click', () => {
-            this.searchInput.value = '';
-            this.searchClear.classList.remove('visible');
-            this.searchResults.textContent = '';
-            this.clearSearch();
-        });
-    }
-    
-    performSearch() {
-        const query = this.searchInput.value.trim().toLowerCase();
-        
-        if (!query) {
-            this.clearSearch();
-            this.searchResults.textContent = '';
-            return;
+   Responsibilities:
+     1. Fill in per-chapter question counts ("Five questions in this chapter")
+     2. Pulse the chapter numeral when arriving from the hero index
+     3. Handle deep-link arrivals (faq.html#chapter-3)
+
+   Everything else — anchor smooth-scroll, the accordion's close-others
+   behavior, loader, nav, marquee — is handled by script.js.
+   ═══════════════════════════════════════════════════════════════ */
+
+(() => {
+  'use strict';
+
+  /* ──────────── UTILITIES ──────────── */
+  const $  = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  const ready = (fn) => {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  };
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const NUM_WORDS = [
+    'Zero', 'One', 'Two', 'Three', 'Four', 'Five',
+    'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'
+  ];
+  const numWord = (n) => NUM_WORDS[n] || String(n);
+
+  /* ═══════════════════════════════════════════════════════════════
+     1. PER-CHAPTER QUESTION COUNTS
+     ═══════════════════════════════════════════════════════════════ */
+  function fillChapterCounts() {
+    $$('.faq-chapter').forEach(chapter => {
+      const target = $('[data-faq-count]', chapter);
+      if (!target) return;
+
+      const count = $$('.faq-row', chapter).length;
+      if (!count) return;
+
+      target.textContent = `${numWord(count)} question${count === 1 ? '' : 's'} in this chapter`;
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     2. NUMERAL PULSE — a quiet "you've arrived" gesture
+     ═══════════════════════════════════════════════════════════════ */
+  function pulseNumeral(chapter) {
+    if (prefersReducedMotion) return;
+    const num = chapter && chapter.querySelector('.faq-chapter__num');
+    if (!num || typeof num.animate !== 'function') return;
+
+    num.animate(
+      [
+        { transform: 'translateY(0)' },
+        { transform: 'translateY(-10px)', offset: 0.5 },
+        { transform: 'translateY(0)' }
+      ],
+      { duration: 1400, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+    );
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     3. CHAPTER LINKS — pulse the target numeral on click
+     Fires for any in-page link to a chapter, not just the hero index,
+     so future inline references like "see Chapter II below" work too.
+     ═══════════════════════════════════════════════════════════════ */
+  function bindChapterLinks() {
+    $$('a[href^="#chapter-"]').forEach(link => {
+      link.addEventListener('click', () => {
+        const id = link.getAttribute('href').slice(1);
+        const chapter = document.getElementById(id);
+        if (!chapter) return;
+
+        // Delay so the pulse lands roughly as the smooth-scroll arrives.
+        // Lenis is configured with ~1.6s scrollTo duration; 800ms is mid-flight.
+        setTimeout(() => pulseNumeral(chapter), 800);
+      });
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     4. DEEP LINK ON LOAD
+     If the page arrives at faq.html#chapter-3, run the smooth scroll
+     ourselves (browsers + Lenis don't always agree on initial hashes)
+     and pulse the numeral once the loader has finished.
+     ═══════════════════════════════════════════════════════════════ */
+  function bindHashOnLoad() {
+    const hash = window.location.hash;
+    if (!/^#chapter-\d+$/.test(hash)) return;
+
+    const chapter = document.querySelector(hash);
+    if (!chapter) return;
+
+    const trigger = () => {
+      setTimeout(() => {
+        // Prefer the shared Lenis instance if available
+        const smooth = window.parkCity && window.parkCity.smoothScroll;
+        if (smooth && typeof smooth.scrollTo === 'function') {
+          smooth.scrollTo(chapter, { offset: -100 });
+        } else {
+          chapter.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        
-        const terms = query.split(/\s+/);
-        let visibleCount = 0;
-        
-        this.accordionItems.forEach(item => {
-            const text = item.querySelector('.trigger-text').textContent.toLowerCase();
-            const keywords = (item.dataset.keywords || '').toLowerCase();
-            const panelText = item.querySelector('.panel-content')?.textContent.toLowerCase() || '';
-            const combined = text + ' ' + keywords + ' ' + panelText;
-            
-            const match = terms.every(t => combined.includes(t));
-            item.classList.toggle('search-hidden', !match);
-            if (match) visibleCount++;
-        });
-        
-        // Show/hide category groups based on visible items
-        this.categoryGroups.forEach(group => {
-            const visibleItems = group.querySelectorAll('.faq-accordion-item:not(.search-hidden)');
-            group.classList.toggle('hidden', visibleItems.length === 0);
-        });
-        
-        this.searchResults.textContent = visibleCount === 0 
-            ? '' 
-            : `${visibleCount} result${visibleCount !== 1 ? 's' : ''} found`;
-        
-        this.noResults.classList.toggle('visible', visibleCount === 0);
-        
-        // Reset category pills
-        this.categoryPills.forEach(p => p.classList.remove('active'));
-        this.categoryPills[0].classList.add('active');
-        this.activeFilter = 'all';
-    }
-    
-    clearSearch() {
-        this.accordionItems.forEach(item => item.classList.remove('search-hidden'));
-        this.categoryGroups.forEach(group => group.classList.remove('hidden'));
-        this.noResults.classList.remove('visible');
-        this.applyFilter(this.activeFilter);
-    }
-    
-    // Category Filters
-    bindCategoryFilters() {
-        this.categoryPills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                // Clear search when changing category
-                if (this.searchInput.value) {
-                    this.searchInput.value = '';
-                    this.searchClear.classList.remove('visible');
-                    this.searchResults.textContent = '';
-                    this.accordionItems.forEach(item => item.classList.remove('search-hidden'));
-                    this.noResults.classList.remove('visible');
-                }
-                
-                this.categoryPills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-                
-                this.activeFilter = pill.dataset.filter;
-                this.applyFilter(this.activeFilter);
-            });
-        });
-    }
-    
-    applyFilter(filter) {
-        this.categoryGroups.forEach(group => {
-            if (filter === 'all') {
-                group.classList.remove('hidden');
-            } else {
-                group.classList.toggle('hidden', group.dataset.category !== filter);
-            }
-        });
-    }
-    
-    // Category Counts
-    updateCategoryCounts() {
-        this.categoryGroups.forEach(group => {
-            const count = group.querySelectorAll('.faq-accordion-item').length;
-            const countEl = group.querySelector('.category-count');
-            if (countEl) countEl.textContent = `${count} question${count !== 1 ? 's' : ''}`;
-        });
-    }
-    
-    // Scroll Animations
-    bindScrollAnimations() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        
-        document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-    }
-    
-    // Smooth Scroll for anchor links
-    bindSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                const href = anchor.getAttribute('href');
-                if (href === '#') return;
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
-                }
-            });
-        });
-    }
-}
+        pulseNumeral(chapter);
+      }, 200);
+    };
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    new FAQPageController();
-});
+    document.addEventListener('app:loaded', trigger, { once: true });
+    // Failsafe — never block on a missed loader event
+    setTimeout(trigger, 4500);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     5. CONSOLE SIGNATURE
+     ═══════════════════════════════════════════════════════════════ */
+  function signature() {
+    const css = 'font-family: serif; font-style: italic; color: #b8956a;';
+    console.log('%cPark City 3 & 4 — FAQ. Quietly answered.', css);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     INIT
+     ═══════════════════════════════════════════════════════════════ */
+  ready(() => {
+    try {
+      fillChapterCounts();
+      bindChapterLinks();
+      bindHashOnLoad();
+      signature();
+    } catch (err) {
+      console.error('[Park City · FAQ] init error:', err);
+    }
+  });
+
+})();
