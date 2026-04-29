@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Park City 3 & 4 building guides — billing, moves, insurance, house rules, sublet policy, and resident newsletters. Click a policy name to read the details." />
+  <meta name="description" content="Park City 3 & 4 building guides — billing, moves, insurance, house rules, sublet policy, and resident newsletters. A reference manual for shareholders." />
   <meta name="theme-color" content="#f8f2e6" />
   <title>Building Guides · Park City 3 &amp; 4 Apartments</title>
 
@@ -73,65 +73,57 @@
 
   <main id="top">
 
-    <!-- ═══════════════ HERO ═══════════════ -->
+    <!-- ═══════════════ HERO ═══════════════
+         Single column. Reads like a reference manual's title page —
+         not the FAQ's two-column magazine spread.
+         ════════════════════════════════════════════════════════ -->
     <section class="guides-hero" id="hero">
       <div class="guides-hero__grain" aria-hidden="true"></div>
 
-      <div class="guides-hero__grid">
-        <div class="guides-hero__head">
-          <span class="hero__eyebrow" data-reveal>
-            <span class="hero__eyebrow-line"></span>
-            Resident Resources
-          </span>
+      <div class="guides-hero__inner">
+        <span class="hero__eyebrow" data-reveal>
+          <span class="hero__eyebrow-line"></span>
+          A reference manual · For shareholders &amp; residents
+        </span>
 
-          <h1 class="guides-hero__title" data-split-lines>
-            <span class="line">Building</span>
-            <span class="line"><em class="serif-italic">guides &amp;</em></span>
-            <span class="line">house rules.</span>
-          </h1>
+        <h1 class="guides-hero__title" data-split-lines>
+          <span class="line">Building guides</span>
+          <span class="line">&amp; <em class="serif-italic">house rules.</em></span>
+        </h1>
 
-          <p class="guides-hero__lede serif-italic" data-reveal data-reveal-delay="400">
-            Every policy that shapes the everyday rhythms of the buildings — billing, moves, insurance, the small rules that keep things quietly running. Tap any line to read the detail beneath.
+        <div class="guides-hero__rule" data-reveal data-reveal-delay="300" aria-hidden="true"></div>
+
+        <div class="guides-hero__row">
+          <p class="guides-hero__lede" data-reveal data-reveal-delay="400">
+            Every policy that shapes the everyday rhythms of the buildings — billing, moves, insurance, the small rules that keep things quietly running. Tap any section to read the detail beneath.
           </p>
 
-          <div class="guides-hero__meta" data-reveal data-reveal-delay="700">
+          <dl class="guides-hero__plate" data-reveal data-reveal-delay="500">
             <div>
-              <span class="guides-hero__meta-num">VI</span>
-              <span class="guides-hero__meta-label">Chapters</span>
+              <dt>Chapters</dt>
+              <dd><span class="serif-italic">VI</span></dd>
             </div>
-            <span class="guides-hero__meta-rule"></span>
             <div>
-              <span class="guides-hero__meta-num">22</span>
-              <span class="guides-hero__meta-label">Policies</span>
+              <dt>Policies</dt>
+              <dd>22</dd>
             </div>
-            <span class="guides-hero__meta-rule"></span>
             <div>
-              <span class="guides-hero__meta-num">+</span>
-              <span class="guides-hero__meta-label">Newsletters</span>
+              <dt>Maintained by</dt>
+              <dd>AKAM</dd>
             </div>
-          </div>
-
-          <a href="#chapter-1" class="guides-hero__cta" data-reveal data-reveal-delay="1000">
-            <span>Begin reading</span>
-            <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
-              <path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/>
-            </svg>
-          </a>
+            <div>
+              <dt>Newsletters</dt>
+              <dd><a href="#newsletters">archive ↓</a></dd>
+            </div>
+          </dl>
         </div>
 
-        <aside class="guides-hero__index" data-reveal data-reveal-delay="600" aria-label="On this page">
-          <span class="guides-hero__index-label">On this page</span>
-          <ol>
-            <li><a href="#chapter-1"><em>I.</em><span>Billing &amp; Payments</span></a></li>
-            <li><a href="#chapter-2"><em>II.</em><span>Moves &amp; Deliveries</span></a></li>
-            <li><a href="#chapter-3"><em>III.</em><span>Insurance &amp; Certificates</span></a></li>
-            <li><a href="#chapter-4"><em>IV.</em><span>House Rules</span></a></li>
-            <li><a href="#chapter-5"><em>V.</em><span>Sublet Policy</span></a></li>
-            <li><a href="#chapter-6"><em>VI.</em><span>Electric Vehicles</span></a></li>
-            <li class="is-divider"><a href="#newsletters"><em>—</em><span>Newsletters</span></a></li>
-          </ol>
-          <span class="guides-hero__index-foot">Forms &amp; applications — <a href="forms.html">forms.html</a></span>
-        </aside>
+        <a href="#document" class="guides-hero__cta" data-reveal data-reveal-delay="700">
+          <span>Begin reading</span>
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
+            <path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </a>
       </div>
     </section>
 
@@ -155,1165 +147,1260 @@
       </div>
     </section>
 
-    <!-- ═══════════════ CHAPTER I — BILLING & PAYMENTS ═══════════════ -->
-    <section class="guides-chapter" id="chapter-1">
-      <div class="guides-chapter__grid">
-        <aside class="guides-chapter__sticky">
-          <span class="guides-chapter__num">I.</span>
-          <h2 class="guides-chapter__title"><em class="serif-italic">Billing</em><br/>&amp; payments.</h2>
-          <p class="guides-chapter__lede">
-            How maintenance is paid, where to send checks, what late looks like — and the tax abatement worth knowing about.
-          </p>
-          <span class="guides-chapter__count" data-guides-count></span>
-        </aside>
+    <!-- ═══════════════ DOCUMENT BODY ═══════════════
+         New architecture: one sticky TOC on the left, the entire
+         document flowing on the right. Replaces six per-chapter
+         sticky sidebars.
+         ════════════════════════════════════════════════════════ -->
+    <section class="guides-body" id="document">
+      <div class="guides-body__grid">
 
-        <ol class="guides-list">
+        <!-- ─── STICKY TABLE OF CONTENTS ─── -->
+        <aside class="guides-toc" aria-label="Table of contents">
+          <div class="guides-toc__inner">
+            <span class="guides-toc__label">Contents</span>
 
-          <!-- 1.1 Pay online via ClickPay -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">01</span>
-                <span class="guides-row__q">Pay online via ClickPay</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>The cooperative accepts maintenance and other charges through the secure ClickPay portal. Two methods are available:</p>
-
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">e-Check (ACH)</span>
-                    <span class="guides-table__val guides-table__val--good">Free</span>
-                    <span class="guides-table__note">Bank account transfer</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Credit / Debit Card</span>
-                    <span class="guides-table__val">Fee applies</span>
-                    <span class="guides-table__note">Visa, Mastercard, Amex, Discover</span>
-                  </div>
-                </div>
-
-                <h5 class="guides-row__sub">Setting up an account</h5>
-                <ol class="guides-steps">
-                  <li>
-                    <span class="guides-steps__num">01</span>
-                    <div class="guides-steps__body">
-                      <h6>Visit the portal</h6>
-                      <p>Go to <strong>www.ClickPay.com/AKAM</strong> and select <em class="serif-italic">New York.</em></p>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="guides-steps__num">02</span>
-                    <div class="guides-steps__body">
-                      <h6>Register</h6>
-                      <p>Click <strong>Register</strong> and complete your online profile.</p>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="guides-steps__num">03</span>
-                    <div class="guides-steps__body">
-                      <h6>Link your unit</h6>
-                      <p>Use the account number printed on your statement or coupon book.</p>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="guides-steps__num">04</span>
-                    <div class="guides-steps__body">
-                      <h6>Add a payment method</h6>
-                      <p>e-Check is free; card payments carry a processing fee.</p>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="guides-steps__num">05</span>
-                    <div class="guides-steps__body">
-                      <h6>Set up payments</h6>
-                      <p>Enable automatic recurring payments, or pay one-time as needed.</p>
-                    </div>
-                  </li>
+            <ol class="guides-toc__list">
+              <li class="guides-toc__chapter" data-toc-chapter="1">
+                <a href="#chapter-1" class="guides-toc__c-link">
+                  <em>I.</em><span>Billing &amp; Payments</span>
+                </a>
+                <ol>
+                  <li><a href="#policy-1-1" data-toc-policy>I.1 &nbsp; Pay online via ClickPay</a></li>
+                  <li><a href="#policy-1-2" data-toc-policy>I.2 &nbsp; Pay by mail</a></li>
+                  <li><a href="#policy-1-3" data-toc-policy>I.3 &nbsp; Late fees &amp; bounced checks</a></li>
+                  <li><a href="#policy-1-4" data-toc-policy>I.4 &nbsp; Coop-Condo tax abatement</a></li>
                 </ol>
+              </li>
 
-                <a href="https://www.ClickPay.com/AKAM" target="_blank" rel="noopener" class="guides-cta">
-                  <span>Visit ClickPay portal</span>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M3 3h8m0 0v8m0-8L3 11" stroke="currentColor" stroke-width="1.2"/>
-                  </svg>
+              <li class="guides-toc__chapter" data-toc-chapter="2">
+                <a href="#chapter-2" class="guides-toc__c-link">
+                  <em>II.</em><span>Moves &amp; Deliveries</span>
                 </a>
+                <ol>
+                  <li><a href="#policy-2-1" data-toc-policy>II.1 &nbsp; What you need to schedule</a></li>
+                  <li><a href="#policy-2-2" data-toc-policy>II.2 &nbsp; Permitted days, hours &amp; entrances</a></li>
+                  <li><a href="#policy-2-3" data-toc-policy>II.3 &nbsp; The $500 retainer deposit</a></li>
+                </ol>
+              </li>
 
-                <p class="guides-row__minor">
-                  Trouble logging in? ClickPay support:
-                  <a href="https://www.clickpay.com/help" target="_blank" rel="noopener">Help Center</a> ·
-                  <a href="tel:1-800-533-7901">1-800-533-7901</a> (option 1)
-                </p>
-              </div>
-            </details>
-          </li>
-
-          <!-- 1.2 Pay by mail -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">02</span>
-                <span class="guides-row__q">Pay by mail</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>For paper checks or Online Bill Pay, mail to the address below. Make checks payable to the cooperative name printed on your statement, and write your account number on the check.</p>
-
-                <address class="guides-address">
-                  <span class="guides-address__label">Mail Payments To</span>
-                  <span class="guides-address__line">P.O. Box 18</span>
-                  <span class="guides-address__line">Emerson, NJ 07630</span>
-                </address>
-
-                <aside class="guides-callout guides-callout--info">
-                  <span class="guides-callout__title">Note</span>
-                  <p>This is a remittance address only. Do not send forms, COIs, or correspondence here — those go to the management office at <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>.</p>
-                </aside>
-              </div>
-            </details>
-          </li>
-
-          <!-- 1.3 Late fees -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">03</span>
-                <span class="guides-row__q">Late fees &amp; bounced checks</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>Maintenance is due on the <strong>1st of each month.</strong> A grace period extends to the <strong>10th.</strong> After that:</p>
-
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Late fee (after the 10th)</span>
-                    <span class="guides-table__val">$40.00</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Bounced check fee</span>
-                    <span class="guides-table__val">$35.00</span>
-                    <span class="guides-table__note">Plus late charges, if applicable</span>
-                  </div>
-                </div>
-              </div>
-            </details>
-          </li>
-
-          <!-- 1.4 Tax abatement -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">04</span>
-                <span class="guides-row__q">The Coop-Condo tax abatement</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>The Coop-Condo Property Tax Abatement is a credit offered by NYC to residential owners who use their apartment as their <em class="serif-italic">primary residence.</em> The credit is typically applied to the <strong>June billing statement</strong> (the final month of the tax year).</p>
-
-                <h5 class="guides-row__sub">When you need to file a Primary Residence Verification (PRV)</h5>
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Your residency status changed during the tax year</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>You purchased your unit recently</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Ownership was transferred to a trust, or a new owner was added</span>
-                  </li>
-                </ul>
-
-                <h5 class="guides-row__sub">Who is not eligible</h5>
-                <ul class="guides-check guides-check--neg">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Investor-owned apartments, including sponsor units</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>LLCs, corporations, partnerships</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Owners of four or more apartments in the same building (unless legally combined)</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Units already receiving J-51, 420c, 421a, 421b, or 421g exemptions</span>
-                  </li>
-                </ul>
-
-                <h5 class="guides-row__sub">Other exemptions worth checking</h5>
-                <p class="guides-row__minor">NYC and NYS offer additional credits — apply directly with the relevant agency.</p>
-                <ul class="guides-links">
-                  <li><a href="https://www.tax.ny.gov/star/" target="_blank" rel="noopener">NYS STAR Credit ↗</a></li>
-                  <li><a href="https://www.nyc.gov/site/finance/property/landlords-sche.page" target="_blank" rel="noopener">Senior Citizens' Exemption (SCHE) ↗</a></li>
-                  <li><a href="https://www.nyc.gov/site/finance/property/landlords-dhe.page" target="_blank" rel="noopener">Disabled Homeowners' Exemption (DHE) ↗</a></li>
-                  <li><a href="https://www.nyc.gov/site/finance/property/landlords-veterans.page" target="_blank" rel="noopener">Veterans Exemption ↗</a></li>
-                </ul>
-              </div>
-            </details>
-          </li>
-
-        </ol>
-      </div>
-    </section>
-
-    <!-- ═══════════════ CHAPTER II — MOVES & DELIVERIES ═══════════════ -->
-    <section class="guides-chapter guides-chapter--alt" id="chapter-2">
-      <div class="guides-chapter__grid">
-        <aside class="guides-chapter__sticky">
-          <span class="guides-chapter__num">II.</span>
-          <h2 class="guides-chapter__title"><em class="serif-italic">Moves</em><br/>&amp; deliveries.</h2>
-          <p class="guides-chapter__lede">
-            What management needs from you, when the service entrance is open, and how the deposit works.
-          </p>
-          <span class="guides-chapter__count" data-guides-count></span>
-        </aside>
-
-        <ol class="guides-list">
-
-          <!-- 2.1 What you need -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">01</span>
-                <span class="guides-row__q">What you need to schedule a move or delivery</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>For any move-in, move-out, or large delivery, the management office requires three things in advance:</p>
-
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span><strong>$500 retainer deposit</strong> — certified check, bank check, or money order, payable to <em class="serif-italic">Park City 3 &amp; 4 Apartments, Inc.</em></span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span><strong>Certificate of Insurance (COI)</strong> from the moving, delivery, or store company</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>If you're moving yourself, a copy of your current <strong>insurance policy</strong></span>
-                  </li>
-                </ul>
-
-                <aside class="guides-callout guides-callout--info">
-                  <span class="guides-callout__title">After we have everything</span>
-                  <p>A <strong>Move-In / Move-Out / Delivery Permit</strong> is issued the day before your scheduled move.</p>
-                </aside>
-              </div>
-            </details>
-          </li>
-
-          <!-- 2.2 Schedule & hours -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">02</span>
-                <span class="guides-row__q">Permitted days, hours &amp; entrances</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <div class="guides-table">
-                  <div class="guides-table__row guides-table__row--highlight">
-                    <span class="guides-table__key">Permitted days &amp; hours</span>
-                    <span class="guides-table__val">Mon – Fri · 8:30 AM – 4:30 PM</span>
-                    <span class="guides-table__note">Excluding legal holidays</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Advance notice</span>
-                    <span class="guides-table__val">1 business day, minimum</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Required entrance</span>
-                    <span class="guides-table__val">Basement / service only</span>
-                    <span class="guides-table__note">All heavy items use the service entrance</span>
-                  </div>
-                </div>
-
-                <aside class="guides-callout guides-callout--warn">
-                  <span class="guides-callout__title">Padded elevator</span>
-                  <p>The padded elevator must be used for all moves and deliveries. Non-compliance carries a <strong>$500 fine.</strong></p>
-                </aside>
-              </div>
-            </details>
-          </li>
-
-          <!-- 2.3 Retainer deposit -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">03</span>
-                <span class="guides-row__q">The $500 retainer deposit</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>The deposit protects the building from damage during a move or delivery. It is <em class="serif-italic">refundable</em> after the move is complete and any damage to the building or elevator has been ruled out.</p>
-
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Make payable to</span>
-                    <span class="guides-table__val">Park City 3 &amp; 4 Apartments, Inc.</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Accepted forms</span>
-                    <span class="guides-table__val">Certified check, bank check, or money order</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Refundable</span>
-                    <span class="guides-table__val guides-table__val--good">Yes — after successful move</span>
-                  </div>
-                </div>
-              </div>
-            </details>
-          </li>
-
-        </ol>
-      </div>
-    </section>
-
-    <!-- ═══════════════ CHAPTER III — INSURANCE & CERTIFICATES ═══════════════ -->
-    <section class="guides-chapter" id="chapter-3">
-      <div class="guides-chapter__grid">
-        <aside class="guides-chapter__sticky">
-          <span class="guides-chapter__num">III.</span>
-          <h2 class="guides-chapter__title"><em class="serif-italic">Insurance</em><br/>&amp; certificates.</h2>
-          <p class="guides-chapter__lede">
-            Your own coverage as a shareholder or sub-tenant, and the COIs we require from contractors and movers.
-          </p>
-          <span class="guides-chapter__count" data-guides-count></span>
-        </aside>
-
-        <ol class="guides-list">
-
-          <!-- 3.1 Resident insurance -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">01</span>
-                <span class="guides-row__q">Required resident insurance</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>All shareholders must maintain a <strong>Homeowner's Insurance Policy</strong> for as long as they own their apartment. Sub-tenants must carry <strong>Renter's Insurance</strong> for the full term of their lease.</p>
-
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Liability coverage</span>
-                    <span class="guides-table__val">$300,000</span>
-                    <span class="guides-table__note">Minimum required</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Personal property</span>
-                    <span class="guides-table__val">$25,000</span>
-                    <span class="guides-table__note">Minimum required</span>
-                  </div>
-                </div>
-              </div>
-            </details>
-          </li>
-
-          <!-- 3.2 Submitting your policy -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">02</span>
-                <span class="guides-row__q">Submitting your policy</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>Email a current copy of your policy to the management office, or drop one off in person. Your policy must list the following as <em class="serif-italic">additional insured:</em></p>
-
-                <div class="guides-parties">
-                  <div class="guides-parties__item">
-                    <span class="guides-parties__num">01</span>
-                    <div>
-                      <strong>Park City 3 &amp; 4 Apartments, Inc.</strong>
-                      <span>Including the Board of Directors</span>
-                      <address>c/o AKAM · 99 Park Avenue, 14th Floor · New York, NY 10016</address>
-                    </div>
-                  </div>
-                  <div class="guides-parties__item">
-                    <span class="guides-parties__num">02</span>
-                    <div>
-                      <strong>AKAM Associates, Inc.</strong>
-                      <address>99 Park Avenue, 14th Floor · New York, NY 10016</address>
-                    </div>
-                  </div>
-                </div>
-
-                <a href="mailto:parkcity3and4@akam.com" class="guides-cta">
-                  <span>Email your policy</span>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M3 3h8m0 0v8m0-8L3 11" stroke="currentColor" stroke-width="1.2"/>
-                  </svg>
+              <li class="guides-toc__chapter" data-toc-chapter="3">
+                <a href="#chapter-3" class="guides-toc__c-link">
+                  <em>III.</em><span>Insurance &amp; Certificates</span>
                 </a>
-              </div>
-            </details>
-          </li>
+                <ol>
+                  <li><a href="#policy-3-1" data-toc-policy>III.1 &nbsp; Required resident insurance</a></li>
+                  <li><a href="#policy-3-2" data-toc-policy>III.2 &nbsp; Submitting your policy</a></li>
+                  <li><a href="#policy-3-3" data-toc-policy>III.3 &nbsp; When a COI is required</a></li>
+                  <li><a href="#policy-3-4" data-toc-policy>III.4 &nbsp; COI coverage &amp; submission</a></li>
+                </ol>
+              </li>
 
-          <!-- 3.3 When a COI is required -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">03</span>
-                <span class="guides-row__q">When a Certificate of Insurance (COI) is required</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>A COI from the contractor, mover, or delivery company is required for any of the following:</p>
+              <li class="guides-toc__chapter" data-toc-chapter="4">
+                <a href="#chapter-4" class="guides-toc__c-link">
+                  <em>IV.</em><span>House Rules</span>
+                </a>
+                <ol>
+                  <li><a href="#policy-4-1" data-toc-policy>IV.1 &nbsp; Occupancy &amp; guests</a></li>
+                  <li><a href="#policy-4-2" data-toc-policy>IV.2 &nbsp; Quiet hours &amp; noise</a></li>
+                  <li><a href="#policy-4-3" data-toc-policy>IV.3 &nbsp; Alterations &amp; renovations</a></li>
+                  <li><a href="#policy-4-4" data-toc-policy>IV.4 &nbsp; Prohibited appliances</a></li>
+                  <li><a href="#policy-4-5" data-toc-policy>IV.5 &nbsp; Pets &amp; animals</a></li>
+                  <li><a href="#policy-4-6" data-toc-policy>IV.6 &nbsp; Parking &amp; garage rules</a></li>
+                </ol>
+              </li>
 
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Any work being done inside an apartment</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>All move-ins and move-outs</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Large deliveries requiring the service elevator</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Any contractor entering the building</span>
-                  </li>
-                </ul>
+              <li class="guides-toc__chapter" data-toc-chapter="5">
+                <a href="#chapter-5" class="guides-toc__c-link">
+                  <em>V.</em><span>Sublet Policy</span>
+                </a>
+                <ol>
+                  <li><a href="#policy-5-1" data-toc-policy>V.1 &nbsp; Who can sublet</a></li>
+                  <li><a href="#policy-5-2" data-toc-policy>V.2 &nbsp; Surcharge fees by year</a></li>
+                  <li><a href="#policy-5-3" data-toc-policy>V.3 &nbsp; Inspections &amp; violations</a></li>
+                </ol>
+              </li>
 
-                <aside class="guides-callout guides-callout--warn">
-                  <span class="guides-callout__title">Timing</span>
-                  <p>The COI must be received at least <strong>two business days</strong> in advance of the scheduled work or move.</p>
-                </aside>
-              </div>
-            </details>
-          </li>
+              <li class="guides-toc__chapter" data-toc-chapter="6">
+                <a href="#chapter-6" class="guides-toc__c-link">
+                  <em>VI.</em><span>Electric Vehicles</span>
+                </a>
+                <ol>
+                  <li><a href="#policy-6-1" data-toc-policy>VI.1 &nbsp; The e-bike &amp; e-scooter ban</a></li>
+                  <li><a href="#policy-6-2" data-toc-policy>VI.2 &nbsp; Guests &amp; penalties</a></li>
+                </ol>
+              </li>
 
-          <!-- 3.4 COI requirements & how to submit -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">04</span>
-                <span class="guides-row__q">COI coverage requirements &amp; how to submit</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <h5 class="guides-row__sub">Required coverage limits</h5>
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Liability insurance</span>
-                    <span class="guides-table__val">$1,000,000</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Product &amp; completed operations</span>
-                    <span class="guides-table__val">$1,000,000</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Automobile insurance</span>
-                    <span class="guides-table__val">$1,000,000</span>
-                    <span class="guides-table__note">Commercial Auto, or Hired &amp; Non-Owned</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Umbrella liability</span>
-                    <span class="guides-table__val">$5,000,000</span>
-                    <span class="guides-table__note">Adjustable based on the work scope</span>
-                  </div>
-                  <div class="guides-table__row guides-table__row--highlight">
-                    <span class="guides-table__key">Workers' compensation</span>
-                    <span class="guides-table__val">Required</span>
-                    <span class="guides-table__note">Proof must be included</span>
-                  </div>
-                </div>
+              <li class="guides-toc__divider" data-toc-chapter="news">
+                <a href="#newsletters" class="guides-toc__c-link">
+                  <em>—</em><span>Newsletters &amp; updates</span>
+                </a>
+              </li>
+            </ol>
 
-                <h5 class="guides-row__sub">Certificate holder</h5>
-                <address class="guides-address">
-                  <span class="guides-address__line"><strong>Park City 3 &amp; 4 Apartments, Inc.</strong></span>
-                  <span class="guides-address__line">c/o AKAM</span>
-                  <span class="guides-address__line">99 Park Avenue, 14th Floor</span>
-                  <span class="guides-address__line">New York, NY 10016</span>
-                </address>
+            <p class="guides-toc__foot">
+              Looking for a form? Those live on the <a href="forms.html">Forms page.</a>
+            </p>
+          </div>
+        </aside>
 
-                <h5 class="guides-row__sub">Additional insured (on General Liability and Umbrella)</h5>
-                <div class="guides-parties">
-                  <div class="guides-parties__item">
-                    <span class="guides-parties__num">·</span>
-                    <div>
-                      <strong>Park City 3 &amp; 4 Apartments, Inc.</strong>
-                      <span>Including the Board of Directors, c/o AKAM, 99 Park Ave, 14th Fl, NY 10016</span>
-                    </div>
-                  </div>
-                  <div class="guides-parties__item">
-                    <span class="guides-parties__num">·</span>
-                    <div>
-                      <strong>AKAM Associates, Inc.</strong>
-                      <span>99 Park Avenue, 14th Floor, New York, NY 10016</span>
-                    </div>
-                  </div>
-                  <div class="guides-parties__item">
-                    <span class="guides-parties__num">·</span>
-                    <div>
-                      <strong>Resident name, unit number, property address</strong>
-                      <span>If the work is being done for a tenant</span>
-                    </div>
-                  </div>
-                  <div class="guides-parties__item">
-                    <span class="guides-parties__num">·</span>
-                    <div>
-                      <strong>Date of service</strong>
-                    </div>
-                  </div>
-                </div>
+        <!-- ─── DOCUMENT CONTENT ─── -->
+        <div class="guides-doc">
 
-                <h5 class="guides-row__sub">How to submit</h5>
-                <p>Email the COI with a cover sheet that includes:</p>
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Unit owner's name</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Unit number</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Description of the work, delivery, or move</span>
-                  </li>
-                </ul>
-
-                <p class="guides-row__minor">
-                  Email to <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>
-                  or <a href="mailto:hkhan@akam.com">hkhan@akam.com</a>
+          <!-- ═══ CHAPTER I — BILLING & PAYMENTS ═══ -->
+          <article class="guides-chapter" id="chapter-1">
+            <header class="guides-chapter__banner">
+              <span class="guides-chapter__num">I.</span>
+              <div class="guides-chapter__head">
+                <h2 class="guides-chapter__title"><em class="serif-italic">Billing</em> &amp; payments.</h2>
+                <p class="guides-chapter__lede">
+                  How maintenance is paid, where to send checks, what late looks like — and the tax abatement worth knowing about.
                 </p>
               </div>
-            </details>
-          </li>
+              <span class="guides-chapter__count" data-guides-count></span>
+            </header>
 
-        </ol>
-      </div>
-    </section>
+            <ol class="guides-list">
 
-    <!-- ═══════════════ CHAPTER IV — HOUSE RULES ═══════════════ -->
-    <section class="guides-chapter guides-chapter--alt" id="chapter-4">
-      <div class="guides-chapter__grid">
-        <aside class="guides-chapter__sticky">
-          <span class="guides-chapter__num">IV.</span>
-          <h2 class="guides-chapter__title"><em class="serif-italic">House</em><br/>rules.</h2>
-          <p class="guides-chapter__lede">
-            Adopted by the Board of Directors, last revised January 2015. The small things that keep a community working.
-          </p>
-          <span class="guides-chapter__count" data-guides-count></span>
-        </aside>
+              <!-- I.1 -->
+              <li class="guides-row" id="policy-1-1">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">I.1</span>
+                    <span class="guides-row__q">Pay online via ClickPay</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>The cooperative accepts maintenance and other charges through the secure ClickPay portal. Two methods are available:</p>
 
-        <ol class="guides-list">
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">e-Check (ACH)</span>
+                        <span class="guides-table__val guides-table__val--good">Free</span>
+                        <span class="guides-table__note">Bank account transfer</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Credit / Debit Card</span>
+                        <span class="guides-table__val">Fee applies</span>
+                        <span class="guides-table__note">Visa, Mastercard, Amex, Discover</span>
+                      </div>
+                    </div>
 
-          <!-- 4.1 Occupancy & guests -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">01</span>
-                <span class="guides-row__q">Occupancy &amp; guest limits</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <h5 class="guides-row__sub">Occupancy</h5>
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Studio</span>
-                    <span class="guides-table__val">2 persons</span>
+                    <h5 class="guides-row__sub">Setting up an account</h5>
+                    <ol class="guides-steps">
+                      <li>
+                        <span class="guides-steps__num">01</span>
+                        <div class="guides-steps__body">
+                          <h6>Visit the portal</h6>
+                          <p>Go to <strong>www.ClickPay.com/AKAM</strong> and select <em class="serif-italic">New York.</em></p>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="guides-steps__num">02</span>
+                        <div class="guides-steps__body">
+                          <h6>Register</h6>
+                          <p>Click <strong>Register</strong> and complete your online profile.</p>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="guides-steps__num">03</span>
+                        <div class="guides-steps__body">
+                          <h6>Link your unit</h6>
+                          <p>Use the account number printed on your statement or coupon book.</p>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="guides-steps__num">04</span>
+                        <div class="guides-steps__body">
+                          <h6>Add a payment method</h6>
+                          <p>e-Check is free; card payments carry a processing fee.</p>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="guides-steps__num">05</span>
+                        <div class="guides-steps__body">
+                          <h6>Set up payments</h6>
+                          <p>Enable automatic recurring payments, or pay one-time as needed.</p>
+                        </div>
+                      </li>
+                    </ol>
+
+                    <a href="https://www.ClickPay.com/AKAM" target="_blank" rel="noopener" class="guides-cta">
+                      <span>Visit ClickPay portal</span>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M3 3h8m0 0v8m0-8L3 11" stroke="currentColor" stroke-width="1.2"/>
+                      </svg>
+                    </a>
+
+                    <p class="guides-row__minor">
+                      Trouble logging in? ClickPay support:
+                      <a href="https://www.clickpay.com/help" target="_blank" rel="noopener">Help Center</a> ·
+                      <a href="tel:1-800-533-7901">1-800-533-7901</a> (option 1)
+                    </p>
                   </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">One-bedroom</span>
-                    <span class="guides-table__val">3 persons</span>
+                </details>
+              </li>
+
+              <!-- I.2 -->
+              <li class="guides-row" id="policy-1-2">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">I.2</span>
+                    <span class="guides-row__q">Pay by mail</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>For paper checks or Online Bill Pay, mail to the address below. Make checks payable to the cooperative name printed on your statement, and write your account number on the check.</p>
+
+                    <address class="guides-address">
+                      <span class="guides-address__label">Mail Payments To</span>
+                      <span class="guides-address__line">P.O. Box 18</span>
+                      <span class="guides-address__line">Emerson, NJ 07630</span>
+                    </address>
+
+                    <aside class="guides-callout guides-callout--info">
+                      <span class="guides-callout__title">Note</span>
+                      <p>This is a remittance address only. Do not send forms, COIs, or correspondence here — those go to the management office at <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>.</p>
+                    </aside>
                   </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Two-bedroom</span>
-                    <span class="guides-table__val">4 persons</span>
+                </details>
+              </li>
+
+              <!-- I.3 -->
+              <li class="guides-row" id="policy-1-3">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">I.3</span>
+                    <span class="guides-row__q">Late fees &amp; bounced checks</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>Maintenance is due on the <strong>1st of each month.</strong> A grace period extends to the <strong>10th.</strong> After that:</p>
+
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Late fee (after the 10th)</span>
+                        <span class="guides-table__val">$40.00</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Bounced check fee</span>
+                        <span class="guides-table__val">$35.00</span>
+                        <span class="guides-table__note">Plus late charges, if applicable</span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Three-bedroom</span>
-                    <span class="guides-table__val">5 persons</span>
+                </details>
+              </li>
+
+              <!-- I.4 -->
+              <li class="guides-row" id="policy-1-4">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">I.4</span>
+                    <span class="guides-row__q">The Coop-Condo tax abatement</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>The Coop-Condo Property Tax Abatement is a credit offered by NYC to residential owners who use their apartment as their <em class="serif-italic">primary residence.</em> The credit is typically applied to the <strong>June billing statement</strong> (the final month of the tax year).</p>
+
+                    <h5 class="guides-row__sub">When you need to file a Primary Residence Verification (PRV)</h5>
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Your residency status changed during the tax year</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>You purchased your unit recently</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Ownership was transferred to a trust, or a new owner was added</span>
+                      </li>
+                    </ul>
+
+                    <h5 class="guides-row__sub">Who is not eligible</h5>
+                    <ul class="guides-check guides-check--neg">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Investor-owned apartments, including sponsor units</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>LLCs, corporations, partnerships</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Owners of four or more apartments in the same building (unless legally combined)</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Units already receiving J-51, 420c, 421a, 421b, or 421g exemptions</span>
+                      </li>
+                    </ul>
+
+                    <h5 class="guides-row__sub">Other exemptions worth checking</h5>
+                    <p class="guides-row__minor">NYC and NYS offer additional credits — apply directly with the relevant agency.</p>
+                    <ul class="guides-links">
+                      <li><a href="https://www.tax.ny.gov/star/" target="_blank" rel="noopener">NYS STAR Credit ↗</a></li>
+                      <li><a href="https://www.nyc.gov/site/finance/property/landlords-sche.page" target="_blank" rel="noopener">Senior Citizens' Exemption (SCHE) ↗</a></li>
+                      <li><a href="https://www.nyc.gov/site/finance/property/landlords-dhe.page" target="_blank" rel="noopener">Disabled Homeowners' Exemption (DHE) ↗</a></li>
+                      <li><a href="https://www.nyc.gov/site/finance/property/landlords-veterans.page" target="_blank" rel="noopener">Veterans Exemption ↗</a></li>
+                    </ul>
                   </div>
-                </div>
+                </details>
+              </li>
 
-                <aside class="guides-callout guides-callout--warn">
-                  <span class="guides-callout__title">Guests</span>
-                  <p>Guests may stay no more than <strong>30 consecutive days.</strong> Management must be notified in writing. Violation fine: <strong>$1,000 per month.</strong></p>
-                </aside>
-              </div>
-            </details>
-          </li>
+            </ol>
+          </article>
 
-          <!-- 4.2 Quiet hours -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">02</span>
-                <span class="guides-row__q">Quiet hours &amp; noise</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <div class="guides-table">
-                  <div class="guides-table__row guides-table__row--highlight">
-                    <span class="guides-table__key">Weekday quiet hours</span>
-                    <span class="guides-table__val">10:30 PM – 8:30 AM</span>
-                  </div>
-                  <div class="guides-table__row guides-table__row--highlight">
-                    <span class="guides-table__key">Weekend quiet hours</span>
-                    <span class="guides-table__val">12:00 AM – 8:30 AM</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Floor coverage required</span>
-                    <span class="guides-table__val">80% minimum</span>
-                    <span class="guides-table__note">Rugs or carpeting, except kitchens and bathrooms</span>
-                  </div>
-                </div>
-              </div>
-            </details>
-          </li>
-
-          <!-- 4.3 Alterations -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">03</span>
-                <span class="guides-row__q">Apartment alterations &amp; renovations</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>Alterations are permitted with prior written approval. The process:</p>
-
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>File work plans with the Management Office</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Obtain Board approval before any work begins</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Provide your contractor's proof of insurance (COI)</span>
-                  </li>
-                </ul>
-
-                <h5 class="guides-row__sub">Fees &amp; terms</h5>
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Refundable deposit</span>
-                    <span class="guides-table__val">$2,500</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Daily fee</span>
-                    <span class="guides-table__val">$20 / day</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Permit duration</span>
-                    <span class="guides-table__val">3 weeks maximum</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Work hours</span>
-                    <span class="guides-table__val">Mon – Fri · 8:30 AM – 4:30 PM</span>
-                  </div>
-                </div>
-
-                <aside class="guides-callout guides-callout--danger">
-                  <span class="guides-callout__title">Non-compliance</span>
-                  <p>$1,000 fine — <em class="serif-italic">no exceptions.</em></p>
-                </aside>
-              </div>
-            </details>
-          </li>
-
-          <!-- 4.4 Prohibited appliances -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">04</span>
-                <span class="guides-row__q">Prohibited appliances</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>The following are not permitted in apartments or on terraces:</p>
-
-                <ul class="guides-check guides-check--neg">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Washing machines and clothes dryers</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Jacuzzis and hot tubs</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Charcoal or gas grills on terraces — fire code violation</span>
-                  </li>
-                </ul>
-
-                <aside class="guides-callout guides-callout--info">
-                  <span class="guides-callout__title">Window air conditioners</span>
-                  <p>Window A/C units must be registered with the Management Office and use approved brackets. Non-compliance fine: <strong>$1,000.</strong></p>
-                </aside>
-              </div>
-            </details>
-          </li>
-
-          <!-- 4.5 Pets -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">05</span>
-                <span class="guides-row__q">Pets &amp; animals</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>Park City 3 &amp; 4 permits <em class="serif-italic">cats and dogs only.</em> Dogs require written Board approval (a policy in effect since July 2004). Pet registration is handled through the <a href="forms.html">Forms page.</a></p>
-
-                <h5 class="guides-row__sub">Dog requirements</h5>
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Adult weight no more than <strong>16 lbs</strong></span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Proper licensing and current health certification</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Always on leash, basement / service entrance only — never the lobby</span>
-                  </li>
-                </ul>
-
-                <h5 class="guides-row__sub">Not permitted</h5>
-                <ul class="guides-check guides-check--neg">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Pitbulls and Rottweilers</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Exotic animals or birds of any kind</span>
-                  </li>
-                </ul>
-
-                <h5 class="guides-row__sub">Violation fines</h5>
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">First violation</span>
-                    <span class="guides-table__val">$250</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Each additional</span>
-                    <span class="guides-table__val">$500</span>
-                  </div>
-                </div>
-              </div>
-            </details>
-          </li>
-
-          <!-- 4.6 Parking -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">06</span>
-                <span class="guides-row__q">Parking &amp; garage rules</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Spaces are for resident shareholders only, current on maintenance</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Vehicles must be registered with Management — make, model, color, and license plate</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Valid vehicle registration and inspection sticker required at all times</span>
-                  </li>
-                </ul>
-
-                <h5 class="guides-row__sub">Not permitted in the garage</h5>
-                <ul class="guides-check guides-check--neg">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Vehicle washing or repairs — <strong>$250 fine</strong></span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Smoking — NYC law, <strong>$250 fine</strong></span>
-                  </li>
-                </ul>
-              </div>
-            </details>
-          </li>
-
-        </ol>
-      </div>
-    </section>
-
-    <!-- ═══════════════ CHAPTER V — SUBLET POLICY ═══════════════ -->
-    <section class="guides-chapter" id="chapter-5">
-      <div class="guides-chapter__grid">
-        <aside class="guides-chapter__sticky">
-          <span class="guides-chapter__num">V.</span>
-          <h2 class="guides-chapter__title"><em class="serif-italic">Sublet</em><br/>policy.</h2>
-          <p class="guides-chapter__lede">
-            For shareholders considering renting out their apartment — eligibility, surcharges, and the application process.
-          </p>
-          <span class="guides-chapter__count" data-guides-count></span>
-        </aside>
-
-        <ol class="guides-list">
-
-          <!-- 5.1 Eligibility -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">01</span>
-                <span class="guides-row__q">Who can sublet, and on what terms</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Shareholder must have <strong>owned and resided</strong> in the apartment for a minimum of <strong>two years</strong></span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Sub-tenants are offered a <strong>one-year lease</strong> only</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Sub-tenants must pass an interview and obtain <strong>written Board approval</strong></span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Renewals require the same approval process before lease expiry</span>
-                  </li>
-                </ul>
-
-                <aside class="guides-callout guides-callout--info">
-                  <span class="guides-callout__title">Income requirement</span>
-                  <p>Sub-tenants must demonstrate annual income of at least <strong>3.5×</strong> their annual rent.</p>
-                </aside>
-              </div>
-            </details>
-          </li>
-
-          <!-- 5.2 Surcharge fees -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">02</span>
-                <span class="guides-row__q">Sublet surcharge fees</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>The shareholder is charged a surcharge — a percentage of monthly maintenance — based on how long the unit has been sublet:</p>
-
-                <div class="guides-table">
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Years 1 – 3</span>
-                    <span class="guides-table__val">15%</span>
-                    <span class="guides-table__note">of monthly maintenance</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Year 4</span>
-                    <span class="guides-table__val">30%</span>
-                    <span class="guides-table__note">of monthly maintenance</span>
-                  </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Year 5</span>
-                    <span class="guides-table__val">50%</span>
-                    <span class="guides-table__note">of monthly maintenance</span>
-                  </div>
-                  <div class="guides-table__row guides-table__row--highlight">
-                    <span class="guides-table__key">Year 6 onward</span>
-                    <span class="guides-table__val">100%</span>
-                    <span class="guides-table__note">of monthly maintenance</span>
-                  </div>
-                </div>
-              </div>
-            </details>
-          </li>
-
-          <!-- 5.3 Inspections, renewals & violations -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">03</span>
-                <span class="guides-row__q">Inspections, renewals &amp; violations</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <ul class="guides-check">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>All apartments must be inspected by Management before subletting</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Notify Management in writing when a subtenant moves out, to stop the surcharge</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>The policy may be amended at any time by the Board of Directors</span>
-                  </li>
-                </ul>
-
-                <h5 class="guides-row__sub">Violation fines</h5>
-                <div class="guides-table">
-                  <div class="guides-table__row guides-table__row--danger">
-                    <span class="guides-table__key">Non-renewal compliance</span>
-                    <span class="guides-table__val">$500 / month</span>
-                    <span class="guides-table__note">Until the subtenant is re-certified</span>
-                  </div>
-                  <div class="guides-table__row guides-table__row--danger">
-                    <span class="guides-table__key">Illegal sublet</span>
-                    <span class="guides-table__val">$1,000 + $500/mo</span>
-                    <span class="guides-table__note">Plus legal fees</span>
-                  </div>
-                </div>
-
-                <p class="guides-row__minor">
-                  To request a sublet application, contact the office:
-                  <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a> ·
-                  <a href="tel:5551234567">(555) 123-4567</a>
+          <!-- ═══ CHAPTER II — MOVES & DELIVERIES ═══ -->
+          <article class="guides-chapter" id="chapter-2">
+            <header class="guides-chapter__banner">
+              <span class="guides-chapter__num">II.</span>
+              <div class="guides-chapter__head">
+                <h2 class="guides-chapter__title"><em class="serif-italic">Moves</em> &amp; deliveries.</h2>
+                <p class="guides-chapter__lede">
+                  What management needs from you, when the service entrance is open, and how the deposit works.
                 </p>
               </div>
-            </details>
-          </li>
+              <span class="guides-chapter__count" data-guides-count></span>
+            </header>
 
-        </ol>
-      </div>
-    </section>
+            <ol class="guides-list">
 
-    <!-- ═══════════════ CHAPTER VI — ELECTRIC VEHICLES ═══════════════ -->
-    <section class="guides-chapter guides-chapter--alt" id="chapter-6">
-      <div class="guides-chapter__grid">
-        <aside class="guides-chapter__sticky">
-          <span class="guides-chapter__num">VI.</span>
-          <h2 class="guides-chapter__title"><em class="serif-italic">Electric</em><br/>vehicles.</h2>
-          <p class="guides-chapter__lede">
-            Approved by the Board following Board communications of November 2022 and June 2023, in response to repeated lithium-battery fires across the city.
-          </p>
-          <span class="guides-chapter__count" data-guides-count></span>
-        </aside>
+              <!-- II.1 -->
+              <li class="guides-row" id="policy-2-1">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">II.1</span>
+                    <span class="guides-row__q">What you need to schedule a move or delivery</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>For any move-in, move-out, or large delivery, the management office requires three things in advance:</p>
 
-        <ol class="guides-list">
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span><strong>$500 retainer deposit</strong> — certified check, bank check, or money order, payable to <em class="serif-italic">Park City 3 &amp; 4 Apartments, Inc.</em></span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span><strong>Certificate of Insurance (COI)</strong> from the moving, delivery, or store company</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>If you're moving yourself, a copy of your current <strong>insurance policy</strong></span>
+                      </li>
+                    </ul>
 
-          <!-- 6.1 The ban -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">01</span>
-                <span class="guides-row__q">E-bikes &amp; e-scooters: the ban</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>To safeguard residents and the buildings against the risk of lithium-battery fires, <strong>e-bikes and e-scooters are not permitted anywhere on Park City 3 &amp; 4 property.</strong> This includes:</p>
-
-                <ul class="guides-check guides-check--neg">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Storing or charging the battery, anywhere on the premises</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>All outdoor co-op spaces — parking garages, walkways, catwalks</span>
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Inside buildings — common areas, hallways, elevators, and apartments</span>
-                  </li>
-                </ul>
-              </div>
-            </details>
-          </li>
-
-          <!-- 6.2 Guests & penalties -->
-          <li class="guides-row">
-            <details>
-              <summary>
-                <span class="guides-row__num">02</span>
-                <span class="guides-row__q">Guest policy &amp; penalties</span>
-                <span class="guides-row__icon" aria-hidden="true"></span>
-              </summary>
-              <div class="guides-row__a">
-                <p>Guests of shareholders who arrive with an e-bike or e-scooter <strong>will not be permitted to leave it on the premises,</strong> and will be refused entry through the lobby or garages, for any duration.</p>
-
-                <h5 class="guides-row__sub">Penalties</h5>
-                <div class="guides-table">
-                  <div class="guides-table__row guides-table__row--highlight">
-                    <span class="guides-table__key">Fine per infringement</span>
-                    <span class="guides-table__val">$150.00</span>
+                    <aside class="guides-callout guides-callout--info">
+                      <span class="guides-callout__title">After we have everything</span>
+                      <p>A <strong>Move-In / Move-Out / Delivery Permit</strong> is issued the day before your scheduled move.</p>
+                    </aside>
                   </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Legal action</span>
-                    <span class="guides-table__val">May apply</span>
-                    <span class="guides-table__note">All costs are the shareholder's responsibility</span>
+                </details>
+              </li>
+
+              <!-- II.2 -->
+              <li class="guides-row" id="policy-2-2">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">II.2</span>
+                    <span class="guides-row__q">Permitted days, hours &amp; entrances</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <div class="guides-table">
+                      <div class="guides-table__row guides-table__row--highlight">
+                        <span class="guides-table__key">Permitted days &amp; hours</span>
+                        <span class="guides-table__val">Mon – Fri · 8:30 AM – 4:30 PM</span>
+                        <span class="guides-table__note">Excluding legal holidays</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Advance notice</span>
+                        <span class="guides-table__val">1 business day, minimum</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Required entrance</span>
+                        <span class="guides-table__val">Basement / service only</span>
+                        <span class="guides-table__note">All heavy items use the service entrance</span>
+                      </div>
+                    </div>
+
+                    <aside class="guides-callout guides-callout--warn">
+                      <span class="guides-callout__title">Padded elevator</span>
+                      <p>The padded elevator must be used for all moves and deliveries. Non-compliance carries a <strong>$500 fine.</strong></p>
+                    </aside>
                   </div>
-                  <div class="guides-table__row">
-                    <span class="guides-table__key">Damage liability</span>
-                    <span class="guides-table__val">Full</span>
-                    <span class="guides-table__note">Shareholder liable for all resulting damage</span>
+                </details>
+              </li>
+
+              <!-- II.3 -->
+              <li class="guides-row" id="policy-2-3">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">II.3</span>
+                    <span class="guides-row__q">The $500 retainer deposit</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>The deposit protects the building from damage during a move or delivery. It is <em class="serif-italic">refundable</em> after the move is complete and any damage to the building or elevator has been ruled out.</p>
+
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Make payable to</span>
+                        <span class="guides-table__val">Park City 3 &amp; 4 Apartments, Inc.</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Accepted forms</span>
+                        <span class="guides-table__val">Certified check, bank check, or money order</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Refundable</span>
+                        <span class="guides-table__val guides-table__val--good">Yes — after successful move</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </details>
+              </li>
+
+            </ol>
+          </article>
+
+          <!-- ═══ CHAPTER III — INSURANCE & CERTIFICATES ═══ -->
+          <article class="guides-chapter" id="chapter-3">
+            <header class="guides-chapter__banner">
+              <span class="guides-chapter__num">III.</span>
+              <div class="guides-chapter__head">
+                <h2 class="guides-chapter__title"><em class="serif-italic">Insurance</em> &amp; certificates.</h2>
+                <p class="guides-chapter__lede">
+                  Your own coverage as a shareholder or sub-tenant, and the COIs we require from contractors and movers.
+                </p>
               </div>
-            </details>
-          </li>
+              <span class="guides-chapter__count" data-guides-count></span>
+            </header>
 
-        </ol>
-      </div>
-    </section>
+            <ol class="guides-list">
 
-    <!-- ═══════════════ NEWSLETTERS ═══════════════ -->
-    <section class="guides-newsletters" id="newsletters">
-      <div class="guides-newsletters__grid">
-        <aside class="guides-newsletters__head">
-          <span class="eyebrow"><span class="eyebrow__line"></span>From the Office</span>
-          <h2 class="guides-newsletters__title">
-            <em class="serif-italic">Newsletters</em><br/>
-            &amp; building updates.
-          </h2>
-          <p class="guides-newsletters__lede">
-            Quarterly notes from the management office — building works, seasonal reminders, and policy updates as they happen.
-          </p>
-          <p class="guides-newsletters__hint">
-            Looking for something older? Write to the office and we'll send the full archive.
-          </p>
-        </aside>
+              <!-- III.1 -->
+              <li class="guides-row" id="policy-3-1">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">III.1</span>
+                    <span class="guides-row__q">Required resident insurance</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>All shareholders must maintain a <strong>Homeowner's Insurance Policy</strong> for as long as they own their apartment. Sub-tenants must carry <strong>Renter's Insurance</strong> for the full term of their lease.</p>
 
-        <ol class="guides-newsletters__list">
-          <!--
-            ─── HOW TO ADD A NEWSLETTER ───
-            Each <li> below is one newsletter entry. To add a new one:
-            1. Drop the PDF into your /newsletters/ folder
-            2. Copy one <li> block, paste it at the top of this list
-            3. Update the date, title, summary, and href to the new file
-            The newest newsletter should always sit at the top.
-          -->
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Liability coverage</span>
+                        <span class="guides-table__val">$300,000</span>
+                        <span class="guides-table__note">Minimum required</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Personal property</span>
+                        <span class="guides-table__val">$25,000</span>
+                        <span class="guides-table__note">Minimum required</span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </li>
 
-          <li class="newsletter">
-            <a href="newsletters/sample-spring-2026.pdf" class="newsletter__link" target="_blank" rel="noopener">
-              <span class="newsletter__date">
-                <em class="serif-italic">Spring</em>
-                <span>2026</span>
-              </span>
-              <div class="newsletter__body">
-                <h3 class="newsletter__title">Annual Meeting recap &amp; the year ahead</h3>
-                <p class="newsletter__summary">A summary of the 2026 Annual Shareholders' Meeting — Board election results, the upcoming lobby refresh at 97-37, and seasonal pool dates.</p>
-                <span class="newsletter__meta">PDF · 2 pages</span>
+              <!-- III.2 -->
+              <li class="guides-row" id="policy-3-2">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">III.2</span>
+                    <span class="guides-row__q">Submitting your policy</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>Email a current copy of your policy to the management office, or drop one off in person. Your policy must list the following as <em class="serif-italic">additional insured:</em></p>
+
+                    <div class="guides-parties">
+                      <div class="guides-parties__item">
+                        <span class="guides-parties__num">01</span>
+                        <div>
+                          <strong>Park City 3 &amp; 4 Apartments, Inc.</strong>
+                          <span>Including the Board of Directors</span>
+                          <address>c/o AKAM · 99 Park Avenue, 14th Floor · New York, NY 10016</address>
+                        </div>
+                      </div>
+                      <div class="guides-parties__item">
+                        <span class="guides-parties__num">02</span>
+                        <div>
+                          <strong>AKAM Associates, Inc.</strong>
+                          <address>99 Park Avenue, 14th Floor · New York, NY 10016</address>
+                        </div>
+                      </div>
+                    </div>
+
+                    <a href="mailto:parkcity3and4@akam.com" class="guides-cta">
+                      <span>Email your policy</span>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M3 3h8m0 0v8m0-8L3 11" stroke="currentColor" stroke-width="1.2"/>
+                      </svg>
+                    </a>
+                  </div>
+                </details>
+              </li>
+
+              <!-- III.3 -->
+              <li class="guides-row" id="policy-3-3">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">III.3</span>
+                    <span class="guides-row__q">When a Certificate of Insurance (COI) is required</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>A COI from the contractor, mover, or delivery company is required for any of the following:</p>
+
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Any work being done inside an apartment</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>All move-ins and move-outs</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Large deliveries requiring the service elevator</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Any contractor entering the building</span>
+                      </li>
+                    </ul>
+
+                    <aside class="guides-callout guides-callout--warn">
+                      <span class="guides-callout__title">Timing</span>
+                      <p>The COI must be received at least <strong>two business days</strong> in advance of the scheduled work or move.</p>
+                    </aside>
+                  </div>
+                </details>
+              </li>
+
+              <!-- III.4 -->
+              <li class="guides-row" id="policy-3-4">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">III.4</span>
+                    <span class="guides-row__q">COI coverage requirements &amp; how to submit</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <h5 class="guides-row__sub">Required coverage limits</h5>
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Liability insurance</span>
+                        <span class="guides-table__val">$1,000,000</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Product &amp; completed operations</span>
+                        <span class="guides-table__val">$1,000,000</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Automobile insurance</span>
+                        <span class="guides-table__val">$1,000,000</span>
+                        <span class="guides-table__note">Commercial Auto, or Hired &amp; Non-Owned</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Umbrella liability</span>
+                        <span class="guides-table__val">$5,000,000</span>
+                        <span class="guides-table__note">Adjustable based on the work scope</span>
+                      </div>
+                      <div class="guides-table__row guides-table__row--highlight">
+                        <span class="guides-table__key">Workers' compensation</span>
+                        <span class="guides-table__val">Required</span>
+                        <span class="guides-table__note">Proof must be included</span>
+                      </div>
+                    </div>
+
+                    <h5 class="guides-row__sub">Certificate holder</h5>
+                    <address class="guides-address">
+                      <span class="guides-address__line"><strong>Park City 3 &amp; 4 Apartments, Inc.</strong></span>
+                      <span class="guides-address__line">c/o AKAM</span>
+                      <span class="guides-address__line">99 Park Avenue, 14th Floor</span>
+                      <span class="guides-address__line">New York, NY 10016</span>
+                    </address>
+
+                    <h5 class="guides-row__sub">Additional insured (on General Liability and Umbrella)</h5>
+                    <div class="guides-parties">
+                      <div class="guides-parties__item">
+                        <span class="guides-parties__num">·</span>
+                        <div>
+                          <strong>Park City 3 &amp; 4 Apartments, Inc.</strong>
+                          <span>Including the Board of Directors, c/o AKAM, 99 Park Ave, 14th Fl, NY 10016</span>
+                        </div>
+                      </div>
+                      <div class="guides-parties__item">
+                        <span class="guides-parties__num">·</span>
+                        <div>
+                          <strong>AKAM Associates, Inc.</strong>
+                          <span>99 Park Avenue, 14th Floor, New York, NY 10016</span>
+                        </div>
+                      </div>
+                      <div class="guides-parties__item">
+                        <span class="guides-parties__num">·</span>
+                        <div>
+                          <strong>Resident name, unit number, property address</strong>
+                          <span>If the work is being done for a tenant</span>
+                        </div>
+                      </div>
+                      <div class="guides-parties__item">
+                        <span class="guides-parties__num">·</span>
+                        <div>
+                          <strong>Date of service</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <h5 class="guides-row__sub">How to submit</h5>
+                    <p>Email the COI with a cover sheet that includes:</p>
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Unit owner's name</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Unit number</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Description of the work, delivery, or move</span>
+                      </li>
+                    </ul>
+
+                    <p class="guides-row__minor">
+                      Email to <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>
+                      or <a href="mailto:hkhan@akam.com">hkhan@akam.com</a>
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+            </ol>
+          </article>
+
+          <!-- ═══ CHAPTER IV — HOUSE RULES ═══ -->
+          <article class="guides-chapter" id="chapter-4">
+            <header class="guides-chapter__banner">
+              <span class="guides-chapter__num">IV.</span>
+              <div class="guides-chapter__head">
+                <h2 class="guides-chapter__title"><em class="serif-italic">House</em> rules.</h2>
+                <p class="guides-chapter__lede">
+                  Adopted by the Board of Directors, last revised January 2015. The small things that keep a community working.
+                </p>
               </div>
-              <span class="newsletter__arrow" aria-hidden="true">
-                <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
-              </span>
-            </a>
-          </li>
+              <span class="guides-chapter__count" data-guides-count></span>
+            </header>
 
-          <li class="newsletter">
-            <a href="newsletters/sample-winter-2025.pdf" class="newsletter__link" target="_blank" rel="noopener">
-              <span class="newsletter__date">
-                <em class="serif-italic">Winter</em>
-                <span>2025</span>
-              </span>
-              <div class="newsletter__body">
-                <h3 class="newsletter__title">Heating system maintenance &amp; holiday hours</h3>
-                <p class="newsletter__summary">Scheduled boiler maintenance dates by building, holiday office hours, and a reminder about terrace clearance ahead of the winter storm season.</p>
-                <span class="newsletter__meta">PDF · 3 pages</span>
+            <ol class="guides-list">
+
+              <!-- IV.1 -->
+              <li class="guides-row" id="policy-4-1">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">IV.1</span>
+                    <span class="guides-row__q">Occupancy &amp; guest limits</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <h5 class="guides-row__sub">Occupancy</h5>
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Studio</span>
+                        <span class="guides-table__val">2 persons</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">One-bedroom</span>
+                        <span class="guides-table__val">3 persons</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Two-bedroom</span>
+                        <span class="guides-table__val">4 persons</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Three-bedroom</span>
+                        <span class="guides-table__val">5 persons</span>
+                      </div>
+                    </div>
+
+                    <aside class="guides-callout guides-callout--warn">
+                      <span class="guides-callout__title">Guests</span>
+                      <p>Guests may stay no more than <strong>30 consecutive days.</strong> Management must be notified in writing. Violation fine: <strong>$1,000 per month.</strong></p>
+                    </aside>
+                  </div>
+                </details>
+              </li>
+
+              <!-- IV.2 -->
+              <li class="guides-row" id="policy-4-2">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">IV.2</span>
+                    <span class="guides-row__q">Quiet hours &amp; noise</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <div class="guides-table">
+                      <div class="guides-table__row guides-table__row--highlight">
+                        <span class="guides-table__key">Weekday quiet hours</span>
+                        <span class="guides-table__val">10:30 PM – 8:30 AM</span>
+                      </div>
+                      <div class="guides-table__row guides-table__row--highlight">
+                        <span class="guides-table__key">Weekend quiet hours</span>
+                        <span class="guides-table__val">12:00 AM – 8:30 AM</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Floor coverage required</span>
+                        <span class="guides-table__val">80% minimum</span>
+                        <span class="guides-table__note">Rugs or carpeting, except kitchens and bathrooms</span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </li>
+
+              <!-- IV.3 -->
+              <li class="guides-row" id="policy-4-3">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">IV.3</span>
+                    <span class="guides-row__q">Apartment alterations &amp; renovations</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>Alterations are permitted with prior written approval. The process:</p>
+
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>File work plans with the Management Office</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Obtain Board approval before any work begins</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Provide your contractor's proof of insurance (COI)</span>
+                      </li>
+                    </ul>
+
+                    <h5 class="guides-row__sub">Fees &amp; terms</h5>
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Refundable deposit</span>
+                        <span class="guides-table__val">$2,500</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Daily fee</span>
+                        <span class="guides-table__val">$20 / day</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Permit duration</span>
+                        <span class="guides-table__val">3 weeks maximum</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Work hours</span>
+                        <span class="guides-table__val">Mon – Fri · 8:30 AM – 4:30 PM</span>
+                      </div>
+                    </div>
+
+                    <aside class="guides-callout guides-callout--danger">
+                      <span class="guides-callout__title">Non-compliance</span>
+                      <p>$1,000 fine — <em class="serif-italic">no exceptions.</em></p>
+                    </aside>
+                  </div>
+                </details>
+              </li>
+
+              <!-- IV.4 -->
+              <li class="guides-row" id="policy-4-4">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">IV.4</span>
+                    <span class="guides-row__q">Prohibited appliances</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>The following are not permitted in apartments or on terraces:</p>
+
+                    <ul class="guides-check guides-check--neg">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Washing machines and clothes dryers</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Jacuzzis and hot tubs</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Charcoal or gas grills on terraces — fire code violation</span>
+                      </li>
+                    </ul>
+
+                    <aside class="guides-callout guides-callout--info">
+                      <span class="guides-callout__title">Window air conditioners</span>
+                      <p>Window A/C units must be registered with the Management Office and use approved brackets. Non-compliance fine: <strong>$1,000.</strong></p>
+                    </aside>
+                  </div>
+                </details>
+              </li>
+
+              <!-- IV.5 -->
+              <li class="guides-row" id="policy-4-5">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">IV.5</span>
+                    <span class="guides-row__q">Pets &amp; animals</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>Park City 3 &amp; 4 permits <em class="serif-italic">cats and dogs only.</em> Dogs require written Board approval (a policy in effect since July 2004). Pet registration is handled through the <a href="forms.html">Forms page.</a></p>
+
+                    <h5 class="guides-row__sub">Dog requirements</h5>
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Adult weight no more than <strong>16 lbs</strong></span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Proper licensing and current health certification</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Always on leash, basement / service entrance only — never the lobby</span>
+                      </li>
+                    </ul>
+
+                    <h5 class="guides-row__sub">Not permitted</h5>
+                    <ul class="guides-check guides-check--neg">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Pitbulls and Rottweilers</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Exotic animals or birds of any kind</span>
+                      </li>
+                    </ul>
+
+                    <h5 class="guides-row__sub">Violation fines</h5>
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">First violation</span>
+                        <span class="guides-table__val">$250</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Each additional</span>
+                        <span class="guides-table__val">$500</span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </li>
+
+              <!-- IV.6 -->
+              <li class="guides-row" id="policy-4-6">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">IV.6</span>
+                    <span class="guides-row__q">Parking &amp; garage rules</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Spaces are for resident shareholders only, current on maintenance</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Vehicles must be registered with Management — make, model, color, and license plate</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Valid vehicle registration and inspection sticker required at all times</span>
+                      </li>
+                    </ul>
+
+                    <h5 class="guides-row__sub">Not permitted in the garage</h5>
+                    <ul class="guides-check guides-check--neg">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Vehicle washing or repairs — <strong>$250 fine</strong></span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Smoking — NYC law, <strong>$250 fine</strong></span>
+                      </li>
+                    </ul>
+                  </div>
+                </details>
+              </li>
+
+            </ol>
+          </article>
+
+          <!-- ═══ CHAPTER V — SUBLET POLICY ═══ -->
+          <article class="guides-chapter" id="chapter-5">
+            <header class="guides-chapter__banner">
+              <span class="guides-chapter__num">V.</span>
+              <div class="guides-chapter__head">
+                <h2 class="guides-chapter__title"><em class="serif-italic">Sublet</em> policy.</h2>
+                <p class="guides-chapter__lede">
+                  For shareholders considering renting out their apartment — eligibility, surcharges, and the application process.
+                </p>
               </div>
-              <span class="newsletter__arrow" aria-hidden="true">
-                <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
-              </span>
-            </a>
-          </li>
+              <span class="guides-chapter__count" data-guides-count></span>
+            </header>
 
-          <li class="newsletter">
-            <a href="newsletters/sample-fall-2025.pdf" class="newsletter__link" target="_blank" rel="noopener">
-              <span class="newsletter__date">
-                <em class="serif-italic">Fall</em>
-                <span>2025</span>
-              </span>
-              <div class="newsletter__body">
-                <h3 class="newsletter__title">ClickPay rollout &amp; the new mailing address</h3>
-                <p class="newsletter__summary">Step-by-step on the move to ClickPay for online payments, and the new P.O. Box for paper checks. Includes the cutover date and FAQ.</p>
-                <span class="newsletter__meta">PDF · 2 pages</span>
+            <ol class="guides-list">
+
+              <!-- V.1 -->
+              <li class="guides-row" id="policy-5-1">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">V.1</span>
+                    <span class="guides-row__q">Who can sublet, and on what terms</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Shareholder must have <strong>owned and resided</strong> in the apartment for a minimum of <strong>two years</strong></span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Sub-tenants are offered a <strong>one-year lease</strong> only</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Sub-tenants must pass an interview and obtain <strong>written Board approval</strong></span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Renewals require the same approval process before lease expiry</span>
+                      </li>
+                    </ul>
+
+                    <aside class="guides-callout guides-callout--info">
+                      <span class="guides-callout__title">Income requirement</span>
+                      <p>Sub-tenants must demonstrate annual income of at least <strong>3.5×</strong> their annual rent.</p>
+                    </aside>
+                  </div>
+                </details>
+              </li>
+
+              <!-- V.2 -->
+              <li class="guides-row" id="policy-5-2">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">V.2</span>
+                    <span class="guides-row__q">Sublet surcharge fees by year</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>The shareholder is charged a surcharge — a percentage of monthly maintenance — based on how long the unit has been sublet:</p>
+
+                    <div class="guides-table">
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Years 1 – 3</span>
+                        <span class="guides-table__val">15%</span>
+                        <span class="guides-table__note">of monthly maintenance</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Year 4</span>
+                        <span class="guides-table__val">30%</span>
+                        <span class="guides-table__note">of monthly maintenance</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Year 5</span>
+                        <span class="guides-table__val">50%</span>
+                        <span class="guides-table__note">of monthly maintenance</span>
+                      </div>
+                      <div class="guides-table__row guides-table__row--highlight">
+                        <span class="guides-table__key">Year 6 onward</span>
+                        <span class="guides-table__val">100%</span>
+                        <span class="guides-table__note">of monthly maintenance</span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </li>
+
+              <!-- V.3 -->
+              <li class="guides-row" id="policy-5-3">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">V.3</span>
+                    <span class="guides-row__q">Inspections, renewals &amp; violations</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <ul class="guides-check">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>All apartments must be inspected by Management before subletting</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Notify Management in writing when a subtenant moves out, to stop the surcharge</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>The policy may be amended at any time by the Board of Directors</span>
+                      </li>
+                    </ul>
+
+                    <h5 class="guides-row__sub">Violation fines</h5>
+                    <div class="guides-table">
+                      <div class="guides-table__row guides-table__row--danger">
+                        <span class="guides-table__key">Non-renewal compliance</span>
+                        <span class="guides-table__val">$500 / month</span>
+                        <span class="guides-table__note">Until the subtenant is re-certified</span>
+                      </div>
+                      <div class="guides-table__row guides-table__row--danger">
+                        <span class="guides-table__key">Illegal sublet</span>
+                        <span class="guides-table__val">$1,000 + $500/mo</span>
+                        <span class="guides-table__note">Plus legal fees</span>
+                      </div>
+                    </div>
+
+                    <p class="guides-row__minor">
+                      To request a sublet application, contact the office:
+                      <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a> ·
+                      <a href="tel:5551234567">(555) 123-4567</a>
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+            </ol>
+          </article>
+
+          <!-- ═══ CHAPTER VI — ELECTRIC VEHICLES ═══ -->
+          <article class="guides-chapter" id="chapter-6">
+            <header class="guides-chapter__banner">
+              <span class="guides-chapter__num">VI.</span>
+              <div class="guides-chapter__head">
+                <h2 class="guides-chapter__title"><em class="serif-italic">Electric</em> vehicles.</h2>
+                <p class="guides-chapter__lede">
+                  Approved by the Board following Board communications of November 2022 and June 2023, in response to repeated lithium-battery fires across the city.
+                </p>
               </div>
-              <span class="newsletter__arrow" aria-hidden="true">
-                <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
-              </span>
-            </a>
-          </li>
+              <span class="guides-chapter__count" data-guides-count></span>
+            </header>
 
-        </ol>
-      </div>
-    </section>
+            <ol class="guides-list">
 
-    <!-- ═══════════════ STILL WONDERING — CLOSING CTA ═══════════════ -->
-    <section class="guides-still" id="still">
-      <div class="guides-still__inner">
-        <span class="eyebrow"><span class="eyebrow__line"></span>A note to the office</span>
-        <h2 class="guides-still__title">
-          Need something <em class="serif-italic">a guide</em><br/>
-          doesn't cover?
-        </h2>
-        <p class="guides-still__lede">
-          Forms live on a separate page, the FAQ answers the most common questions, and the office is the right first stop for anything else.
-        </p>
+              <!-- VI.1 -->
+              <li class="guides-row" id="policy-6-1">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">VI.1</span>
+                    <span class="guides-row__q">E-bikes &amp; e-scooters: the ban</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>To safeguard residents and the buildings against the risk of lithium-battery fires, <strong>e-bikes and e-scooters are not permitted anywhere on Park City 3 &amp; 4 property.</strong> This includes:</p>
 
-        <div class="guides-still__paths">
-          <a href="forms.html" class="guides-still__path">
-            <span class="guides-still__path-num">01</span>
-            <span class="guides-still__path-body">
-              <span class="guides-still__path-title">Resident forms</span>
-              <span class="guides-still__path-meta">forms.html · pet registration, alterations, COI, sublet</span>
-            </span>
-            <span class="guides-still__path-arrow" aria-hidden="true">
-              <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
-            </span>
-          </a>
+                    <ul class="guides-check guides-check--neg">
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Storing or charging the battery, anywhere on the premises</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>All outdoor co-op spaces — parking garages, walkways, catwalks</span>
+                      </li>
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Inside buildings — common areas, hallways, elevators, and apartments</span>
+                      </li>
+                    </ul>
+                  </div>
+                </details>
+              </li>
 
-          <a href="faq.html" class="guides-still__path">
-            <span class="guides-still__path-num">02</span>
-            <span class="guides-still__path-body">
-              <span class="guides-still__path-title">Frequently asked questions</span>
-              <span class="guides-still__path-meta">faq.html · plain answers, quietly given</span>
-            </span>
-            <span class="guides-still__path-arrow" aria-hidden="true">
-              <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
-            </span>
-          </a>
+              <!-- VI.2 -->
+              <li class="guides-row" id="policy-6-2">
+                <details>
+                  <summary>
+                    <span class="guides-row__num">VI.2</span>
+                    <span class="guides-row__q">Guest policy &amp; penalties</span>
+                    <span class="guides-row__icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </span>
+                  </summary>
+                  <div class="guides-row__a">
+                    <p>Guests of shareholders who arrive with an e-bike or e-scooter <strong>will not be permitted to leave it on the premises,</strong> and will be refused entry through the lobby or garages, for any duration.</p>
 
-          <a href="contact.html" class="guides-still__path">
-            <span class="guides-still__path-num">03</span>
-            <span class="guides-still__path-body">
-              <span class="guides-still__path-title">Write to the office</span>
-              <span class="guides-still__path-meta">contact.html · response within one business day</span>
-            </span>
-            <span class="guides-still__path-arrow" aria-hidden="true">
-              <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
-            </span>
-          </a>
-        </div>
+                    <h5 class="guides-row__sub">Penalties</h5>
+                    <div class="guides-table">
+                      <div class="guides-table__row guides-table__row--highlight">
+                        <span class="guides-table__key">Fine per infringement</span>
+                        <span class="guides-table__val">$150.00</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Legal action</span>
+                        <span class="guides-table__val">May apply</span>
+                        <span class="guides-table__note">All costs are the shareholder's responsibility</span>
+                      </div>
+                      <div class="guides-table__row">
+                        <span class="guides-table__key">Damage liability</span>
+                        <span class="guides-table__val">Full</span>
+                        <span class="guides-table__note">Shareholder liable for all resulting damage</span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </li>
 
-        <div class="guides-still__direct">
-          <span>Or, more directly —</span>
-          <a href="tel:5551234567">(555) 123-4567</a>
-          <span class="guides-still__direct-dot">·</span>
-          <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>
+            </ol>
+          </article>
+
+          <!-- ═══ NEWSLETTERS ═══ -->
+          <article class="guides-chapter guides-chapter--news" id="newsletters">
+            <header class="guides-chapter__banner">
+              <span class="guides-chapter__num">—</span>
+              <div class="guides-chapter__head">
+                <h2 class="guides-chapter__title"><em class="serif-italic">Newsletters</em> &amp; updates.</h2>
+                <p class="guides-chapter__lede">
+                  Quarterly notes from the management office — building works, seasonal reminders, and policy updates as they happen. Looking for something older? Write to the office.
+                </p>
+              </div>
+              <span class="guides-chapter__count">From the office</span>
+            </header>
+
+            <ol class="guides-newsletters__list">
+              <!--
+                ─── HOW TO ADD A NEWSLETTER ───
+                Each <li> below is one entry. To add a new one:
+                1. Drop the PDF into your /newsletters/ folder
+                2. Copy a <li> block, paste it at the top of this list
+                3. Update the date, title, summary, and href
+                The newest newsletter should always sit at the top.
+              -->
+
+              <li class="newsletter">
+                <a href="newsletters/sample-spring-2026.pdf" class="newsletter__link" target="_blank" rel="noopener">
+                  <span class="newsletter__date">
+                    <em class="serif-italic">Spring</em>
+                    <span>2026</span>
+                  </span>
+                  <div class="newsletter__body">
+                    <h3 class="newsletter__title">Annual Meeting recap &amp; the year ahead</h3>
+                    <p class="newsletter__summary">A summary of the 2026 Annual Shareholders' Meeting — Board election results, the upcoming lobby refresh at 97-37, and seasonal pool dates.</p>
+                    <span class="newsletter__meta">PDF · 2 pages</span>
+                  </div>
+                  <span class="newsletter__arrow" aria-hidden="true">
+                    <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+                  </span>
+                </a>
+              </li>
+
+              <li class="newsletter">
+                <a href="newsletters/sample-winter-2025.pdf" class="newsletter__link" target="_blank" rel="noopener">
+                  <span class="newsletter__date">
+                    <em class="serif-italic">Winter</em>
+                    <span>2025</span>
+                  </span>
+                  <div class="newsletter__body">
+                    <h3 class="newsletter__title">Heating system maintenance &amp; holiday hours</h3>
+                    <p class="newsletter__summary">Scheduled boiler maintenance dates by building, holiday office hours, and a reminder about terrace clearance ahead of the winter storm season.</p>
+                    <span class="newsletter__meta">PDF · 3 pages</span>
+                  </div>
+                  <span class="newsletter__arrow" aria-hidden="true">
+                    <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+                  </span>
+                </a>
+              </li>
+
+              <li class="newsletter">
+                <a href="newsletters/sample-fall-2025.pdf" class="newsletter__link" target="_blank" rel="noopener">
+                  <span class="newsletter__date">
+                    <em class="serif-italic">Fall</em>
+                    <span>2025</span>
+                  </span>
+                  <div class="newsletter__body">
+                    <h3 class="newsletter__title">ClickPay rollout &amp; the new mailing address</h3>
+                    <p class="newsletter__summary">Step-by-step on the move to ClickPay for online payments, and the new P.O. Box for paper checks. Includes the cutover date and FAQ.</p>
+                    <span class="newsletter__meta">PDF · 2 pages</span>
+                  </div>
+                  <span class="newsletter__arrow" aria-hidden="true">
+                    <svg width="18" height="12" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+                  </span>
+                </a>
+              </li>
+            </ol>
+          </article>
+
+          <!-- ─── DOCUMENT FOOTER ─── -->
+          <footer class="guides-doc__foot">
+            <span class="guides-doc__foot-label">End of document</span>
+            <p>
+              Forms &amp; applications live on the <a href="forms.html">Forms page.</a><br/>
+              For anything else, write to <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a> or call <a href="tel:5551234567">(555) 123-4567.</a>
+            </p>
+          </footer>
+
         </div>
       </div>
     </section>
