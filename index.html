@@ -12,8 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 
   <link rel="stylesheet" href="styles.css" />
@@ -64,8 +62,7 @@
           <li><a href="forms.html"><em>04</em> Forms</a></li>
           <li><a href="guides.html"><em>05</em> Guides</a></li>
           <li><a href="faq.html"><em>06</em> FAQ</a></li>
-          <li><a href="#location"><em>07</em> Location</a></li>
-          <li><a href="#inquire"><em>08</em> Contact</a></li>
+          <li><a href="#inquire"><em>07</em> Contact</a></li>
         </ol>
         <div class="navmobile__foot">
           <p class="serif-italic">A residence in Rego Park.</p>
@@ -78,7 +75,7 @@
 
   <main id="top">
 
-    <!-- ═══════════════ HERO · CINEMATIC VIDEO ═══════════════ -->
+    <!-- ═══════════════ HERO ═══════════════ -->
     <section class="hero" id="hero">
       <div class="hero__media">
         <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto"
@@ -122,7 +119,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ MARQUEE TICKER ═══════════════ -->
+    <!-- ═══════════════ MARQUEE ═══════════════ -->
     <section class="marquee" aria-hidden="true">
       <div class="marquee__track" data-marquee>
         <span>Six Buildings</span><span class="marquee__dot">✦</span>
@@ -142,7 +139,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ PHILOSOPHY · WARM INTRO ═══════════════ -->
+    <!-- ═══════════════ PHILOSOPHY ═══════════════ -->
     <section class="philosophy" id="philosophy">
       <div class="philosophy__grid">
         <aside class="philosophy__chapter" data-reveal>
@@ -173,7 +170,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ ESSENCE · NUMBERS STAGE ═══════════════ -->
+    <!-- ═══════════════ ESSENCE ═══════════════ -->
     <section class="essence" id="essence">
       <div class="essence__sticky">
         <div class="essence__head">
@@ -207,7 +204,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ RESIDENCES · THE SIX BUILDINGS ═══════════════ -->
+    <!-- ═══════════════ RESIDENCES ═══════════════ -->
     <section class="residences" id="residences">
       <div class="residences__intro">
         <span class="eyebrow"><span class="eyebrow__line"></span>Chapter II — The Buildings</span>
@@ -330,7 +327,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ AMENITIES · CLEAN TEXT LIST ═══════════════ -->
+    <!-- ═══════════════ AMENITIES · EDITORIAL TEXT ROWS ═══════════════ -->
     <section class="amenities-text" id="amenities-overview">
       <div class="amenities-text__grid">
         <header class="amenities-text__head">
@@ -411,7 +408,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ LIFESTYLE · 3 CHAPTERS ═══════════════ -->
+    <!-- ═══════════════ LIFESTYLE ═══════════════ -->
     <section class="lifestyle" id="lifestyle">
       <div class="lifestyle__sticky">
         <header class="lifestyle__head">
@@ -444,47 +441,90 @@
       </div>
     </section>
 
-    <!-- ═══════════════ LOCATION · NEIGHBORHOOD MAP ═══════════════ -->
-    <section class="location" id="location">
-      <header class="location__head">
-        <span class="eyebrow"><span class="eyebrow__line"></span>Chapter V — The Neighborhood</span>
-        <h2 class="location__title">
-          The <em class="serif-italic">heart of</em><br/>
-          Rego Park, Queens.
-        </h2>
-        <p>Six buildings between 62nd Drive and 63rd Road — minutes from the M and R trains, a short ride to Forest Hills, fifteen minutes from Midtown.</p>
-      </header>
+    <!-- ═══════════════ FAQ PREVIEW ═══════════════ -->
+    <section class="faq-preview" id="faq-preview">
+      <div class="faq-preview__grid">
+        <header class="faq-preview__head">
+          <span class="eyebrow"><span class="eyebrow__line"></span>Chapter V — Quietly Answered</span>
+          <h2 class="faq-preview__title">
+            A few <em class="serif-italic">honest answers</em><br/>
+            to the questions we hear most.
+          </h2>
+          <p class="faq-preview__lede">
+            From how the co-op works to who manages the buildings — answered plainly. The full list lives on the FAQ page.
+          </p>
+          <a href="faq.html" class="faq-preview__link">
+            <span>All questions &amp; answers</span>
+            <svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+          </a>
+        </header>
 
-      <div class="location__layout">
-        <aside class="location__panel">
-          <div class="location__tabs" role="tablist">
-            <button class="location__tab is-active" data-loc-tab="buildings" role="tab">Our Six Buildings</button>
-            <button class="location__tab" data-loc-tab="around" role="tab">Around Us</button>
-          </div>
-
-          <div class="location__filters" data-loc-filters hidden>
-            <button class="loc-chip is-active" data-loc-cat="all">All</button>
-            <button class="loc-chip" data-loc-cat="dining">Dining</button>
-            <button class="loc-chip" data-loc-cat="transit">Transit</button>
-            <button class="loc-chip" data-loc-cat="parks">Parks</button>
-            <button class="loc-chip" data-loc-cat="shopping">Shopping</button>
-            <button class="loc-chip" data-loc-cat="education">Schools</button>
-          </div>
-
-          <div class="location__list" id="locList"></div>
-        </aside>
-
-        <div class="location__map">
-          <div id="leafletMap"></div>
-          <div class="location__legend">
-            <span><i class="dot dot--gold"></i>Park City</span>
-            <span><i class="dot dot--olive"></i>Around Us</span>
-          </div>
-        </div>
+        <ol class="faq-preview__list">
+          <li class="faq-row">
+            <details>
+              <summary>
+                <span class="faq-row__num">01</span>
+                <span class="faq-row__q">Is Park City 3 &amp; 4 a co-op?</span>
+                <span class="faq-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-row__a">
+                <p>Yes. We are a cooperative community of six buildings. Apartments are owned by shareholders rather than rented from a landlord — an arrangement that has shaped the careful, long-term character of the place.</p>
+              </div>
+            </details>
+          </li>
+          <li class="faq-row">
+            <details>
+              <summary>
+                <span class="faq-row__num">02</span>
+                <span class="faq-row__q">Who manages the buildings?</span>
+                <span class="faq-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-row__a">
+                <p>Day-to-day management is handled by AKAM — one of New York's most respected residential management firms — alongside our on-site Management Office and Maintenance team.</p>
+              </div>
+            </details>
+          </li>
+          <li class="faq-row">
+            <details>
+              <summary>
+                <span class="faq-row__num">03</span>
+                <span class="faq-row__q">Does every apartment have a terrace?</span>
+                <span class="faq-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-row__a">
+                <p>Yes. Every apartment across all six buildings features a private terrace with views of the surrounding neighborhood.</p>
+              </div>
+            </details>
+          </li>
+          <li class="faq-row">
+            <details>
+              <summary>
+                <span class="faq-row__num">04</span>
+                <span class="faq-row__q">When are the management office hours?</span>
+                <span class="faq-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-row__a">
+                <p>The on-site Management Office and Maintenance team operate Monday through Friday, 8:00 AM to 4:00 PM. Live-in superintendents are available for emergencies after hours.</p>
+              </div>
+            </details>
+          </li>
+          <li class="faq-row">
+            <details>
+              <summary>
+                <span class="faq-row__num">05</span>
+                <span class="faq-row__q">How is parking arranged?</span>
+                <span class="faq-row__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-row__a">
+                <p>Two 24-hour indoor parking garages serve the community, with assigned spaces. Access uses the same keyless / fob system as the buildings.</p>
+              </div>
+            </details>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- ═══════════════ VOICES · TESTIMONIALS ═══════════════ -->
+    <!-- ═══════════════ VOICES ═══════════════ -->
     <section class="voices" id="voices">
       <header class="voices__head">
         <span class="eyebrow"><span class="eyebrow__line"></span>Voices from the Buildings</span>
@@ -537,7 +577,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ INQUIRE · CONTACT ═══════════════ -->
+    <!-- ═══════════════ INQUIRE ═══════════════ -->
     <section class="inquire" id="inquire">
       <div class="inquire__grid">
         <header class="inquire__head">
@@ -621,69 +661,103 @@
 
   </main>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <!-- ═══════════════ REDESIGNED FOOTER ═══════════════ -->
   <footer class="foot">
-    <div class="foot__top">
-      <div class="foot__mark">
-        <img src="logo.png" alt="Park City 3 & 4" class="foot__logo"/>
-        <p class="foot__tag serif-italic">A residence in Rego Park.</p>
-        <p class="foot__est">Established 1955 · Six buildings · Rego Park, Queens</p>
+
+    <!-- Editorial top: huge typographic statement -->
+    <div class="foot__statement">
+      <span class="foot__statement-eyebrow">Park City 3 &amp; 4 Apartments, Inc.</span>
+      <h2 class="foot__statement-head">
+        A residence<br/>
+        <em class="serif-italic">in Rego Park.</em>
+      </h2>
+      <p class="foot__statement-meta">Established 1955 · Six buildings · Fourteen stories each · Private terraces throughout.</p>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <!-- Six addresses, prominently -->
+    <div class="foot__addresses-block">
+      <span class="foot__block-label">The Six Buildings</span>
+      <ul class="foot__addresses-grid">
+        <li><span>01</span>97-07 63rd Road</li>
+        <li><span>02</span>97-10 62nd Drive</li>
+        <li><span>03</span>97-37 63rd Road</li>
+        <li><span>04</span>97-40 62nd Drive</li>
+        <li><span>05</span>98-05 63rd Road</li>
+        <li><span>06</span>98-20 62nd Drive</li>
+      </ul>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <!-- Columns: Office / Explore / Shareholders -->
+    <div class="foot__cols">
+      <div class="foot__col foot__col--office">
+        <h5>Management Office</h5>
+        <ul>
+          <li><a href="tel:5551234567">(555) 123-4567</a></li>
+          <li><a href="mailto:office@parkcity34.com">office@parkcity34.com</a></li>
+          <li>Monday – Friday</li>
+          <li>8:00 AM – 4:00 PM</li>
+          <li>Rego Park, NY 11374</li>
+        </ul>
       </div>
 
-      <div class="foot__cols">
-        <div class="foot__col">
-          <h5>Explore</h5>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#philosophy">About</a></li>
-            <li><a href="#residences">Buildings</a></li>
-            <li><a href="amenities.html">Amenities</a></li>
-            <li><a href="#location">Location</a></li>
-          </ul>
-        </div>
-        <div class="foot__col">
-          <h5>Shareholders</h5>
-          <ul>
-            <li><a href="forms.html">Resident Forms</a></li>
-            <li><a href="guides.html">Building Guides</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="#inquire">Maintenance Request</a></li>
-            <li><a href="#inquire">Emergency Contacts</a></li>
-          </ul>
-        </div>
-        <div class="foot__col">
-          <h5>Office</h5>
-          <ul class="foot__contact">
-            <li><a href="tel:5551234567">(555) 123-4567</a></li>
-            <li><a href="mailto:office@parkcity34.com">office@parkcity34.com</a></li>
-            <li>Mon – Fri · 8 AM – 4 PM</li>
-            <li>Rego Park, NY 11374</li>
-          </ul>
-        </div>
-        <div class="foot__col foot__col--addresses">
-          <h5>Six Buildings</h5>
-          <ul class="foot__addresses">
-            <li>97-07 63rd Road</li>
-            <li>97-10 62nd Drive</li>
-            <li>97-37 63rd Road</li>
-            <li>97-40 62nd Drive</li>
-            <li>98-05 63rd Road</li>
-            <li>98-20 62nd Drive</li>
-          </ul>
-        </div>
+      <div class="foot__col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#philosophy">About</a></li>
+          <li><a href="#residences">Buildings</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="#inquire">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h5>Shareholders</h5>
+        <ul>
+          <li><a href="forms.html">Resident Forms</a></li>
+          <li><a href="guides.html">Building Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="#inquire">Maintenance Request</a></li>
+          <li><a href="#inquire">Emergency Contacts</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col foot__col--mark">
+        <img src="logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <p class="foot__akam-note">
+          Professionally managed by<br/>
+          <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
+        </p>
       </div>
     </div>
 
     <div class="foot__rule"></div>
 
+    <!-- Bottom: copyright, legal, design credit, top -->
     <div class="foot__bottom">
-      <p class="foot__copy">© 2026 Park City 3 &amp; 4 Apartments, Inc.</p>
-      <p class="foot__akam">Professionally managed by <a href="https://www.akam.com" target="_blank" rel="noopener"><span>AKAM</span></a></p>
+      <p class="foot__copy">© 2026 Park City 3 &amp; 4 Apartments, Inc. All rights reserved.</p>
+
       <ul class="foot__legal">
         <li><a href="#">Privacy</a></li>
         <li><a href="#">Terms</a></li>
         <li><a href="#">Accessibility</a></li>
       </ul>
+
+      <a href="https://elanstechworld.com" target="_blank" rel="noopener" class="foot__credit" aria-label="Designed and built by Elan's Tech World">
+        <span class="foot__credit-label">Designed &amp; built by</span>
+        <span class="foot__credit-mark">
+          <img src="elan-logo.png" alt="" class="foot__credit-logo"/>
+          <span class="foot__credit-name">Elan's Tech World</span>
+        </span>
+        <svg class="foot__credit-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </a>
+
       <button class="foot__top-link" id="backToTop" aria-label="Back to top">
         <span>To the top</span>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
