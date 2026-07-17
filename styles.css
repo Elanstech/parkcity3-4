@@ -212,27 +212,26 @@ em.serif-italic, .serif-italic em {
 
 /* ── MOBILE DRAWER — full-screen editorial takeover ── */
 .navmobile {
-  position: fixed; inset: 0;
-  z-index: 900;                 /* ABOVE the nav bar so it fully takes over */
-  visibility: hidden;
-  pointer-events: none;
+  position: fixed;
+  inset: 0;                     /* fallback for old browsers */
+  height: 100dvh;               /* dynamic viewport — tracks the URL bar so nothing clips */
+  z-index: 900;                 /* above the nav bar */
+  background: var(--bone);      /* SOLID base — the page can never bleed through */
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.45s var(--e-soft), visibility 0.45s var(--e-soft);
 }
-.navmobile.is-open { visibility: visible; pointer-events: auto; }
+.navmobile.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
 
+/* decorative warm orbs only (background lives on the container above) */
 .navmobile__bg {
   position: absolute; inset: 0;
-  background: var(--bone);
-  opacity: 0; transform: scale(1.06);
-  transition: opacity 0.6s var(--e-soft), transform 0.8s var(--e-soft);
+  overflow: hidden; pointer-events: none;
 }
-.navmobile.is-open .navmobile__bg { opacity: 1; transform: scale(1); }
-
 .navmobile__bg::before,
 .navmobile__bg::after {
   content: ''; position: absolute;
   border-radius: 50%; filter: blur(90px);
-  opacity: 0; transition: opacity 1s var(--e-soft) 0.25s;
-  pointer-events: none;
+  opacity: 0; transition: opacity 1s var(--e-soft) 0.2s;
 }
 .navmobile__bg::before {
   top: -18%; right: -22%;
@@ -245,80 +244,80 @@ em.serif-italic, .serif-italic em {
   background: radial-gradient(circle, color-mix(in srgb, var(--terracotta) 20%, transparent), transparent 70%);
 }
 .navmobile.is-open .navmobile__bg::before,
-.navmobile.is-open .navmobile__bg::after { opacity: 0.65; }
+.navmobile.is-open .navmobile__bg::after { opacity: 0.6; }
 
 .navmobile__inner {
-  position: relative;
-  height: 100%; height: 100dvh;
-  padding: calc(24px + env(safe-area-inset-top)) var(--pad-x) calc(28px + env(safe-area-inset-bottom));
+  position: relative; z-index: 1;
+  height: 100%;
   display: flex; flex-direction: column;
+  padding: calc(18px + env(safe-area-inset-top)) var(--pad-x) calc(22px + env(safe-area-inset-bottom));
   overflow-y: auto; overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
 
 .navmobile__top {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 20px; min-height: 48px;
+  gap: 20px; min-height: 48px; flex-shrink: 0;
 }
 .navmobile__logo {
-  height: 40px; width: auto;
+  height: 38px; width: auto;
   max-width: 60vw;
   object-fit: contain;          /* guarantees no stretch */
   opacity: 0; transform: translateY(-10px);
-  transition: opacity 0.6s var(--e-soft) 0.15s, transform 0.6s var(--e-soft) 0.15s;
+  transition: opacity 0.6s var(--e-soft) 0.12s, transform 0.6s var(--e-soft) 0.12s;
 }
 .navmobile.is-open .navmobile__logo { opacity: 0.95; transform: translateY(0); }
 
 .navmobile__close {
   position: relative;
-  width: 48px; height: 48px; flex-shrink: 0;
-  margin-right: -10px;
+  width: 46px; height: 46px; flex-shrink: 0;
+  margin-right: -8px;
   border: 1px solid var(--hairline); border-radius: 50%;
   opacity: 0; transform: scale(0.8) rotate(-30deg);
-  transition: opacity 0.5s var(--e-soft) 0.2s, transform 0.5s var(--e-elastic) 0.2s, border-color 0.3s ease, background 0.3s ease;
+  transition: opacity 0.5s var(--e-soft) 0.18s, transform 0.5s var(--e-elastic) 0.18s, border-color 0.3s ease, background 0.3s ease;
 }
 .navmobile.is-open .navmobile__close { opacity: 1; transform: scale(1) rotate(0); }
 .navmobile__close:hover,
 .navmobile__close:active { background: color-mix(in srgb, var(--brass) 10%, transparent); border-color: var(--brass); }
 .navmobile__close span {
   position: absolute; top: 50%; left: 50%;
-  width: 18px; height: 1.5px; border-radius: 2px; background: var(--ink);
+  width: 17px; height: 1.5px; border-radius: 2px; background: var(--ink);
 }
 .navmobile__close span:first-child { transform: translate(-50%, -50%) rotate(45deg); }
 .navmobile__close span:last-child  { transform: translate(-50%, -50%) rotate(-45deg); }
 
 .navmobile__eyebrow {
   display: inline-flex; align-items: center; gap: 12px;
-  margin-top: clamp(28px, 6vh, 56px);
+  margin-top: clamp(12px, 2.2vh, 36px);
   font-size: 11px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase;
   color: var(--brass-deep);
   opacity: 0; transform: translateY(12px);
-  transition: opacity 0.6s var(--e-soft) 0.28s, transform 0.6s var(--e-soft) 0.28s;
+  transition: opacity 0.6s var(--e-soft) 0.26s, transform 0.6s var(--e-soft) 0.26s;
+  flex-shrink: 0;
 }
 .navmobile.is-open .navmobile__eyebrow { opacity: 1; transform: translateY(0); }
 .navmobile__eyebrow-line { width: 32px; height: 1px; background: linear-gradient(90deg, var(--brass), transparent); }
 
-.navmobile__nav { margin-top: clamp(16px, 3vh, 28px); }
+.navmobile__nav { margin-top: clamp(8px, 1.4vh, 18px); flex-shrink: 0; }
 .navmobile__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hairline-2); }
 .navmobile__list li {
   border-bottom: 1px solid var(--hairline-2);
-  opacity: 0; transform: translateY(22px);
-  transition: opacity 0.65s var(--e-soft), transform 0.65s var(--e-soft);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s var(--e-soft), transform 0.6s var(--e-soft);
 }
 .navmobile.is-open .navmobile__list li { opacity: 1; transform: translateY(0); }
-.navmobile.is-open .navmobile__list li:nth-child(1) { transition-delay: 0.34s; }
-.navmobile.is-open .navmobile__list li:nth-child(2) { transition-delay: 0.40s; }
-.navmobile.is-open .navmobile__list li:nth-child(3) { transition-delay: 0.46s; }
-.navmobile.is-open .navmobile__list li:nth-child(4) { transition-delay: 0.52s; }
-.navmobile.is-open .navmobile__list li:nth-child(5) { transition-delay: 0.58s; }
-.navmobile.is-open .navmobile__list li:nth-child(6) { transition-delay: 0.64s; }
-.navmobile.is-open .navmobile__list li:nth-child(7) { transition-delay: 0.70s; }
+.navmobile.is-open .navmobile__list li:nth-child(1) { transition-delay: 0.30s; }
+.navmobile.is-open .navmobile__list li:nth-child(2) { transition-delay: 0.36s; }
+.navmobile.is-open .navmobile__list li:nth-child(3) { transition-delay: 0.42s; }
+.navmobile.is-open .navmobile__list li:nth-child(4) { transition-delay: 0.48s; }
+.navmobile.is-open .navmobile__list li:nth-child(5) { transition-delay: 0.54s; }
+.navmobile.is-open .navmobile__list li:nth-child(6) { transition-delay: 0.60s; }
 
 .navmobile__list a {
-  display: flex; align-items: baseline; gap: 18px;
-  padding: clamp(16px, 2.4vh, 22px) 0;
+  display: flex; align-items: baseline; gap: 16px;
+  padding: clamp(10px, 1.5vh, 16px) 0;
   font-family: var(--f-display);
-  font-size: clamp(30px, 8.5vw, 46px); font-weight: 400; letter-spacing: -0.025em;
+  font-size: clamp(26px, 7.4vw, 40px); font-weight: 400; letter-spacing: -0.025em;
   color: var(--ink);
   transition: color 0.3s ease, padding-left 0.4s var(--e-soft);
 }
@@ -329,7 +328,7 @@ em.serif-italic, .serif-italic em {
 }
 .navmobile__list a span { flex: 1; }
 .navmobile__list a::after {
-  content: '→'; font-family: var(--f-display); font-size: 22px; color: var(--brass);
+  content: '→'; font-family: var(--f-display); font-size: 20px; color: var(--brass);
   opacity: 0; transform: translateX(-10px);
   transition: opacity 0.3s ease, transform 0.4s var(--e-soft);
 }
@@ -339,15 +338,16 @@ em.serif-italic, .serif-italic em {
 .navmobile__list a:active::after { opacity: 1; transform: translateX(0); }
 
 .navmobile__foot {
-  margin-top: auto; padding-top: clamp(28px, 5vh, 44px);
+  margin-top: auto; padding-top: clamp(16px, 2.4vh, 36px);
+  flex-shrink: 0;
   opacity: 0; transform: translateY(20px);
-  transition: opacity 0.6s var(--e-soft) 0.76s, transform 0.6s var(--e-soft) 0.76s;
+  transition: opacity 0.6s var(--e-soft) 0.68s, transform 0.6s var(--e-soft) 0.68s;
 }
 .navmobile.is-open .navmobile__foot { opacity: 1; transform: translateY(0); }
-.navmobile__tagline { font-size: clamp(24px, 6vw, 30px); color: var(--ink); letter-spacing: -0.01em; margin-bottom: 20px; }
+.navmobile__tagline { font-size: clamp(22px, 5.5vw, 28px); color: var(--ink); letter-spacing: -0.01em; margin-bottom: 12px; }
 .navmobile__contact {
   display: flex; flex-direction: column; gap: 6px;
-  padding-bottom: 20px; border-bottom: 1px solid var(--hairline-2); margin-bottom: 18px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--hairline-2); margin-bottom: 12px;
 }
 .navmobile__contact a {
   font-family: var(--f-display); font-size: 16px; font-weight: 500;
