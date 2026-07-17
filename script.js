@@ -108,25 +108,32 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     3. NAVIGATION — scroll state + mobile drawer (no scroll tracker)
+     3. NAVIGATION — scroll state + full-screen mobile drawer
      ═══════════════════════════════════════════════════════════════ */
   class Navigation {
-    constructor() {
+    constructor(smoothScroll) {
+      this.smoothScroll = smoothScroll;
       this.nav    = $('#nav');
       this.toggle = $('#navToggle');
+      this.close  = $('#navClose');
       this.mobile = $('#navMobile');
       this.heroEl = $('#hero');
+      this.isOpen = false;
       if (!this.nav) return;
 
       window.addEventListener('scroll', () => this.onScroll(), { passive: true });
       this.onScroll();
 
       this.toggle?.addEventListener('click', () => this.toggleMobile());
-      this.mobile?.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => this.closeMobile());
-      });
+      this.close?.addEventListener('click', () => this.closeMobile());
+      this.mobile?.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => this.closeMobile())
+      );
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') this.closeMobile();
+        if (e.key === 'Escape' && this.isOpen) this.closeMobile();
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 980 && this.isOpen) this.closeMobile();
       });
     }
 
@@ -143,18 +150,28 @@
       }
     }
 
-    toggleMobile() {
-      const open = this.mobile.classList.toggle('is-open');
-      this.toggle.setAttribute('aria-expanded', String(open));
-      this.mobile.setAttribute('aria-hidden', String(!open));
-      document.body.style.overflow = open ? 'hidden' : '';
+    toggleMobile() { this.isOpen ? this.closeMobile() : this.openMobile(); }
+
+    openMobile() {
+      if (!this.mobile || this.isOpen) return;
+      this.isOpen = true;
+      this.mobile.classList.add('is-open');
+      this.toggle?.setAttribute('aria-expanded', 'true');
+      this.mobile.setAttribute('aria-hidden', 'false');
+      // Lock scroll (works with AND without Lenis)
+      this.smoothScroll?.lenis?.stop();
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
     }
 
     closeMobile() {
-      if (!this.mobile?.classList.contains('is-open')) return;
+      if (!this.mobile || !this.isOpen) return;
+      this.isOpen = false;
       this.mobile.classList.remove('is-open');
-      this.toggle.setAttribute('aria-expanded', 'false');
+      this.toggle?.setAttribute('aria-expanded', 'false');
       this.mobile.setAttribute('aria-hidden', 'true');
+      this.smoothScroll?.lenis?.start();
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
     }
   }
@@ -545,7 +562,7 @@
         // Core
         this.smoothScroll = new SmoothScroll();
         this.loader = new PageLoader();
-        this.nav = new Navigation();
+        this.nav = new Navigation(this.smoothScroll);
 
         // Reveal system
         this.reveals = new Reveals();
