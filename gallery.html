@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Gallery — Park City 3 & 4 Apartments. A look inside six residential buildings in Rego Park, Queens: exteriors, lobbies, amenities, and grounds." />
+  <meta name="description" content="Gallery — Park City 3 & 4 Apartments. Forty-eight photographs across four chapters: the six buildings, lobbies and interiors, amenities, and the grounds. Rego Park, Queens." />
   <meta name="theme-color" content="#faf6ee" />
   <title>Gallery · Park City 3 &amp; 4 Apartments</title>
 
@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
-
   <link rel="stylesheet" href="gallery.css" />
 </head>
 
@@ -76,419 +75,347 @@
 
   <main id="top">
 
-    <section class="ghero">
-      <span class="ghero__eyebrow"><span></span>Gallery — A Look Inside</span>
-      <h1 class="ghero__title">Six buildings,<br/><em>seen up close.</em></h1>
-      <div class="ghero__row">
-        <p class="ghero__lede">
-          A walk through Park City 3 &amp; 4 in four chapters — the six exteriors, the lobbies and hallways residents pass through each day, the pool and playground, and the quiet grounds that tie it all together. Drag each strip sideways to explore.
-        </p>
-        <p class="ghero__meta"><b>48</b> photographs · <b>Six</b> buildings · Rego Park</p>
+    <!-- ═══════════════ GALLERY HERO — living collage ═══════════════ -->
+    <section class="ghero" id="ghero">
+      <div class="ghero__collage" aria-hidden="true" data-collage>
+        <div class="ghero__card ghero__card--a" data-depth="0.35"><img src="images/1_ParkCity_Building_1.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--b" data-depth="0.6"><img src="images/4_ParkCity_Pool.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--c" data-depth="0.9"><img src="images/24_ParkCity_Walkway_1.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--d" data-depth="0.5"><img src="images/20_ParkCity_Lobby_1.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--e" data-depth="0.75"><img src="images/16_ParkCity_98-05_1.jpg" alt="" /></div>
       </div>
-      <nav class="ghero__jump" aria-label="Jump to chapter">
-        <a href="#ch-buildings"><em>I</em> The Buildings</a>
-        <a href="#ch-interiors"><em>II</em> Lobbies &amp; Interiors</a>
-        <a href="#ch-amenities"><em>III</em> Amenities</a>
-        <a href="#ch-grounds"><em>IV</em> The Grounds</a>
-      </nav>
+
+      <div class="ghero__content">
+        <span class="ghero__eyebrow"><span class="ghero__eyebrow-line"></span>The Photographic Archive</span>
+        <h1 class="ghero__title">
+          <span class="ghero__title-line"><span>Forty-eight</span></span>
+          <span class="ghero__title-line ghero__title-line--italic"><span>frames of home.</span></span>
+        </h1>
+        <p class="ghero__lede serif-italic">
+          Six buildings, seen slowly — the brick, the lobbies,<br class="ghero__br" />
+          the pool in summer, the walkways in shade.
+        </p>
+
+        <nav class="ghero__chapters" aria-label="Chapters">
+          <a href="#ch-buildings" class="ghero__chip"><em>I</em><span>The Buildings</span><b>15</b></a>
+          <a href="#ch-interiors" class="ghero__chip"><em>II</em><span>Lobbies &amp; Interiors</span><b>10</b></a>
+          <a href="#ch-amenities" class="ghero__chip"><em>III</em><span>Amenities</span><b>18</b></a>
+          <a href="#ch-grounds" class="ghero__chip"><em>IV</em><span>The Grounds</span><b>5</b></a>
+        </nav>
+      </div>
+
+      <div class="ghero__scroll" aria-hidden="true">
+        <span>Begin the walk</span>
+        <svg width="14" height="44" viewBox="0 0 14 44" fill="none"><path d="M7 1v40m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="1"/></svg>
+      </div>
     </section>
 
-    <section class="chapter" id="ch-buildings" data-chapter>
-      <div class="chapter__head">
-        <span class="chapter__num">I</span>
-        <div class="chapter__head-main">
-          <span class="chapter__count">Fifteen frames</span>
-          <h2 class="chapter__title">The <em>Buildings</em></h2>
-        </div>
-        <div class="chapter__arrows">
-          <button class="chapter__arrow" data-dir="-1" aria-label="Scroll left">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="chapter__arrow" data-dir="1" aria-label="Scroll right">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+    <!-- ═══════════════ STICKY CHAPTER INDEX ═══════════════ -->
+    <div class="gindex" id="gindex" aria-label="Chapter index">
+      <div class="gindex__shell">
+        <span class="gindex__label">Chapters</span>
+        <nav class="gindex__nav">
+          <a href="#ch-buildings" data-spy="ch-buildings"><em>I</em> Buildings</a>
+          <a href="#ch-interiors" data-spy="ch-interiors"><em>II</em> Interiors</a>
+          <a href="#ch-amenities" data-spy="ch-amenities"><em>III</em> Amenities</a>
+          <a href="#ch-grounds" data-spy="ch-grounds"><em>IV</em> Grounds</a>
+        </nav>
+        <span class="gindex__count"><b data-seen>01</b> / 48</span>
       </div>
-      <div class="filmstrip" data-strip>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="Park City 3 & 4" data-full="images/1_ParkCity_Building_1.jpg">
-            <div class="frame__media">
-              <img src="images/1_ParkCity_Building_1.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Park City 3 & 4</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="Park City 3 & 4" data-full="images/2_ParkCity_Building_2.jpg">
-            <div class="frame__media">
-              <img src="images/2_ParkCity_Building_2.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Park City 3 & 4</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="Park City 3 & 4" data-full="images/3_ParkCity_Building_3.jpg">
-            <div class="frame__media">
-              <img src="images/3_ParkCity_Building_3.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Park City 3 & 4</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-07 63rd Road" data-full="images/8_ParkCity_97-07_1.jpg">
-            <div class="frame__media">
-              <img src="images/8_ParkCity_97-07_1.jpg" loading="lazy" decoding="async" alt="97-07 63rd Road — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">97-07 63rd Road</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-07 63rd Road" data-full="images/9_ParkCity_97-07_2.jpg">
-            <div class="frame__media">
-              <img src="images/9_ParkCity_97-07_2.jpg" loading="lazy" decoding="async" alt="97-07 63rd Road — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">97-07 63rd Road</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-10 62nd Drive" data-full="images/10_ParkCity_97-10_1.jpg">
-            <div class="frame__media">
-              <img src="images/10_ParkCity_97-10_1.jpg" loading="lazy" decoding="async" alt="97-10 62nd Drive — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">97-10 62nd Drive</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-10 62nd Drive" data-full="images/11_ParkCity_97-10_2.jpg">
-            <div class="frame__media">
-              <img src="images/11_ParkCity_97-10_2.jpg" loading="lazy" decoding="async" alt="97-10 62nd Drive — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">97-10 62nd Drive</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-37 63rd Road" data-full="images/12_ParkCity_97-37_1.jpg">
-            <div class="frame__media">
-              <img src="images/12_ParkCity_97-37_1.jpg" loading="lazy" decoding="async" alt="97-37 63rd Road — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">97-37 63rd Road</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-37 63rd Road" data-full="images/13_ParkCity_97-37_2.jpg">
-            <div class="frame__media">
-              <img src="images/13_ParkCity_97-37_2.jpg" loading="lazy" decoding="async" alt="97-37 63rd Road — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">97-37 63rd Road</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-40 62nd Drive" data-full="images/14_ParkCity_97-40_1.jpg">
-            <div class="frame__media">
-              <img src="images/14_ParkCity_97-40_1.jpg" loading="lazy" decoding="async" alt="97-40 62nd Drive — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">97-40 62nd Drive</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-40 62nd Drive" data-full="images/15_ParkCity_97-40_2.jpg">
-            <div class="frame__media">
-              <img src="images/15_ParkCity_97-40_2.jpg" loading="lazy" decoding="async" alt="97-40 62nd Drive — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">97-40 62nd Drive</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="98-05 63rd Road" data-full="images/16_ParkCity_98-05_1.jpg">
-            <div class="frame__media">
-              <img src="images/16_ParkCity_98-05_1.jpg" loading="lazy" decoding="async" alt="98-05 63rd Road — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">98-05 63rd Road</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="98-05 63rd Road" data-full="images/17_ParkCity_98-05_2.jpg">
-            <div class="frame__media">
-              <img src="images/17_ParkCity_98-05_2.jpg" loading="lazy" decoding="async" alt="98-05 63rd Road — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">98-05 63rd Road</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="98-20 62nd Drive" data-full="images/18_ParkCity_98-20_1.jpg">
-            <div class="frame__media">
-              <img src="images/18_ParkCity_98-20_1.jpg" loading="lazy" decoding="async" alt="98-20 62nd Drive — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">98-20 62nd Drive</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="buildings" data-catlabel="The Buildings" data-cap="98-20 62nd Drive" data-full="images/19_ParkCity_98-20_2.jpg">
-            <div class="frame__media">
-              <img src="images/19_ParkCity_98-20_2.jpg" loading="lazy" decoding="async" alt="98-20 62nd Drive — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">98-20 62nd Drive</span></figcaption>
-          </figure>
+    </div>
+
+    <!-- ═══════════════ CHAPTER I — THE BUILDINGS ═══════════════ -->
+    <section class="gchapter" id="ch-buildings" data-gchapter data-chapter-label="The Buildings">
+      <header class="gchapter__head">
+        <span class="gchapter__num" aria-hidden="true">I</span>
+        <div class="gchapter__intro">
+          <span class="eyebrow"><span class="eyebrow__line"></span>Chapter I · Fifteen frames</span>
+          <h2 class="gchapter__title">The <em class="serif-italic">Buildings</em></h2>
+          <p class="gchapter__lede">Six addresses in warm brick, fourteen stories each — photographed from the street, the way you first meet them.</p>
+        </div>
+      </header>
+
+      <div class="gmosaic" data-mosaic>
+        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="images/1_ParkCity_Building_1.jpg">
+          <div class="gframe__media"><img src="images/1_ParkCity_Building_1.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Park City 3 &amp; 4</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="images/2_ParkCity_Building_2.jpg">
+          <div class="gframe__media"><img src="images/2_ParkCity_Building_2.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Park City 3 &amp; 4</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="images/3_ParkCity_Building_3.jpg">
+          <div class="gframe__media"><img src="images/3_ParkCity_Building_3.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Park City 3 &amp; 4</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="97-07 63rd Road" data-full="images/8_ParkCity_97-07_1.jpg">
+          <div class="gframe__media"><img src="images/8_ParkCity_97-07_1.jpg" loading="lazy" decoding="async" alt="97-07 63rd Road — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-07 63rd Road</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="97-07 63rd Road" data-full="images/9_ParkCity_97-07_2.jpg">
+          <div class="gframe__media"><img src="images/9_ParkCity_97-07_2.jpg" loading="lazy" decoding="async" alt="97-07 63rd Road — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-07 63rd Road</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="97-10 62nd Drive" data-full="images/10_ParkCity_97-10_1.jpg">
+          <div class="gframe__media"><img src="images/10_ParkCity_97-10_1.jpg" loading="lazy" decoding="async" alt="97-10 62nd Drive — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-10 62nd Drive</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="97-10 62nd Drive" data-full="images/11_ParkCity_97-10_2.jpg">
+          <div class="gframe__media"><img src="images/11_ParkCity_97-10_2.jpg" loading="lazy" decoding="async" alt="97-10 62nd Drive — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-10 62nd Drive</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="97-37 63rd Road" data-full="images/12_ParkCity_97-37_1.jpg">
+          <div class="gframe__media"><img src="images/12_ParkCity_97-37_1.jpg" loading="lazy" decoding="async" alt="97-37 63rd Road — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-37 63rd Road</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="97-37 63rd Road" data-full="images/13_ParkCity_97-37_2.jpg">
+          <div class="gframe__media"><img src="images/13_ParkCity_97-37_2.jpg" loading="lazy" decoding="async" alt="97-37 63rd Road — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-37 63rd Road</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="97-40 62nd Drive" data-full="images/14_ParkCity_97-40_1.jpg">
+          <div class="gframe__media"><img src="images/14_ParkCity_97-40_1.jpg" loading="lazy" decoding="async" alt="97-40 62nd Drive — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-40 62nd Drive</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="97-40 62nd Drive" data-full="images/15_ParkCity_97-40_2.jpg">
+          <div class="gframe__media"><img src="images/15_ParkCity_97-40_2.jpg" loading="lazy" decoding="async" alt="97-40 62nd Drive — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-40 62nd Drive</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="98-05 63rd Road" data-full="images/16_ParkCity_98-05_1.jpg">
+          <div class="gframe__media"><img src="images/16_ParkCity_98-05_1.jpg" loading="lazy" decoding="async" alt="98-05 63rd Road — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">98-05 63rd Road</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="98-05 63rd Road" data-full="images/17_ParkCity_98-05_2.jpg">
+          <div class="gframe__media"><img src="images/17_ParkCity_98-05_2.jpg" loading="lazy" decoding="async" alt="98-05 63rd Road — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">98-05 63rd Road</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="98-20 62nd Drive" data-full="images/18_ParkCity_98-20_1.jpg">
+          <div class="gframe__media"><img src="images/18_ParkCity_98-20_1.jpg" loading="lazy" decoding="async" alt="98-20 62nd Drive — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">98-20 62nd Drive</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="98-20 62nd Drive" data-full="images/19_ParkCity_98-20_2.jpg">
+          <div class="gframe__media"><img src="images/19_ParkCity_98-20_2.jpg" loading="lazy" decoding="async" alt="98-20 62nd Drive — exterior" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">98-20 62nd Drive</span></figcaption>
+        </figure>
       </div>
-      <div class="strip-progress"><span data-progress></span></div>
     </section>
-    <section class="chapter chapter--tint" id="ch-interiors" data-chapter>
-      <div class="chapter__head">
-        <span class="chapter__num">II</span>
-        <div class="chapter__head-main">
-          <span class="chapter__count">Ten frames</span>
-          <h2 class="chapter__title">Lobbies &amp; <em>Interiors</em></h2>
+
+    <!-- ═══════════════ CHAPTER II — LOBBIES & INTERIORS ═══════════════ -->
+    <section class="gchapter gchapter--tint" id="ch-interiors" data-gchapter data-chapter-label="Lobbies &amp; Interiors">
+      <header class="gchapter__head">
+        <span class="gchapter__num" aria-hidden="true">II</span>
+        <div class="gchapter__intro">
+          <span class="eyebrow"><span class="eyebrow__line"></span>Chapter II · Ten frames</span>
+          <h2 class="gchapter__title">Lobbies &amp; <em class="serif-italic">Interiors</em></h2>
+          <p class="gchapter__lede">The rooms residents pass through daily — lobbies, mail rooms, hallways, and the chess tables that are never empty for long.</p>
         </div>
-        <div class="chapter__arrows">
-          <button class="chapter__arrow" data-dir="-1" aria-label="Scroll left">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="chapter__arrow" data-dir="1" aria-label="Scroll right">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+      </header>
+
+      <div class="gmosaic" data-mosaic>
+        <figure class="gframe" data-cap="Building Lobby" data-full="images/20_ParkCity_Lobby_1.jpg">
+          <div class="gframe__media"><img src="images/20_ParkCity_Lobby_1.jpg" loading="lazy" decoding="async" alt="Building lobby" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Building Lobby</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Mail Room" data-full="images/21_ParkCity_MailRoom_1.jpg">
+          <div class="gframe__media"><img src="images/21_ParkCity_MailRoom_1.jpg" loading="lazy" decoding="async" alt="Mail room" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Mail Room</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Residential Hallway" data-full="images/28_ParkCity_Hallway.jpg">
+          <div class="gframe__media"><img src="images/28_ParkCity_Hallway.jpg" loading="lazy" decoding="async" alt="Residential hallway" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Residential Hallway</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Seating Area" data-full="images/30_ParkCity_SeatingArea.jpg">
+          <div class="gframe__media"><img src="images/30_ParkCity_SeatingArea.jpg" loading="lazy" decoding="async" alt="Seating area" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Seating Area</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Building Lobby" data-full="images/32_ParkCity_Lobby_2.jpg">
+          <div class="gframe__media"><img src="images/32_ParkCity_Lobby_2.jpg" loading="lazy" decoding="async" alt="Building lobby" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Building Lobby</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Mail Room" data-full="images/33_ParkCity_MailRoom_2.jpg">
+          <div class="gframe__media"><img src="images/33_ParkCity_MailRoom_2.jpg" loading="lazy" decoding="async" alt="Mail room" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Mail Room</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Residential Hallway" data-full="images/34_ParkCity_Hallway_2.jpg">
+          <div class="gframe__media"><img src="images/34_ParkCity_Hallway_2.jpg" loading="lazy" decoding="async" alt="Residential hallway" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Residential Hallway</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Seating Area" data-full="images/43_ParkCity_SeatingArea_2.jpg">
+          <div class="gframe__media"><img src="images/43_ParkCity_SeatingArea_2.jpg" loading="lazy" decoding="async" alt="Seating area" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Seating Area</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Chess Tables" data-full="images/44_ParkCity_ChessTables.jpg">
+          <div class="gframe__media"><img src="images/44_ParkCity_ChessTables.jpg" loading="lazy" decoding="async" alt="Chess tables" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Chess Tables</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Elevator" data-full="images/48_ParkCity_Elevator.jpg">
+          <div class="gframe__media"><img src="images/48_ParkCity_Elevator.jpg" loading="lazy" decoding="async" alt="Elevator" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Elevator</span></figcaption>
+        </figure>
       </div>
-      <div class="filmstrip" data-strip>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Building Lobby" data-full="images/20_ParkCity_Lobby_1.jpg">
-            <div class="frame__media">
-              <img src="images/20_ParkCity_Lobby_1.jpg" loading="lazy" decoding="async" alt="Building Lobby — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Building Lobby</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Mail Room" data-full="images/21_ParkCity_MailRoom_1.jpg">
-            <div class="frame__media">
-              <img src="images/21_ParkCity_MailRoom_1.jpg" loading="lazy" decoding="async" alt="Mail Room — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Mail Room</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Residential Hallway" data-full="images/28_ParkCity_Hallway.jpg">
-            <div class="frame__media">
-              <img src="images/28_ParkCity_Hallway.jpg" loading="lazy" decoding="async" alt="Residential Hallway — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Residential Hallway</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Seating Area" data-full="images/30_ParkCity_SeatingArea.jpg">
-            <div class="frame__media">
-              <img src="images/30_ParkCity_SeatingArea.jpg" loading="lazy" decoding="async" alt="Seating Area — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Seating Area</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Building Lobby" data-full="images/32_ParkCity_Lobby_2.jpg">
-            <div class="frame__media">
-              <img src="images/32_ParkCity_Lobby_2.jpg" loading="lazy" decoding="async" alt="Building Lobby — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Building Lobby</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Mail Room" data-full="images/33_ParkCity_MailRoom_2.jpg">
-            <div class="frame__media">
-              <img src="images/33_ParkCity_MailRoom_2.jpg" loading="lazy" decoding="async" alt="Mail Room — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Mail Room</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Residential Hallway" data-full="images/34_ParkCity_Hallway_2.jpg">
-            <div class="frame__media">
-              <img src="images/34_ParkCity_Hallway_2.jpg" loading="lazy" decoding="async" alt="Residential Hallway — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Residential Hallway</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Seating Area" data-full="images/43_ParkCity_SeatingArea_2.jpg">
-            <div class="frame__media">
-              <img src="images/43_ParkCity_SeatingArea_2.jpg" loading="lazy" decoding="async" alt="Seating Area — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Seating Area</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Chess Tables" data-full="images/44_ParkCity_ChessTables.jpg">
-            <div class="frame__media">
-              <img src="images/44_ParkCity_ChessTables.jpg" loading="lazy" decoding="async" alt="Chess Tables — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Chess Tables</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Elevator" data-full="images/48_ParkCity_Elevator.jpg">
-            <div class="frame__media">
-              <img src="images/48_ParkCity_Elevator.jpg" loading="lazy" decoding="async" alt="Elevator — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Elevator</span></figcaption>
-          </figure>
-      </div>
-      <div class="strip-progress"><span data-progress></span></div>
     </section>
-    <section class="chapter" id="ch-amenities" data-chapter>
-      <div class="chapter__head">
-        <span class="chapter__num">III</span>
-        <div class="chapter__head-main">
-          <span class="chapter__count">Eighteen frames</span>
-          <h2 class="chapter__title"><em>Amenities</em></h2>
+
+    <!-- ═══════════════ CHAPTER III — AMENITIES ═══════════════ -->
+    <section class="gchapter" id="ch-amenities" data-gchapter data-chapter-label="Amenities">
+      <header class="gchapter__head">
+        <span class="gchapter__num" aria-hidden="true">III</span>
+        <div class="gchapter__intro">
+          <span class="eyebrow"><span class="eyebrow__line"></span>Chapter III · Eighteen frames</span>
+          <h2 class="gchapter__title"><em class="serif-italic">Amenities</em></h2>
+          <p class="gchapter__lede">The pool in season, the playground, laundry rooms, garages, storage — everything that makes the days easier.</p>
         </div>
-        <div class="chapter__arrows">
-          <button class="chapter__arrow" data-dir="-1" aria-label="Scroll left">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="chapter__arrow" data-dir="1" aria-label="Scroll right">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+      </header>
+
+      <div class="gmosaic" data-mosaic>
+        <figure class="gframe" data-cap="Swimming Pool" data-full="images/4_ParkCity_Pool.jpg">
+          <div class="gframe__media"><img src="images/4_ParkCity_Pool.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Swimming Pool</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Swimming Pool" data-full="images/5_ParkCity_Pool_2.jpg">
+          <div class="gframe__media"><img src="images/5_ParkCity_Pool_2.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Swimming Pool</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Children's Playground" data-full="images/6_ParkCity_Playground_1.jpg">
+          <div class="gframe__media"><img src="images/6_ParkCity_Playground_1.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Children's Playground</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Children's Playground" data-full="images/7_ParkCity_Playground_2.jpg">
+          <div class="gframe__media"><img src="images/7_ParkCity_Playground_2.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Children's Playground</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Laundry Room" data-full="images/22_ParkCity_Laundry_1.jpg">
+          <div class="gframe__media"><img src="images/22_ParkCity_Laundry_1.jpg" loading="lazy" decoding="async" alt="Laundry room" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Laundry Room</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Vending Area" data-full="images/23_ParkCity_VendingMachine.jpg">
+          <div class="gframe__media"><img src="images/23_ParkCity_VendingMachine.jpg" loading="lazy" decoding="async" alt="Vending area" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Vending Area</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Swimming Pool" data-full="images/31_ParkCity_Pool.jpg">
+          <div class="gframe__media"><img src="images/31_ParkCity_Pool.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Swimming Pool</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Garage Entrance" data-full="images/35_ParkCity_GarageEntrance.jpg">
+          <div class="gframe__media"><img src="images/35_ParkCity_GarageEntrance.jpg" loading="lazy" decoding="async" alt="Garage entrance" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garage Entrance</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Swimming Club" data-full="images/36_ParkCity_SwimmingClub.jpg">
+          <div class="gframe__media"><img src="images/36_ParkCity_SwimmingClub.jpg" loading="lazy" decoding="async" alt="Swimming club" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Swimming Club</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Fasttrack Kids" data-full="images/37_ParkCity_FasttrackKids.jpg">
+          <div class="gframe__media"><img src="images/37_ParkCity_FasttrackKids.jpg" loading="lazy" decoding="async" alt="Fasttrack Kids" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Fasttrack Kids</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="ICCD Center" data-full="images/38_ParkCity_ICCD.jpg">
+          <div class="gframe__media"><img src="images/38_ParkCity_ICCD.jpg" loading="lazy" decoding="async" alt="ICCD Center" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">ICCD Center</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Laundry Room" data-full="images/39_ParkCity_Laundry_2.jpg">
+          <div class="gframe__media"><img src="images/39_ParkCity_Laundry_2.jpg" loading="lazy" decoding="async" alt="Laundry room" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Laundry Room</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Indoor Parking Garage" data-full="images/40_ParkCity_Garage.jpg">
+          <div class="gframe__media"><img src="images/40_ParkCity_Garage.jpg" loading="lazy" decoding="async" alt="Indoor parking garage" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Indoor Parking Garage</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Garage Entrance" data-full="images/41_ParkCity_GarageEntrance_2.jpg">
+          <div class="gframe__media"><img src="images/41_ParkCity_GarageEntrance_2.jpg" loading="lazy" decoding="async" alt="Garage entrance" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garage Entrance</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Children's Playground" data-full="images/42_ParkCity_Playground.jpg">
+          <div class="gframe__media"><img src="images/42_ParkCity_Playground.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Children's Playground</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Private Storage" data-full="images/45_ParkCity_StorageRoom.jpg">
+          <div class="gframe__media"><img src="images/45_ParkCity_StorageRoom.jpg" loading="lazy" decoding="async" alt="Private storage" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Private Storage</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Management Office" data-full="images/46_ParkCity_Office_1.jpg">
+          <div class="gframe__media"><img src="images/46_ParkCity_Office_1.jpg" loading="lazy" decoding="async" alt="Management office" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Management Office</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Management Office" data-full="images/47_ParkCity_Office_2.jpg">
+          <div class="gframe__media"><img src="images/47_ParkCity_Office_2.jpg" loading="lazy" decoding="async" alt="Management office" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Management Office</span></figcaption>
+        </figure>
       </div>
-      <div class="filmstrip" data-strip>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Swimming Pool" data-full="images/4_ParkCity_Pool.jpg">
-            <div class="frame__media">
-              <img src="images/4_ParkCity_Pool.jpg" loading="lazy" decoding="async" alt="Swimming Pool — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Swimming Pool</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Swimming Pool" data-full="images/5_ParkCity_Pool_2.jpg">
-            <div class="frame__media">
-              <img src="images/5_ParkCity_Pool_2.jpg" loading="lazy" decoding="async" alt="Swimming Pool — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Swimming Pool</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Children's Playground" data-full="images/6_ParkCity_Playground_1.jpg">
-            <div class="frame__media">
-              <img src="images/6_ParkCity_Playground_1.jpg" loading="lazy" decoding="async" alt="Children's Playground — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Children's Playground</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Children's Playground" data-full="images/7_ParkCity_Playground_2.jpg">
-            <div class="frame__media">
-              <img src="images/7_ParkCity_Playground_2.jpg" loading="lazy" decoding="async" alt="Children's Playground — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Children's Playground</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Laundry Room" data-full="images/22_ParkCity_Laundry_1.jpg">
-            <div class="frame__media">
-              <img src="images/22_ParkCity_Laundry_1.jpg" loading="lazy" decoding="async" alt="Laundry Room — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Laundry Room</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Vending Area" data-full="images/23_ParkCity_VendingMachine.jpg">
-            <div class="frame__media">
-              <img src="images/23_ParkCity_VendingMachine.jpg" loading="lazy" decoding="async" alt="Vending Area — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Vending Area</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Swimming Pool" data-full="images/31_ParkCity_Pool.jpg">
-            <div class="frame__media">
-              <img src="images/31_ParkCity_Pool.jpg" loading="lazy" decoding="async" alt="Swimming Pool — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Swimming Pool</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Garage Entrance" data-full="images/35_ParkCity_GarageEntrance.jpg">
-            <div class="frame__media">
-              <img src="images/35_ParkCity_GarageEntrance.jpg" loading="lazy" decoding="async" alt="Garage Entrance — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Garage Entrance</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Swimming Club" data-full="images/36_ParkCity_SwimmingClub.jpg">
-            <div class="frame__media">
-              <img src="images/36_ParkCity_SwimmingClub.jpg" loading="lazy" decoding="async" alt="Swimming Club — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Swimming Club</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Fasttrack Kids" data-full="images/37_ParkCity_FasttrackKids.jpg">
-            <div class="frame__media">
-              <img src="images/37_ParkCity_FasttrackKids.jpg" loading="lazy" decoding="async" alt="Fasttrack Kids — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Fasttrack Kids</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="ICCD Center" data-full="images/38_ParkCity_ICCD.jpg">
-            <div class="frame__media">
-              <img src="images/38_ParkCity_ICCD.jpg" loading="lazy" decoding="async" alt="ICCD Center — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">ICCD Center</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Laundry Room" data-full="images/39_ParkCity_Laundry_2.jpg">
-            <div class="frame__media">
-              <img src="images/39_ParkCity_Laundry_2.jpg" loading="lazy" decoding="async" alt="Laundry Room — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Laundry Room</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Indoor Parking Garage" data-full="images/40_ParkCity_Garage.jpg">
-            <div class="frame__media">
-              <img src="images/40_ParkCity_Garage.jpg" loading="lazy" decoding="async" alt="Indoor Parking Garage — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Indoor Parking Garage</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Garage Entrance" data-full="images/41_ParkCity_GarageEntrance_2.jpg">
-            <div class="frame__media">
-              <img src="images/41_ParkCity_GarageEntrance_2.jpg" loading="lazy" decoding="async" alt="Garage Entrance — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Garage Entrance</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Children's Playground" data-full="images/42_ParkCity_Playground.jpg">
-            <div class="frame__media">
-              <img src="images/42_ParkCity_Playground.jpg" loading="lazy" decoding="async" alt="Children's Playground — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Children's Playground</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Private Storage" data-full="images/45_ParkCity_StorageRoom.jpg">
-            <div class="frame__media">
-              <img src="images/45_ParkCity_StorageRoom.jpg" loading="lazy" decoding="async" alt="Private Storage — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Private Storage</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Management Office" data-full="images/46_ParkCity_Office_1.jpg">
-            <div class="frame__media">
-              <img src="images/46_ParkCity_Office_1.jpg" loading="lazy" decoding="async" alt="Management Office — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Management Office</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="amenities" data-catlabel="Amenities" data-cap="Management Office" data-full="images/47_ParkCity_Office_2.jpg">
-            <div class="frame__media">
-              <img src="images/47_ParkCity_Office_2.jpg" loading="lazy" decoding="async" alt="Management Office — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Management Office</span></figcaption>
-          </figure>
-      </div>
-      <div class="strip-progress"><span data-progress></span></div>
     </section>
-    <section class="chapter chapter--tint" id="ch-grounds" data-chapter>
-      <div class="chapter__head">
-        <span class="chapter__num">IV</span>
-        <div class="chapter__head-main">
-          <span class="chapter__count">Five frames</span>
-          <h2 class="chapter__title">The <em>Grounds</em></h2>
+
+    <!-- ═══════════════ CHAPTER IV — THE GROUNDS ═══════════════ -->
+    <section class="gchapter gchapter--tint" id="ch-grounds" data-gchapter data-chapter-label="The Grounds">
+      <header class="gchapter__head">
+        <span class="gchapter__num" aria-hidden="true">IV</span>
+        <div class="gchapter__intro">
+          <span class="eyebrow"><span class="eyebrow__line"></span>Chapter IV · Five frames</span>
+          <h2 class="gchapter__title">The <em class="serif-italic">Grounds</em></h2>
+          <p class="gchapter__lede">The garden walkways that stitch the six buildings together — swept, planted, and shaded in summer.</p>
         </div>
-        <div class="chapter__arrows">
-          <button class="chapter__arrow" data-dir="-1" aria-label="Scroll left">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="chapter__arrow" data-dir="1" aria-label="Scroll right">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+      </header>
+
+      <div class="gmosaic" data-mosaic>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="images/24_ParkCity_Walkway_1.jpg">
+          <div class="gframe__media"><img src="images/24_ParkCity_Walkway_1.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="images/25_ParkCity_Walkway_2.jpg">
+          <div class="gframe__media"><img src="images/25_ParkCity_Walkway_2.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="images/26_ParkCity_Walkway_3.jpg">
+          <div class="gframe__media"><img src="images/26_ParkCity_Walkway_3.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="images/27_ParkCity_Walkway_4.jpg">
+          <div class="gframe__media"><img src="images/27_ParkCity_Walkway_4.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
+        </figure>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="images/29_ParkCity_Walkway_5.jpg">
+          <div class="gframe__media"><img src="images/29_ParkCity_Walkway_5.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+          <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
+        </figure>
       </div>
-      <div class="filmstrip" data-strip>
-          <figure class="frame" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/24_ParkCity_Walkway_1.jpg">
-            <div class="frame__media">
-              <img src="images/24_ParkCity_Walkway_1.jpg" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Garden Walkway</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/25_ParkCity_Walkway_2.jpg">
-            <div class="frame__media">
-              <img src="images/25_ParkCity_Walkway_2.jpg" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Garden Walkway</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/26_ParkCity_Walkway_3.jpg">
-            <div class="frame__media">
-              <img src="images/26_ParkCity_Walkway_3.jpg" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Garden Walkway</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/27_ParkCity_Walkway_4.jpg">
-            <div class="frame__media">
-              <img src="images/27_ParkCity_Walkway_4.jpg" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Garden Walkway</span></figcaption>
-          </figure>
-          <figure class="frame" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/29_ParkCity_Walkway_5.jpg">
-            <div class="frame__media">
-              <img src="images/29_ParkCity_Walkway_5.jpg" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
-            </div>
-            <figcaption class="frame__cap"><span class="frame__cap-title">Garden Walkway</span></figcaption>
-          </figure>
-      </div>
-      <div class="strip-progress"><span data-progress></span></div>
+    </section>
+
+    <!-- ═══════════════ CLOSING NOTE ═══════════════ -->
+    <section class="gclose">
+      <p class="gclose__note serif-italic">— End of the archive. The rest, you have to visit.</p>
+      <a href="contact.html" class="gclose__cta">
+        <span>Write to the office</span>
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+      </a>
     </section>
 
   </main>
 
   <!-- ═══════════════ LIGHTBOX ═══════════════ -->
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photograph viewer">
-    <div class="lightbox__backdrop" data-lb-close></div>
+  <div class="glb" id="glb" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photograph viewer">
+    <div class="glb__backdrop" data-glb-close>
+      <img class="glb__blur" id="glbBlur" src="" alt="" aria-hidden="true" />
+    </div>
 
-    <button class="lightbox__btn lightbox__close" data-lb-close aria-label="Close">
+    <button class="glb__btn glb__close" data-glb-close aria-label="Close viewer">
       <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     </button>
-    <button class="lightbox__btn lightbox__prev" data-lb-prev aria-label="Previous">
+    <button class="glb__btn glb__prev" data-glb-prev aria-label="Previous photograph">
       <svg viewBox="0 0 24 24" fill="none"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <button class="lightbox__btn lightbox__next" data-lb-next aria-label="Next">
+    <button class="glb__btn glb__next" data-glb-next aria-label="Next photograph">
       <svg viewBox="0 0 24 24" fill="none"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
 
-    <div class="lightbox__stage">
-      <div class="lightbox__frame">
-        <span class="lightbox__spin" aria-hidden="true"></span>
-        <img class="lightbox__img" id="lbImg" src="" alt="" />
+    <figure class="glb__stage" id="glbStage">
+      <div class="glb__frame">
+        <span class="glb__spin" aria-hidden="true"></span>
+        <img class="glb__img" id="glbImg" src="" alt="" />
       </div>
-      <div class="lightbox__cap">
-        <span class="lightbox__label" id="lbLabel"></span>
-        <span class="lightbox__title" id="lbTitle"></span>
-        <span class="lightbox__count" id="lbCount"></span>
-      </div>
-    </div>
+      <figcaption class="glb__cap">
+        <span class="glb__chapter" id="glbChapter"></span>
+        <span class="glb__title" id="glbTitle"></span>
+        <span class="glb__count" id="glbCount"></span>
+      </figcaption>
+    </figure>
+
+    <div class="glb__progress" aria-hidden="true"><span id="glbProgress"></span></div>
   </div>
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
@@ -581,7 +508,6 @@
   </footer>
 
   <script src="script.js" defer></script>
-
   <script src="gallery.js" defer></script>
 </body>
 </html>
