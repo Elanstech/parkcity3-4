@@ -133,58 +133,7 @@
   }
 
   /* ═══════════════════════════════════════════
-     4. STICKY INDEX — show after hero, scrollspy,
-        live "frames seen" counter
-     ═══════════════════════════════════════════ */
-  class ChapterIndex {
-    constructor(registry) {
-      this.bar = $('#gindex');
-      this.hero = $('#ghero');
-      if (!this.bar) return;
-
-      this.links = $$('[data-spy]', this.bar);
-      this.chapters = $$('[data-gchapter]');
-      this.seenEl = $('[data-seen]', this.bar);
-      this.total = registry.total;
-      this.maxSeen = 1;
-
-      window.addEventListener('scroll', () => this.onScroll(), { passive: true });
-      this.onScroll();
-
-      // frames-seen counter
-      if (this.seenEl && registry.frames.length) {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(e => {
-            if (!e.isIntersecting) return;
-            const n = parseInt(e.target.dataset.index, 10) + 1;
-            if (n > this.maxSeen) {
-              this.maxSeen = n;
-              this.seenEl.textContent = pad2(n);
-            }
-          });
-        }, { threshold: 0.4 });
-        registry.frames.forEach(f => io.observe(f));
-      }
-    }
-
-    onScroll() {
-      const heroBottom = this.hero ? this.hero.getBoundingClientRect().bottom : 0;
-      this.bar.classList.toggle('is-shown', heroBottom < 60);
-
-      // scrollspy
-      let activeId = null;
-      this.chapters.forEach(ch => {
-        const r = ch.getBoundingClientRect();
-        if (r.top < window.innerHeight * 0.4 && r.bottom > window.innerHeight * 0.25) {
-          activeId = ch.id;
-        }
-      });
-      this.links.forEach(a => a.classList.toggle('is-active', a.dataset.spy === activeId));
-    }
-  }
-
-  /* ═══════════════════════════════════════════
-     5. CURSOR — italic "View" follower on frames
+     4. CURSOR — italic "View" follower on frames
      ═══════════════════════════════════════════ */
   class ViewCursor {
     constructor() {
@@ -224,7 +173,7 @@
   }
 
   /* ═══════════════════════════════════════════
-     6. LIGHTBOX — cinematic viewer
+     5. LIGHTBOX — cinematic viewer
         keyboard ← → Esc · swipe · blurred self-
         backdrop · neighbor preload · progress line
      ═══════════════════════════════════════════ */
@@ -363,7 +312,6 @@
       const registry = new Registry();
       new GalleryHero();
       new Mosaic(registry);
-      new ChapterIndex(registry);
       new ViewCursor();
       new Lightbox(registry);
 
