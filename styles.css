@@ -482,13 +482,15 @@ em.serif-italic, .serif-italic em {
 
 .hero__scroll {
   position: absolute;
-  left: 50%; bottom: 32px;
-  transform: translateX(-50%);
+  left: 0; right: 0; bottom: 32px;
+  margin-inline: auto;
+  width: max-content;
   z-index: 3;
   display: flex; flex-direction: column; align-items: center; gap: 12px;
   font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
   color: color-mix(in srgb, var(--bone) 65%, transparent);
 }
+
 .hero__scroll svg { color: var(--bone); animation: scrollPulse 2s ease-in-out infinite; }
 @keyframes scrollPulse { 0%, 100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(6px); opacity: 1; } }
 
