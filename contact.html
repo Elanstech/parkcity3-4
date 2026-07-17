@@ -28,49 +28,66 @@
     </div>
   </div>
 
-  <!-- ═══════════════ NAVIGATION ═══════════════ -->
-  <header class="nav" id="nav">
-    <div class="nav__shell">
-      <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
-        <img src="logo.png" alt="Park City 3 & 4" class="nav__logo" />
-      </a>
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__shell">
+    <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
+      <img src="logo.png" alt="Park City 3 & 4" class="nav__logo" />
+    </a>
 
-      <nav class="nav__menu" aria-label="Primary">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="amenities.html">Amenities</a></li>
-          <li><a href="forms.html">Forms</a></li>
-          <li><a href="guides.html">Guides</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html" class="is-active" aria-current="page">Contact Us</a></li>
-        </ul>
+    <nav class="nav__menu" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="amenities.html">Amenities</a></li>
+        <li><a href="forms.html">Forms</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html" class="is-active" aria-current="page">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div class="navmobile" id="navMobile" aria-hidden="true">
+    <div class="navmobile__bg" aria-hidden="true"></div>
+
+    <div class="navmobile__inner">
+      <div class="navmobile__top">
+        <img src="logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
+        <button class="navmobile__close" id="navClose" aria-label="Close menu">
+          <span></span><span></span>
+        </button>
+      </div>
+
+      <span class="navmobile__eyebrow"><span class="navmobile__eyebrow-line"></span>Menu</span>
+
+      <nav class="navmobile__nav" aria-label="Mobile">
+        <ol class="navmobile__list">
+          <li><a href="index.html"><em>01</em><span>Home</span></a></li>
+          <li><a href="amenities.html"><em>02</em><span>Amenities</span></a></li>
+          <li><a href="forms.html"><em>03</em><span>Forms</span></a></li>
+          <li><a href="guides.html"><em>04</em><span>Guides</span></a></li>
+          <li><a href="faq.html"><em>05</em><span>FAQ</span></a></li>
+          <li><a href="contact.html"><em>06</em><span>Contact Us</span></a></li>
+        </ol>
       </nav>
 
-      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
-    </div>
-
-    <div class="navmobile" id="navMobile" aria-hidden="true">
-      <div class="navmobile__inner">
-        <img src="logo.png" alt="" class="navmobile__logo" />
-        <ol class="navmobile__list">
-          <li><a href="index.html"><em>01</em> Home</a></li>
-          <li><a href="amenities.html"><em>02</em> Amenities</a></li>
-          <li><a href="forms.html"><em>03</em> Forms</a></li>
-          <li><a href="guides.html"><em>04</em> Guides</a></li>
-          <li><a href="faq.html"><em>05</em> FAQ</a></li>
-          <li><a href="contact.html"><em>06</em> Contact</a></li>
-        </ol>
-        <div class="navmobile__foot">
-          <p class="serif-italic">A residence in Rego Park.</p>
-          <p>Six buildings · Established 1955</p>
-          <p class="navmobile__akam">Managed by <span>AKAM</span></p>
+      <div class="navmobile__foot">
+        <p class="navmobile__tagline serif-italic">A residence in Rego Park.</p>
+        <div class="navmobile__contact">
+          <a href="tel:7188972000">(718) 897-2000</a>
+          <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>
         </div>
+        <p class="navmobile__meta">Six buildings · Established 1955</p>
+        <p class="navmobile__akam">Managed by <span>AKAM</span></p>
       </div>
     </div>
-  </header>
-
+  </div>
+</header>
+  
   <main id="top">
 
     <!-- ═══════════════ HERO ═══════════════ -->
