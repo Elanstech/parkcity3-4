@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gallery — Park City 3 & 4 Apartments. A look inside six residential buildings in Rego Park, Queens: exteriors, lobbies, amenities, and grounds." />
+  <meta name="theme-color" content="#faf6ee" />
+  <title>Gallery · Park City 3 &amp; 4 Apartments</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="stylesheet" href="gallery.css" />
+</head>
+
+<body data-theme="cream" class="gpage">
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__shell">
+      <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
+        <img src="logo.png" alt="Park City 3 & 4" class="nav__logo" />
+      </a>
+
+      <nav class="nav__menu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="gallery.html" class="is-active" aria-current="page">Gallery</a></li>
+          <li><a href="forms.html">Forms</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navmobile" id="navMobile" aria-hidden="true">
+      <div class="navmobile__bg" aria-hidden="true"></div>
+      <div class="navmobile__inner">
+        <div class="navmobile__top">
+          <img src="logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
+          <button class="navmobile__close" id="navClose" aria-label="Close menu"><span></span><span></span></button>
+        </div>
+        <span class="navmobile__eyebrow"><span class="navmobile__eyebrow-line"></span>Menu</span>
+        <nav class="navmobile__nav" aria-label="Mobile">
+          <ol class="navmobile__list">
+            <li><a href="index.html"><em>01</em><span>Home</span></a></li>
+            <li><a href="amenities.html"><em>02</em><span>Amenities</span></a></li>
+            <li><a href="gallery.html"><em>03</em><span>Gallery</span></a></li>
+            <li><a href="forms.html"><em>04</em><span>Forms</span></a></li>
+            <li><a href="guides.html"><em>05</em><span>Guides</span></a></li>
+            <li><a href="faq.html"><em>06</em><span>FAQ</span></a></li>
+            <li><a href="contact.html"><em>07</em><span>Contact Us</span></a></li>
+          </ol>
+        </nav>
+        <div class="navmobile__foot">
+          <p class="navmobile__tagline serif-italic">A residence in Rego Park.</p>
+          <div class="navmobile__contact">
+            <a href="tel:7188972000">(718) 897-2000</a>
+            <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>
+          </div>
+          <p class="navmobile__meta">Six buildings · Established 1955</p>
+          <p class="navmobile__akam">Managed by <span>AKAM</span></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="ghero">
+      <span class="ghero__eyebrow"><span></span>Gallery — A Look Inside</span>
+      <h1 class="ghero__title">Six buildings,<br/><em>seen up close.</em></h1>
+      <div class="ghero__row">
+        <p class="ghero__lede">
+          A walk through Park City 3 &amp; 4 — the six exteriors, the lobbies and hallways residents pass through each day, the pool and playground, and the quiet grounds that tie it all together.
+        </p>
+        <p class="ghero__meta"><b>48</b> photographs · <b>Six</b> buildings · Rego Park</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ FILTER ═══════════════ -->
+    <div class="gfilter">
+      <div class="gfilter__inner" role="tablist" aria-label="Filter photographs">
+        <button class="gpill is-active" data-filter="all">
+          <span class="gpill__label">All</span>
+          <span class="gpill__count">48</span>
+        </button>
+        <button class="gpill" data-filter="buildings">
+          <span class="gpill__label">The Buildings</span>
+          <span class="gpill__count">15</span>
+        </button>
+        <button class="gpill" data-filter="interiors">
+          <span class="gpill__label">Lobbies & Interiors</span>
+          <span class="gpill__count">10</span>
+        </button>
+        <button class="gpill" data-filter="amenities">
+          <span class="gpill__label">Amenities</span>
+          <span class="gpill__count">18</span>
+        </button>
+        <button class="gpill" data-filter="grounds">
+          <span class="gpill__label">The Grounds</span>
+          <span class="gpill__count">5</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ═══════════════ GRID ═══════════════ -->
+    <section class="ggrid" id="ggrid" aria-label="Photograph gallery">
+        <figure class="g-item g-item--wide" data-cat="buildings" data-catlabel="The Buildings" data-cap="Park City 3 & 4" data-full="images/gallery/1_ParkCity_Building_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/1_ParkCity_Building_1.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="Park City 3 & 4 — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">Park City 3 & 4</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="Park City 3 & 4" data-full="images/gallery/2_ParkCity_Building_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/2_ParkCity_Building_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="Park City 3 & 4 — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">Park City 3 & 4</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="Park City 3 & 4" data-full="images/gallery/3_ParkCity_Building_3.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/3_ParkCity_Building_3.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="Park City 3 & 4 — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">Park City 3 & 4</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-07 63rd Road" data-full="images/gallery/8_ParkCity_97-07_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/8_ParkCity_97-07_1.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="97-07 63rd Road — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">97-07 63rd Road</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-07 63rd Road" data-full="images/gallery/9_ParkCity_97-07_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/9_ParkCity_97-07_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="97-07 63rd Road — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">97-07 63rd Road</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-10 62nd Drive" data-full="images/gallery/10_ParkCity_97-10_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/10_ParkCity_97-10_1.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="97-10 62nd Drive — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">97-10 62nd Drive</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-10 62nd Drive" data-full="images/gallery/11_ParkCity_97-10_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/11_ParkCity_97-10_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="97-10 62nd Drive — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">97-10 62nd Drive</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item g-item--wide" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-37 63rd Road" data-full="images/gallery/12_ParkCity_97-37_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/12_ParkCity_97-37_1.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="97-37 63rd Road — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">97-37 63rd Road</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-37 63rd Road" data-full="images/gallery/13_ParkCity_97-37_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/13_ParkCity_97-37_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="97-37 63rd Road — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">97-37 63rd Road</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-40 62nd Drive" data-full="images/gallery/14_ParkCity_97-40_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/14_ParkCity_97-40_1.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="97-40 62nd Drive — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">97-40 62nd Drive</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="97-40 62nd Drive" data-full="images/gallery/15_ParkCity_97-40_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/15_ParkCity_97-40_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="97-40 62nd Drive — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">97-40 62nd Drive</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="98-05 63rd Road" data-full="images/gallery/16_ParkCity_98-05_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/16_ParkCity_98-05_1.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="98-05 63rd Road — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">98-05 63rd Road</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="98-05 63rd Road" data-full="images/gallery/17_ParkCity_98-05_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/17_ParkCity_98-05_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="98-05 63rd Road — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">98-05 63rd Road</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="98-20 62nd Drive" data-full="images/gallery/18_ParkCity_98-20_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/18_ParkCity_98-20_1.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="98-20 62nd Drive — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">98-20 62nd Drive</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="buildings" data-catlabel="The Buildings" data-cap="98-20 62nd Drive" data-full="images/gallery/19_ParkCity_98-20_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/19_ParkCity_98-20_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="98-20 62nd Drive — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Buildings</span>
+            <span class="g-cap__title">98-20 62nd Drive</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item g-item--wide" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Building Lobby" data-full="images/gallery/20_ParkCity_Lobby_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/20_ParkCity_Lobby_1.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Building Lobby — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Building Lobby</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Mail Room" data-full="images/gallery/21_ParkCity_MailRoom_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/21_ParkCity_MailRoom_1.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Mail Room — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Mail Room</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Residential Hallway" data-full="images/gallery/28_ParkCity_Hallway.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/28_ParkCity_Hallway.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Residential Hallway — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Residential Hallway</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Seating Area" data-full="images/gallery/30_ParkCity_SeatingArea.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/30_ParkCity_SeatingArea.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Seating Area — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Seating Area</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Building Lobby" data-full="images/gallery/32_ParkCity_Lobby_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/32_ParkCity_Lobby_2.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Building Lobby — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Building Lobby</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Mail Room" data-full="images/gallery/33_ParkCity_MailRoom_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/33_ParkCity_MailRoom_2.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Mail Room — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Mail Room</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Residential Hallway" data-full="images/gallery/34_ParkCity_Hallway_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/34_ParkCity_Hallway_2.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Residential Hallway — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Residential Hallway</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Seating Area" data-full="images/gallery/43_ParkCity_SeatingArea_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/43_ParkCity_SeatingArea_2.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Seating Area — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Seating Area</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Chess Tables" data-full="images/gallery/44_ParkCity_ChessTables.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/44_ParkCity_ChessTables.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Chess Tables — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Chess Tables</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="interiors" data-catlabel="Lobbies & Interiors" data-cap="Elevator" data-full="images/gallery/48_ParkCity_Elevator.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/48_ParkCity_Elevator.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Elevator — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Lobbies & Interiors</span>
+            <span class="g-cap__title">Elevator</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Swimming Pool" data-full="images/gallery/4_ParkCity_Pool.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/4_ParkCity_Pool.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="Swimming Pool — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Swimming Pool</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Swimming Pool" data-full="images/gallery/5_ParkCity_Pool_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/5_ParkCity_Pool_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="Swimming Pool — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Swimming Pool</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Children's Playground" data-full="images/gallery/6_ParkCity_Playground_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/6_ParkCity_Playground_1.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="Children's Playground — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Children's Playground</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Children's Playground" data-full="images/gallery/7_ParkCity_Playground_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/7_ParkCity_Playground_2.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="Children's Playground — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Children's Playground</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Laundry Room" data-full="images/gallery/22_ParkCity_Laundry_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/22_ParkCity_Laundry_1.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Laundry Room — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Laundry Room</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Vending Area" data-full="images/gallery/23_ParkCity_VendingMachine.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/23_ParkCity_VendingMachine.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Vending Area — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Vending Area</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item g-item--wide" data-cat="amenities" data-catlabel="Amenities" data-cap="Swimming Pool" data-full="images/gallery/31_ParkCity_Pool.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/31_ParkCity_Pool.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Swimming Pool — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Swimming Pool</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Garage Entrance" data-full="images/gallery/35_ParkCity_GarageEntrance.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/35_ParkCity_GarageEntrance.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Garage Entrance — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Garage Entrance</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Swimming Club" data-full="images/gallery/36_ParkCity_SwimmingClub.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/36_ParkCity_SwimmingClub.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Swimming Club — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Swimming Club</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Fasttrack Kids" data-full="images/gallery/37_ParkCity_FasttrackKids.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/37_ParkCity_FasttrackKids.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Fasttrack Kids — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Fasttrack Kids</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="ICCD Center" data-full="images/gallery/38_ParkCity_ICCD.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/38_ParkCity_ICCD.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="ICCD Center — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">ICCD Center</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Laundry Room" data-full="images/gallery/39_ParkCity_Laundry_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/39_ParkCity_Laundry_2.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Laundry Room — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Laundry Room</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Indoor Parking Garage" data-full="images/gallery/40_ParkCity_Garage.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/40_ParkCity_Garage.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Indoor Parking Garage — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Indoor Parking Garage</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Garage Entrance" data-full="images/gallery/41_ParkCity_GarageEntrance_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/41_ParkCity_GarageEntrance_2.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Garage Entrance — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Garage Entrance</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item g-item--wide" data-cat="amenities" data-catlabel="Amenities" data-cap="Children's Playground" data-full="images/gallery/42_ParkCity_Playground.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/42_ParkCity_Playground.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Children's Playground — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Children's Playground</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Private Storage" data-full="images/gallery/45_ParkCity_StorageRoom.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/45_ParkCity_StorageRoom.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Private Storage — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Private Storage</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Management Office" data-full="images/gallery/46_ParkCity_Office_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/46_ParkCity_Office_1.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Management Office — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Management Office</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="amenities" data-catlabel="Amenities" data-cap="Management Office" data-full="images/gallery/47_ParkCity_Office_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/47_ParkCity_Office_2.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Management Office — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">Amenities</span>
+            <span class="g-cap__title">Management Office</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item g-item--wide" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/gallery/24_ParkCity_Walkway_1.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/24_ParkCity_Walkway_1.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Grounds</span>
+            <span class="g-cap__title">Garden Walkway</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/gallery/25_ParkCity_Walkway_2.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/25_ParkCity_Walkway_2.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Grounds</span>
+            <span class="g-cap__title">Garden Walkway</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/gallery/26_ParkCity_Walkway_3.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/26_ParkCity_Walkway_3.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Grounds</span>
+            <span class="g-cap__title">Garden Walkway</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/gallery/27_ParkCity_Walkway_4.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/27_ParkCity_Walkway_4.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Grounds</span>
+            <span class="g-cap__title">Garden Walkway</span>
+          </figcaption>
+        </figure>
+        <figure class="g-item" data-cat="grounds" data-catlabel="The Grounds" data-cap="Garden Walkway" data-full="images/gallery/29_ParkCity_Walkway_5.jpg">
+          <div class="g-media">
+            <img src="images/gallery/thumb/29_ParkCity_Walkway_5.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Garden Walkway — Park City 3 &amp; 4, Rego Park" />
+          </div>
+          <figcaption class="g-cap">
+            <span class="g-cap__label">The Grounds</span>
+            <span class="g-cap__title">Garden Walkway</span>
+          </figcaption>
+        </figure>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════ LIGHTBOX ═══════════════ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photograph viewer">
+    <div class="lightbox__backdrop" data-lb-close></div>
+
+    <button class="lightbox__btn lightbox__close" data-lb-close aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__prev" data-lb-prev aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__next" data-lb-next aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="lightbox__stage">
+      <div class="lightbox__frame">
+        <span class="lightbox__spin" aria-hidden="true"></span>
+        <img class="lightbox__img" id="lbImg" src="" alt="" />
+      </div>
+      <div class="lightbox__cap">
+        <span class="lightbox__label" id="lbLabel"></span>
+        <span class="lightbox__title" id="lbTitle"></span>
+        <span class="lightbox__count" id="lbCount"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="foot">
+    <div class="foot__statement">
+      <span class="foot__statement-eyebrow">Park City 3 &amp; 4 Apartments, Inc.</span>
+      <h2 class="foot__statement-head">A residence<br/><em class="serif-italic">in Rego Park.</em></h2>
+      <p class="foot__statement-meta">Established 1955 · Six buildings · Fourteen stories each · Private terraces throughout.</p>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <div class="foot__addresses-block">
+      <span class="foot__block-label">The Six Buildings</span>
+      <ul class="foot__addresses-grid">
+        <li><span>01</span>97-07 63rd Road</li>
+        <li><span>02</span>97-10 62nd Drive</li>
+        <li><span>03</span>97-37 63rd Road</li>
+        <li><span>04</span>97-40 62nd Drive</li>
+        <li><span>05</span>98-05 63rd Road</li>
+        <li><span>06</span>98-20 62nd Drive</li>
+      </ul>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <div class="foot__cols">
+      <div class="foot__col foot__col--office">
+        <h5>Management Office</h5>
+        <ul>
+          <li><a href="tel:7188972000">(718) 897-2000</a></li>
+          <li><a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a></li>
+          <li>Monday – Friday</li>
+          <li>8:00 AM – 4:00 PM</li>
+          <li>Rego Park, NY 11374</li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#philosophy">About</a></li>
+          <li><a href="index.html#residences">Buildings</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h5>Shareholders</h5>
+        <ul>
+          <li><a href="forms.html">Resident Forms</a></li>
+          <li><a href="guides.html">Building Guides</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Maintenance Request</a></li>
+          <li><a href="contact.html">Emergency Contacts</a></li>
+        </ul>
+      </div>
+      <div class="foot__col foot__col--mark">
+        <img src="logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <p class="foot__akam-note">Professionally managed by<br/>
+          <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="foot__rule"></div>
+
+    <div class="foot__bottom">
+      <p class="foot__copy">© 2026 Park City 3 &amp; 4 Apartments, Inc. All rights reserved.</p>
+      <ul class="foot__legal">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+      <a href="https://elanstechworld.com" target="_blank" rel="noopener" class="foot__credit" aria-label="Designed and built by Elan's Tech World">
+        <span class="foot__credit-label">Designed &amp; built by</span>
+        <span class="foot__credit-mark">
+          <img src="https://www.elanstechworld.com/assets/images/Elanslogo.jpeg" alt="" class="foot__credit-logo"/>
+          <span class="foot__credit-name">Elan's Tech World</span>
+        </span>
+        <svg class="foot__credit-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <button class="foot__top-link" id="backToTop" aria-label="Back to top">
+        <span>To the top</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 13V1m0 0L1 7m6-6l6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+
+  <script src="gallery.js" defer></script>
+</body>
+</html>
