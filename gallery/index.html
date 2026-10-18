@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Gallery — Park City 3 & 4 Apartments. Forty-eight photographs across four chapters: the six buildings, lobbies and interiors, amenities, and the grounds. Rego Park, Queens." />
   <meta name="theme-color" content="#faf6ee" />
+  <link rel="icon" href="../images/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
   <title>Gallery · Park City 3 &amp; 4 Apartments</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="gallery.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/gallery.css" />
 </head>
 
 <body data-theme="cream" class="gpage">
@@ -20,7 +22,7 @@
     <!-- LOADER -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__inner">
-      <img src="images/logo.png" alt="" class="loader__logo" />
+      <img src="../images/logo.png" alt="" class="loader__logo" />
       <div class="loader__bar"><span></span></div>
       <div class="loader__caption"><span>Forty-eight frames of home</span></div>
     </div>
@@ -29,19 +31,19 @@
   <!-- ═══════════════ NAVIGATION ═══════════════ -->
   <header class="nav" id="nav">
     <div class="nav__shell">
-      <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
+      <a href="../" class="nav__brand" aria-label="Park City 3 & 4 home">
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
       </a>
 
       <nav class="nav__menu" aria-label="Primary">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="amenities.html">Amenities</a></li>
-          <li><a href="forms.html">Forms</a></li>
-          <li><a href="guides.html">Guides</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="gallery.html" class="is-active" aria-current="page">Gallery</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../amenities/">Amenities</a></li>
+          <li><a href="../forms/">Forms</a></li>
+          <li><a href="../guides/">Guides</a></li>
+          <li><a href="../faq/">FAQ</a></li>
+          <li><a href="../gallery/" class="is-active" aria-current="page">Gallery</a></li>
+          <li><a href="../contact/">Contact Us</a></li>
         </ul>
       </nav>
 
@@ -50,23 +52,23 @@
       </button>
     </div>
 
-    <div class="navmobile" id="navMobile" aria-hidden="true">
+    <div class="navmobile" id="navMobile" aria-hidden="true" inert>
       <div class="navmobile__bg" aria-hidden="true"></div>
       <div class="navmobile__inner">
         <div class="navmobile__top">
-          <img src="images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
+          <img src="../images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
           <button class="navmobile__close" id="navClose" aria-label="Close menu"><span></span><span></span></button>
         </div>
         <span class="navmobile__eyebrow"><span class="navmobile__eyebrow-line"></span>Menu</span>
         <nav class="navmobile__nav" aria-label="Mobile">
           <ol class="navmobile__list">
-            <li><a href="index.html"><em>01</em><span>Home</span></a></li>
-            <li><a href="amenities.html"><em>02</em><span>Amenities</span></a></li>
-            <li><a href="forms.html"><em>03</em><span>Forms</span></a></li>
-            <li><a href="guides.html"><em>04</em><span>Guides</span></a></li>
-            <li><a href="faq.html"><em>05</em><span>FAQ</span></a></li>
-            <li><a href="gallery.html"><em>06</em><span>Gallery</span></a></li>
-            <li><a href="contact.html"><em>07</em><span>Contact Us</span></a></li>
+            <li><a href="../"><em>01</em><span>Home</span></a></li>
+            <li><a href="../amenities/"><em>02</em><span>Amenities</span></a></li>
+            <li><a href="../forms/"><em>03</em><span>Forms</span></a></li>
+            <li><a href="../guides/"><em>04</em><span>Guides</span></a></li>
+            <li><a href="../faq/"><em>05</em><span>FAQ</span></a></li>
+            <li><a href="../gallery/" class="is-active" aria-current="page"><em>06</em><span>Gallery</span></a></li>
+            <li><a href="../contact/"><em>07</em><span>Contact Us</span></a></li>
           </ol>
         </nav>
         <div class="navmobile__foot">
@@ -87,11 +89,11 @@
     <!-- ═══════════════ GALLERY HERO — living collage ═══════════════ -->
     <section class="ghero" id="ghero">
       <div class="ghero__collage" aria-hidden="true" data-collage>
-        <div class="ghero__card ghero__card--a" data-depth="0.35"><img src="images/1_ParkCity_Building_1.jpg" alt="" /></div>
-        <div class="ghero__card ghero__card--b" data-depth="0.6"><img src="images/4_ParkCity_Pool.jpg" alt="" /></div>
-        <div class="ghero__card ghero__card--c" data-depth="0.9"><img src="images/24_ParkCity_Walkway_1.jpg" alt="" /></div>
-        <div class="ghero__card ghero__card--d" data-depth="0.5"><img src="images/20_ParkCity_Lobby_1.jpg" alt="" /></div>
-        <div class="ghero__card ghero__card--e" data-depth="0.75"><img src="images/16_ParkCity_98-05_1.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--a" data-depth="0.35"><img src="../images/1_ParkCity_Building_1.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--b" data-depth="0.6"><img src="../images/4_ParkCity_Pool.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--c" data-depth="0.9"><img src="../images/24_ParkCity_Walkway_1.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--d" data-depth="0.5"><img src="../images/20_ParkCity_Lobby_1.jpg" alt="" /></div>
+        <div class="ghero__card ghero__card--e" data-depth="0.75"><img src="../images/16_ParkCity_98-05_1.jpg" alt="" /></div>
       </div>
 
       <div class="ghero__content">
@@ -131,64 +133,64 @@
       </header>
 
       <div class="gmosaic" data-mosaic>
-        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="images/1_ParkCity_Building_1.jpg">
-          <div class="gframe__media"><img src="images/1_ParkCity_Building_1.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
+        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="../images/1_ParkCity_Building_1.jpg">
+          <div class="gframe__media"><img src="../images/1_ParkCity_Building_1.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Park City 3 &amp; 4</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="images/2_ParkCity_Building_2.jpg">
-          <div class="gframe__media"><img src="images/2_ParkCity_Building_2.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
+        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="../images/2_ParkCity_Building_2.jpg">
+          <div class="gframe__media"><img src="../images/2_ParkCity_Building_2.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Park City 3 &amp; 4</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="images/3_ParkCity_Building_3.jpg">
-          <div class="gframe__media"><img src="images/3_ParkCity_Building_3.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
+        <figure class="gframe" data-cap="Park City 3 &amp; 4" data-full="../images/3_ParkCity_Building_3.jpg">
+          <div class="gframe__media"><img src="../images/3_ParkCity_Building_3.jpg" loading="lazy" decoding="async" alt="Park City 3 & 4 — building exterior, Rego Park" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Park City 3 &amp; 4</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="97-07 63rd Road" data-full="images/8_ParkCity_97-07_1.jpg">
-          <div class="gframe__media"><img src="images/8_ParkCity_97-07_1.jpg" loading="lazy" decoding="async" alt="97-07 63rd Road — exterior" /></div>
+        <figure class="gframe" data-cap="97-07 63rd Road" data-full="../images/8_ParkCity_97-07_1.jpg">
+          <div class="gframe__media"><img src="../images/8_ParkCity_97-07_1.jpg" loading="lazy" decoding="async" alt="97-07 63rd Road — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-07 63rd Road</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="97-07 63rd Road" data-full="images/9_ParkCity_97-07_2.jpg">
-          <div class="gframe__media"><img src="images/9_ParkCity_97-07_2.jpg" loading="lazy" decoding="async" alt="97-07 63rd Road — exterior" /></div>
+        <figure class="gframe" data-cap="97-07 63rd Road" data-full="../images/9_ParkCity_97-07_2.jpg">
+          <div class="gframe__media"><img src="../images/9_ParkCity_97-07_2.jpg" loading="lazy" decoding="async" alt="97-07 63rd Road — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-07 63rd Road</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="97-10 62nd Drive" data-full="images/10_ParkCity_97-10_1.jpg">
-          <div class="gframe__media"><img src="images/10_ParkCity_97-10_1.jpg" loading="lazy" decoding="async" alt="97-10 62nd Drive — exterior" /></div>
+        <figure class="gframe" data-cap="97-10 62nd Drive" data-full="../images/10_ParkCity_97-10_1.jpg">
+          <div class="gframe__media"><img src="../images/10_ParkCity_97-10_1.jpg" loading="lazy" decoding="async" alt="97-10 62nd Drive — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-10 62nd Drive</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="97-10 62nd Drive" data-full="images/11_ParkCity_97-10_2.jpg">
-          <div class="gframe__media"><img src="images/11_ParkCity_97-10_2.jpg" loading="lazy" decoding="async" alt="97-10 62nd Drive — exterior" /></div>
+        <figure class="gframe" data-cap="97-10 62nd Drive" data-full="../images/11_ParkCity_97-10_2.jpg">
+          <div class="gframe__media"><img src="../images/11_ParkCity_97-10_2.jpg" loading="lazy" decoding="async" alt="97-10 62nd Drive — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-10 62nd Drive</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="97-37 63rd Road" data-full="images/12_ParkCity_97-37_1.jpg">
-          <div class="gframe__media"><img src="images/12_ParkCity_97-37_1.jpg" loading="lazy" decoding="async" alt="97-37 63rd Road — exterior" /></div>
+        <figure class="gframe" data-cap="97-37 63rd Road" data-full="../images/12_ParkCity_97-37_1.jpg">
+          <div class="gframe__media"><img src="../images/12_ParkCity_97-37_1.jpg" loading="lazy" decoding="async" alt="97-37 63rd Road — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-37 63rd Road</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="97-37 63rd Road" data-full="images/13_ParkCity_97-37_2.jpg">
-          <div class="gframe__media"><img src="images/13_ParkCity_97-37_2.jpg" loading="lazy" decoding="async" alt="97-37 63rd Road — exterior" /></div>
+        <figure class="gframe" data-cap="97-37 63rd Road" data-full="../images/13_ParkCity_97-37_2.jpg">
+          <div class="gframe__media"><img src="../images/13_ParkCity_97-37_2.jpg" loading="lazy" decoding="async" alt="97-37 63rd Road — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-37 63rd Road</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="97-40 62nd Drive" data-full="images/14_ParkCity_97-40_1.jpg">
-          <div class="gframe__media"><img src="images/14_ParkCity_97-40_1.jpg" loading="lazy" decoding="async" alt="97-40 62nd Drive — exterior" /></div>
+        <figure class="gframe" data-cap="97-40 62nd Drive" data-full="../images/14_ParkCity_97-40_1.jpg">
+          <div class="gframe__media"><img src="../images/14_ParkCity_97-40_1.jpg" loading="lazy" decoding="async" alt="97-40 62nd Drive — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-40 62nd Drive</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="97-40 62nd Drive" data-full="images/15_ParkCity_97-40_2.jpg">
-          <div class="gframe__media"><img src="images/15_ParkCity_97-40_2.jpg" loading="lazy" decoding="async" alt="97-40 62nd Drive — exterior" /></div>
+        <figure class="gframe" data-cap="97-40 62nd Drive" data-full="../images/15_ParkCity_97-40_2.jpg">
+          <div class="gframe__media"><img src="../images/15_ParkCity_97-40_2.jpg" loading="lazy" decoding="async" alt="97-40 62nd Drive — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">97-40 62nd Drive</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="98-05 63rd Road" data-full="images/16_ParkCity_98-05_1.jpg">
-          <div class="gframe__media"><img src="images/16_ParkCity_98-05_1.jpg" loading="lazy" decoding="async" alt="98-05 63rd Road — exterior" /></div>
+        <figure class="gframe" data-cap="98-05 63rd Road" data-full="../images/16_ParkCity_98-05_1.jpg">
+          <div class="gframe__media"><img src="../images/16_ParkCity_98-05_1.jpg" loading="lazy" decoding="async" alt="98-05 63rd Road — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">98-05 63rd Road</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="98-05 63rd Road" data-full="images/17_ParkCity_98-05_2.jpg">
-          <div class="gframe__media"><img src="images/17_ParkCity_98-05_2.jpg" loading="lazy" decoding="async" alt="98-05 63rd Road — exterior" /></div>
+        <figure class="gframe" data-cap="98-05 63rd Road" data-full="../images/17_ParkCity_98-05_2.jpg">
+          <div class="gframe__media"><img src="../images/17_ParkCity_98-05_2.jpg" loading="lazy" decoding="async" alt="98-05 63rd Road — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">98-05 63rd Road</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="98-20 62nd Drive" data-full="images/18_ParkCity_98-20_1.jpg">
-          <div class="gframe__media"><img src="images/18_ParkCity_98-20_1.jpg" loading="lazy" decoding="async" alt="98-20 62nd Drive — exterior" /></div>
+        <figure class="gframe" data-cap="98-20 62nd Drive" data-full="../images/18_ParkCity_98-20_1.jpg">
+          <div class="gframe__media"><img src="../images/18_ParkCity_98-20_1.jpg" loading="lazy" decoding="async" alt="98-20 62nd Drive — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">98-20 62nd Drive</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="98-20 62nd Drive" data-full="images/19_ParkCity_98-20_2.jpg">
-          <div class="gframe__media"><img src="images/19_ParkCity_98-20_2.jpg" loading="lazy" decoding="async" alt="98-20 62nd Drive — exterior" /></div>
+        <figure class="gframe" data-cap="98-20 62nd Drive" data-full="../images/19_ParkCity_98-20_2.jpg">
+          <div class="gframe__media"><img src="../images/19_ParkCity_98-20_2.jpg" loading="lazy" decoding="async" alt="98-20 62nd Drive — exterior" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">98-20 62nd Drive</span></figcaption>
         </figure>
       </div>
@@ -206,44 +208,44 @@
       </header>
 
       <div class="gmosaic" data-mosaic>
-        <figure class="gframe" data-cap="Building Lobby" data-full="images/20_ParkCity_Lobby_1.jpg">
-          <div class="gframe__media"><img src="images/20_ParkCity_Lobby_1.jpg" loading="lazy" decoding="async" alt="Building lobby" /></div>
+        <figure class="gframe" data-cap="Building Lobby" data-full="../images/20_ParkCity_Lobby_1.jpg">
+          <div class="gframe__media"><img src="../images/20_ParkCity_Lobby_1.jpg" loading="lazy" decoding="async" alt="Building lobby" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Building Lobby</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Mail Room" data-full="images/21_ParkCity_MailRoom_1.jpg">
-          <div class="gframe__media"><img src="images/21_ParkCity_MailRoom_1.jpg" loading="lazy" decoding="async" alt="Mail room" /></div>
+        <figure class="gframe" data-cap="Mail Room" data-full="../images/21_ParkCity_MailRoom_1.jpg">
+          <div class="gframe__media"><img src="../images/21_ParkCity_MailRoom_1.jpg" loading="lazy" decoding="async" alt="Mail room" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Mail Room</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Residential Hallway" data-full="images/28_ParkCity_Hallway.jpg">
-          <div class="gframe__media"><img src="images/28_ParkCity_Hallway.jpg" loading="lazy" decoding="async" alt="Residential hallway" /></div>
+        <figure class="gframe" data-cap="Residential Hallway" data-full="../images/28_ParkCity_Hallway.jpg">
+          <div class="gframe__media"><img src="../images/28_ParkCity_Hallway.jpg" loading="lazy" decoding="async" alt="Residential hallway" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Residential Hallway</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Seating Area" data-full="images/30_ParkCity_SeatingArea.jpg">
-          <div class="gframe__media"><img src="images/30_ParkCity_SeatingArea.jpg" loading="lazy" decoding="async" alt="Seating area" /></div>
+        <figure class="gframe" data-cap="Seating Area" data-full="../images/30_ParkCity_SeatingArea.jpg">
+          <div class="gframe__media"><img src="../images/30_ParkCity_SeatingArea.jpg" loading="lazy" decoding="async" alt="Seating area" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Seating Area</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Building Lobby" data-full="images/32_ParkCity_Lobby_2.jpg">
-          <div class="gframe__media"><img src="images/32_ParkCity_Lobby_2.jpg" loading="lazy" decoding="async" alt="Building lobby" /></div>
+        <figure class="gframe" data-cap="Building Lobby" data-full="../images/32_ParkCity_Lobby_2.jpg">
+          <div class="gframe__media"><img src="../images/32_ParkCity_Lobby_2.jpg" loading="lazy" decoding="async" alt="Building lobby" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Building Lobby</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Mail Room" data-full="images/33_ParkCity_MailRoom_2.jpg">
-          <div class="gframe__media"><img src="images/33_ParkCity_MailRoom_2.jpg" loading="lazy" decoding="async" alt="Mail room" /></div>
+        <figure class="gframe" data-cap="Mail Room" data-full="../images/33_ParkCity_MailRoom_2.jpg">
+          <div class="gframe__media"><img src="../images/33_ParkCity_MailRoom_2.jpg" loading="lazy" decoding="async" alt="Mail room" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Mail Room</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Residential Hallway" data-full="images/34_ParkCity_Hallway_2.jpg">
-          <div class="gframe__media"><img src="images/34_ParkCity_Hallway_2.jpg" loading="lazy" decoding="async" alt="Residential hallway" /></div>
+        <figure class="gframe" data-cap="Residential Hallway" data-full="../images/34_ParkCity_Hallway_2.jpg">
+          <div class="gframe__media"><img src="../images/34_ParkCity_Hallway_2.jpg" loading="lazy" decoding="async" alt="Residential hallway" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Residential Hallway</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Seating Area" data-full="images/43_ParkCity_SeatingArea_2.jpg">
-          <div class="gframe__media"><img src="images/43_ParkCity_SeatingArea_2.jpg" loading="lazy" decoding="async" alt="Seating area" /></div>
+        <figure class="gframe" data-cap="Seating Area" data-full="../images/43_ParkCity_SeatingArea_2.jpg">
+          <div class="gframe__media"><img src="../images/43_ParkCity_SeatingArea_2.jpg" loading="lazy" decoding="async" alt="Seating area" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Seating Area</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Chess Tables" data-full="images/44_ParkCity_ChessTables.jpg">
-          <div class="gframe__media"><img src="images/44_ParkCity_ChessTables.jpg" loading="lazy" decoding="async" alt="Chess tables" /></div>
+        <figure class="gframe" data-cap="Chess Tables" data-full="../images/44_ParkCity_ChessTables.jpg">
+          <div class="gframe__media"><img src="../images/44_ParkCity_ChessTables.jpg" loading="lazy" decoding="async" alt="Chess tables" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Chess Tables</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Elevator" data-full="images/48_ParkCity_Elevator.jpg">
-          <div class="gframe__media"><img src="images/48_ParkCity_Elevator.jpg" loading="lazy" decoding="async" alt="Elevator" /></div>
+        <figure class="gframe" data-cap="Elevator" data-full="../images/48_ParkCity_Elevator.jpg">
+          <div class="gframe__media"><img src="../images/48_ParkCity_Elevator.jpg" loading="lazy" decoding="async" alt="Elevator" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Elevator</span></figcaption>
         </figure>
       </div>
@@ -261,76 +263,76 @@
       </header>
 
       <div class="gmosaic" data-mosaic>
-        <figure class="gframe" data-cap="Swimming Pool" data-full="images/4_ParkCity_Pool.jpg">
-          <div class="gframe__media"><img src="images/4_ParkCity_Pool.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
+        <figure class="gframe" data-cap="Swimming Pool" data-full="../images/4_ParkCity_Pool.jpg">
+          <div class="gframe__media"><img src="../images/4_ParkCity_Pool.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Swimming Pool</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Swimming Pool" data-full="images/5_ParkCity_Pool_2.jpg">
-          <div class="gframe__media"><img src="images/5_ParkCity_Pool_2.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
+        <figure class="gframe" data-cap="Swimming Pool" data-full="../images/5_ParkCity_Pool_2.jpg">
+          <div class="gframe__media"><img src="../images/5_ParkCity_Pool_2.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Swimming Pool</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Children's Playground" data-full="images/6_ParkCity_Playground_1.jpg">
-          <div class="gframe__media"><img src="images/6_ParkCity_Playground_1.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
+        <figure class="gframe" data-cap="Children's Playground" data-full="../images/6_ParkCity_Playground_1.jpg">
+          <div class="gframe__media"><img src="../images/6_ParkCity_Playground_1.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Children's Playground</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Children's Playground" data-full="images/7_ParkCity_Playground_2.jpg">
-          <div class="gframe__media"><img src="images/7_ParkCity_Playground_2.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
+        <figure class="gframe" data-cap="Children's Playground" data-full="../images/7_ParkCity_Playground_2.jpg">
+          <div class="gframe__media"><img src="../images/7_ParkCity_Playground_2.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Children's Playground</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Laundry Room" data-full="images/22_ParkCity_Laundry_1.jpg">
-          <div class="gframe__media"><img src="images/22_ParkCity_Laundry_1.jpg" loading="lazy" decoding="async" alt="Laundry room" /></div>
+        <figure class="gframe" data-cap="Laundry Room" data-full="../images/22_ParkCity_Laundry_1.jpg">
+          <div class="gframe__media"><img src="../images/22_ParkCity_Laundry_1.jpg" loading="lazy" decoding="async" alt="Laundry room" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Laundry Room</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Vending Area" data-full="images/23_ParkCity_VendingMachine.jpg">
-          <div class="gframe__media"><img src="images/23_ParkCity_VendingMachine.jpg" loading="lazy" decoding="async" alt="Vending area" /></div>
+        <figure class="gframe" data-cap="Vending Area" data-full="../images/23_ParkCity_VendingMachine.jpg">
+          <div class="gframe__media"><img src="../images/23_ParkCity_VendingMachine.jpg" loading="lazy" decoding="async" alt="Vending area" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Vending Area</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Swimming Pool" data-full="images/31_ParkCity_Pool.jpg">
-          <div class="gframe__media"><img src="images/31_ParkCity_Pool.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
+        <figure class="gframe" data-cap="Swimming Pool" data-full="../images/31_ParkCity_Pool.jpg">
+          <div class="gframe__media"><img src="../images/31_ParkCity_Pool.jpg" loading="lazy" decoding="async" alt="Swimming pool" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Swimming Pool</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Garage Entrance" data-full="images/35_ParkCity_GarageEntrance.jpg">
-          <div class="gframe__media"><img src="images/35_ParkCity_GarageEntrance.jpg" loading="lazy" decoding="async" alt="Garage entrance" /></div>
+        <figure class="gframe" data-cap="Garage Entrance" data-full="../images/35_ParkCity_GarageEntrance.jpg">
+          <div class="gframe__media"><img src="../images/35_ParkCity_GarageEntrance.jpg" loading="lazy" decoding="async" alt="Garage entrance" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garage Entrance</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Swimming Club" data-full="images/36_ParkCity_SwimmingClub.jpg">
-          <div class="gframe__media"><img src="images/36_ParkCity_SwimmingClub.jpg" loading="lazy" decoding="async" alt="Swimming club" /></div>
+        <figure class="gframe" data-cap="Swimming Club" data-full="../images/36_ParkCity_SwimmingClub.jpg">
+          <div class="gframe__media"><img src="../images/36_ParkCity_SwimmingClub.jpg" loading="lazy" decoding="async" alt="Swimming club" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Swimming Club</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Fasttrack Kids" data-full="images/37_ParkCity_FasttrackKids.jpg">
-          <div class="gframe__media"><img src="images/37_ParkCity_FasttrackKids.jpg" loading="lazy" decoding="async" alt="Fasttrack Kids" /></div>
+        <figure class="gframe" data-cap="Fasttrack Kids" data-full="../images/37_ParkCity_FasttrackKids.jpg">
+          <div class="gframe__media"><img src="../images/37_ParkCity_FasttrackKids.jpg" loading="lazy" decoding="async" alt="Fasttrack Kids" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Fasttrack Kids</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="ICCD Center" data-full="images/38_ParkCity_ICCD.jpg">
-          <div class="gframe__media"><img src="images/38_ParkCity_ICCD.jpg" loading="lazy" decoding="async" alt="ICCD Center" /></div>
+        <figure class="gframe" data-cap="ICCD Center" data-full="../images/38_ParkCity_ICCD.jpg">
+          <div class="gframe__media"><img src="../images/38_ParkCity_ICCD.jpg" loading="lazy" decoding="async" alt="ICCD Center" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">ICCD Center</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Laundry Room" data-full="images/39_ParkCity_Laundry_2.jpg">
-          <div class="gframe__media"><img src="images/39_ParkCity_Laundry_2.jpg" loading="lazy" decoding="async" alt="Laundry room" /></div>
+        <figure class="gframe" data-cap="Laundry Room" data-full="../images/39_ParkCity_Laundry_2.jpg">
+          <div class="gframe__media"><img src="../images/39_ParkCity_Laundry_2.jpg" loading="lazy" decoding="async" alt="Laundry room" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Laundry Room</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Indoor Parking Garage" data-full="images/40_ParkCity_Garage.jpg">
-          <div class="gframe__media"><img src="images/40_ParkCity_Garage.jpg" loading="lazy" decoding="async" alt="Indoor parking garage" /></div>
+        <figure class="gframe" data-cap="Indoor Parking Garage" data-full="../images/40_ParkCity_Garage.jpg">
+          <div class="gframe__media"><img src="../images/40_ParkCity_Garage.jpg" loading="lazy" decoding="async" alt="Indoor parking garage" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Indoor Parking Garage</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Garage Entrance" data-full="images/41_ParkCity_GarageEntrance_2.jpg">
-          <div class="gframe__media"><img src="images/41_ParkCity_GarageEntrance_2.jpg" loading="lazy" decoding="async" alt="Garage entrance" /></div>
+        <figure class="gframe" data-cap="Garage Entrance" data-full="../images/41_ParkCity_GarageEntrance_2.jpg">
+          <div class="gframe__media"><img src="../images/41_ParkCity_GarageEntrance_2.jpg" loading="lazy" decoding="async" alt="Garage entrance" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garage Entrance</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Children's Playground" data-full="images/42_ParkCity_Playground.jpg">
-          <div class="gframe__media"><img src="images/42_ParkCity_Playground.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
+        <figure class="gframe" data-cap="Children's Playground" data-full="../images/42_ParkCity_Playground.jpg">
+          <div class="gframe__media"><img src="../images/42_ParkCity_Playground.jpg" loading="lazy" decoding="async" alt="Children's playground" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Children's Playground</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Private Storage" data-full="images/45_ParkCity_StorageRoom.jpg">
-          <div class="gframe__media"><img src="images/45_ParkCity_StorageRoom.jpg" loading="lazy" decoding="async" alt="Private storage" /></div>
+        <figure class="gframe" data-cap="Private Storage" data-full="../images/45_ParkCity_StorageRoom.jpg">
+          <div class="gframe__media"><img src="../images/45_ParkCity_StorageRoom.jpg" loading="lazy" decoding="async" alt="Private storage" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Private Storage</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Management Office" data-full="images/46_ParkCity_Office_1.jpg">
-          <div class="gframe__media"><img src="images/46_ParkCity_Office_1.jpg" loading="lazy" decoding="async" alt="Management office" /></div>
+        <figure class="gframe" data-cap="Management Office" data-full="../images/46_ParkCity_Office_1.jpg">
+          <div class="gframe__media"><img src="../images/46_ParkCity_Office_1.jpg" loading="lazy" decoding="async" alt="Management office" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Management Office</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Management Office" data-full="images/47_ParkCity_Office_2.jpg">
-          <div class="gframe__media"><img src="images/47_ParkCity_Office_2.jpg" loading="lazy" decoding="async" alt="Management office" /></div>
+        <figure class="gframe" data-cap="Management Office" data-full="../images/47_ParkCity_Office_2.jpg">
+          <div class="gframe__media"><img src="../images/47_ParkCity_Office_2.jpg" loading="lazy" decoding="async" alt="Management office" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Management Office</span></figcaption>
         </figure>
       </div>
@@ -348,24 +350,24 @@
       </header>
 
       <div class="gmosaic" data-mosaic>
-        <figure class="gframe" data-cap="Garden Walkway" data-full="images/24_ParkCity_Walkway_1.jpg">
-          <div class="gframe__media"><img src="images/24_ParkCity_Walkway_1.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="../images/24_ParkCity_Walkway_1.jpg">
+          <div class="gframe__media"><img src="../images/24_ParkCity_Walkway_1.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Garden Walkway" data-full="images/25_ParkCity_Walkway_2.jpg">
-          <div class="gframe__media"><img src="images/25_ParkCity_Walkway_2.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="../images/25_ParkCity_Walkway_2.jpg">
+          <div class="gframe__media"><img src="../images/25_ParkCity_Walkway_2.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Garden Walkway" data-full="images/26_ParkCity_Walkway_3.jpg">
-          <div class="gframe__media"><img src="images/26_ParkCity_Walkway_3.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="../images/26_ParkCity_Walkway_3.jpg">
+          <div class="gframe__media"><img src="../images/26_ParkCity_Walkway_3.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Garden Walkway" data-full="images/27_ParkCity_Walkway_4.jpg">
-          <div class="gframe__media"><img src="images/27_ParkCity_Walkway_4.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="../images/27_ParkCity_Walkway_4.jpg">
+          <div class="gframe__media"><img src="../images/27_ParkCity_Walkway_4.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
         </figure>
-        <figure class="gframe" data-cap="Garden Walkway" data-full="images/29_ParkCity_Walkway_5.jpg">
-          <div class="gframe__media"><img src="images/29_ParkCity_Walkway_5.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
+        <figure class="gframe" data-cap="Garden Walkway" data-full="../images/29_ParkCity_Walkway_5.jpg">
+          <div class="gframe__media"><img src="../images/29_ParkCity_Walkway_5.jpg" loading="lazy" decoding="async" alt="Garden walkway" /></div>
           <figcaption class="gframe__cap"><span class="gframe__idx"></span><span class="gframe__title">Garden Walkway</span></figcaption>
         </figure>
       </div>
@@ -374,7 +376,7 @@
     <!-- ═══════════════ CLOSING NOTE ═══════════════ -->
     <section class="gclose">
       <p class="gclose__note serif-italic">— End of the archive. The rest, you have to visit.</p>
-      <a href="contact.html" class="gclose__cta">
+      <a href="../contact/" class="gclose__cta">
         <span>Write to the office</span>
         <svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
       </a>
@@ -383,9 +385,9 @@
   </main>
 
   <!-- ═══════════════ LIGHTBOX ═══════════════ -->
-  <div class="glb" id="glb" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photograph viewer">
+  <div class="glb" id="glb" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Photograph viewer">
     <div class="glb__backdrop" data-glb-close>
-      <img class="glb__blur" id="glbBlur" src="" alt="" aria-hidden="true" />
+      <img class="glb__blur" id="glbBlur" alt="" aria-hidden="true" />
     </div>
 
     <button class="glb__btn glb__close" data-glb-close aria-label="Close viewer">
@@ -401,7 +403,7 @@
     <figure class="glb__stage" id="glbStage">
       <div class="glb__frame">
         <span class="glb__spin" aria-hidden="true"></span>
-        <img class="glb__img" id="glbImg" src="" alt="" />
+        <img class="glb__img" id="glbImg" alt="" />
       </div>
       <figcaption class="glb__cap">
         <span class="glb__chapter" id="glbChapter"></span>
@@ -451,25 +453,25 @@
       <div class="foot__col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#philosophy">About</a></li>
-          <li><a href="index.html#residences">Buildings</a></li>
-          <li><a href="amenities.html">Amenities</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../#philosophy">About</a></li>
+          <li><a href="../#residences">Buildings</a></li>
+          <li><a href="../amenities/">Amenities</a></li>
+          <li><a href="../gallery/">Gallery</a></li>
         </ul>
       </div>
       <div class="foot__col">
         <h5>Shareholders</h5>
         <ul>
-          <li><a href="forms.html">Resident Forms</a></li>
-          <li><a href="guides.html">Building Guides</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Maintenance Request</a></li>
-          <li><a href="contact.html">Emergency Contacts</a></li>
+          <li><a href="../forms/">Resident Forms</a></li>
+          <li><a href="../guides/">Building Guides</a></li>
+          <li><a href="../faq/">FAQ</a></li>
+          <li><a href="../contact/">Maintenance Request</a></li>
+          <li><a href="../contact/">Emergency Contacts</a></li>
         </ul>
       </div>
       <div class="foot__col foot__col--mark">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
         <p class="foot__akam-note">Professionally managed by<br/>
           <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
         </p>
@@ -502,7 +504,7 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
-  <script src="gallery.js" defer></script>
+  <script src="../js/script.js" defer></script>
+  <script src="../js/gallery.js" defer></script>
 </body>
 </html>

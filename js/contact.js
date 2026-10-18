@@ -3,13 +3,11 @@
    A small enhancement layer over the shared script.js.
 
    Responsibilities:
-     1. AJAX form submission to Formspree (so we control the UI)
+     1. AJAX form submission to FormSubmit (so we control the UI)
      2. Loading state on the submit button
      3. Success / error overlay swap with smooth transition
      4. "Send another" / "Try again" reset
      5. Honeypot bot check
-     6. Configuration guard — fail gracefully if the Formspree
-        ID hasn't been replaced yet
 
    Anchor smooth-scroll, loader, nav, marquee, reveals — all handled
    by script.js.
@@ -86,50 +84,34 @@
         return;
       }
 
-      // 3. Configuration guard — if the form action still has the
-      // placeholder ID, fail with a helpful message
+      // 3. Submit via FormSubmit's AJAX endpoint
+      //    (form action: https://formsubmit.co/<email> → https://formsubmit.co/ajax/<email>)
       const action = this.form.getAttribute('action') || '';
-      if (!action || action.indexOf('YOUR_FORMSPREE_ID') !== -1) {
-        this.showError(
-          'The contact form isn\'t connected yet. While we sort that out, ' +
-          'please write to <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a> ' +
-          'or call <a href="tel:5551234567">(555) 123-4567.</a>'
-        );
-        console.warn(
-          '[Park City · Contact] Formspree is not configured. ' +
-          'Replace YOUR_FORMSPREE_ID in contact.html with your real form ID. ' +
-          'See https://formspree.io/ for setup.'
-        );
-        return;
-      }
+      const ajaxUrl = action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+      const payload = {};
+      new FormData(this.form).forEach((value, key) => {
+        if (key !== '_honey') payload[key] = value;
+      });
+      payload._replyto = payload.email || '';
 
-      // 4. Submit
       this.setLoading(true);
 
       try {
-        const response = await fetch(action, {
+        const response = await fetch(ajaxUrl, {
           method: 'POST',
-          body: new FormData(this.form),
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
         });
 
-        if (response.ok) {
+        let data = null;
+        try { data = await response.json(); } catch (_) { /* not JSON */ }
+
+        // FormSubmit answers 200 with { success: "false" } for some failures
+        if (response.ok && data && String(data.success) === 'true') {
           this.showSuccess();
         } else {
-          // Try to surface a useful error from Formspree
-          let message;
-          try {
-            const data = await response.json();
-            if (data && Array.isArray(data.errors) && data.errors.length) {
-              message = data.errors
-                .map(e => (e && e.message) ? e.message : null)
-                .filter(Boolean)
-                .join(' · ');
-            }
-          } catch (_) {
-            // Response wasn't JSON — fall through to generic error
-          }
-          this.showError(message);
+          console.error('[Park City · Contact] FormSubmit rejected the message:', data);
+          this.showError();
         }
       } catch (err) {
         console.error('[Park City · Contact] Network error:', err);

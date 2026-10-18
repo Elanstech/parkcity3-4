@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Park City 3 & 4 building guides — billing, moves, insurance, house rules, sublet policy, and resident newsletters. A reference manual for shareholders." />
   <meta name="theme-color" content="#f8f2e6" />
+  <link rel="icon" href="../images/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
   <title>Building Guides · Park City 3 &amp; 4 Apartments</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,8 +15,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="guides.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/guides.css" />
 </head>
 
 <body data-theme="cream">
@@ -22,7 +24,7 @@
   <!-- LOADER -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__inner">
-      <img src="images/logo.png" alt="" class="loader__logo" />
+      <img src="../images/logo.png" alt="" class="loader__logo" />
       <div class="loader__bar"><span></span></div>
       <div class="loader__caption"><span>The everyday architecture of being looked after</span></div>
     </div>
@@ -31,19 +33,19 @@
 <!-- ═══════════════ NAVIGATION ═══════════════ -->
 <header class="nav" id="nav">
   <div class="nav__shell">
-    <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
-      <img src="images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
+    <a href="../" class="nav__brand" aria-label="Park City 3 & 4 home">
+      <img src="../images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
     </a>
 
     <nav class="nav__menu" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="amenities.html">Amenities</a></li>
-        <li><a href="forms.html">Forms</a></li>
-        <li><a href="guides.html" class="is-active" aria-current="page">Guides</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="../">Home</a></li>
+        <li><a href="../amenities/">Amenities</a></li>
+        <li><a href="../forms/">Forms</a></li>
+        <li><a href="../guides/" class="is-active" aria-current="page">Guides</a></li>
+        <li><a href="../faq/">FAQ</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li><a href="../contact/">Contact Us</a></li>
       </ul>
     </nav>
 
@@ -52,12 +54,12 @@
     </button>
   </div>
 
-  <div class="navmobile" id="navMobile" aria-hidden="true">
+  <div class="navmobile" id="navMobile" aria-hidden="true" inert>
     <div class="navmobile__bg" aria-hidden="true"></div>
 
     <div class="navmobile__inner">
       <div class="navmobile__top">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
         <button class="navmobile__close" id="navClose" aria-label="Close menu">
           <span></span><span></span>
         </button>
@@ -67,13 +69,13 @@
 
       <nav class="navmobile__nav" aria-label="Mobile">
         <ol class="navmobile__list">
-          <li><a href="index.html"><em>01</em><span>Home</span></a></li>
-          <li><a href="amenities.html"><em>02</em><span>Amenities</span></a></li>
-          <li><a href="forms.html"><em>03</em><span>Forms</span></a></li>
-          <li><a href="guides.html"><em>04</em><span>Guides</span></a></li>
-          <li><a href="faq.html"><em>05</em><span>FAQ</span></a></li>
-          <li><a href="gallery.html"><em>06</em><span>Gallery</span></a></li>
-          <li><a href="contact.html"><em>07</em><span>Contact Us</span></a></li>
+          <li><a href="../"><em>01</em><span>Home</span></a></li>
+          <li><a href="../amenities/"><em>02</em><span>Amenities</span></a></li>
+          <li><a href="../forms/"><em>03</em><span>Forms</span></a></li>
+          <li><a href="../guides/" class="is-active" aria-current="page"><em>04</em><span>Guides</span></a></li>
+          <li><a href="../faq/"><em>05</em><span>FAQ</span></a></li>
+          <li><a href="../gallery/"><em>06</em><span>Gallery</span></a></li>
+          <li><a href="../contact/"><em>07</em><span>Contact Us</span></a></li>
         </ol>
       </nav>
 
@@ -232,7 +234,7 @@
             </ol>
 
             <p class="guides-toc__foot">
-              Looking for a form? Those live on the <a href="forms.html">Forms page.</a>
+              Looking for a form? Those live on the <a href="../forms/">Forms page.</a>
             </p>
           </div>
         </aside>
@@ -715,7 +717,7 @@
                     <p>Use the sample Certificate of Insurance below as a reference for the required coverage limits and the exact certificate-holder and additional-insured wording your contractor or mover should use.</p>
 
                     <!-- TODO (Elan): replace href with the real sample COI PDF -->
-                    <a href="sample-coi.pdf" target="_blank" rel="noopener" class="guides-cta">
+                    <a href="../docs/sample-coi.pdf" target="_blank" rel="noopener" class="guides-cta">
                       <span>Download the sample COI (PDF)</span>
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                         <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M2 13h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -798,7 +800,7 @@
                     <p>Quiet hours, noise, and floor-covering requirements are set out in full in the building's House Rules. Please refer to the complete document below.</p>
 
                     <!-- TODO (Elan): replace href with the real House Rules PDF -->
-                    <a href="house-rules.pdf" target="_blank" rel="noopener" class="guides-cta">
+                    <a href="../docs/house-rules.pdf" target="_blank" rel="noopener" class="guides-cta">
                       <span>Open the House Rules (PDF)</span>
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                         <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M2 13h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -902,7 +904,7 @@
                     </span>
                   </summary>
                   <div class="guides-row__a">
-                    <p>Park City 3 &amp; 4 permits <em class="serif-italic">cats and dogs only.</em> Dogs require written Board approval (a policy in effect since July 2004). Pet registration is handled through the <a href="forms.html">Forms page.</a></p>
+                    <p>Park City 3 &amp; 4 permits <em class="serif-italic">cats and dogs only.</em> Dogs require written Board approval (a policy in effect since July 2004). Pet registration is handled through the <a href="../forms/">Forms page.</a></p>
 
                     <h5 class="guides-row__sub">Dog requirements</h5>
                     <ul class="guides-check">
@@ -934,7 +936,7 @@
 
                     <h5 class="guides-row__sub">Register your pet</h5>
                     <!-- TODO (Elan): replace href with the real Pet Registration form PDF -->
-                    <a href="pet-registration-form.pdf" target="_blank" rel="noopener" class="guides-cta">
+                    <a href="../docs/pet-registration-form.pdf" target="_blank" rel="noopener" class="guides-cta">
                       <span>Download the Pet Registration form (PDF)</span>
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                         <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M2 13h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1264,7 +1266,7 @@
           <footer class="guides-doc__foot">
             <span class="guides-doc__foot-label">End of document</span>
             <p>
-              Forms &amp; applications live on the <a href="forms.html">Forms page.</a><br/>
+              Forms &amp; applications live on the <a href="../forms/">Forms page.</a><br/>
               For anything else, write to <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a> or call <a href="tel:7188972000">(718) 897-2000.</a>
             </p>
           </footer>
@@ -1318,27 +1320,27 @@
       <div class="foot__col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#philosophy">About</a></li>
-          <li><a href="index.html#residences">Buildings</a></li>
-          <li><a href="amenities.html">Amenities</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../#philosophy">About</a></li>
+          <li><a href="../#residences">Buildings</a></li>
+          <li><a href="../amenities/">Amenities</a></li>
+          <li><a href="../contact/">Contact</a></li>
         </ul>
       </div>
 
       <div class="foot__col">
         <h5>Shareholders</h5>
         <ul>
-          <li><a href="forms.html">Resident Forms</a></li>
-          <li><a href="guides.html">Building Guides</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="../forms/">Resident Forms</a></li>
+          <li><a href="../guides/">Building Guides</a></li>
+          <li><a href="../faq/">FAQ</a></li>
           <li><a href="#newsletters">Newsletters</a></li>
-          <li><a href="contact.html">Maintenance Request</a></li>
+          <li><a href="../contact/">Maintenance Request</a></li>
         </ul>
       </div>
 
       <div class="foot__col foot__col--mark">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
         <p class="foot__akam-note">
           Professionally managed by<br/>
           <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
@@ -1377,7 +1379,7 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
-  <script src="guides.js" defer></script>
+  <script src="../js/script.js" defer></script>
+  <script src="../js/guides.js" defer></script>
 </body>
 </html>

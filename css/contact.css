@@ -4,33 +4,11 @@
    and error states, and an after-hours emergency split.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ──────────── 1. CREAM-HERO NAV OVERRIDE ──────────── */
-.nav.is-hero-light:not(.is-scrolled),
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a {
-  color: var(--ink);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__logo {
-  filter: none;
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__toggle {
-  color: var(--ink);
-}
-
 .contact-hero .hero__eyebrow {
   color: var(--brass-deep);
 }
 .contact-hero .hero__eyebrow-line {
   background: var(--brass);
-}
-
-.nav__menu a.is-active {
-  color: var(--brass-deep);
-}
-.nav__menu a.is-active::after {
-  transform: scaleX(1);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a.is-active {
-  color: var(--brass-deep);
 }
 
 /* ──────────── 2. HERO ──────────── */

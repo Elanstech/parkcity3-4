@@ -117,7 +117,7 @@
       this.toggle = $('#navToggle');
       this.close  = $('#navClose');
       this.mobile = $('#navMobile');
-      this.heroEl = $('#hero');
+      this.heroEl = $('[data-nav-light]'); // only the dark homepage hero needs light nav text
       this.isOpen = false;
       if (!this.nav) return;
 
@@ -143,7 +143,7 @@
       // Solid background after a small scroll
       this.nav.classList.toggle('is-scrolled', y > 60);
 
-      // Light text while sitting over the dark hero video
+      // Light text while sitting over the dark homepage hero
       if (this.heroEl) {
         const heroBottom = this.heroEl.getBoundingClientRect().bottom;
         this.nav.classList.toggle('is-hero-light', heroBottom > 100 && y < 80);
@@ -158,6 +158,7 @@
       this.mobile.classList.add('is-open');
       this.toggle?.setAttribute('aria-expanded', 'true');
       this.mobile.setAttribute('aria-hidden', 'false');
+      this.mobile.inert = false; // menu links become reachable by keyboard
       // Lock scroll (works with AND without Lenis)
       this.smoothScroll?.lenis?.stop();
       document.documentElement.style.overflow = 'hidden';
@@ -170,6 +171,7 @@
       this.mobile.classList.remove('is-open');
       this.toggle?.setAttribute('aria-expanded', 'false');
       this.mobile.setAttribute('aria-hidden', 'true');
+      this.mobile.inert = true; // hidden menu stays out of the Tab order
       this.smoothScroll?.lenis?.start();
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
@@ -513,28 +515,58 @@
       this.success = $('#inquireSuccess');
       if (!this.form) return;
 
+      this.error   = $('#inquireError');
+      // Tap the error card (anywhere but the email link) to get back to the form
+      this.error?.addEventListener('click', (e) => {
+        if (!e.target.closest('a')) this.error.classList.remove('is-shown');
+      });
+
       this.form.addEventListener('submit', (e) => {
         e.preventDefault();
         if (!this.form.checkValidity()) {
           this.form.reportValidity();
           return;
         }
-
-        this.btn.classList.add('is-loading');
-        this.btn.disabled = true;
-
-        // Simulated submission
-        setTimeout(() => {
-          this.btn.classList.remove('is-loading');
-          this.btn.disabled = false;
-          this.success.classList.add('is-shown');
-          this.form.reset();
-
-          setTimeout(() => {
-            this.success.classList.remove('is-shown');
-          }, 6000);
-        }, 1500);
+        this.send();
       });
+    }
+
+    // Sends through FormSubmit's AJAX endpoint (same inbox as the Forms and Contact pages)
+    async send() {
+      const honey = this.form.querySelector('input[name="_honey"]');
+      if (honey && honey.value) return; // bot
+
+      const payload = {};
+      new FormData(this.form).forEach((value, key) => {
+        if (key !== '_honey') payload[key] = value;
+      });
+      payload._replyto = payload.email || '';
+      const ajaxUrl = this.form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+      this.btn.classList.add('is-loading');
+      this.btn.disabled = true;
+      this.error?.classList.remove('is-shown');
+
+      let ok = false;
+      try {
+        const res = await fetch(ajaxUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => null);
+        ok = res.ok && data && String(data.success) === 'true';
+      } catch (err) {
+        console.error('[Park City] Inquiry failed to send:', err);
+      }
+
+      this.btn.classList.remove('is-loading');
+      this.btn.disabled = false;
+      const msg = ok ? this.success : this.error;
+      if (ok) this.form.reset();
+      msg?.classList.add('is-shown');
+      clearTimeout(this._timer);
+      this._timer = setTimeout(() => msg?.classList.remove('is-shown'), ok ? 6000 : 9000);
     }
   }
 

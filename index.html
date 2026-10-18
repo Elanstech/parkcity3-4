@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Park City 3 & 4 Apartments — A cooperative community of six residential buildings in the heart of Rego Park, Queens. Established 1955. Managed by AKAM." />
   <meta name="theme-color" content="#f8f2e6" />
+  <link rel="icon" href="images/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <title>Park City 3 &amp; 4 Apartments · Rego Park, Queens</title>
 
   <!-- Fraunces · Cormorant Garamond · Instrument Serif · Inter -->
@@ -14,7 +16,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body data-theme="cream">
@@ -31,19 +33,19 @@
 <!-- ═══════════════ NAVIGATION ═══════════════ -->
 <header class="nav" id="nav">
   <div class="nav__shell">
-    <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
+    <a href="./" class="nav__brand" aria-label="Park City 3 & 4 home">
       <img src="images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
     </a>
 
     <nav class="nav__menu" aria-label="Primary">
       <ul>
-        <li><a href="index.html" class="is-active" aria-current="page">Home</a></li>
-        <li><a href="amenities.html">Amenities</a></li>
-        <li><a href="forms.html">Forms</a></li>
-        <li><a href="guides.html">Guides</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="./" class="is-active" aria-current="page">Home</a></li>
+        <li><a href="amenities/">Amenities</a></li>
+        <li><a href="forms/">Forms</a></li>
+        <li><a href="guides/">Guides</a></li>
+        <li><a href="faq/">FAQ</a></li>
+        <li><a href="gallery/">Gallery</a></li>
+        <li><a href="contact/">Contact Us</a></li>
       </ul>
     </nav>
 
@@ -52,7 +54,7 @@
     </button>
   </div>
 
-  <div class="navmobile" id="navMobile" aria-hidden="true">
+  <div class="navmobile" id="navMobile" aria-hidden="true" inert>
     <div class="navmobile__bg" aria-hidden="true"></div>
 
     <div class="navmobile__inner">
@@ -67,13 +69,13 @@
 
       <nav class="navmobile__nav" aria-label="Mobile">
         <ol class="navmobile__list">
-          <li><a href="index.html"><em>01</em><span>Home</span></a></li>
-          <li><a href="amenities.html"><em>02</em><span>Amenities</span></a></li>
-          <li><a href="forms.html"><em>03</em><span>Forms</span></a></li>
-          <li><a href="guides.html"><em>04</em><span>Guides</span></a></li>
-          <li><a href="faq.html"><em>05</em><span>FAQ</span></a></li>
-          <li><a href="gallery.html"><em>06</em><span>Gallery</span></a></li>
-          <li><a href="contact.html"><em>07</em><span>Contact Us</span></a></li>
+          <li><a href="./" class="is-active" aria-current="page"><em>01</em><span>Home</span></a></li>
+          <li><a href="amenities/"><em>02</em><span>Amenities</span></a></li>
+          <li><a href="forms/"><em>03</em><span>Forms</span></a></li>
+          <li><a href="guides/"><em>04</em><span>Guides</span></a></li>
+          <li><a href="faq/"><em>05</em><span>FAQ</span></a></li>
+          <li><a href="gallery/"><em>06</em><span>Gallery</span></a></li>
+          <li><a href="contact/"><em>07</em><span>Contact Us</span></a></li>
         </ol>
       </nav>
 
@@ -93,7 +95,7 @@
   <main id="top">
 
     <!-- ═══════════════ HERO ═══════════════ -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" data-nav-light>
       <div class="hero__media">
         <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto"
                poster="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=85">
@@ -353,7 +355,7 @@
             The <em class="serif-italic">small things</em><br/>that make a building feel like home.
           </h2>
           <p class="amenities-text__lede">A practical list of what's included across all six buildings — from the seasonal pool to the live-in supers.</p>
-          <a href="amenities.html" class="amenities-text__link">
+          <a href="amenities/" class="amenities-text__link">
             <span>Full amenities page</span>
             <svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
           </a>
@@ -470,7 +472,7 @@
           <p class="faq-preview__lede">
             From how the co-op works to who manages the buildings — answered plainly. The full list lives on the FAQ page.
           </p>
-          <a href="faq.html" class="faq-preview__link">
+          <a href="faq/" class="faq-preview__link">
             <span>All questions &amp; answers</span>
             <svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
           </a>
@@ -624,7 +626,12 @@
           </div>
         </header>
 
-        <form class="inquire__form" id="inquireForm" novalidate>
+        <form class="inquire__form" id="inquireForm" action="https://formsubmit.co/parkcity3and4@akam.com" method="POST" novalidate>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+          <input type="hidden" name="_subject" value="New message from the parkcity3and4.com homepage" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/#inquire" />
           <div class="field">
             <input type="text" id="iName" name="name" required autocomplete="name"/>
             <label for="iName">Your name</label>
@@ -643,11 +650,11 @@
           <div class="field">
             <select id="iTopic" name="topic" required>
               <option value="" selected disabled></option>
-              <option value="shareholder">Shareholder inquiry</option>
-              <option value="prospective">Prospective resident</option>
-              <option value="maintenance">Maintenance / building question</option>
-              <option value="vendor">Vendor / press</option>
-              <option value="other">Other</option>
+              <option value="Shareholder inquiry">Shareholder inquiry</option>
+              <option value="Prospective resident">Prospective resident</option>
+              <option value="Maintenance / building question">Maintenance / building question</option>
+              <option value="Vendor / press">Vendor / press</option>
+              <option value="Other">Other</option>
             </select>
             <label for="iTopic">Topic</label>
             <span class="field__rule"></span>
@@ -671,6 +678,10 @@
           <div class="inquire__success" id="inquireSuccess" role="status" aria-live="polite">
             <span class="inquire__success-mark">✓</span>
             <p>Thank you. Your note is on its way to the office — we'll be in touch within one business day.</p>
+          </div>
+          <div class="inquire__success inquire__success--error" id="inquireError" role="alert">
+            <span class="inquire__success-mark">!</span>
+            <p>That didn't go through. Please try again, or email <a href="mailto:parkcity3and4@akam.com">parkcity3and4@akam.com</a>.</p>
           </div>
         </form>
       </div>
@@ -724,10 +735,10 @@
       <div class="foot__col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="./">Home</a></li>
           <li><a href="#philosophy">About</a></li>
           <li><a href="#residences">Buildings</a></li>
-          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="amenities/">Amenities</a></li>
           <li><a href="#inquire">Contact</a></li>
         </ul>
       </div>
@@ -735,9 +746,9 @@
       <div class="foot__col">
         <h5>Shareholders</h5>
         <ul>
-          <li><a href="forms.html">Resident Forms</a></li>
-          <li><a href="guides.html">Building Guides</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="forms/">Resident Forms</a></li>
+          <li><a href="guides/">Building Guides</a></li>
+          <li><a href="faq/">FAQ</a></li>
           <li><a href="#inquire">Maintenance Request</a></li>
           <li><a href="#inquire">Emergency Contacts</a></li>
         </ul>
@@ -784,6 +795,6 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="The amenities of Park City 3 & 4 Apartments — a cooperative community of six buildings in Rego Park, Queens. Pool, garages, live-in supers, doorman, and more." />
   <meta name="theme-color" content="#f8f2e6" />
+  <link rel="icon" href="../images/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
   <title>Amenities · Park City 3 &amp; 4</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,8 +15,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="amenities.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/amenities.css" />
 </head>
 
 <body data-theme="cream">
@@ -22,7 +24,7 @@
   <!-- LOADER -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__inner">
-      <img src="images/logo.png" alt="" class="loader__logo" />
+      <img src="../images/logo.png" alt="" class="loader__logo" />
       <div class="loader__bar"><span></span></div>
       <div class="loader__caption"><span>Amenities &amp; services</span></div>
     </div>
@@ -31,19 +33,19 @@
 <!-- ═══════════════ NAVIGATION ═══════════════ -->
 <header class="nav" id="nav">
   <div class="nav__shell">
-    <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
-      <img src="images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
+    <a href="../" class="nav__brand" aria-label="Park City 3 & 4 home">
+      <img src="../images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
     </a>
 
     <nav class="nav__menu" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="amenities.html" class="is-active" aria-current="page">Amenities</a></li>
-        <li><a href="forms.html">Forms</a></li>
-        <li><a href="guides.html">Guides</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="../">Home</a></li>
+        <li><a href="../amenities/" class="is-active" aria-current="page">Amenities</a></li>
+        <li><a href="../forms/">Forms</a></li>
+        <li><a href="../guides/">Guides</a></li>
+        <li><a href="../faq/">FAQ</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li><a href="../contact/">Contact Us</a></li>
       </ul>
     </nav>
 
@@ -52,12 +54,12 @@
     </button>
   </div>
 
-  <div class="navmobile" id="navMobile" aria-hidden="true">
+  <div class="navmobile" id="navMobile" aria-hidden="true" inert>
     <div class="navmobile__bg" aria-hidden="true"></div>
 
     <div class="navmobile__inner">
       <div class="navmobile__top">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
         <button class="navmobile__close" id="navClose" aria-label="Close menu">
           <span></span><span></span>
         </button>
@@ -67,13 +69,13 @@
 
       <nav class="navmobile__nav" aria-label="Mobile">
         <ol class="navmobile__list">
-          <li><a href="index.html"><em>01</em><span>Home</span></a></li>
-          <li><a href="amenities.html"><em>02</em><span>Amenities</span></a></li>
-          <li><a href="forms.html"><em>03</em><span>Forms</span></a></li>
-          <li><a href="guides.html"><em>04</em><span>Guides</span></a></li>
-          <li><a href="faq.html"><em>05</em><span>FAQ</span></a></li>
-          <li><a href="gallery.html"><em>06</em><span>Gallery</span></a></li>
-          <li><a href="contact.html"><em>07</em><span>Contact Us</span></a></li>
+          <li><a href="../"><em>01</em><span>Home</span></a></li>
+          <li><a href="../amenities/" class="is-active" aria-current="page"><em>02</em><span>Amenities</span></a></li>
+          <li><a href="../forms/"><em>03</em><span>Forms</span></a></li>
+          <li><a href="../guides/"><em>04</em><span>Guides</span></a></li>
+          <li><a href="../faq/"><em>05</em><span>FAQ</span></a></li>
+          <li><a href="../gallery/"><em>06</em><span>Gallery</span></a></li>
+          <li><a href="../contact/"><em>07</em><span>Contact Us</span></a></li>
         </ol>
       </nav>
 
@@ -150,7 +152,7 @@
     <!-- ═══════════════ FEATURED — THE POOL ═══════════════ -->
     <section class="am-feature" id="pool">
       <div class="am-feature__media">
-        <img src="images/pool.jpg" alt="Park City swimming pool" loading="lazy" />
+        <img src="../images/pool.jpg" alt="Park City swimming pool" loading="lazy" />
         <div class="am-feature__veil" aria-hidden="true"></div>
       </div>
 
@@ -202,7 +204,7 @@
         <div class="am-chapter__items">
           <article class="am-item am-item--split" data-reveal>
             <div class="am-item__media">
-              <img src="images/parkbuliding.png" alt="Children's playground on the grounds" loading="lazy"/>
+              <img src="../images/parkbuliding.png" alt="Children's playground on the grounds" loading="lazy"/>
             </div>
             <div class="am-item__body">
               <span class="am-item__num">02</span>
@@ -235,7 +237,7 @@
         <div class="am-chapter__items">
           <article class="am-item am-item--feature" data-reveal>
             <div class="am-item__media am-item__media--wide">
-              <img src="images/garage.png" alt="Indoor parking garage" loading="lazy"/>
+              <img src="../images/garage.png" alt="Indoor parking garage" loading="lazy"/>
             </div>
             <div class="am-item__body">
               <span class="am-item__num">04</span>
@@ -245,7 +247,7 @@
                 <div><span class="am-item__label">Spaces</span><span class="am-item__value">Assigned</span></div>
                 <div><span class="am-item__label">Hours</span><span class="am-item__value">24 / 7</span></div>
                 <div><span class="am-item__label">Access</span><span class="am-item__value">Fob</span></div>
-                <div><span class="am-item__label">Application</span><span class="am-item__value"><a href="forms.html">Forms page</a></span></div>
+                <div><span class="am-item__label">Application</span><span class="am-item__value"><a href="../forms/">Forms page</a></span></div>
               </div>
             </div>
           </article>
@@ -316,7 +318,7 @@
         <div class="am-chapter__items">
           <article class="am-item am-item--split" data-reveal>
             <div class="am-item__media">
-              <img src="images/laundrywide.png" alt="Laundry room" loading="lazy"/>
+              <img src="../images/laundrywide.png" alt="Laundry room" loading="lazy"/>
             </div>
             <div class="am-item__body">
               <span class="am-item__num">09</span>
@@ -341,7 +343,7 @@
               </div>
             </div>
             <div class="am-item__media">
-              <img src="images/storage.jpg" alt="Private storage rooms" loading="lazy"/>
+              <img src="../images/storage.jpg" alt="Private storage rooms" loading="lazy"/>
             </div>
           </article>
         </div>
@@ -439,13 +441,13 @@
         <h2 class="am-cta__title">A quiet visit, <em class="serif-italic">always welcome.</em></h2>
         <p class="am-cta__lede">For shareholders considering the buildings, or prospective residents getting to know the community — the management office is happy to arrange a walk-through.</p>
         <div class="am-cta__actions">
-          <a href="index.html#inquire" class="am-cta__primary">
+          <a href="../#inquire" class="am-cta__primary">
             <span>Get in touch</span>
             <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
               <path d="M0 7h20m0 0L14 1m6 6l-6 6" stroke="currentColor" stroke-width="1.2"/>
             </svg>
           </a>
-          <a href="forms.html" class="am-cta__secondary">
+          <a href="../forms/" class="am-cta__secondary">
             <span>Resident forms</span>
           </a>
         </div>
@@ -496,27 +498,27 @@
       <div class="foot__col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#philosophy">About</a></li>
-          <li><a href="index.html#residences">Buildings</a></li>
-          <li><a href="amenities.html">Amenities</a></li>
-          <li><a href="index.html#inquire">Contact</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../#philosophy">About</a></li>
+          <li><a href="../#residences">Buildings</a></li>
+          <li><a href="../amenities/">Amenities</a></li>
+          <li><a href="../#inquire">Contact</a></li>
         </ul>
       </div>
 
       <div class="foot__col">
         <h5>Shareholders</h5>
         <ul>
-          <li><a href="forms.html">Resident Forms</a></li>
-          <li><a href="guides.html">Building Guides</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="index.html#inquire">Maintenance Request</a></li>
-          <li><a href="index.html#inquire">Emergency Contacts</a></li>
+          <li><a href="../forms/">Resident Forms</a></li>
+          <li><a href="../guides/">Building Guides</a></li>
+          <li><a href="../faq/">FAQ</a></li>
+          <li><a href="../#inquire">Maintenance Request</a></li>
+          <li><a href="../#inquire">Emergency Contacts</a></li>
         </ul>
       </div>
 
       <div class="foot__col foot__col--mark">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
         <p class="foot__akam-note">
           Professionally managed by<br/>
           <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
@@ -555,6 +557,6 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="../js/script.js" defer></script>
 </body>
 </html>

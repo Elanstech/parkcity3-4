@@ -217,6 +217,7 @@
       // Show overlay
       this.overlay.classList.add('is-open');
       this.overlay.setAttribute('aria-hidden', 'false');
+      this.overlay.inert = false;
 
       // Reset overlay scroll to top
       this.overlay.scrollTop = 0;
@@ -224,7 +225,7 @@
       // Focus first text-like input after entrance animation
       setTimeout(() => {
         const firstField = paper.querySelector(
-          'input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), select, textarea'
+          'input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([name="_honey"]), select, textarea'
         );
         if (firstField && typeof firstField.focus === 'function') {
           firstField.focus({ preventScroll: true });
@@ -238,6 +239,7 @@
 
       this.overlay.classList.remove('is-open');
       this.overlay.setAttribute('aria-hidden', 'true');
+      this.overlay.inert = true;
 
       this.unlockScroll();
 
@@ -382,6 +384,7 @@
       if (!this.successOverlay) return;
       this.successOverlay.classList.add('is-shown');
       this.successOverlay.setAttribute('aria-hidden', 'false');
+      this.successOverlay.inert = false;
 
       clearTimeout(this._successTimer);
       const self = this;
@@ -392,6 +395,7 @@
       if (!this.successOverlay) return;
       this.successOverlay.classList.remove('is-shown');
       this.successOverlay.setAttribute('aria-hidden', 'true');
+      this.successOverlay.inert = true;
       clearTimeout(this._successTimer);
     }
 

@@ -3,22 +3,6 @@
    Extends styles.css. Editorial cream luxury.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ──────────── 0. NAV OVERRIDE ──────────── */
-/* Cream hero on this page — keep nav text/logo dark even when over the hero */
-.nav.is-hero-light:not(.is-scrolled),
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a {
-  color: var(--ink);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__logo {
-  filter: none;
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a:hover {
-  color: var(--brass-deep);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__toggle {
-  color: var(--ink);
-}
-
 /* ──────────── 0b. EYEBROW OVERRIDE ──────────── */
 /* The main page's .hero__eyebrow uses translucent cream for legibility on the
    dark video hero. Our cream hero needs dark text instead. */
@@ -131,49 +115,6 @@
   margin-bottom: 56px;
 }
 
-.am-hero__meta {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  flex-wrap: wrap;
-  margin-bottom: 56px;
-  width: fit-content;
-  max-width: 100%;
-}
-.am-hero__meta > div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.am-hero__num {
-  font-family: var(--f-display);
-  font-size: clamp(32px, 3.4vw, 48px);
-  font-weight: 400;
-  line-height: 1;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-}
-.am-hero__num sup {
-  font-family: var(--f-italic);
-  font-style: italic;
-  font-size: 0.45em;
-  color: var(--brass);
-  font-weight: 400;
-  letter-spacing: 0;
-  margin-left: 2px;
-}
-.am-hero__label {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-.am-hero__rule {
-  width: 1px;
-  height: 32px;
-  background: var(--hairline);
-}
-
 .am-hero__cta {
   display: inline-flex;
   align-items: center;
@@ -205,8 +146,6 @@
 
 @media (max-width: 700px) {
   .am-hero { padding: 140px var(--pad-x) 100px; }
-  .am-hero__meta { gap: 20px; }
-  .am-hero__rule { height: 24px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════

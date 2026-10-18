@@ -3,38 +3,12 @@
    Extends styles.css. Cream-hero. Editorial chapters.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ──────────── 1. CREAM-HERO NAV OVERRIDE ──────────────
-   The shared nav is built for the dark video hero. On this page
-   the hero is cream, so .is-hero-light needs to keep nav dark.
-   ───────────────────────────────────────────────────── */
-.nav.is-hero-light:not(.is-scrolled),
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a {
-  color: var(--ink);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__logo {
-  filter: none;
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__toggle {
-  color: var(--ink);
-}
-
 /* eyebrow + line need brass on cream */
 .faq-hero .hero__eyebrow {
   color: var(--brass-deep);
 }
 .faq-hero .hero__eyebrow-line {
   background: var(--brass);
-}
-
-/* Active nav link — quiet brass underline */
-.nav__menu a.is-active {
-  color: var(--brass-deep);
-}
-.nav__menu a.is-active::after {
-  transform: scaleX(1);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a.is-active {
-  color: var(--brass-deep);
 }
 
 /* ──────────── 2. HERO ──────────── */
@@ -110,37 +84,6 @@
   max-width: 44ch;
   margin-bottom: 56px;
   letter-spacing: -0.005em;
-}
-
-.faq-hero__meta {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex-wrap: wrap;
-  width: fit-content;
-  margin-bottom: 40px;
-}
-.faq-hero__meta > div {
-  display: flex; flex-direction: column; gap: 4px;
-}
-.faq-hero__meta-num {
-  font-family: var(--f-display);
-  font-size: clamp(28px, 3vw, 42px);
-  font-weight: 400;
-  line-height: 1;
-  color: var(--ink);
-  font-variant-numeric: oldstyle-nums;
-}
-.faq-hero__meta-label {
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-.faq-hero__meta-rule {
-  width: 1px;
-  height: 32px;
-  background: var(--hairline);
 }
 
 .faq-hero__cta {
@@ -578,15 +521,6 @@
   .faq-hero__lede {
     font-size: 17px;
     margin-bottom: 36px;
-  }
-  .faq-hero__meta {
-    gap: 18px;
-  }
-  .faq-hero__meta-rule {
-    height: 22px;
-  }
-  .faq-hero__meta-num {
-    font-size: 26px;
   }
   .faq-hero__index {
     padding: 24px 24px 22px;

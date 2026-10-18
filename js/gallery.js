@@ -235,17 +235,21 @@
       this.isOpen = true;
       this.box.classList.add('is-open');
       this.box.setAttribute('aria-hidden', 'false');
+      this.box.inert = false;
       // lock scroll (plays nice with Lenis from script.js)
       window.parkCity?.smoothScroll?.lenis?.stop();
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
       this.render();
+      // keyboard users land inside the viewer once it has faded in (Esc / arrows / Tab work from here)
+      setTimeout(() => { if (this.isOpen) $('.glb__close', this.box)?.focus({ preventScroll: true }); }, 400);
     }
 
     close() {
       this.isOpen = false;
       this.box.classList.remove('is-open');
       this.box.setAttribute('aria-hidden', 'true');
+      this.box.inert = true;
       window.parkCity?.smoothScroll?.lenis?.start();
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';

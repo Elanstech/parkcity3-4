@@ -6,33 +6,11 @@
    different accordion icon.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ──────────── 1. CREAM-HERO NAV OVERRIDE ──────────── */
-.nav.is-hero-light:not(.is-scrolled),
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a {
-  color: var(--ink);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__logo {
-  filter: none;
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__toggle {
-  color: var(--ink);
-}
-
 .guides-hero .hero__eyebrow {
   color: var(--brass-deep);
 }
 .guides-hero .hero__eyebrow-line {
   background: var(--brass);
-}
-
-.nav__menu a.is-active {
-  color: var(--brass-deep);
-}
-.nav__menu a.is-active::after {
-  transform: scaleX(1);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a.is-active {
-  color: var(--brass-deep);
 }
 
 /* ──────────── 2. HERO — single column, document title page ──────────── */
@@ -118,55 +96,6 @@
 }
 
 /* Document plate — like the colophon on a printed manual */
-.guides-hero__plate {
-  margin: 0;
-  border-top: 1px solid var(--hairline);
-  width: 100%;
-  max-width: 360px;
-  justify-self: end;
-}
-.guides-hero__plate > div {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
-  align-items: baseline;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--hairline-2);
-}
-.guides-hero__plate dt {
-  font-family: var(--f-sans);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--taupe);
-  margin: 0;
-}
-.guides-hero__plate dd {
-  font-family: var(--f-display);
-  font-size: 19px;
-  font-weight: 500;
-  color: var(--ink);
-  letter-spacing: -0.005em;
-  margin: 0;
-  text-align: right;
-  font-variant-numeric: oldstyle-nums;
-}
-.guides-hero__plate dd .serif-italic {
-  font-size: 22px;
-  color: var(--brass-deep);
-}
-.guides-hero__plate dd a {
-  color: var(--brass-deep);
-  border-bottom: 1px solid var(--hairline);
-  padding-bottom: 1px;
-  font-size: 16px;
-  transition: color 0.3s ease, border-color 0.3s ease;
-}
-.guides-hero__plate dd a:hover {
-  color: var(--ink);
-  border-bottom-color: var(--brass);
-}
 
 .guides-hero__cta {
   display: inline-flex;
@@ -681,15 +610,6 @@
 .guides-table__row--highlight .guides-table__val {
   color: var(--brass-deep);
 }
-.guides-table__row--danger {
-  background: color-mix(in srgb, var(--terracotta) 8%, transparent);
-  margin: 0 -16px;
-  padding: 14px 16px;
-  border-bottom-color: color-mix(in srgb, var(--terracotta) 25%, transparent);
-}
-.guides-table__row--danger .guides-table__val {
-  color: var(--terracotta);
-}
 
 /* 8b. Numbered editorial steps */
 .guides-steps {
@@ -814,16 +734,6 @@
 }
 .guides-callout--warn::before { background: var(--terracotta); }
 .guides-callout--warn .guides-callout__title { color: var(--terracotta); }
-
-.guides-callout--danger {
-  background: color-mix(in srgb, var(--terracotta) 14%, var(--bone));
-  border-color: color-mix(in srgb, var(--terracotta) 40%, transparent);
-}
-.guides-callout--danger::before { background: var(--terracotta); }
-.guides-callout--danger .guides-callout__title {
-  color: var(--terracotta);
-  letter-spacing: 0.28em;
-}
 
 /* 8e. Address block */
 .guides-address {
@@ -1127,10 +1037,6 @@
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  .guides-hero__plate {
-    justify-self: stretch;
-    max-width: 100%;
-  }
 
   .guides-chapter__banner {
     grid-template-columns: auto 1fr;
@@ -1162,9 +1068,6 @@
     margin: 32px 0 28px;
   }
   .guides-hero__lede {
-    font-size: 17px;
-  }
-  .guides-hero__plate dd {
     font-size: 17px;
   }
 
@@ -1225,8 +1128,7 @@
   .guides-table__val {
     text-align: left;
   }
-  .guides-table__row--highlight,
-  .guides-table__row--danger {
+  .guides-table__row--highlight {
     margin: 0 -14px;
     padding: 14px 14px;
   }

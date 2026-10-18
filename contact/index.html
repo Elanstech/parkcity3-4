@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Reach the management office at Park City 3 & 4 Apartments — phone, email, or a short note. The on-site team responds within one business day." />
   <meta name="theme-color" content="#f8f2e6" />
+  <link rel="icon" href="../images/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
   <title>Contact · Park City 3 &amp; 4 Apartments</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,8 +15,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/contact.css" />
 </head>
 
 <body data-theme="cream">
@@ -22,7 +24,7 @@
   <!-- LOADER -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__inner">
-      <img src="images/logo.png" alt="" class="loader__logo" />
+      <img src="../images/logo.png" alt="" class="loader__logo" />
       <div class="loader__bar"><span></span></div>
       <div class="loader__caption"><span>The office is listening</span></div>
     </div>
@@ -31,19 +33,19 @@
 <!-- ═══════════════ NAVIGATION ═══════════════ -->
 <header class="nav" id="nav">
   <div class="nav__shell">
-    <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
-      <img src="images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
+    <a href="../" class="nav__brand" aria-label="Park City 3 & 4 home">
+      <img src="../images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
     </a>
 
     <nav class="nav__menu" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="amenities.html">Amenities</a></li>
-        <li><a href="forms.html">Forms</a></li>
-        <li><a href="guides.html">Guides</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html" class="is-active" aria-current="page">Contact Us</a></li>
+        <li><a href="../">Home</a></li>
+        <li><a href="../amenities/">Amenities</a></li>
+        <li><a href="../forms/">Forms</a></li>
+        <li><a href="../guides/">Guides</a></li>
+        <li><a href="../faq/">FAQ</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li><a href="../contact/" class="is-active" aria-current="page">Contact Us</a></li>
       </ul>
     </nav>
 
@@ -52,12 +54,12 @@
     </button>
   </div>
 
-  <div class="navmobile" id="navMobile" aria-hidden="true">
+  <div class="navmobile" id="navMobile" aria-hidden="true" inert>
     <div class="navmobile__bg" aria-hidden="true"></div>
 
     <div class="navmobile__inner">
       <div class="navmobile__top">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
         <button class="navmobile__close" id="navClose" aria-label="Close menu">
           <span></span><span></span>
         </button>
@@ -67,13 +69,13 @@
 
       <nav class="navmobile__nav" aria-label="Mobile">
         <ol class="navmobile__list">
-          <li><a href="index.html"><em>01</em><span>Home</span></a></li>
-          <li><a href="amenities.html"><em>02</em><span>Amenities</span></a></li>
-          <li><a href="forms.html"><em>03</em><span>Forms</span></a></li>
-          <li><a href="guides.html"><em>04</em><span>Guides</span></a></li>
-          <li><a href="faq.html"><em>05</em><span>FAQ</span></a></li>
-          <li><a href="gallery.html"><em>06</em><span>Gallery</span></a></li>
-          <li><a href="contact.html"><em>07</em><span>Contact Us</span></a></li>
+          <li><a href="../"><em>01</em><span>Home</span></a></li>
+          <li><a href="../amenities/"><em>02</em><span>Amenities</span></a></li>
+          <li><a href="../forms/"><em>03</em><span>Forms</span></a></li>
+          <li><a href="../guides/"><em>04</em><span>Guides</span></a></li>
+          <li><a href="../faq/"><em>05</em><span>FAQ</span></a></li>
+          <li><a href="../gallery/"><em>06</em><span>Gallery</span></a></li>
+          <li><a href="../contact/" class="is-active" aria-current="page"><em>07</em><span>Contact Us</span></a></li>
         </ol>
       </nav>
 
@@ -192,8 +194,8 @@
             </dl>
 
             <p class="contact-info__minor">
-              For shareholder forms, see the <a href="forms.html">Forms page.</a><br/>
-              For policies &amp; rules, see the <a href="guides.html">Building Guides.</a>
+              For shareholder forms, see the <a href="../forms/">Forms page.</a><br/>
+              For policies &amp; rules, see the <a href="../guides/">Building Guides.</a>
             </p>
           </div>
         </aside>
@@ -210,26 +212,20 @@
             </p>
           </header>
 
-          <!--
-            ─── FORMSPREE SETUP ───
-            Replace YOUR_FORMSPREE_ID below with your actual form ID.
-            1. Create an account at https://formspree.io
-            2. Add a new form, set the recipient to parkcity3and4@akam.com
-            3. Confirm the email Formspree sends to verify the address
-            4. Copy the form ID from the dashboard (e.g. xrgjkpno)
-            5. Paste it in place of YOUR_FORMSPREE_ID
-          -->
           <form class="contact-form"
                 id="contactForm"
-                action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+                action="https://formsubmit.co/parkcity3and4@akam.com"
                 method="POST"
                 novalidate>
 
             <!-- Spam honeypot — bots fill this, humans don't -->
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="contact-form__honeypot" aria-hidden="true">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="contact-form__honeypot" aria-hidden="true">
 
-            <!-- Email subject for the message Formspree sends to the office -->
+            <!-- FormSubmit settings (same inbox and service as the Forms page) -->
             <input type="hidden" name="_subject" value="New message from parkcity3and4.com">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://parkcity3and4.com/contact/">
 
             <div class="contact-form__row">
               <div class="field">
@@ -405,27 +401,27 @@
       <div class="foot__col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#philosophy">About</a></li>
-          <li><a href="index.html#residences">Buildings</a></li>
-          <li><a href="amenities.html">Amenities</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../#philosophy">About</a></li>
+          <li><a href="../#residences">Buildings</a></li>
+          <li><a href="../amenities/">Amenities</a></li>
+          <li><a href="../contact/">Contact</a></li>
         </ul>
       </div>
 
       <div class="foot__col">
         <h5>Shareholders</h5>
         <ul>
-          <li><a href="forms.html">Resident Forms</a></li>
-          <li><a href="guides.html">Building Guides</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="guides.html#newsletters">Newsletters</a></li>
-          <li><a href="contact.html">Maintenance Request</a></li>
+          <li><a href="../forms/">Resident Forms</a></li>
+          <li><a href="../guides/">Building Guides</a></li>
+          <li><a href="../faq/">FAQ</a></li>
+          <li><a href="../guides/#newsletters">Newsletters</a></li>
+          <li><a href="../contact/">Maintenance Request</a></li>
         </ul>
       </div>
 
       <div class="foot__col foot__col--mark">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
         <p class="foot__akam-note">
           Professionally managed by<br/>
           <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
@@ -464,7 +460,7 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
-  <script src="contact.js" defer></script>
+  <script src="../js/script.js" defer></script>
+  <script src="../js/contact.js" defer></script>
 </body>
 </html>

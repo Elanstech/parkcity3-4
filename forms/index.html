@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Resident Forms — Park City 3 & 4 Apartments. Submit applications, requests, and registrations directly to the management office." />
   <meta name="theme-color" content="#f8f2e6" />
+  <link rel="icon" href="../images/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
   <title>Resident Forms · Park City 3 &amp; 4</title>
 
   <!-- Same fonts as main page -->
@@ -15,8 +17,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 
   <!-- Shared site styles + this page's overrides -->
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="forms.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/forms.css" />
 </head>
 
 <body data-theme="cream">
@@ -24,7 +26,7 @@
   <!-- LOADER (same as main) -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__inner">
-      <img src="images/logo.png" alt="" class="loader__logo" />
+      <img src="../images/logo.png" alt="" class="loader__logo" />
       <div class="loader__bar"><span></span></div>
       <div class="loader__caption"><span>Resident forms</span></div>
     </div>
@@ -33,19 +35,19 @@
 <!-- ═══════════════ NAVIGATION ═══════════════ -->
 <header class="nav" id="nav">
   <div class="nav__shell">
-    <a href="index.html" class="nav__brand" aria-label="Park City 3 & 4 home">
-      <img src="images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
+    <a href="../" class="nav__brand" aria-label="Park City 3 & 4 home">
+      <img src="../images/logo.png" alt="Park City 3 & 4" class="nav__logo" />
     </a>
 
     <nav class="nav__menu" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="amenities.html">Amenities</a></li>
-        <li><a href="forms.html" class="is-active" aria-current="page">Forms</a></li>
-        <li><a href="guides.html">Guides</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="../">Home</a></li>
+        <li><a href="../amenities/">Amenities</a></li>
+        <li><a href="../forms/" class="is-active" aria-current="page">Forms</a></li>
+        <li><a href="../guides/">Guides</a></li>
+        <li><a href="../faq/">FAQ</a></li>
+        <li><a href="../gallery/">Gallery</a></li>
+        <li><a href="../contact/">Contact Us</a></li>
       </ul>
     </nav>
 
@@ -54,12 +56,12 @@
     </button>
   </div>
 
-  <div class="navmobile" id="navMobile" aria-hidden="true">
+  <div class="navmobile" id="navMobile" aria-hidden="true" inert>
     <div class="navmobile__bg" aria-hidden="true"></div>
 
     <div class="navmobile__inner">
       <div class="navmobile__top">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="navmobile__logo" />
         <button class="navmobile__close" id="navClose" aria-label="Close menu">
           <span></span><span></span>
         </button>
@@ -69,13 +71,13 @@
 
       <nav class="navmobile__nav" aria-label="Mobile">
         <ol class="navmobile__list">
-          <li><a href="index.html"><em>01</em><span>Home</span></a></li>
-          <li><a href="amenities.html"><em>02</em><span>Amenities</span></a></li>
-          <li><a href="forms.html"><em>03</em><span>Forms</span></a></li>
-          <li><a href="guides.html"><em>04</em><span>Guides</span></a></li>
-          <li><a href="faq.html"><em>05</em><span>FAQ</span></a></li>
-          <li><a href="gallery.html"><em>06</em><span>Gallery</span></a></li>
-          <li><a href="contact.html"><em>07</em><span>Contact Us</span></a></li>
+          <li><a href="../"><em>01</em><span>Home</span></a></li>
+          <li><a href="../amenities/"><em>02</em><span>Amenities</span></a></li>
+          <li><a href="../forms/" class="is-active" aria-current="page"><em>03</em><span>Forms</span></a></li>
+          <li><a href="../guides/"><em>04</em><span>Guides</span></a></li>
+          <li><a href="../faq/"><em>05</em><span>FAQ</span></a></li>
+          <li><a href="../gallery/"><em>06</em><span>Gallery</span></a></li>
+          <li><a href="../contact/"><em>07</em><span>Contact Us</span></a></li>
         </ol>
       </nav>
 
@@ -355,7 +357,7 @@
   </main>
 
   <!-- ═══════════════ FORM OVERLAY ═══════════════ -->
-  <div class="form-overlay" id="formOverlay" aria-hidden="true">
+  <div class="form-overlay" id="formOverlay" aria-hidden="true" inert>
     <div class="form-overlay__backdrop" id="formOverlayBackdrop"></div>
 
     <button class="form-overlay__close" id="formOverlayClose" aria-label="Close form">
@@ -380,12 +382,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="Thank you for submitting your Bicycle Rack Application. We've received your form and will process it within 2–3 business days." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=bike" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=bike" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -470,12 +472,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="Thank you for submitting your Alteration Application. We will review your submission and contact you within 5–7 business days." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=alteration" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=alteration" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -559,12 +561,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="Thank you for submitting your Alternate Billing Address form. We will process it within 2–3 business days." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=billing" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=billing" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -637,12 +639,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="Thank you for applying to the Garage Space Waiting List. We will notify you when a space becomes available." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=garage" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=garage" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -710,12 +712,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="Thank you for submitting your Garage Parking Swap request. We will review and respond within 3–5 business days." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=swap" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=swap" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -772,12 +774,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="We have received your 30-day notice to surrender your vehicle parking space. Charges continue until the effective date." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=surrender-v" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=surrender-v" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -846,12 +848,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="We have received your 30-day notice to surrender your bicycle parking space. Charges continue until the effective date." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=surrender-b" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=surrender-b" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -920,12 +922,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="Thank you for completing the Intercom Questionnaire. Your numbers have been registered for the new entry system." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=intercom" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=intercom" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -1004,12 +1006,12 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="" />
           <input type="hidden" name="_autoresponse" value="Thank you for submitting your Pet Registration. The Board will review your application and contact you with their decision." />
-          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms.html?submitted=pet" />
+          <input type="hidden" name="_next" value="https://parkcity3and4.com/forms/?submitted=pet" />
           <input type="text" name="_honey" style="display:none" />
 
           <header class="paper__header">
             <div class="paper__brand">
-              <img src="images/logo.png" alt="" class="paper__logo" />
+              <img src="../images/logo.png" alt="" class="paper__logo" />
               <div>
                 <p class="paper__co">Park City 3 &amp; 4 Apartments, Inc.</p>
                 <p class="paper__co-sub serif-italic">A residence in Rego Park</p>
@@ -1095,7 +1097,7 @@
   </div>
 
   <!-- ═══════════════ SUCCESS OVERLAY ═══════════════ -->
-  <div class="form-success" id="formSuccess" aria-hidden="true">
+  <div class="form-success" id="formSuccess" aria-hidden="true" inert>
     <div class="form-success__card">
       <div class="form-success__mark">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -1155,27 +1157,27 @@
       <div class="foot__col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#philosophy">About</a></li>
-          <li><a href="index.html#residences">Buildings</a></li>
-          <li><a href="amenities.html">Amenities</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../#philosophy">About</a></li>
+          <li><a href="../#residences">Buildings</a></li>
+          <li><a href="../amenities/">Amenities</a></li>
+          <li><a href="../contact/">Contact</a></li>
         </ul>
       </div>
 
       <div class="foot__col">
         <h5>Shareholders</h5>
         <ul>
-          <li><a href="forms.html">Resident Forms</a></li>
-          <li><a href="guides.html">Building Guides</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Maintenance Request</a></li>
-          <li><a href="contact.html">Emergency Contacts</a></li>
+          <li><a href="../forms/">Resident Forms</a></li>
+          <li><a href="../guides/">Building Guides</a></li>
+          <li><a href="../faq/">FAQ</a></li>
+          <li><a href="../contact/">Maintenance Request</a></li>
+          <li><a href="../contact/">Emergency Contacts</a></li>
         </ul>
       </div>
 
       <div class="foot__col foot__col--mark">
-        <img src="images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
+        <img src="../images/logo.png" alt="Park City 3 & 4" class="foot__logo"/>
         <p class="foot__akam-note">
           Professionally managed by<br/>
           <a href="https://www.akam.com" target="_blank" rel="noopener" class="foot__akam-link">AKAM</a>
@@ -1215,8 +1217,8 @@
   </footer>
 
   <!-- Site-wide JS (loader, nav, smooth scroll, reveals, word reveal) -->
-  <script src="script.js" defer></script>
+  <script src="../js/script.js" defer></script>
   <!-- Forms-specific JS (overlay, paper forms, FormSubmit, success) -->
-  <script src="forms.js" defer></script>
+  <script src="../js/forms.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/favicon.ico", "destination": "/images/favicon.ico", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/amenities.html", "destination": "/amenities/", "permanent": true },
+    { "source": "/forms.html", "destination": "/forms/", "permanent": true },
+    { "source": "/guides.html", "destination": "/guides/", "permanent": true },
+    { "source": "/faq.html", "destination": "/faq/", "permanent": true },
+    { "source": "/gallery.html", "destination": "/gallery/", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact/", "permanent": true },
+    { "source": "/house-rules.pdf", "destination": "/docs/house-rules.pdf", "permanent": true },
+    { "source": "/pet-registration-form.pdf", "destination": "/docs/pet-registration-form.pdf", "permanent": true },
+    { "source": "/sample-coi.pdf", "destination": "/docs/sample-coi.pdf", "permanent": true }
+  ]
+}

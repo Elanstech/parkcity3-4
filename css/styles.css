@@ -188,6 +188,11 @@ em.serif-italic, .serif-italic em {
 .nav__menu a:hover { color: var(--brass-deep); }
 .nav.is-hero-light:not(.is-scrolled) .nav__menu a:hover { color: var(--brass-pale); }
 
+/* Current page — brass text + permanent underline */
+.nav__menu a.is-active { color: var(--brass-deep); }
+.nav__menu a.is-active::after { transform: scaleX(1); }
+.nav.is-hero-light:not(.is-scrolled) .nav__menu a.is-active { color: var(--brass-pale); }
+
 /* Hamburger toggle (mobile) */
 .nav__toggle {
   display: none;
@@ -312,6 +317,7 @@ em.serif-italic, .serif-italic em {
 .navmobile.is-open .navmobile__list li:nth-child(4) { transition-delay: 0.48s; }
 .navmobile.is-open .navmobile__list li:nth-child(5) { transition-delay: 0.54s; }
 .navmobile.is-open .navmobile__list li:nth-child(6) { transition-delay: 0.60s; }
+.navmobile.is-open .navmobile__list li:nth-child(7) { transition-delay: 0.66s; }
 
 .navmobile__list a {
   display: flex; align-items: baseline; gap: 16px;
@@ -327,6 +333,7 @@ em.serif-italic, .serif-italic em {
   flex-shrink: 0; width: 22px;
 }
 .navmobile__list a span { flex: 1; }
+.navmobile__list a.is-active { color: var(--brass-deep); }
 .navmobile__list a::after {
   content: '→'; font-family: var(--f-display); font-size: 20px; color: var(--brass);
   opacity: 0; transform: translateX(-10px);
@@ -435,14 +442,6 @@ em.serif-italic, .serif-italic em {
   display: block;
   font-size: clamp(56px, 11vw, 168px);
 }
-.hero__line--accent {
-  font-family: var(--f-italic); font-style: italic;
-  font-weight: 400;
-  font-size: clamp(56px, 11vw, 168px);
-  color: color-mix(in srgb, var(--bone) 95%, var(--brass-pale));
-  margin-top: -0.05em;
-}
-.hero__line--accent .word { font-style: italic; }
 .word {
   display: inline-block;
   opacity: 0;
@@ -1436,6 +1435,8 @@ a.inquire-card:hover { background: var(--cream-100); }
   z-index: 3;
 }
 .inquire__success.is-shown { opacity: 1; visibility: visible; }
+.inquire__success--error { cursor: pointer; }
+.inquire__success--error a { color: var(--brass-deep); text-decoration: underline; }
 .inquire__success-mark {
   display: grid; place-items: center;
   width: 56px; height: 56px;

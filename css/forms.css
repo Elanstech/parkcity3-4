@@ -3,23 +3,6 @@
    Extends styles.css (loaded first). Same tokens, same fonts.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ──────────── 0. NAV OVERRIDE ──────────── */
-/* The forms hero is cream-coloured, NOT a dark video like the main page.
-   Override the inherited "is-hero-light" rules so nav text + logo stay dark. */
-.nav.is-hero-light:not(.is-scrolled),
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a {
-  color: var(--ink);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__logo {
-  filter: none;
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__menu a:hover {
-  color: var(--brass-deep);
-}
-.nav.is-hero-light:not(.is-scrolled) .nav__toggle {
-  color: var(--ink);
-}
-
 /* ──────────── 0b. EYEBROW OVERRIDE ──────────── */
 /* Main page's .hero__eyebrow is translucent cream — legible on the dark video
    hero. On our cream hero we need dark text instead. */
@@ -200,49 +183,6 @@
   margin-bottom: 56px;
 }
 
-.forms-hero__meta {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  flex-wrap: wrap;
-  margin-bottom: 56px;
-  width: fit-content;
-  max-width: 100%;
-}
-.forms-hero__meta > div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.forms-hero__num {
-  font-family: var(--f-display);
-  font-size: clamp(32px, 3.4vw, 48px);
-  font-weight: 400;
-  line-height: 1;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-}
-.forms-hero__num sup {
-  font-family: var(--f-italic);
-  font-style: italic;
-  font-size: 0.45em;
-  color: var(--brass);
-  font-weight: 400;
-  letter-spacing: 0;
-  margin-left: 2px;
-}
-.forms-hero__label {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--taupe);
-}
-.forms-hero__rule {
-  width: 1px;
-  height: 32px;
-  background: var(--hairline);
-}
-
 .forms-hero__cta {
   display: inline-flex;
   align-items: center;
@@ -276,8 +216,6 @@
 
 @media (max-width: 700px) {
   .forms-hero { padding: 140px var(--pad-x) 100px; }
-  .forms-hero__meta { gap: 20px; }
-  .forms-hero__rule { height: 24px; }
 }
 
 /* ──────────── 2. FORMS GRID SECTION ──────────── */
